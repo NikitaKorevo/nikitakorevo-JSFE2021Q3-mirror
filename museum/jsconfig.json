@@ -1,0 +1,17 @@
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "commonjs"
+//   },
+//   "exclude": ["node_modules", "dist"],
+//   "include": ["src/**/*"]
+// }
+
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs"
+  },
+  "exclude": ["museum/node_modules", "museum/dist"],
+  "include": ["museum/src/**/*"]
+}
