@@ -113,22 +113,28 @@
 
     <section class="section video" id="video">
       <div class="video__container">
-        <div class="position-relative">
-          <img class="video__poster" src="./assets/img/content/video.jpg" width="1440" height="629" alt="poster">
-          <button class="video__big-play"></button>
-        </div>
-        <div class="video__player">
-          <button class="video__prev"></button>
-          <button class="video__play"></button>
-          <button class="video__next"></button>
-          <input class="video__progress" type="range" value="47">
-          <button class="video__volume"></button>
-          <input class="video__volume-level" type="range" value="43">
-          <button class="video__zoom"></button>
-        </div>
         <div class="video__container-text">
           <h2 class="video__title">Video journey</h2>
           <p class="video__text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+        </div>
+        <div class="video__player">
+          <!-- TODO: удалить 2 кнопки на Stage 1 -->
+          <button class="video__buttonPrev"><</button>
+          <button class="video__buttonNext">></button>
+          <video class="video__content" src="./assets/video/video0.mp4" poster="./assets/video/poster0.jpg"></video>
+          <button class="video__big-play"></button>
+          <div class="video__controls">
+            <button class="video__play"></button>
+            <input class="video__progress" type="range" step="0.5" value="0" min="0" max="100">
+            <button class="video__volume"></button>
+            <input class="video__volume-level" type="range" step="0.1" value="10" min="0" max="10">
+            <button class="video__zoom"></button>
+          </div>
+        </div>
+        <div class="posterdelete__container">
+          <img class="posterdelete" src="./assets/video/poster1.jpg" alt="">
+          <img class="posterdelete" src="./assets/video/poster2.jpg" alt="">
+          <img class="posterdelete" src="./assets/video/poster3.jpg" alt="">
         </div>
       </div>
     </section>

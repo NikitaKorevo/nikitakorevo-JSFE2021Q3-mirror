@@ -1,2 +1,2 @@
 import './assets/scss/index.scss';
-import './assets/js/main';
+import './assets/js/sectionVideo';

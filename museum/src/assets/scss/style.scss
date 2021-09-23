@@ -96,7 +96,7 @@ body {
       left: 465px;
       bottom: 0px;
       right: -465px;
-      background-image: url(../img/design/background.jpg);
+      background-image: url("../img/design/background.jpg");
       background-repeat: no-repeat;
       z-index: -1;
     }
@@ -282,149 +282,11 @@ body {
       margin: 0 auto;
     }
 
-    .position-relative {
-      position: relative;
-    }
-
-    &__poster {
-      display: block;
-      padding: 90px 0 0;
-    }
-
-    &__big-play {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background-image: url(../svg/big-play.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      top: 56%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: 0.3s;
-    }
-
-    &__player {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 85px;
-      background-color: #000;
-      margin: 0 0 40px;
-    }
-
-    &__prev {
-      min-width: 27px;
-      height: 30px;
-      background-image: url(../svg/prev.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      margin-left: 41px;
-      transition: 0.3s;
-    }
-
-    &__play {
-      min-width: 22px;
-      height: 30px;
-      background-image: url(../svg/play.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      margin-left: 41px;
-      transition: 0.3s;
-    }
-
-    &__next {
-      min-width: 27px;
-      height: 30px;
-      background-image: url(../svg/next.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      margin: 0 41px;
-      transition: 0.3s;
-    }
-
-    &__progress {
-      width: 100%;
-      appearance: none;
-      height: 8px;
-      background: linear-gradient(left, #24809E 0%, #24809E 47%, #fff 47%, #fff 100%);
-      outline: none;
-    }
-
-    &__progress::-webkit-slider-thumb {
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    
-    &__volume {
-      min-width: 37px;
-      height: 30px;
-      background-image: url(../svg/volume.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      margin: 0 20px 0 41px;
-      transition: 0.3s;
-    }
-
-    &__volume-level {
-      min-width: 155px;
-      appearance: none;
-      height: 8px;
-      background: linear-gradient(left, #24809E 0%, #24809E 43%, #fff 43%, #fff 100%);
-    }
-
-    &__volume-level::-webkit-slider-thumb {
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    &__zoom {
-      min-width: 36px;
-      height: 36px;
-      background-image: url(../svg/zoom.svg);
-      background-repeat: no-repeat;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      margin: 0 41px 0 48px;
-      transition: 0.3s;
-    }
-
-    &__big-play, &__prev, &__play, &__next, &__volume, &__zoom {
-      cursor: pointer;
-    }
-
-    &__big-play:hover, &__prev:hover, &__play:hover, &__next:hover, &__volume:hover, &__zoom:hover,
-    &__volume-level::-webkit-slider-thumb:hover, &__progress::-webkit-slider-thumb:hover {
-      filter: brightness(85%);
-    }
-
     &__container-text {
       display: flex;
       justify-content: space-between;
       gap: 115px;
-      padding: 0 0 75px;
+      padding: 75px 0 75px;
     }
 
     &__title {
@@ -447,6 +309,187 @@ body {
       line-height: 45px;
       color: #000;
       margin: 0;
+    }
+
+    &__player {
+      position: relative;
+    }
+
+    &__buttonPrev {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: -75px;
+      font-size: 150px;
+      border: 5px solid black;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    &__buttonNext {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      right: -175px;
+      font-size: 150px;
+      border: 5px solid black;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    &__content {
+      width: 100%;
+      height: 730px;
+      object-fit: cover;
+    }
+
+    @keyframes opacity {
+      from {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    &__content--opacity {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 1;
+      animation: opacity 0.3s linear 0s 1 normal forwards running;
+    }
+
+    &__big-play {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-image: url("../svg/big-play.svg");
+      background-repeat: no-repeat;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      top: 44%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s;
+    }
+
+    &__controls {
+      position: absolute;
+      bottom: 0px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 85px;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      margin: 0;
+    }
+
+    &__play {
+      // TODO: неправильно подобрана ширина иконки
+      /* min-width: 22px; */
+      min-width: 32px;
+      height: 30px;
+      background-image: url("../svg/play.svg");
+      background-repeat: no-repeat;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      margin: 0 50px 0 30px;
+      transition: 0.3s;
+    }
+
+    &__progress {
+      // TODO: дергается ползунок при просмотре видое
+      width: 100%;
+      appearance: none;
+      height: 8px;
+      background: linear-gradient(left, #710707 0%, #710707 0%, #fff 0%, #fff 100%);
+      outline: none;
+    }
+
+    &__progress::-webkit-slider-thumb {
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    &__volume {
+      // TODO: при смене иконки на mute.svg плохо позиционируется
+      min-width: 37px;
+      height: 30px;
+      background-image: url("../svg/volume.svg");
+      background-repeat: no-repeat;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      margin: 0 50px 0 50px;
+      transition: 0.3s;
+    }
+
+    &__volume-level {
+      min-width: 155px;
+      appearance: none;
+      height: 8px;
+      background: linear-gradient(left, #710707 0%, #710707 100%, #fff 100%, #fff 100%);
+    }
+
+    &__volume-level::-webkit-slider-thumb {
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    &__zoom {
+      min-width: 36px;
+      height: 36px;
+      background-image: url("../svg/zoom.svg");
+      background-repeat: no-repeat;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      margin: 0 30px 0 50px;
+      transition: 0.3s;
+    }
+
+    &__big-play, &__play, &__volume, &__zoom {
+      cursor: pointer;
+    }
+
+    &__big-play:hover, &__play:hover, &__volume:hover, &__zoom:hover,
+    &__volume-level::-webkit-slider-thumb:hover, &__progress::-webkit-slider-thumb:hover {
+      filter: brightness(85%);
+    }
+
+    .posterdelete__container {
+      display: flex;
+      width: 1440px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 40px 0 127px 0;
+    }
+
+    .posterdelete {
+      width: 452px;
+      height: 254px;
+      background-color: orange;
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -613,7 +656,7 @@ body {
       position: absolute;
       width: 16px;
       height: 2px;
-      background-image: url(../svg/amount_minus.svg);
+      background-image: url("../svg/amount_minus.svg");
       top: 20px;
       left: 13px;
     }
@@ -639,7 +682,7 @@ body {
       position: absolute;
       width: 16px;
       height: 16px;
-      background-image: url(../svg/amount_plus.svg);
+      background-image: url("../svg/amount_plus.svg");
       top: 13px;
       right: 13px;
     }
