@@ -13,8 +13,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
-  min-height: 200px;
+  width: 1440px;
+  height: 150px;
   margin: 0 auto;
 
   .logo {
@@ -24,7 +24,7 @@ body {
     text-decoration: none;
   
     &__img {
-      padding-right: 21px;
+      padding-right: 25px;
       transition: 0.3s;
     }
     &__title {
@@ -32,7 +32,7 @@ body {
       font-size: 28px;
       font-family: 'Forum', sans-serif;
       font-weight: 400;
-      line-height: 50px;
+      line-height: 31px;
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 5px;
@@ -59,7 +59,7 @@ body {
 
     }
     &__item {
-      padding-left: 76px;
+      padding-left: 55px;
     }
     &__item:first-child {
       padding-left: 0;
@@ -68,9 +68,9 @@ body {
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
       font-weight: 100;
-      line-height: 50px;
+      line-height: 26px;
       color: #fff;
-      letter-spacing: 2px;
+      letter-spacing: 2.1px;
       text-decoration: none;
       transition: 0.3s;
     }
@@ -87,10 +87,10 @@ body {
   .welcome {
     position: relative;
     margin: 0 auto;
-    padding-bottom: 246px;
+    padding-bottom: 272px;
     max-width: 1440px;
 
-    &__background-image {
+    /* &__background-image {
       position: absolute;
       top: -114px;
       left: 465px;
@@ -99,7 +99,7 @@ body {
       background-image: url("../img/design/background.jpg");
       background-repeat: no-repeat;
       z-index: -1;
-    }
+    } */
 
     &__title {
       font-size: 80px;
@@ -109,7 +109,7 @@ body {
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 5px;
-      margin: 114px 0 26px;
+      margin: 150px 0 25px;
     }
 
     &__text {
@@ -119,7 +119,7 @@ body {
       line-height: 33px;
       color: #fff;
       letter-spacing: 2px;
-      margin: 0 0 76px;
+      margin: 0 0 75px;
     }
 
     &__link {
@@ -127,7 +127,7 @@ body {
       width: 360px;
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
-      font-weight: 100;
+      font-weight: 300;
       line-height: 75px;
       color: #fff;
       letter-spacing: 2px;
@@ -535,7 +535,7 @@ body {
       display: block;
       position: relative;
       padding-left: 40px;
-      margin: 0 0 49px;
+      margin: 0 0 25px;
       cursor: pointer;
       user-select: none;
     }
@@ -607,7 +607,7 @@ body {
       font-weight: 700;
       line-height: 33px;
       color: #fff;
-      margin: 0 0 11px;
+      margin: 0 0 25px;
       text-align: right;
     }
 
@@ -619,7 +619,7 @@ body {
       width: 150px;
       height: 50px;
       border: 3px solid #fff;
-      margin: 0 0 35px auto;
+      margin: 0 0 10px auto;
     }
 
     .amount__container:last-of-type {
@@ -714,7 +714,7 @@ body {
       color: #fff;
       text-align: right;
       letter-spacing: 1.65px;
-      margin: 0 0 50px;
+      margin: 0 0 60px;
     }
 
     .amount__buy {
@@ -770,9 +770,8 @@ body {
       padding: 0 0 75px;
     }
 
-    &__content {
-      margin: 10px 0 0;
-    }
+    /* &__content {
+    } */
 
     &__subtitle {
       font-size: 28px;
@@ -785,7 +784,7 @@ body {
 
     &__list {
       list-style: none;
-      margin: 36px 0 0;
+      margin: 50px 0 0;
       padding: 0;
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
@@ -795,7 +794,7 @@ body {
     }
 
     &__item {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     &__address {
@@ -819,18 +818,18 @@ body {
   display: flex;
   width: 1440px;
   margin: 0 auto;
-  padding: 75px 0 75px;
+  padding: 84px 0 75px;
 
   .logo {
     display: flex;
     align-items: baseline;
     max-width: max-content;
     text-decoration: none;
-    margin-right: 145px;
+    margin-right: 140px;
     transition: 0.3s;
   
     &__img {
-      padding-right: 21px;
+      padding-right: 26px;
       transition: 0.3s;
     }
 
@@ -839,7 +838,7 @@ body {
       font-size: 28px;
       font-family: 'Forum', sans-serif;
       font-weight: 400;
-      line-height: 50px;
+      line-height: 31px;
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 5px;
@@ -858,12 +857,12 @@ body {
   }
 
   .footer-nav {
-    width: 518px;
+    width: 530px;
 
     &__list {
       display: flex;
       flex-direction: column;
-      height: 150px;
+      height: 160px;
       flex-wrap: wrap;
       padding: 0;
       margin: 0;
@@ -871,13 +870,14 @@ body {
 
     &__item {
       list-style: none;
+      margin: 0 0 25px;
     }
 
     &__link {
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
       font-weight: 100;
-      line-height: 50px;
+      line-height: 26px;
       color: #fff;
       margin: 0;
       padding: 0;
