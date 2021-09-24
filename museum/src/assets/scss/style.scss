@@ -89,17 +89,8 @@ body {
     margin: 0 auto;
     padding-bottom: 272px;
     max-width: 1440px;
-
-    /* &__background-image {
-      position: absolute;
-      top: -114px;
-      left: 465px;
-      bottom: 0px;
-      right: -465px;
-      background-image: url("../img/design/background.jpg");
-      background-repeat: no-repeat;
-      z-index: -1;
-    } */
+    background: linear-gradient(to right, rgba($color: #000, $alpha: 1) 0%, rgba($color: #000, $alpha: 1) 30%, rgba($color: #000, $alpha: 0) 45%, rgba($color: #000, $alpha: 0) 100%), 
+    url("../img/content/welcome-slider/1.jpg") 100% 0 no-repeat;
 
     &__title {
       font-size: 80px;
@@ -109,7 +100,8 @@ body {
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 5px;
-      margin: 150px 0 25px;
+      margin: 0 0 25px;
+      padding: 150px 0 0
     }
 
     &__text {
@@ -141,6 +133,78 @@ body {
 
     &__link:hover {
       background-color: #9D8665;
+    }
+
+    &__control {
+      box-sizing: border-box;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      padding: 0 74px;
+      right: 0;
+      bottom: 0;
+      height: 120px;
+      background-color: #000;
+
+      .control__count {
+        font-size: 22px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        line-height: 40px;
+        color: #fff;
+        word-spacing: 5px;
+        margin-right: 55px;
+      }
+
+      .control__square {
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        margin-right: 25px;
+        transition: 0.2s;
+      }
+
+      .control__square:last-of-type {
+        margin-right: 0;
+      }
+
+      .control__square:first-of-type {
+        background-color: #D2B183;
+      }
+
+      .control__square:hover {
+        background-color: #9D8665;
+      }
+
+      .control__prev {
+        width: 30px;
+        height: 16px;
+        border: none;
+        background-color: transparent;
+        background-image: url('../svg/welcome-prev.svg');
+        background-position-y: 5px;
+        background-repeat: no-repeat;
+        margin-left: 60px;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      .control__next {
+        width: 30px;
+        height: 16px;
+        border: none;
+        background-color: transparent;
+        background-image: url('../svg/welcome-next.svg');
+        background-position-y: 5px;
+        background-repeat: no-repeat;
+        margin-left: 20px;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      .control__prev:hover, .control__next:hover {
+        filter: invert(42%) sepia(32%) saturate(370%) brightness(94%) contrast(91%);
+      }
     }
   }
 
