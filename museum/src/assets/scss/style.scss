@@ -815,103 +815,150 @@ body {
 }
 
 .footer {
-  display: flex;
-  width: 1440px;
-  margin: 0 auto;
-  padding: 84px 0 75px;
 
-  .logo {
+  &__content {
     display: flex;
-    align-items: baseline;
-    max-width: max-content;
-    text-decoration: none;
-    margin-right: 140px;
-    transition: 0.3s;
-  
-    &__img {
-      padding-right: 26px;
-      transition: 0.3s;
-    }
+    width: 1440px;
+    padding: 84px 0 21px;
+    margin: 0 auto;
 
-    &__title {
-      display: inline-block;
-      font-size: 28px;
-      font-family: 'Forum', sans-serif;
-      font-weight: 400;
-      line-height: 31px;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      margin: 0px;
-      transition: 0.3s;
-    }
-  }
-
-  .logo:hover {
-    .logo__title {
-      color: #9D8665;
-    }
-    .logo__img {
-      filter: invert(28%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
-    }
-  }
-
-  .footer-nav {
-    width: 530px;
-
-    &__list {
+    .logo {
       display: flex;
-      flex-direction: column;
-      height: 160px;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
+      align-items: baseline;
+      max-width: max-content;
+      text-decoration: none;
+      margin-right: 140px;
+      transition: 0.3s;
+    
+      &__img {
+        padding-right: 26px;
+        transition: 0.3s;
+      }
+  
+      &__title {
+        display: inline-block;
+        font-size: 28px;
+        font-family: 'Forum', sans-serif;
+        font-weight: 400;
+        line-height: 31px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin: 0px;
+        transition: 0.3s;
+      }
     }
-
-    &__item {
+  
+    .logo:hover {
+      .logo__title {
+        color: #9D8665;
+      }
+      .logo__img {
+        filter: invert(28%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
+      }
+    }
+  
+    .footer-nav {
+      width: 530px;
+  
+      &__list {
+        display: flex;
+        flex-direction: column;
+        height: 160px;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+      }
+  
+      &__item {
+        list-style: none;
+        margin: 0 0 25px;
+      }
+  
+      &__link {
+        font-size: 22px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 100;
+        line-height: 26px;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        letter-spacing: 2px;
+        transition: 0.3s;
+      }
+  
+      &__link:hover {
+        color: #9D8665;
+      }
+    }
+  
+    .social__list {
+      display: flex;
       list-style: none;
-      margin: 0 0 25px;
-    }
-
-    &__link {
-      font-size: 22px;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 100;
-      line-height: 26px;
-      color: #fff;
-      margin: 0;
       padding: 0;
+      margin: auto 0 30px;
+      margin-left: auto;
+    }
+  
+    .social__item {
+      margin-right: 25px;
+    }
+  
+    .social__item svg {
+      transition: 0.3s;
+    }
+  
+    .social__item:hover svg {
+      filter: invert(48%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
+    }
+  
+    .social__item:last-child {
+      margin: 0;
+    }
+  }
+
+  &__line {
+    height: 3px;
+    width: 100%;
+    background-color: #666666;
+  }
+
+  &__development {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+    height: 124px;
+    font-size: 22px;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: #fff;
+    margin: 0 auto;
+
+    &-rsschool {
       text-decoration: none;
       letter-spacing: 2px;
+      color: #fff;
+      margin-left: 50px;
       transition: 0.3s;
     }
 
-    &__link:hover {
+    &-github {
+      text-decoration: none;
+      letter-spacing: 2px;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    &-rsschool:hover {
       color: #9D8665;
     }
-  }
 
-  .social__list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: auto 0 10px;
-    margin-left: auto;
-  }
-
-  .social__item {
-    margin-right: 24px;
-  }
-
-  .social__item svg {
-    transition: 0.3s;
-  }
-
-  .social__item:hover svg {
-    filter: invert(48%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
-  }
-
-  .social__item:last-child {
-    margin: 0;
+    &-github:hover {
+      color: #9D8665;
+    }
   }
 }
