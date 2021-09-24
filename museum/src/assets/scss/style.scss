@@ -82,7 +82,7 @@ body {
 }
 
 .main {
-  overflow-x:hidden;
+  /* overflow-x:hidden; */
 
   .welcome {
     position: relative;
@@ -296,10 +296,22 @@ body {
   }
 
   .explore {
+    display: flex;
+    position: relative;
     width: 1440px;
     margin: 0 auto;
-    display: flex;
     gap: 60px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border: 5px solid #fff;
+      border-radius: 50%;
+      top: 422px;
+      right: 260px;
+    }
 
     &__title {
       font-size: 80px;
@@ -333,7 +345,35 @@ body {
       color: #CAAA7D;
     }
 
+    &__container-img {
+      position: relative;
+    }
+
+    &__img-part {
+      position: absolute;
+      top: 90px;
+    }
+
+    &__img-lineup {
+      position: absolute;
+      top: 90px;
+      left: 437px;
+      width: 5px;
+      height: 335px;
+      background-color: #fff;
+    }
+
+    &__img-linedowon {
+      position: absolute;
+      bottom: 75px;
+      left: 437px;
+      width: 5px;
+      height: 335px;
+      background-color: #fff;
+    }
+
     &__img {
+      display: block;
       padding: 90px 0 75px;
     }
   }
