@@ -417,9 +417,10 @@ body {
 
     &__player {
       position: relative;
+      height: 735px;
     }
 
-    &__buttonPrev {
+    /* &__buttonPrev {
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -439,11 +440,11 @@ body {
       border: 5px solid black;
       border-radius: 5px;
       background-color: white;
-    }
+    } */
 
     &__content {
       width: 100%;
-      height: 730px;
+      height: 735px;
       object-fit: cover;
     }
 
@@ -580,20 +581,49 @@ body {
       filter: brightness(85%);
     }
 
-    .posterdelete__container {
+    &__youtube {
       display: flex;
       width: 1440px;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding: 40px 0 127px 0;
+      padding: 40px 0 40px 0;
     }
 
-    .posterdelete {
-      width: 452px;
-      height: 254px;
-      background-color: orange;
-      margin: 0;
-      padding: 0;
+    &__pagination {
+      display: flex;
+      width: 200px;
+      margin: 0 auto;
+      justify-content: space-between;
+      padding:  0 0 75px;
+
+      .pagination__button-prev {
+        width: 10px;
+        height: 12px;
+        background-color: transparent;
+        background-image: url("../svg/video__button-prev.svg");
+        background-repeat: no-repeat;
+        border: none;
+      }
+
+      .pagination__num {
+        width: 12px;
+        height: 12px;
+        background-color: #999999;
+        border-radius: 50%;
+      }
+
+      .pagination__num--active {
+        background-color: #333333;
+      }
+
+      .pagination__button-next {
+        width: 10px;
+        height: 12px;
+        background-color: transparent;
+        background-image: url("../svg/video__button-next.svg");
+        background-repeat: no-repeat;
+        border: none;
+      }
     }
   }
 

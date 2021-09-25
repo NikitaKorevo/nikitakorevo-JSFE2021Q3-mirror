@@ -134,8 +134,8 @@
         </div>
         <div class="video__player">
           <!-- TODO: удалить 2 кнопки на Stage 1 -->
-          <button class="video__buttonPrev">&lt;</button>
-          <button class="video__buttonNext">&gt;</button>
+          <!-- <button class="video__buttonPrev">&lt;</button>
+          <button class="video__buttonNext">&gt;</button> -->
           <video class="video__content" src="./assets/video/video0.mp4" poster="./assets/video/poster0.jpg"></video>
           <button class="video__big-play"></button>
           <div class="video__controls">
@@ -146,10 +146,19 @@
             <button class="video__zoom"></button>
           </div>
         </div>
-        <div class="posterdelete__container">
-          <img class="posterdelete" src="./assets/video/poster1.jpg" alt="">
-          <img class="posterdelete" src="./assets/video/poster2.jpg" alt="">
-          <img class="posterdelete" src="./assets/video/poster3.jpg" alt="">
+        <div class="video__youtube">
+          <iframe width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="452" height="254" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video__pagination">
+          <button class="pagination__button-prev"></button>
+          <div class="pagination__num pagination__num--active"></div>
+          <div class="pagination__num"></div>
+          <div class="pagination__num"></div>
+          <div class="pagination__num"></div>
+          <div class="pagination__num"></div>
+          <button class="pagination__button-next"></button>
         </div>
       </div>
     </section>
@@ -341,8 +350,8 @@
     </div>
     <div class="footer__development">
       <p class="footer__development-year">© 2021</p>
-      <a class="footer__development-rsschool" href="https://rs.school/">The Rolling Scopes School</a>
-      <a class="footer__development-github" href="https://github.com/nikitakorevo">nikitakorevo</a>
+      <a class="footer__development-rsschool" href="https://rs.school/" target="_blank">The Rolling Scopes School</a>
+      <a class="footer__development-github" href="https://github.com/nikitakorevo" target="_blank">nikitakorevo</a>
     </div>
   </footer>
 </body>
