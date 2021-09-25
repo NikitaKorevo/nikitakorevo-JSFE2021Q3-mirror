@@ -627,16 +627,27 @@ body {
     }
   }
 
+  .gallery {
+    height: 2200px;
+    background-color: #000;
+  }
+
   .tickets {
-    width: 1440px;
-    margin: 0 auto;
+    width: 100%;
+    background-color: #fff;
+
+    &__wrapper {
+      width: 1440px;
+      background-color: #fff;
+      margin: 0 auto;
+    }
 
     &__title {
       font-size: 80px;
       font-family: 'Forum', sans-serif;
       font-weight: 400;
       line-height: 90px;
-      color: #fff;
+      color: #9D8665;
       letter-spacing: 5px;
       text-transform: uppercase;
       margin: 0 0 25px;
@@ -687,11 +698,11 @@ body {
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      border: 2px solid #fff
+      border: 2px solid #000
     }
 
     .radio-buttons__container:hover input ~ .radio-buttons__checkmark {
-      background-color: rgb(51, 51, 51);
+      background-color: #D2B183;
     }
 
     .radio-buttons__checkmark::after {
@@ -710,7 +721,7 @@ body {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: #000;
     }
     
     .radio-buttons__subtitle {
@@ -718,7 +729,7 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 700;
       line-height: 33px;
-      color: #fff;
+      color: #000;
       margin: 0 0 50px;
     }
 
@@ -728,7 +739,7 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 300;
       line-height: 26px;
-      color: #fff;
+      color: #000;
     }
 
     .tickets__amount {
@@ -740,7 +751,7 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 700;
       line-height: 33px;
-      color: #fff;
+      color: #000;
       margin: 0 0 25px;
       text-align: right;
     }
@@ -752,7 +763,7 @@ body {
       box-sizing: border-box;
       width: 150px;
       height: 50px;
-      border: 3px solid #fff;
+      border: 3px solid #000;
       margin: 0 0 10px auto;
     }
 
@@ -765,13 +776,16 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 300;
       line-height: 26px;
-      color: #fff;
+      color: #000;
       margin: 0 0 14px 25px;
     }
 
     .amount__minus {
       width: 50px;
       height: 100%;
+      background-image: url("../svg/amount_minus.svg");
+      background-repeat: no-repeat;
+      background-position: center;
       border: none;
       outline: none;
       background-color: transparent;
@@ -781,23 +795,15 @@ body {
     }
 
     .amount__minus:hover {
-      background-color: #000;
-      opacity: 0.3;
-    }
-
-    .amount__container::before {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 2px;
-      background-image: url("../svg/amount_minus.svg");
-      top: 20px;
-      left: 13px;
+      filter: invert(28%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
     }
 
     .amount__plus {
       width: 50px;
       height: 100%;
+      background-image: url("../svg/amount_plus.svg");
+      background-repeat: no-repeat;
+      background-position: center;
       border: none;
       outline: none;
       background-color: transparent;
@@ -807,18 +813,7 @@ body {
     }
 
     .amount__plus:hover {
-      background-color: #000;
-      opacity: 0.3;
-    }
-
-    .amount__container::after {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background-image: url("../svg/amount_plus.svg");
-      top: 13px;
-      right: 13px;
+      filter: invert(48%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
     }
 
     .amount__input {
@@ -827,7 +822,7 @@ body {
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
       font-weight: 300;
-      color: #fff;
+      color: #000;
       text-align: center;
       border: none;
       background-color: transparent;
@@ -845,7 +840,7 @@ body {
       font-family: 'Roboto', sans-serif;
       font-weight: 700;
       line-height: 33px;
-      color: #fff;
+      color: #000;
       text-align: right;
       letter-spacing: 1.65px;
       margin: 0 0 60px;
@@ -854,13 +849,14 @@ body {
     .amount__buy {
       width: 175px;
       height: 50px;
-      background-color: #fff;
+      background-color: #000;
       border: none;
       border-radius: 2px;
       font-size: 22px;
       font-family: 'Roboto', sans-serif;
       font-weight: 300;
       line-height: 26px;
+      color: #fff;
       letter-spacing: 2px;
       cursor: pointer;
       transition: 0.3s;
@@ -868,11 +864,13 @@ body {
 
     .amount__buy:hover {
       background-color: #9D8665;
+      color: #000;
     }
   }
 
   .contacts {
     background-color: #fff;
+    border: 5px solid #000;
 
     &__wrapper {
       width: 1440px;

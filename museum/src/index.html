@@ -163,45 +163,51 @@
       </div>
     </section>
 
+    <section class="section gallery" id="gallery">
+
+    </section>
+
     <section class="section tickets" id="tickets">
-      <h2 class="tickets__title">Buy tickets</h2>
-      <div class="tickets__line"></div>
-      <div class="tickets__container">
-        <img class="tickets__img" src="./assets/img/content/tickets.jpg" alt="picture">
-        <div class="tickets__radio-buttons">
-          <h4 class="radio-buttons__subtitle">Ticket Type</h4>
-          <label class="radio-buttons__container">
-            <span class="radio-buttons__text">Permanent exhibition</span>
-            <input type="radio" name="ticketType" checked="checked">
-            <span class="radio-buttons__checkmark"></span>
-          </label>
-          <label class="radio-buttons__container">
-            <span class="radio-buttons__text">Temporary exhibition</span>
-            <input type="radio" name="ticketType">
-            <span class="radio-buttons__checkmark"></span>
-          </label>
-          <label class="radio-buttons__container">
-            <span class="radio-buttons__text">Combined Admission</span>
-            <input type="radio" name="ticketType">
-            <span class="radio-buttons__checkmark"></span>
-          </label>
-        </div>
-        <div class="tickets__amount">
-          <h4 class="amount__title">Amount</h4>
-          <p class="amount__text">Basic 18+</p>
-          <div class="amount__container">
-            <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
-            <input class="amount__input" type="number" min="0" max="99" value="1" readonly>
-            <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+      <div class="tickets__wrapper">
+        <h2 class="tickets__title">Buy tickets</h2>
+        <div class="tickets__line"></div>
+        <div class="tickets__container">
+          <img class="tickets__img" src="./assets/img/content/tickets.jpg" alt="picture">
+          <div class="tickets__radio-buttons">
+            <h4 class="radio-buttons__subtitle">Ticket Type</h4>
+            <label class="radio-buttons__container">
+              <span class="radio-buttons__text">Permanent exhibition</span>
+              <input type="radio" name="ticketType" checked="checked">
+              <span class="radio-buttons__checkmark"></span>
+            </label>
+            <label class="radio-buttons__container">
+              <span class="radio-buttons__text">Temporary exhibition</span>
+              <input type="radio" name="ticketType">
+              <span class="radio-buttons__checkmark"></span>
+            </label>
+            <label class="radio-buttons__container">
+              <span class="radio-buttons__text">Combined Admission</span>
+              <input type="radio" name="ticketType">
+              <span class="radio-buttons__checkmark"></span>
+            </label>
           </div>
-          <p class="amount__text">Senior 65+</p>
-          <div class="amount__container">
-            <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
-            <input class="amount__input" type="number" min="0" value="1" readonly>
-            <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+          <div class="tickets__amount">
+            <h4 class="amount__title">Amount</h4>
+            <p class="amount__text">Basic 18+</p>
+            <div class="amount__container">
+              <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
+              <input class="amount__input" type="number" min="0" max="99" value="1" readonly>
+              <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+            </div>
+            <p class="amount__text">Senior 65+</p>
+            <div class="amount__container">
+              <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
+              <input class="amount__input" type="number" min="0" value="1" readonly>
+              <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+            </div>
+            <h5 class="amount__subtitle">Total €220</h5>
+            <button class="amount__buy">Buy Now</button>
           </div>
-          <h5 class="amount__subtitle">Total €220</h5>
-          <button class="amount__buy">Buy Now</button>
         </div>
       </div>
     </section>
