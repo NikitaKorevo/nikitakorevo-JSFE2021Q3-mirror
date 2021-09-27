@@ -207,7 +207,7 @@ const nextOrPrevVideoContent = (index = 0) => {
 };
 
 
-checkHotkeys = (e) => {
+/* checkHotkeys = (e) => {
 
   switch (e.code) {
     case 'Space':
@@ -257,7 +257,7 @@ checkHotkeys = (e) => {
 
 };
 
-document.addEventListener('keydown',(e) => checkHotkeys(e))
+document.addEventListener('keydown',(e) => checkHotkeys(e)) */
 
 
 // TODO: удалить на Stage 1
