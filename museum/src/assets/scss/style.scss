@@ -769,7 +769,8 @@ body {
     }
 
     .radio-buttons__container:hover input ~ .radio-buttons__checkmark {
-      background-color: #D2B183;
+      /* background-color: #D2B183; */
+      border: 2px solid #9D8665;
     }
 
     .radio-buttons__checkmark::after {
@@ -807,6 +808,11 @@ body {
       font-weight: 300;
       line-height: 26px;
       color: #000;
+      transition: 0.3s;
+    }
+
+    .radio-buttons__text:hover {
+      color: #9D8665;
     }
 
     .tickets__amount {
