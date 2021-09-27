@@ -941,14 +941,70 @@ body {
     }
   }
 
+  .booking__background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #000, $alpha: 0.6);
+    margin: 0 auto 0;
+    overflow: auto;
+    z-index: 9;
+  }
+
   .booking {
+    position: relative;
+    left: -110%;
+    display: block;
     box-sizing: border-box;
     width: 1440px;
     background: #fff;
-    margin: 0 auto;
+    margin: 50px auto 0;
     padding: 91px 235px;
+    z-index: 10;
+    animation: leftRight 0.3s;
+
+    @keyframes leftRight {
+      from {
+        left: -110%;
+      }
+
+      to {
+        left: 0;
+      }
+    }
+
+    @keyframes rightLeft {
+      from {
+        left: 0;
+      }
+
+      to {
+        left: -110%;
+      }
+    }
+    
+    .booking__button-close {
+      position: absolute;
+      top: -61px;
+      right: -205px;
+      width: 25px;
+      height: 25px;
+      background: url("../svg/booking__close.svg") no-repeat left 50% top 50%;
+      background-color: transparent;
+      border: none;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .booking__button-close:hover {
+      background: url("../svg/booking__close--gold.svg") no-repeat left 50% top 50%;
+    }
 
     &__wrapper {
+      position: relative;
       display: flex;
       column-gap: 40px;
     }
@@ -1147,7 +1203,7 @@ body {
       margin: 0;
     }
 
-    .amount__container {
+    .entry-ticket__wrapper {
       position: relative;
       display: flex;
       align-items: center;
@@ -1157,7 +1213,7 @@ body {
       border: 1px solid #000;
     }
 
-    .amount__minus {
+    .entry-ticket__minus {
       width: 35px;
       height: 100%;
       background-image: url("../svg/booling__minus.svg");
@@ -1171,11 +1227,11 @@ body {
       transition: 0.3s;
     }
 
-    .amount__minus:hover {
+    .entry-ticket__minus:hover {
       background-image: url("../svg/booling__minus-gold.svg");
     }
 
-    .amount__plus {
+    .entry-ticket__plus {
       width: 35px;
       height: 100%;
       background-image: url("../svg/booling__plus.svg");
@@ -1189,11 +1245,11 @@ body {
       transition: 0.3s;
     }
 
-    .amount__plus:hover {
+    .entry-ticket__plus:hover {
       background-image: url("../svg/booling__plus-gold.svg");
     }
 
-    .amount__input {
+    .entry-ticket__input {
       width: 35px;
       height: 100%;
       font-size: 18px;
@@ -1207,8 +1263,8 @@ body {
       cursor: default;
     }
 
-    .amount__container input::-webkit-outer-spin-button,
-    .amount__container input::-webkit-inner-spin-button {
+    .entry-ticket__wrapper input::-webkit-outer-spin-button,
+    .entry-ticket__wrapper input::-webkit-inner-spin-button {
       appearance: none;
     }
     
@@ -1229,7 +1285,7 @@ body {
     .payment__title {
       font-size: 32px;
       font-family: 'Roboto', sans-serif;
-      font-weight: 900;
+      font-weight: 500;
       line-height: 1.2;
       color: #000;
       margin: 0 0 2px;
