@@ -972,7 +972,7 @@ body {
     .logo__img {
       width: 85px;
       height: 41px;
-      filter: invert(28%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
+      filter: invert(28%) sepia(15%) saturate(739%) brightness(71%) contrast(92%);
     }
 
     &__title {
@@ -1594,7 +1594,7 @@ body {
   &__content {
     display: flex;
     width: 1440px;
-    padding: 84px 0 21px;
+    padding: 84px 0 15px;
     margin: 0 auto;
 
     .logo {
@@ -1642,7 +1642,7 @@ body {
         height: 160px;
         flex-wrap: wrap;
         padding: 0;
-        margin: 0;
+        margin: 5px 0 0;
       }
   
       &__item {
@@ -1672,25 +1672,52 @@ body {
       display: flex;
       list-style: none;
       padding: 0;
-      margin: auto 0 30px;
+      margin: auto 0 40px;
       margin-left: auto;
+    }
+
+    .social__list a {
+      display: block;
+      box-sizing: border-box;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid #666666;
+      transition: 0.3s;
+    }
+
+    .social__list a:hover {
+      filter: invert(28%) sepia(15%) saturate(739%) brightness(71%) contrast(92%);
     }
   
     .social__item {
       margin-right: 25px;
     }
   
-    .social__item svg {
-      transition: 0.3s;
-    }
-  
-    .social__item:hover svg {
-      filter: invert(48%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
-    }
-  
     .social__item:last-child {
       margin: 0;
     }
+
+    .social__rsschool {
+      background: url("../svg/footer__youtube.svg") no-repeat left 50% top 50%;
+    }
+
+    .social__instagram {
+      background: url("../svg/footer__instagram.svg") no-repeat left 50% top 50%;
+    }
+
+    .social__facebook {
+      background: url("../svg/footer__facebook.svg") no-repeat left 50% top 50%;
+    }
+
+    .social__twitter {
+      background: url("../svg/footer__twitter.svg") no-repeat left 50% top 50%;
+    }
+
+    .social__pinterest {
+      background: url("../svg/footer__pinterest.svg") no-repeat left 50% top 50%;
+    }
+
   }
 
   &__line {
