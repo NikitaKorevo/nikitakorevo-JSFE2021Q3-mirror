@@ -700,11 +700,11 @@ body {
 
   .tickets {
     width: 100%;
-    background-color: #fff; // TODO: поменять на белый фон
+    background-color: #fff;
 
     &__wrapper {
       width: 1440px;
-      background-color: #fff; // TODO: поменять на белый фон
+      background-color: #fff;
       margin: 0 auto;
     }
 
@@ -942,7 +942,7 @@ body {
   }
 
   .booking__background {
-    display: block; // TODO поставить none
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -956,12 +956,12 @@ body {
 
   .booking {
     position: relative;
-    left: 0; // TODO поставить -110%
+    left: -110%;
     display: block;
     box-sizing: border-box;
     width: 1440px;
     background: #fff;
-    margin: 0 auto 0; // TODO 50px auto
+    margin: 50px auto 0;
     padding: 91px 235px;
     z-index: 10;
     animation: leftRight 0.3s;
@@ -1542,6 +1542,7 @@ body {
 
     .booking__book {
       display: block;
+      position: relative;
       width: 220px;
       height: 45px;
       font-family: 'Roboto', sans-serif;
@@ -1559,9 +1560,25 @@ body {
     .booking__book:hover {
       background-color: #9D8665;
     }
+
+    .booking__book .circle {
+      position: absolute;
+      background-color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: scale 0.4s ease-out;
+    }
+
+    @keyframes scale {
+      to {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+      }
+    }
   }
 
-  
 
   .parallax {
     width: 100%;

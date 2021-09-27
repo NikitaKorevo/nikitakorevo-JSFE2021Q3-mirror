@@ -19,16 +19,6 @@ const getRandomNumberImgInTheColumn = () => {
     col[index - 1].push(arrIndexImg[num - 1]);
     arrIndexImg.splice(num - 1, 1);
 
-    /* if (index === 1) {
-      col[0].push(arrIndexImg[num - 1]);
-      arrIndexImg.splice(num - 1, 1);
-    } else if (index === 2) {
-      col[1].push(arrIndexImg[num - 1]);
-      arrIndexImg.splice(num - 1, 1);
-    } else if (index === 3) {
-      col[2].push(arrIndexImg[num - 1]);
-      arrIndexImg.splice(num - 1, 1);
-    } */
     if (index === HowCol) index = 0;
   }
 };
