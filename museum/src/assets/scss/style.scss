@@ -942,7 +942,7 @@ body {
   }
 
   .booking__background {
-    display: none;
+    display: block; // TODO поставить none
     position: fixed;
     top: 0;
     left: 0;
@@ -956,12 +956,12 @@ body {
 
   .booking {
     position: relative;
-    left: -110%;
+    left: 0; // TODO поставить -110%
     display: block;
     box-sizing: border-box;
     width: 1440px;
     background: #fff;
-    margin: 50px auto 0;
+    margin: 0 auto 0; // TODO 50px auto
     padding: 91px 235px;
     z-index: 10;
     animation: leftRight 0.3s;
@@ -1039,7 +1039,7 @@ body {
       color: #9D8665;
       text-transform: uppercase;
       margin: 0;
-      padding: 0 0 15px;
+      padding: 0 0 10px;
     }
 
     &__subtitle {
@@ -1071,6 +1071,7 @@ body {
     }
 
     &__date {
+      width: 100px;
       flex-grow: 1;
       flex-basis: 1px;
       height: 45px;
@@ -1089,6 +1090,7 @@ body {
     } 
 
     &__time {
+      width: 100px;
       flex-grow: 1;
       flex-basis: 1px;
       height: 45px;
@@ -1391,6 +1393,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 0 10px;
     }
 
     .payment__total {
@@ -1409,7 +1412,7 @@ body {
       line-height: 37px;
       color: #030303;
       margin: 0;
-      padding: 0 0 10px;
+      /* padding: 0 0 10px; */
     }
 
     .payment__card-face {
@@ -1486,7 +1489,7 @@ body {
     }
 
     .payment__card-backside {
-      position: absolute; // TODO
+      position: absolute;
       bottom: 100px;
       right: 30px;
       box-sizing: border-box;
