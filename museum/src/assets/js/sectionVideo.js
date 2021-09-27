@@ -90,8 +90,8 @@ videoProgress.addEventListener('mouseup', () => changeProgressMouseup());
 
 const changeProgressInput = () => {
   lineProgress = videoProgress.value;
-  videoProgress.style.background = `-webkit-gradient(linear, left top, right top, from(#710707), color-stop(${lineProgress}%, #710707), color-stop(${lineProgress}%, #fff), to(#fff))`;
-  videoProgress.style.background = `linear-gradient(left, #710707 0%, #710707 ${lineProgress}%, #fff ${lineProgress}%, #fff 100%)`;
+  videoProgress.style.background = `-webkit-gradient(linear, left top, right top, from(#710707), color-stop(${lineProgress}%, #710707), color-stop(${lineProgress}%, #C4C4C4), to(#C4C4C4))`;
+  videoProgress.style.background = `linear-gradient(left, #710707 0%, #710707 ${lineProgress}%, #C4C4C4 ${lineProgress}%, #C4C4C4 100%)`;
 };
 
 videoProgress.addEventListener('input', () => changeProgressInput());
@@ -115,8 +115,8 @@ const volumeLevel = (volumeLevel = videoVolumeLevel.value) => {
   const value = volumeLevel;
   videoContent.volume = value / 10;
 
-  videoVolumeLevel.style.background = `-webkit-gradient(linear, left top, right top, from(#710707), color-stop(${value * 10}%, #710707), color-stop(${value * 10}%, #fff), to(#fff))`;
-  videoVolumeLevel.style.background = `linear-gradient(left, #710707 0%, #710707 ${value * 10}%, #fff ${value * 10}%, #fff 100%)`;
+  videoVolumeLevel.style.background = `-webkit-gradient(linear, left top, right top, from(#710707), color-stop(${value * 10}%, #710707), color-stop(${value * 10}%, #C4C4C4), to(#C4C4C4))`;
+  videoVolumeLevel.style.background = `linear-gradient(left, #710707 0%, #710707 ${value * 10}%, #C4C4C4 ${value * 10}%, #C4C4C4 100%)`;
 
   if (videoContent.volume === 0) {
     videoContent.muted = true;

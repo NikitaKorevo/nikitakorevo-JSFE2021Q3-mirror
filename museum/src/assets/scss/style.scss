@@ -517,7 +517,8 @@ body {
       width: 100%;
       appearance: none;
       height: 8px;
-      background: linear-gradient(left, #710707 0%, #710707 0%, #fff 0%, #fff 100%);
+      background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(53%, #710707), color-stop(53%, #C4C4C4), to(#C4C4C4));
+      background: linear-gradient(left, #710707 0%, #710707 53%, #C4C4C4 53%, #C4C4C4 100%);
       outline: none;
     }
 
@@ -548,7 +549,9 @@ body {
       min-width: 155px;
       appearance: none;
       height: 8px;
-      background: linear-gradient(left, #710707 0%, #710707 100%, #fff 100%, #fff 100%);
+      background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(40%, #710707), color-stop(40%, #C4C4C4), to(#C4C4C4));
+
+      background: linear-gradient(left, #710707 0%, #710707 40%, #C4C4C4 40%, #C4C4C4 100%);
     }
 
     &__volume-level::-webkit-slider-thumb {
@@ -579,7 +582,7 @@ body {
 
     &__big-play:hover, &__play:hover, &__volume:hover, &__zoom:hover,
     &__volume-level::-webkit-slider-thumb:hover, &__progress::-webkit-slider-thumb:hover {
-      filter: brightness(85%);
+      filter: invert(60%) sepia(2%) saturate(6468%) hue-rotate(357deg) brightness(90%) contrast(77%);
     }
 
     &__youtube {
@@ -606,6 +609,11 @@ body {
         border: none;
         padding: 0;
         cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .pagination__button-prev:hover {
+        background-image: url("../svg/video__button-prev--purple.svg");
       }
 
       .pagination__num {
@@ -633,6 +641,11 @@ body {
         background-repeat: no-repeat;
         border: none;
         cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .pagination__button-next:hover {
+        background-image: url("../svg/video__button-next--purple.svg");
       }
     }
   }
@@ -1380,7 +1393,7 @@ body {
       line-height: 14px;
       color: #161615;
       border: 0.5px solid #A4A4A3;
-      margin: 0 0 10px;
+      margin: 0 12px 10px 0;
       padding: 0 0 0 10px;
     }
 
@@ -1475,6 +1488,11 @@ body {
       margin: 0 0 0 auto;
       border: none;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking__book:hover {
+      background-color: #9D8665;
     }
   }
 
