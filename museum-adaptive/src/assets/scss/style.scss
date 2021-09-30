@@ -7,13 +7,14 @@ body {
   font-size: 14px;
   color: white;
   background-color: #030303;
+  min-width: 320px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
+  max-width: 1440px;
   height: 150px;
   margin: 0 auto;
 
@@ -48,6 +49,15 @@ body {
     .logo__img {
       filter: invert(48%) sepia(15%) saturate(739%) brightness(91%) contrast(92%);
     }
+  }
+
+  &__burger-menu {
+    display: none;
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 18px;
+    background: url('../svg/header__burger-menu.svg') no-repeat left 50% top 50%;
   }
 
   .header-nav {
@@ -88,10 +98,10 @@ body {
     position: relative;
     margin: 0 auto;
     padding-bottom: 272px;
-    width: 1440px;
-    background: linear-gradient(to right, rgba($color: #000, $alpha: 1) 0%, rgba($color: #000, $alpha: 1) 30%, rgba($color: #000, $alpha: 0) 45%, rgba($color: #000, $alpha: 0) 100%), 
-    url("../img/content/welcome-slider/1.jpg") 100% 0 no-repeat;
-
+    max-width: 1440px;
+    /* background: linear-gradient(to right, rgba($color: #000, $alpha: 1) 0%, rgba($color: #000, $alpha: 1) 30%, rgba($color: #000, $alpha: 0) 45%, rgba($color: #000, $alpha: 0) 100%), 
+    url("../img/content/welcome-slider/1.jpg") no-repeat right 0px top 0px;
+ */
     &__title {
       font-size: 80px;
       font-family: 'Forum', sans-serif;
@@ -133,6 +143,15 @@ body {
 
     &__link:hover {
       background-color: #9D8665;
+    }
+
+    &__img {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      max-width: 69.44%;
+      z-index: -1;
     }
 
     &__control {
@@ -183,7 +202,7 @@ body {
         border: none;
         background-color: transparent;
         background-image: url('../svg/welcome-prev.svg');
-        background-position-y: 5px;
+        background-position-y: 50%;
         background-repeat: no-repeat;
         margin-left: 60px;
         transition: 0.2s;
@@ -196,7 +215,7 @@ body {
         border: none;
         background-color: transparent;
         background-image: url('../svg/welcome-next.svg');
-        background-position-y: 5px;
+        background-position-y: 50%;
         background-repeat: no-repeat;
         margin-left: 20px;
         transition: 0.2s;
@@ -213,7 +232,7 @@ body {
     background-color: #fff;
 
     &__container {
-      width: 1440px;
+      max-width: 1440px;
       margin: 0 auto;
     }
 
@@ -239,8 +258,10 @@ body {
      &__cards {
       display: flex;
       flex-direction: row;
+      /* justify-content: center; */
       flex-wrap: wrap;
-      gap: 77px 60px;
+      justify-content: space-between;
+      /* gap: 77px 60px; */
       padding: 0 0 74px;
     }
 
@@ -299,7 +320,7 @@ body {
   .explore {
     display: flex;
     position: relative;
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
     gap: 60px;
 
@@ -383,7 +404,7 @@ body {
     background-color: #fff;
 
     &__container {
-      width: 1440px;
+      max-width: 1440px;
       margin: 0 auto;
     }
 
@@ -587,7 +608,7 @@ body {
 
     &__youtube {
       display: flex;
-      width: 1440px;
+      max-width: 1440px;
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 40px 0 36px 0;
@@ -653,7 +674,7 @@ body {
   .gallery {
     position: relative;
     height: 2200px;
-    width: 1440px;
+    max-width: 1440px;
     overflow: hidden;
     margin: 0 auto;
 
@@ -703,7 +724,7 @@ body {
     background-color: #fff;
 
     &__wrapper {
-      width: 1440px;
+      max-width: 1440px;
       background-color: #fff;
       margin: 0 auto;
     }
@@ -959,7 +980,7 @@ body {
     left: -110%;
     display: block;
     box-sizing: border-box;
-    width: 1440px;
+    max-width: 1440px;
     background: #fff;
     margin: 50px auto 0;
     padding: 91px 235px;
@@ -1547,7 +1568,7 @@ body {
       height: 45px;
       font-family: 'Roboto', sans-serif;
       font-weight: normal;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 23px;
       color: #FFFFFF;
       background-color: #710707;
@@ -1592,7 +1613,7 @@ body {
     background-color: #fff;
 
     &__wrapper {
-      width: 1440px;
+      max-width: 1440px;
       margin: 0 auto;
     }
 
@@ -1669,7 +1690,7 @@ body {
 
   &__content {
     display: flex;
-    width: 1440px;
+    max-width: 1440px;
     padding: 84px 0 15px;
     margin: 0 auto;
 
@@ -1806,7 +1827,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1440px;
+    max-width: 1440px;
     height: 124px;
     font-size: 22px;
     font-family: 'Roboto',sans-serif;
