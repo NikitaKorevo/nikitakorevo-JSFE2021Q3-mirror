@@ -309,7 +309,6 @@
 
 /* visiting */
 
-
 @media screen and (max-width: 1600px) {
   .main {
     .visiting__container {
@@ -318,27 +317,147 @@
   }
 }
 
+@media screen and (max-width: 1420px) {
+  .main {
+    .visiting {
+
+       &__cards {
+        gap: 77px 50px;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .main {
     
+    .visiting {
+
+      &__title {
+        font-size: 50px;
+        line-height: 75px;
+        padding: 60px 0 0;
+        margin: 0 0 20px;
+      }
+  
+      &__line {
+        margin: 0 0 60px;
+      }
+  
+       &__cards {
+        gap: 62px 0;
+        padding: 0 0 60px;
+      }
+
+      .card {
+        &__img {
+          width: 330px; 
+          height: auto;
+          margin: 0 0 25px;
+        }
+  
+        &__title {
+          font-size: 28px;
+          line-height: 31px;
+          letter-spacing: 3px;
+          margin: 0 0 10px;
+        }
+  
+        &__line {
+          width: 150px;
+        }
+  
+        &__text {
+          font-size: 20px;
+          line-height: 23px;
+        }
+  
+        &__text2 {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .main {
     
+    .visiting {
+
+      &__title {
+        font-size: 40px;
+        line-height: 60px;
+        padding: 40px 0 0;
+      }
+  
+      &__line {
+        margin: 0 0 40px;
+      }
+  
+       &__cards {
+        gap: 38px 0;
+        padding: 0 0 80px;
+      }
+
+      .card {
+        &__img {
+          width: 280px;
+        }
+  
+        &__title {
+          font-size: 22px;
+          line-height: 24px;
+        }
+
+        &__text {
+          font-size: 18px;
+          line-height: 21px;
+        }
+      }
+    }
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .main {
-    
+    .visiting {
+      &__cards {
+        gap: 38px 60px;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 420px) {
   .main {
     
+    .visiting {
+
+      &__title {
+        font-size: 28px;
+        line-height: 40px;
+      }
+
+       &__cards {
+        padding: 0 0 40px;
+      }
+
+      .card {
+        &__title {
+          font-size: 18px;
+          line-height: 20px;
+          letter-spacing: 5px;
+        }
+
+        &__text {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
   }
 }
 
