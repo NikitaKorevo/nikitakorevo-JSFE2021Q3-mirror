@@ -1,3 +1,4 @@
+const mediaQuery = window.matchMedia('(max-width: 768px');
 const masonryList = document.querySelector('.gallery__masonry-list');
 let arrIndexImg = [];
 let col = [[], [], []];
@@ -8,9 +9,8 @@ const listImgForRandom = () => {
   for (let i = 1; i <= HowImg; i++) {
     arrIndexImg.push(i);
   }
+  getRandomNumberImgInTheColumn();
 };
-
-listImgForRandom();
 
 const getRandomNumberImgInTheColumn = () => {
   for (let index = 1; arrIndexImg.length !== 0; index++) {
@@ -21,11 +21,18 @@ const getRandomNumberImgInTheColumn = () => {
 
     if (index === HowCol) index = 0;
   }
+  console.log(col);
+  addColumnWithImgToDOM();
 };
 
-getRandomNumberImgInTheColumn();
+
 
 const addColumnWithImgToDOM = () => {
+  while (masonryList.firstChild) {
+    masonryList.removeChild(masonryList.firstChild);
+    console.log('12')
+  }
+
   for (let i = 0; i < HowCol; i++) {
     let listCol = document.createElement('div');
     listCol.classList.add('masonry-list-col');
@@ -41,4 +48,21 @@ const addColumnWithImgToDOM = () => {
   }
 };
 
-addColumnWithImgToDOM();
+if (mediaQuery.matches) {
+  HowCol = 2;
+  HowImg = 10;
+  listImgForRandom();
+} else {
+  listImgForRandom();
+}
+
+mediaQuery.addEventListener('change', (e) => {
+  if (e.matches) {
+    HowCol = 2;
+    HowImg = 10;
+  } else {
+    HowCol = 3;
+    HowImg = 15;
+  }
+  listImgForRandom();
+});

@@ -718,24 +718,25 @@ body {
       padding: 75px 0 75px;
     }
       
-      &__masonry-list {
-        display: inline-flex;
-        column-gap: 36px;
-      }
+    &__masonry-list {
+      display: flex;
+      column-gap: 36px;
+    }
 
-      .masonry-list-col {
-        display: flex;
-        flex-wrap: wrap;
-        row-gap: 24px;
-      }
+    .masonry-list-col {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+    }
 
-      .masonry-list-col:nth-child(odd) {
-        padding-top: 50px;
-      }
-      .masonry-list__item {
-        display: block;
-        width: 100%;
-      }
+    .masonry-list-col:nth-child(odd) {
+      padding-top: 50px;
+    }
+
+    .masonry-list__item {
+      display: block;
+      max-width: 100%;
+    }
   }
 
   .tickets {
