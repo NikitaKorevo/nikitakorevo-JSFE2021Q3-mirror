@@ -12,8 +12,8 @@
 * * * * * * * * { background-color: rgba(0,255,0,.2); }
 * * * * * * * * * { background-color: rgba(0,0,255,.2); }
  */
-/* header */
 
+/* header */
 
 @media screen and (max-width: 1600px) {
   .header {
@@ -482,6 +482,7 @@
   .main {
     .explore {
       flex-direction: column;
+      margin: 0 auto 63px;
       gap: 60px;
   
       &__container-text {
@@ -516,6 +517,7 @@
 @media screen and (max-width: 768px) {
   .main {
     .explore {
+      margin: 0 auto 45px;
       gap: 40px;
   
       &__container-text {
@@ -542,10 +544,674 @@
 @media screen and (max-width: 420px) {
   .main {
     .explore {
+      margin: 0 auto 40px;
 
       &__title {
         font-size: 28px;
         line-height: 40px;
+      }
+    }
+  }
+}
+
+/* video */
+
+@media screen and (max-width: 1600px) {
+  .main {
+    .video {
+      &__container {
+        width: calc(100% - 40px);
+      }
+
+      &__title {
+        font-size: 50px;
+        line-height: 75px;
+      }
+    }
+    
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    .video {
+  
+      &__container-text {
+        display: flex;
+        justify-content: space-between;
+        gap: 0;//
+        padding: 60px 0 40px;//
+      }
+  
+      &__title {
+        min-width: fit-content;
+        /* font-size: 80px; */
+        font-family: 'Forum', sans-serif;
+        font-weight: 400;
+        /* line-height: 90px; */
+        color: #9D8665;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
+  
+      &__text {
+        display: none;//
+        font-size: 22px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        line-height: 45px;
+        color: #000;
+        margin: 0;
+      }
+  
+      &__player {
+        position: relative;
+      }
+  
+      &__content {
+        display: block;
+        width: 100%;
+      }
+  
+      &__big-play {
+        position: absolute;
+        width: 152px;//
+        height: 152px;//
+        border-radius: 50%;
+        background-image: url("../svg/big-play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s;
+      }
+  
+      &__controls {
+        position: relative;
+        top: -1px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        background-color: rgba($color: #000000, $alpha: 1);
+        margin: 0;
+      }
+  
+      &__play {
+        // TODO: неправильно подобрана ширина иконки
+        /* min-width: 22px; */
+        min-width: 23px;
+        height: 30px;
+        background-image: url("../svg/play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 30px 0 40px;//
+        transition: 0.3s;
+      }
+  
+      &__progress {
+        // TODO: дергается ползунок при просмотре видое
+        width: 100%;
+        appearance: none;
+        height: 5px;//
+        background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(53%, #710707), color-stop(53%, #C4C4C4), to(#C4C4C4));
+        background: linear-gradient(left, #710707 0%, #710707 53%, #C4C4C4 53%, #C4C4C4 100%);
+        outline: none;
+      }
+  
+      &__progress::-webkit-slider-thumb {
+        appearance: none;
+        width: 13px;//
+        height: 13px;//
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      &__volume {
+        // TODO: при смене иконки на mute.svg плохо позиционируется
+        min-width: 26px;//
+        height: 20px;//
+        background-image: url("../svg/volume.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 31px 0 31px;//
+        transition: 0.3s;
+      }
+  
+      &__volume-level {
+        min-width: 143px;//
+        appearance: none;
+        height: 5px;//
+      }
+  
+      &__volume-level::-webkit-slider-thumb {
+        appearance: none;
+        width: 13px;//
+        height: 13px;//
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+  
+      &__zoom {
+        min-width: 26px;//
+        height: 26px;//
+        background-image: url("../svg/zoom.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 40px 0 30px;//
+        transition: 0.3s;
+      }
+  
+      &__youtube-container {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 42px;
+        padding: 0;
+        margin: 40px 0 40px 0;
+      }
+  
+      &__youtube {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: calc((100% - 42px - 42px) / 3 * (9 / 16));
+      }
+  
+      &__youtube iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__pagination {
+        display: flex;
+        width: 200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        padding:  0 0 60px;//
+  
+        .pagination__button-prev {
+          width: 10px;
+          height: 12px;
+          background-color: transparent;
+          background-image: url("../svg/video__button-prev.svg");
+          background-repeat: no-repeat;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+  
+        .pagination__num {
+          width: 12px;
+          height: 12px;
+          background-color: #999999;
+          border-radius: 50%;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+
+        .pagination__button-next {
+          width: 10px;
+          height: 12px;
+          background-color: transparent;
+          background-image: url("../svg/video__button-next.svg");
+          background-repeat: no-repeat;
+          border: none;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+/* @media screen and (max-width: 768px) {
+  .main {
+    .video {
+      &__container {
+        width: calc(100% - 40px);
+      }
+
+      &__title {
+        font-size: 50px;
+        line-height: 75px;
+      }
+    }
+    
+  }
+} */
+
+@media screen and (max-width: 768px) {
+  .main {
+    .video {
+  
+      &__container-text {
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        padding: 40px 0 20px;//
+      }
+  
+      &__title {
+        min-width: fit-content;
+        font-size: 40px;//
+        font-family: 'Forum', sans-serif;
+        font-weight: 400;
+        line-height: 60px;//
+        color: #9D8665;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
+  
+      &__player {
+        position: relative;
+      }
+  
+      &__content {
+        display: block;
+        width: 100%;
+      }
+  
+      &__big-play {
+        position: absolute;
+        width: 80px;//
+        height: 80px;//
+        border-radius: 50%;
+        background-image: url("../svg/big-play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s;
+      }
+  
+      &__controls {
+        position: relative;
+        top: 3px;//
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 53px;//
+        background-color: rgba($color: #000000, $alpha: 1);
+        margin: 0;
+      }
+  
+      &__play {
+        // TODO: неправильно подобрана ширина иконки
+        min-width: 23px;
+        height: 30px;
+        background-image: url("../svg/play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 35px 0 30px;//
+        transition: 0.3s;
+      }
+  
+      &__progress {
+        // TODO: дергается ползунок при просмотре видое
+        position: absolute;//
+        width: 100%;
+        top: -5px;//
+        left: 0;
+        appearance: none;
+        height: 5px;
+        background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(53%, #710707), color-stop(53%, #C4C4C4), to(#C4C4C4));
+        background: linear-gradient(left, #710707 0%, #710707 53%, #C4C4C4 53%, #C4C4C4 100%);
+        outline: none;
+      }
+  
+      &__progress::-webkit-slider-thumb {
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      &__volume {
+        // TODO: при смене иконки на mute.svg плохо позиционируется
+        min-width: 26px;
+        height: 20px;
+        background-image: url("../svg/volume.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 35px 0 0;//
+        transition: 0.3s;
+      }
+  
+      &__volume-level {
+        flex-grow: 1;
+        min-width: 143px;
+        appearance: none;
+        height: 5px;
+      }
+  
+      &__volume-level::-webkit-slider-thumb {
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+  
+      &__zoom {
+        min-width: 26px;
+        height: 26px;
+        background-image: url("../svg/zoom.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 30px 0 35px;//
+        transition: 0.3s;
+      }
+  
+      &__youtube-container {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 20px;//
+        padding: 0;
+        margin: 24px 0 21px 0;//
+      }
+
+      &__youtube {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: calc((100% - 20px) / 2 * (9 / 16));//
+      }
+  
+      &__youtube:last-child {//
+        display: none;//
+        //
+      }
+
+      &__youtube iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__pagination {
+        display: flex;
+        width: 190px;
+        margin: 0 auto;
+        justify-content: space-between;
+        padding:  0 0 79px;//
+  
+        .pagination__button-prev {
+          width: 10px;
+          height: 12px;
+          background-color: transparent;
+          background-image: url("../svg/video__button-prev.svg");
+          background-repeat: no-repeat;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+  
+        .pagination__num {
+          width: 12px;
+          height: 12px;
+          background-color: #999999;
+          border-radius: 50%;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+
+        .pagination__button-next {
+          width: 10px;
+          height: 12px;
+          background-color: transparent;
+          background-image: url("../svg/video__button-next.svg");
+          background-repeat: no-repeat;
+          border: none;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .main {
+    .video {
+  
+      &__container-text {
+        display: flex;
+        justify-content: space-between;
+        gap: 0;
+        padding: 36px 0 20px;//
+      }
+  
+      &__title {
+        min-width: fit-content;
+        font-size: 28px;//
+        font-family: 'Forum', sans-serif;
+        font-weight: 400;
+        line-height: 40px;//
+        color: #9D8665;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
+  
+      &__player {
+        position: relative;
+      }
+  
+      &__content {
+        display: block;
+        width: 100%;
+      }
+  
+      &__big-play {
+        position: absolute;
+        width: 50px;//
+        height: 50px;//
+        border-radius: 50%;
+        background-image: url("../svg/big-play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        top: 38%;//
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s;
+      }
+  
+      &__controls {
+        position: relative;
+        top: 3px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 50px;//
+        background-color: rgba($color: #000000, $alpha: 1);
+        margin: 0;
+      }
+  
+      &__play {
+        // TODO: неправильно подобрана ширина иконки
+        min-width: 14px;//
+        height: 18px;//
+        background-image: url("../svg/play.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 30px 0 20px;//
+        transition: 0.3s;
+      }
+  
+      &__progress {
+        // TODO: дергается ползунок при просмотре видое
+        position: absolute;
+        width: 100%;
+        top: -4px;
+        left: 0;
+        appearance: none;
+        height: 4px;//
+        background: -webkit-gradient(linear, left top, right top, from(#710707), color-stop(53%, #710707), color-stop(53%, #C4C4C4), to(#C4C4C4));
+        background: linear-gradient(left, #710707 0%, #710707 53%, #C4C4C4 53%, #C4C4C4 100%);
+        outline: none;
+      }
+  
+      &__progress::-webkit-slider-thumb {
+        appearance: none;
+        width: 10px;//
+        height: 10px;//
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      &__volume {
+        // TODO: при смене иконки на mute.svg плохо позиционируется
+        min-width: 18px;//
+        height: 14px;//
+        background-image: url("../svg/volume.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 30px 0 0;//
+        transition: 0.3s;
+      }
+  
+      &__volume-level {
+        flex-grow: 1;
+        min-width: 1px;//
+        appearance: none;
+        height: 4px;//
+      }
+  
+      &__volume-level::-webkit-slider-thumb {
+        appearance: none;
+        width: 10px;//
+        height: 10px;//
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+  
+      &__zoom {
+        min-width: 18px;//
+        height: 18px;//
+        background-image: url("../svg/zoom.svg");
+        background-repeat: no-repeat;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        margin: 0 20px 0 30px;//
+        transition: 0.3s;
+      }
+  
+      &__youtube-container {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 20px;
+        padding: 0;
+        margin: 43px 0 40px 0;//
+      }
+
+      &__youtube {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: calc((100% - 20px) / 2 * (9 / 16));//
+      }
+
+      &__youtube iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__pagination {
+        display: flex;
+        width: 180px;//
+        margin: 0 auto;
+        justify-content: space-between;
+        padding:  0 0 40px;//
+  
+        .pagination__button-prev {
+          width: 7px;//
+          height: 8px;//
+          background-color: transparent;
+          background-image: url("../svg/video__button-prev.svg");
+          background-repeat: no-repeat;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+  
+        .pagination__num {
+          width: 8px;//
+          height: 8px;//
+          background-color: #999999;
+          border-radius: 50%;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+
+        .pagination__button-next {
+          width: 7px;//
+          height: 8px;//
+          background-color: transparent;
+          background-image: url("../svg/video__button-next.svg");
+          background-repeat: no-repeat;
+          border: none;
+          cursor: pointer;
+          transition: 0.3s;
+        }
       }
     }
   }
