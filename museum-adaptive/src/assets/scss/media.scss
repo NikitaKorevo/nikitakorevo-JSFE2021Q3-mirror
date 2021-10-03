@@ -1228,3 +1228,162 @@
     }
   }
 }
+
+/* footer */
+
+@media screen and (max-width: 1600px) {
+  .footer {
+    &__content {
+      width: calc(100% - 40px);
+    }
+
+    &__development {
+      width: calc(100% - 40px);
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+
+    &__content {
+      padding: 60px 0 18px;
+  
+      .logo {
+        margin-right: 40px;
+      }
+
+      .footer-nav {
+    
+        &__list {
+          margin: 5px 0 0;
+        }
+    
+        &__item {
+          width: 100px;
+        }
+      }
+    
+      .social__list {
+        margin: auto 0 32px;
+      }
+    }
+
+    &__development {
+
+      &-rsschool {
+        margin-left: 55px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+
+    &__content {
+      flex-wrap: wrap;
+      padding: 48px 0 10px;
+  
+      .logo {
+        margin-right: 100px;
+      }
+
+      .footer-nav {
+        width: 355px;
+    
+        &__list {
+          align-content: space-between;
+          margin: 10px 0 0;
+        }
+        
+        &__link {
+          font-size: 18px;
+          line-height: 21px;
+        }
+      }
+    
+      .social__list {
+        margin-left: auto;
+      }
+      .social__item:last-child {
+        margin-right: 90px;
+      }
+    }
+    &__development {
+      height: 102px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .footer {
+
+    &__content {
+      padding: 40px 0 10px;
+  
+      .logo {
+        margin-right: 100px;
+        transition: 0.3s;
+      
+        &__img {
+          width: 29px;
+          height: 16px;
+          padding-right: 20px;
+          transition: 0.3s;
+        }
+    
+        &__title {
+          font-size: 16px;
+          line-height: 18px;
+        }
+      }
+
+      .footer-nav {
+        width: 100%;
+            
+        &__list {
+          display: grid;
+          grid-template-columns: min-content min-content min-content;
+          grid-template-rows: 1fr 1fr;
+          height: 98px;
+          grid-auto-flow: column;
+          justify-content: space-between;
+          margin: 40px 0 10px;
+        }
+    
+        &__item {
+          max-width: min-content;
+          margin: 0 0 0px;
+        }
+    
+    
+        &__link {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    
+      .social__list {
+        margin: 0 auto 30px;
+      }
+
+      .social__item {
+        margin-right: 5px;
+      }
+    
+      .social__item:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__development {
+      font-size: 16px;
+      letter-spacing: 3px;
+  
+      &-rsschool {
+        display: none;
+      }
+    }
+  }
+}
