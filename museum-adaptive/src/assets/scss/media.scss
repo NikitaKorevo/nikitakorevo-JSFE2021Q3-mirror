@@ -1064,3 +1064,167 @@
     }
   }
 }
+
+/* parallax */
+
+@media screen and (max-width: 768px) {
+  .main {
+    .parallax {
+      height: 300px;
+    }
+  }
+}
+
+/* booking */
+
+/* contacts */
+
+@media screen and (max-width: 1600px) {
+  .main {
+    .contacts {
+      &__wrapper {
+        width: calc(100% - 40px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .main {
+    .contacts {
+      &__container-img {
+        width: 70.52%;
+        padding-bottom: calc(70.52% * 0.6541);
+        background-position: top right ;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    .contacts {
+      &__title {
+        font-size: 50px;
+        line-height: 75px;
+        margin: 0 0 20px;
+        padding: 60px 0 0;
+      }
+  
+      &__line {
+        margin: 0 0 60px;
+      }
+  
+      &__container {
+        padding: 0 0 63px;
+      }
+
+      &__subtitle {
+        font-size: 24px;
+        line-height: 28px;
+      }
+  
+      &__list {
+        margin: 35px 0 0;
+        font-size: 20px;
+        line-height: 23px;
+      }
+  
+      &__item {
+        margin-bottom: 15px;
+      }
+
+      &__container-img {
+        width: 70.52%;
+        padding-bottom: calc(70.52% * 0.6541);
+        background-size: 139%;
+        background-position: top right ;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    .contacts {
+      &__list {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    .contacts {
+
+      &__title {
+        font-size: 40px;
+        line-height: 60px;
+        padding: 40px 0 0;
+      }
+  
+      &__line {
+        margin: 0 0 40px;
+      }
+  
+      &__container {
+        flex-direction: column;
+        padding: 0 0 67px;
+      }
+  
+      &__subtitle {
+        font-size: 20px;
+        line-height: 23px;
+      }
+  
+      &__list {
+        list-style: none;
+        margin: 40px 0 0;
+        font-size: 18px;
+        line-height: 21px;
+      }
+
+      &__item:last-of-type {
+        margin-bottom: 40px;
+      }
+
+      &__container-img {
+        width: 100%;
+        padding-bottom: calc(100% * 0.6538);
+        background-size: 132%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .main {
+    .contacts {
+
+      &__title {
+        font-size: 28px;
+        line-height: 40px;
+      }
+
+      &__container {
+        padding: 0 0 40px;
+      }
+  
+      &__subtitle {
+        font-size: 16px;
+        line-height: 19px;
+      }
+  
+      &__list {
+        font-size: 16px;
+        line-height: 19px;
+      }
+
+      &__container-img {
+        background-size: 300%;
+        background-position: center center ;
+      }
+    }
+  }
+}

@@ -770,7 +770,6 @@ body {
 
     &__container {
       display: flex;
-      /* flex-direction: row; */
       justify-content: space-between;
       column-gap: 60px;
       padding: 0 0 75px;
@@ -783,10 +782,6 @@ body {
       background-repeat: no-repeat;
       background-position: top 50% left 50%;
     }
-
-    /* &__img {
-      width: 100%;
-    } */
 
     &__container-radio-buttons-amount {
       display: flex;
@@ -826,7 +821,6 @@ body {
     }
 
     .radio-buttons__container:hover input ~ .radio-buttons__checkmark {
-      /* background-color: #D2B183; */
       border: 2px solid #9D8665;
     }
 
@@ -1642,6 +1636,7 @@ body {
     height: 400px;
     background-image: url("../img/design/parallax.jpg");
     background-size: cover;
+    background-position: center center;
     background-attachment: fixed;
   }
 
@@ -1675,7 +1670,7 @@ body {
     &__container {
       display: flex;
       justify-content: space-between;
-      padding: 0 0 75px;
+      padding: 0 0 79px;
     }
 
     /* &__content {
@@ -1719,7 +1714,27 @@ body {
       color: #9d8665;
       text-decoration: none;
     }
+
+    &__container-img {
+      width: 70.52%;
+      max-width: 960px;
+      max-height: 620px;
+      /* height: 620px; */
+      /* padding-bottom: calc((100% - 70.52%) * 0.64); */
+      padding-bottom: calc(960px * 0.64);
+      background-image: url("../img/content/contacts.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
   }
+
+  /* &__container-img {
+    width: 720px;
+    height: 550px;
+    background: url("../img/content/tickets.jpg");
+    background-repeat: no-repeat;
+    background-position: top 50% left 50%;
+  } */
 }
 
 .footer {
