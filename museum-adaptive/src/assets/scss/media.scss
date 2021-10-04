@@ -1077,6 +1077,137 @@
 
 /* booking */
 
+@media screen and (max-width: 1500px) {
+  .main {
+    .booking {
+      padding: 75px 27px 30px;
+      width: min-content;
+
+      .booking__button-close {
+        top: -45px;
+        right: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .main {
+    .booking {
+      padding: 80px 30px 40px;
+      width: min-content;
+
+      .booking__button-close {
+        top: -50px;
+        right: 0;
+      }
+
+      &__wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        column-gap: 40px;
+        row-gap: 50px;
+      }
+
+      &__personal-data {
+        width: 100%;
+      }
+
+      &__title {
+        padding: 0 0 15px;
+      }
+
+      &__line {
+        margin: 0 0 40px;
+      }
+
+      &__payment {
+        padding: 25px 15px;
+      }
+
+      .payment__card-backside {
+        right: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    .booking {
+      padding: 80px 30px 40px;
+      width: 100%;
+      max-width:  420px;
+
+      &__title {
+        font-size: 32px;
+        line-height: 35px;
+      }
+
+      &__container {
+        display: block;
+      }
+
+      &__date {
+        width: 100%;
+        margin: 0 0 20px;
+      }
+
+      &__time {
+        width: 100%;
+      }
+
+      &__payment {
+        width: 100%;
+        padding: 25px 15px;
+      }
+      .payment__louvre {
+        width: 120px;
+      }
+
+      .payment__card-face {
+        width: 100%;
+        margin: 0 0 25px;
+      }
+
+      .payment__card-backside {
+        width: 100%;
+        position: static;
+        margin: 0 0 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main {
+    .booking {
+      .payment__card-face {
+        background-image: none;
+      }
+
+      .card-face__number {
+        width: 100%;
+      }
+
+      .payment__louvre {
+        width: 80px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .main {
+    .booking {
+      .entry-ticket__subheading {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 /* contacts */
 
 @media screen and (max-width: 1600px) {
