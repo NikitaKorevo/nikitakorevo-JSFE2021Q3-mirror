@@ -10,7 +10,7 @@ let volumeBeforeMute;
 let canAutoMoveProgress = true;
 let lineProgress = 0;
 let videoContentSpeed = 1.0;
-
+/* 
 const content = (e) => {
   if (e.target.classList.contains('video__content') !== false);
 
@@ -43,7 +43,7 @@ const bigPlay = () => {
   }
 };
 
-/* videoBigPlay.addEventListener('click', () => bigPlay()); */
+videoBigPlay.addEventListener('click', () => bigPlay());
 
 
 const play = () => {
@@ -59,10 +59,10 @@ const play = () => {
   }
 };
 
-/* videoPlay.addEventListener('click', () => play()); */
+videoPlay.addEventListener('click', () => play());
 
-
-const progress = () => {
+ */
+/* const progress = () => {
   if (!canAutoMoveProgress) return;
   const value = videoContent.currentTime / videoContent.duration * 100;
   videoProgress.value = value;
@@ -71,8 +71,8 @@ const progress = () => {
 };
 
 videoContent.addEventListener('timeupdate', () => progress());
-
-
+ */
+/* 
 const changeProgressMousedown = () => {
   canAutoMoveProgress = false;
 };
@@ -86,7 +86,7 @@ const changeProgressMouseup = () => {
 };
 
 videoProgress.addEventListener('mouseup', () => changeProgressMouseup());
-
+ */
 
 const changeProgressInput = () => {
   lineProgress = videoProgress.value;
@@ -96,7 +96,7 @@ const changeProgressInput = () => {
 
 videoProgress.addEventListener('input', () => changeProgressInput());
 
-
+ 
 const volume = () => {
 
   if (videoVolumeLevel.value > 0) volumeBeforeMute = videoVolumeLevel.value;
