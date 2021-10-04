@@ -21,7 +21,6 @@ const getRandomNumberImgInTheColumn = () => {
 
     if (index === HowCol) index = 0;
   }
-  console.log(col);
   addColumnWithImgToDOM();
 };
 
@@ -30,7 +29,6 @@ const getRandomNumberImgInTheColumn = () => {
 const addColumnWithImgToDOM = () => {
   while (masonryList.firstChild) {
     masonryList.removeChild(masonryList.firstChild);
-    console.log('12')
   }
 
   for (let i = 0; i < HowCol; i++) {
