@@ -43,7 +43,7 @@ const bigPlay = () => {
   }
 };
 
-videoBigPlay.addEventListener('click', () => bigPlay());
+/* videoBigPlay.addEventListener('click', () => bigPlay()); */
 
 
 const play = () => {
@@ -59,7 +59,7 @@ const play = () => {
   }
 };
 
-videoPlay.addEventListener('click', () => play());
+/* videoPlay.addEventListener('click', () => play()); */
 
 
 const progress = () => {
