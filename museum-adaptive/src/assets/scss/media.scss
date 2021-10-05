@@ -1471,6 +1471,22 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .footer {
+
+    &__content {
+
+      .social__list {
+        margin: 0 auto 30px;
+      }
+
+      .social__item:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 420px) {
   .footer {
 
