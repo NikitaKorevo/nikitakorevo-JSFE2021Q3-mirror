@@ -6,11 +6,14 @@ const videoProgress = document.querySelector('.video__progress');
 const videoVolume = document.querySelector('.video__volume');
 const videoVolumeLevel = document.querySelector('.video__volume-level');
 const videoZoom = document.querySelector('.video__zoom');
+const videoContainerContent = document.querySelector('.video__container-content');
+const videoControls = document.querySelector('.video__controls');
+
 let volumeBeforeMute;
 let canAutoMoveProgress = true;
 let lineProgress = 0;
 let videoContentSpeed = 1.0;
-/* 
+
 const content = (e) => {
   if (e.target.classList.contains('video__content') !== false);
 
@@ -61,8 +64,8 @@ const play = () => {
 
 videoPlay.addEventListener('click', () => play());
 
- */
-/* const progress = () => {
+
+const progress = () => {
   if (!canAutoMoveProgress) return;
   const value = videoContent.currentTime / videoContent.duration * 100;
   videoProgress.value = value;
@@ -71,8 +74,8 @@ videoPlay.addEventListener('click', () => play());
 };
 
 videoContent.addEventListener('timeupdate', () => progress());
- */
-/* 
+
+
 const changeProgressMousedown = () => {
   canAutoMoveProgress = false;
 };
@@ -86,7 +89,7 @@ const changeProgressMouseup = () => {
 };
 
 videoProgress.addEventListener('mouseup', () => changeProgressMouseup());
- */
+
 
 const changeProgressInput = () => {
   lineProgress = videoProgress.value;
@@ -136,9 +139,17 @@ const zoom = () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
     videoZoom.style.backgroundImage = 'url("./assets/svg/zoom.svg")';
+    videoContainerContent.style.paddingBottom = '';
+    videoControls.style.position = '';
+    videoControls.style.top = '';
+    videoControls.style.bottom = '';
   } else {
     videoPlayer.requestFullscreen();
     videoZoom.style.backgroundImage = 'url("./assets/svg/fullscreen_exit.svg")';
+    videoContainerContent.style.paddingBottom = '100vh';
+    videoControls.style.position = 'absolute';
+    videoControls.style.top = 'auto';
+    videoControls.style.bottom = '0';
   }
 };
 
@@ -148,10 +159,12 @@ videoZoom.addEventListener('click', () => zoom());
 document.addEventListener('fullscreenchange', (e) => {
   if (!document.fullscreenElement) {
     videoZoom.style.backgroundImage = 'url("./assets/svg/zoom.svg")';
-    videoContent.style.height = '735px';
+    videoContainerContent.style.paddingBottom = '';
+    videoControls.style.position = '';
+    videoControls.style.top = '';
+    videoControls.style.bottom = '';
   }
   if (document.fullscreenElement) {
-    videoContent.style.height = '100%';
   }
 })
 
@@ -207,7 +220,7 @@ const nextOrPrevVideoContent = (index = 0) => {
 };
 
 
-/* checkHotkeys = (e) => {
+checkHotkeys = (e) => {
 
   switch (e.code) {
     case 'Space':
@@ -220,13 +233,15 @@ const nextOrPrevVideoContent = (index = 0) => {
       break;
 
     case 'Comma':
-      videoContentSpeedDown();
-      break;
-
-    case 'Period':
+      if (!e.shiftKey) return;
       videoContentSpeedUp();
       break;
 
+    case 'Period':
+      if (!e.shiftKey) return;
+      videoContentSpeedDown();
+      break;
+      
     case 'KeyF':
       zoom();
       break;
@@ -251,13 +266,17 @@ const nextOrPrevVideoContent = (index = 0) => {
       nextOrPrevVideoContent(-1);
       break;
 
+    case 'Escape':
+      console.log('123');
+      break;
+
     default:
       break;
   }
 
 };
 
-document.addEventListener('keydown',(e) => checkHotkeys(e)) */
+document.addEventListener('keydown',(e) => checkHotkeys(e))
 
 
 // TODO: удалить на Stage 1
