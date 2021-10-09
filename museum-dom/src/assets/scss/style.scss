@@ -770,6 +770,7 @@ body {
       height: 460px;
       bottom: 0;
       background: linear-gradient(to top, rgba($color: #000, $alpha: 1) 0%, rgba($color: #000, $alpha: 0.6) 310px, rgba($color: #000, $alpha: 0) 460px, rgba($color: #000, $alpha: 0) 100%);
+      z-index: 1;
     }
     
     &__title {
@@ -799,9 +800,17 @@ body {
       padding-top: 50px;
     }
 
-    .masonry-list__item {
+    .masonry-list__item--down {
       display: block;
       max-width: 100%;
+      transform: translateY(20%);
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    .masonry-list__item {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 

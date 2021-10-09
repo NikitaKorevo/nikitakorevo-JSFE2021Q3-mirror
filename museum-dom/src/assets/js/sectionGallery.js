@@ -37,7 +37,7 @@ const addColumnWithImgToDOM = () => {
   
     for (let j = 0; j < col[i].length; j++) {
       let img = document.createElement('img');
-      img.classList.add('masonry-list__item');
+      img.classList.add('masonry-list__item--down');
       img.src = `./assets/img/content/gallery/gallery${col[i][j]}.jpg`;
       img.alt = 'art picture';
       listCol.append(img);
@@ -64,3 +64,27 @@ mediaQuery.addEventListener('change', (e) => {
   }
   listImgForRandom();
 });
+
+
+const itemsInDOM = document.querySelectorAll('.masonry-list__item--down');
+
+const slideImages = () => {
+  const windowTop = window.scrollY;
+  const windowBottom = window.scrollY + window.innerHeight;
+
+  itemsInDOM.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top + windowTop;
+    const itemBottom = item.getBoundingClientRect().top + windowTop + item.height;
+    const itemMiddle = (itemTop + itemBottom) / 2;
+
+    if (itemMiddle >= windowTop && itemMiddle <= windowBottom) {
+      item.classList.add('masonry-list__item');
+    }
+
+    if (itemBottom < windowTop || itemTop > windowBottom) {
+      item.classList.remove('masonry-list__item');
+    }
+  });
+}
+
+window.addEventListener('scroll', () => slideImages());
