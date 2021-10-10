@@ -438,12 +438,120 @@ body {
       color: #CAAA7D;
     }
 
-    &__img {
+    &__comparison-container {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      height: 700px;
+      margin: 90px 0 0;
+    }
+    
+
+    // before after запихнуть в div
+/*     &__comparison-container::before {
+      position: absolute;
+      content: "";
+      width: 5px;
+      background-color: #fff;
+      height: calc(50% - 18px);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: calc(61% - 2.5px);
+      z-index: 3;
+    } */
+    &__comparison-topline {
+      position: absolute;
+      width: 4px;
+      background-color: #fff;
+      height: calc(50% - 18px);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: calc(61% - 2px);
+      z-index: 3;
+    }
+
+/*     &__comparison-container::after {
+      position: absolute;
+      content: "";
+      width: 5px;
+      background-color: #fff;
+      height: calc(50% - 18px);
+      right: 0;
+      bottom: 0;
+      left: calc(61% - 2.5px);
+      z-index: 3;
+    } */
+
+    &__comparison-circle {
+      box-sizing: border-box;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      z-index: 3;
+      margin: auto auto;
+      margin-left: calc(61% - 20px);
+    }
+
+    &__comparison-botline {
+      position: absolute;
+      width: 5px;
+      background-color: #fff;
+      height: calc(50% - 18px);
+      right: 0;
+      bottom: 0;
+      left: calc(61% - 2.5px);
+      z-index: 3;
+    } 
+
+    &__comparison-container-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: calc(61%);
+      background-image: url(../img/content/explore-slider/before.jpg);
+      background-repeat: no-repeat;
+      background-position: left 0 top 0;
+      z-index: 2;
+    }
+
+    &__comparison-container-after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-image: url(../img/content/explore-slider/after.jpg);
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    &__comparison-before {
+
+    }
+
+
+
+    &__comparison-after {
+
+    }
+
+
+/*     &__img {
       display: block;
       margin: 90px 0 0 0;
       max-width: 50%;
       height: auto;
-    }
+    } */
   }
 
   .video {
