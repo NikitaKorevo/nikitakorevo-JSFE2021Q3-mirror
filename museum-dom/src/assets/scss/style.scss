@@ -445,21 +445,7 @@ body {
       height: 700px;
       margin: 90px 0 0;
     }
-    
 
-    // before after запихнуть в div
-/*     &__comparison-container::before {
-      position: absolute;
-      content: "";
-      width: 5px;
-      background-color: #fff;
-      height: calc(50% - 18px);
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: calc(61% - 2.5px);
-      z-index: 3;
-    } */
     &__comparison-topline {
       position: absolute;
       width: 4px;
@@ -471,18 +457,6 @@ body {
       left: calc(61% - 2px);
       z-index: 3;
     }
-
-/*     &__comparison-container::after {
-      position: absolute;
-      content: "";
-      width: 5px;
-      background-color: #fff;
-      height: calc(50% - 18px);
-      right: 0;
-      bottom: 0;
-      left: calc(61% - 2.5px);
-      z-index: 3;
-    } */
 
     &__comparison-circle {
       box-sizing: border-box;
@@ -534,24 +508,6 @@ body {
       background-repeat: no-repeat;
       z-index: 1;
     }
-
-    &__comparison-before {
-
-    }
-
-
-
-    &__comparison-after {
-
-    }
-
-
-/*     &__img {
-      display: block;
-      margin: 90px 0 0 0;
-      max-width: 50%;
-      height: auto;
-    } */
   }
 
   .video {
@@ -911,13 +867,13 @@ body {
     .masonry-list__item--down {
       display: block;
       max-width: 100%;
-      transform: translateY(20%);
+      transform: translateY(20%) scale(0.9);
       opacity: 0;
       transition: 0.5s ease-in-out;
     }
 
     .masonry-list__item {
-      transform: translateX(0);
+      transform: translateX(0) scale(1);
       opacity: 1;
     }
   }
