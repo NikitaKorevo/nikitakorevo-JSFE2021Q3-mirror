@@ -185,13 +185,44 @@
           <button class="video__big-play"></button>
           <div class="video__controls">
             <button class="video__play"></button>
-            <input class="video__progress" type="range" step="0.1" value="54" min="0" max="100">
+            <input class="video__progress" type="range" step="0.1" value="0" min="0" max="100">
             <button class="video__volume"></button>
-            <input class="video__volume-level" type="range" step="0.1" value="4" min="0" max="10">
+            <input class="video__volume-level" type="range" step="0.1" value="10" min="0" max="10">
             <button class="video__zoom"></button>
           </div>
         </div>
-        <div class="video__youtube-container">
+        <div class="video__swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="video__youtube">
+                <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="video__youtube">
+                <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="video__youtube">
+                <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="video__youtube">
+                <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="video__youtube">
+                <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="video__youtube-container">
           <div class="video__youtube">
             <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -201,14 +232,14 @@
           <div class="video__youtube">
             <iframe class="video__iframe" width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-        </div>
+        </div> -->
         <div class="video__pagination">
           <button class="pagination__button-prev"></button>
-          <div class="pagination__num pagination__num--active"></div>
-          <div class="pagination__num"></div>
-          <div class="pagination__num"></div>
-          <div class="pagination__num"></div>
-          <div class="pagination__num"></div>
+          <div class="pagination__num pagination__num0 pagination__num--active"></div>
+          <div class="pagination__num pagination__num1"></div>
+          <div class="pagination__num pagination__num2"></div>
+          <div class="pagination__num pagination__num3"></div>
+          <div class="pagination__num pagination__num4"></div>
           <button class="pagination__button-next"></button>
         </div>
       </div>

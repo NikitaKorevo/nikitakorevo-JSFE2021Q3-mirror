@@ -1,3 +1,5 @@
+import Swiper from 'swiper/bundle';
+/* import 'swiper/css/bundle'; */
 const videoPlayer = document.querySelector('.video__player');
 const videoContent = document.querySelector('.video__content');
 const videoBigPlay = document.querySelector('.video__big-play');
@@ -220,7 +222,7 @@ const nextOrPrevVideoContent = (index = 0) => {
 };
 
 
-checkHotkeys = (e) => {
+const checkHotkeys = (e) => {
 
   switch (e.code) {
     case 'Space':
@@ -276,7 +278,7 @@ checkHotkeys = (e) => {
 
 };
 
-document.addEventListener('keydown',(e) => checkHotkeys(e))
+document.addEventListener('keydown', (e) => checkHotkeys(e));
 
 
 // TODO: удалить на Stage 1
@@ -284,3 +286,27 @@ document.addEventListener('keydown',(e) => checkHotkeys(e))
 videoButtonPrev.addEventListener('click', () => nextOrPrevVideoContent(-1));
 const videoButtonNext = document.querySelector('.video__buttonNext');
 videoButtonNext.addEventListener('click', () => nextOrPrevVideoContent(1)); */
+
+
+
+const swiper = new Swiper('.video__swiper', {
+  speed: 400,
+  spaceBetween: 42,
+  loop: true,
+  slidesPerView: 3,
+});
+
+const videoPagination = document.querySelector('.video__pagination');
+const clickVideoPagination = (e) => {
+  console.log(e.target)
+  console.log(swiper.index);
+  if (e.target.classList.contains('pagination__button-prev')) swiper.slidePrev();
+  if (e.target.classList.contains('pagination__num0')) swiper.slideTo(1);
+  if (e.target.classList.contains('pagination__num1')) swiper.slideTo(2);
+  if (e.target.classList.contains('pagination__num2')) swiper.slideTo(3);
+  if (e.target.classList.contains('pagination__num3')) swiper.slideTo(4);
+  if (e.target.classList.contains('pagination__num4')) swiper.slideTo(5);
+  if (e.target.classList.contains('pagination__button-next')) swiper.slideNext();
+};
+
+videoPagination.addEventListener('click', (e) => clickVideoPagination(e));
