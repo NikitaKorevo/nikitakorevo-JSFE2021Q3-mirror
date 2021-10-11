@@ -1902,9 +1902,10 @@ body {
     &__container-img {
       position: relative;
       width: 70.52%;
-      height: 0;
+      height: 620px;
+      /* height: 0; */
       max-width: 960px;
-      padding-bottom: 620px;
+      /* padding-bottom: 620px; */
     }
 
     #map {

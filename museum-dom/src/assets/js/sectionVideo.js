@@ -298,8 +298,6 @@ const swiper = new Swiper('.video__swiper', {
 
 const videoPagination = document.querySelector('.video__pagination');
 const clickVideoPagination = (e) => {
-  console.log(e.target)
-  console.log(swiper.index);
   if (e.target.classList.contains('pagination__button-prev')) swiper.slidePrev();
   if (e.target.classList.contains('pagination__num0')) swiper.slideTo(1);
   if (e.target.classList.contains('pagination__num1')) swiper.slideTo(2);
