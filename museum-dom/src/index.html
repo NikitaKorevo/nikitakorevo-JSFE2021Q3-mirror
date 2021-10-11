@@ -217,37 +217,39 @@
           <div class="tickets__container-radio-buttons-amount">
             <div class="tickets__radio-buttons">
               <h4 class="radio-buttons__subtitle">Ticket Type</h4>
-              <label class="radio-buttons__container">
-                <span class="radio-buttons__text">Permanent exhibition</span>
-                <input type="radio" name="ticketType" checked="checked">
-                <span class="radio-buttons__checkmark"></span>
-              </label>
-              <label class="radio-buttons__container">
-                <span class="radio-buttons__text">Temporary exhibition</span>
-                <input type="radio" name="ticketType">
-                <span class="radio-buttons__checkmark"></span>
-              </label>
-              <label class="radio-buttons__container">
-                <span class="radio-buttons__text">Combined Admission</span>
-                <input type="radio" name="ticketType">
-                <span class="radio-buttons__checkmark"></span>
-              </label>
+              <form name="ticketType">
+                <label class="radio-buttons__container">
+                  <span class="radio-buttons__text">Permanent exhibition</span>
+                  <input type="radio" name="ticketType" value="Permanent exhibition">
+                  <span class="radio-buttons__checkmark"></span>
+                </label>
+                <label class="radio-buttons__container">
+                  <span class="radio-buttons__text">Temporary exhibition</span>
+                  <input type="radio" name="ticketType" value="Temporary exhibition">
+                  <span class="radio-buttons__checkmark"></span>
+                </label>
+                <label class="radio-buttons__container">
+                  <span class="radio-buttons__text">Combined Admission</span>
+                  <input type="radio" name="ticketType" value="Combined Admission">
+                  <span class="radio-buttons__checkmark"></span>
+                </label>
+              </form>
             </div>
             <div class="tickets__amount">
               <h4 class="amount__title">Amount</h4>
               <p class="amount__text">Basic 18+</p>
               <div class="amount__container">
-                <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
-                <input class="amount__input" type="number" min="0" max="20" value="1" readonly>
-                <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+                <button class="amount__minus amount__minus-basic"></button>
+                <input class="amount__input amount__input-basic" type="number" readonly>
+                <button class="amount__plus amount__plus-basic"></button>
               </div>
               <p class="amount__text">Senior 65+</p>
               <div class="amount__container">
-                <button class="amount__minus" onclick="this.nextElementSibling.stepDown()"></button>
-                <input class="amount__input" type="number" min="0" max="20" value="1" readonly>
-                <button class="amount__plus" onclick="this.previousElementSibling.stepUp()"></button>
+                <button class="amount__minus amount__minus-senior" onclick="this.nextElementSibling.stepDown()"></button>
+                <input class="amount__input amount__input-senior" type="number" min="0" max="20" value="0" readonly>
+                <button class="amount__plus amount__plus-senior" onclick="this.previousElementSibling.stepUp()"></button>
               </div>
-              <h5 class="amount__subtitle">Total €220</h5>
+              <h5 class="amount__subtitle">Total €0</h5>
               <button class="amount__buy">Buy Now</button>
             </div>
           </div>
@@ -273,7 +275,7 @@
               <input class="booking__email" type="email" name="email" id="email" placeholder="E-mail">
               <input class="booking__tel" type="tel" name="tel" id="tel" placeholder="Phone">
               <select class="booking__ticket-type" name="ticket-type" id="ticket-type">
-                <option class="booking__option" value="">Ticket Type</option>
+                <!-- <option class="booking__option" value="">Ticket Type</option> -->
                 <option class="booking__option" value="">Permanent exhibition</option>
                 <option class="booking__option" value="">Temporary exhibition</option>
                 <option class="booking__option" value="">Combined Admission</option>
