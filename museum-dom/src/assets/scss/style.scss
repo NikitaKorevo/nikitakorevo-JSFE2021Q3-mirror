@@ -1543,13 +1543,15 @@ body {
     }
 
     .payment__number {
+      display: inline-block;
+      width: 32px;
       font-family: 'Roboto', sans-serif;
       font-weight: normal;
       font-size: 18px;
       line-height: 21px;
+      text-align: center;
       color: #A4A4A3;
       margin: 0 10px 0 0;
-      padding: 0 11px;
       background-color: #000;
       border-radius: 5px;
     }
