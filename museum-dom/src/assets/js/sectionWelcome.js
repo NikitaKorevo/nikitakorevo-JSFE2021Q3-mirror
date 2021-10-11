@@ -1,7 +1,7 @@
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.welcome__swiper', {
   speed: 400,
   spaceBetween: 0,
   loop: true,
@@ -10,8 +10,6 @@ const swiper = new Swiper('.swiper', {
 const control = document.querySelector('.welcome__control');
 
 const clickControl = (e) => {
-  console.log(e.target)
-
   if (e.target.classList.contains('control__prev')) swiper.slidePrev();
   if (e.target.classList.contains('control__next')) swiper.slideNext();
   if (e.target.classList.contains('control__square0')) swiper.slideTo(1);

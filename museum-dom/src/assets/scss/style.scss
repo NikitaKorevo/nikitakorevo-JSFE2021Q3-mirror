@@ -170,6 +170,16 @@ body {
       }
     }
 
+    &__up {
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+      width: 100px;
+      height: 100px;
+      background: url("../img/design/up.svg") no-repeat left 50% top 50%;
+      z-index: 8;
+    }
+
     &__title {
       position: relative;
       font-size: 80px;
@@ -224,16 +234,18 @@ body {
       background-color: #9D8665;
     }
 
-    .swiper {
+    &__swiper {
+      display: block;
       position: absolute;
       top: 0;
       right: 0;
       width: 1000px;
       height: 750px;
       z-index: 1;
+      overflow: hidden;
     }
 
-    .swiper::after {
+    &__swiper::after {
       content: "";
       position: absolute;
       width: 15%;
