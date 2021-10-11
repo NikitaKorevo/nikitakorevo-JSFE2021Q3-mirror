@@ -1,5 +1,6 @@
 import './assets/scss/index.scss';
 import './assets/js/header';
+import './assets/js/sectionWelcome';
 import './assets/js/sectionExplore.js';
 import './assets/js/sectionVideo';
 import './assets/js/sectionTickets';
