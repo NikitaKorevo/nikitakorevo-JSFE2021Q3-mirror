@@ -287,24 +287,41 @@ videoButtonPrev.addEventListener('click', () => nextOrPrevVideoContent(-1));
 const videoButtonNext = document.querySelector('.video__buttonNext');
 videoButtonNext.addEventListener('click', () => nextOrPrevVideoContent(1)); */
 
-
-
 const swiper = new Swiper('.video__swiper', {
   speed: 400,
   spaceBetween: 42,
   loop: true,
   slidesPerView: 3,
+  loopedSlides: 5,
 });
 
 const videoPagination = document.querySelector('.video__pagination');
 const clickVideoPagination = (e) => {
-  if (e.target.classList.contains('pagination__button-prev')) swiper.slidePrev();
-  if (e.target.classList.contains('pagination__num0')) swiper.slideTo(1);
+  if (e.target.classList.contains('pagination__button-prev')) {
+    swiper.slidePrev();
+    nextOrPrevVideoContent(-1);
+  }
+ /*  if (e.target.classList.contains('pagination__num0')) swiper.slideTo(1);
   if (e.target.classList.contains('pagination__num1')) swiper.slideTo(2);
   if (e.target.classList.contains('pagination__num2')) swiper.slideTo(3);
   if (e.target.classList.contains('pagination__num3')) swiper.slideTo(4);
-  if (e.target.classList.contains('pagination__num4')) swiper.slideTo(5);
-  if (e.target.classList.contains('pagination__button-next')) swiper.slideNext();
+  if (e.target.classList.contains('pagination__num4')) swiper.slideTo(5); */
+  if (e.target.classList.contains('pagination__button-next')) {
+    swiper.slideNext();
+    nextOrPrevVideoContent(1);
+  }
 };
-
 videoPagination.addEventListener('click', (e) => clickVideoPagination(e));
+
+const addActiveStyle = () => {
+  for (let button of videoPagination.children) {
+    if (button.classList.contains(`pagination__num${swiper.realIndex}`)) {
+      button.classList.add(`pagination__num--active`);
+    } else {
+      button.classList.remove(`pagination__num--active`);
+    }
+  }
+}
+
+swiper.on('slideChange', () => addActiveStyle());
+swiper.on('click', () => console.log('123'));

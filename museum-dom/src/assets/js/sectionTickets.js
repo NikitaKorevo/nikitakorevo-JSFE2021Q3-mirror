@@ -25,6 +25,7 @@ const bookingPaymentPriceSenior = document.querySelector('.payment__price--senio
 const bookingPaymentSumSenior = document.querySelector('.payment__summ--senior');
 const bookingPaymentTotal = document.querySelector('.payment__total-number');
 let priceSelectedTicket = undefined;
+const bookingDate = document.querySelector('.booking__date');
 
 const loadingDataFromLocalStorage = (() => {
   if (localStorage.getItem('dataTickets') === null) {
@@ -144,3 +145,7 @@ const plusTicketForSenior = () => {
 };
 plusSenior.addEventListener('click', () => plusTicketForSenior());
 bookingEntryPlusSenior.addEventListener('click', () => plusTicketForSenior());
+
+let date = new Date;
+const dateForInput = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+bookingDate.setAttribute('min', dateForInput);
