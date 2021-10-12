@@ -17,6 +17,7 @@ const bookingEntryPriceSenior = document.querySelector('.entry-ticket__subheadin
 const bookingEntryCountBasic = document.querySelector('.entry-ticket__input--basic');
 const bookingEntryCountSenior = document.querySelector('.entry-ticket__input--senior');
 
+const bookingPaymentType = document.querySelector('.payment__type');
 const bookingPaymentCountBasic = document.querySelector('.payment__number--basic');
 const bookingPaymentPriceBasic = document.querySelector('.payment__price--basic');
 const bookingPaymentSumBasic = document.querySelector('.payment__summ--basic');
@@ -77,6 +78,7 @@ const injectDataToDOM = () => {
   bookingEntryCountBasic.value = dataTickets.countBasicTickets;
   bookingEntryCountSenior.value = dataTickets.countSeniorTickets;
   
+  bookingPaymentType.textContent = dataTickets.ticketType;
   bookingPaymentCountBasic.textContent = dataTickets.countBasicTickets;
   bookingPaymentPriceBasic.textContent = `Basic (${priceSelectedTicket} €)`;
   bookingPaymentSumBasic.textContent = `${priceSelectedTicket * dataTickets.countBasicTickets} €`;

@@ -34,7 +34,7 @@ videoContent.addEventListener('click', (e) => content(e));
 
 
 const nextVideoAfterEnd = () => {
-  nextOrPrevVideoContent(1);
+  nextOrPrevVideoContent();
 };
 
 videoContent.addEventListener('ended', () => nextVideoAfterEnd());
@@ -223,6 +223,8 @@ const nextOrPrevVideoContent = (index = 0) => {
 
 
 const checkHotkeys = (e) => {
+  let canClickHotKeys = videoControls.classList.contains('data-hotkeys-blocked');
+  if (canClickHotKeys) return;
 
   switch (e.code) {
     case 'Space':
@@ -275,7 +277,6 @@ const checkHotkeys = (e) => {
     default:
       break;
   }
-
 };
 
 document.addEventListener('keydown', (e) => checkHotkeys(e));

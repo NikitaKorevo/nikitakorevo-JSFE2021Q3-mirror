@@ -1,3 +1,4 @@
+const videoControls = document.querySelector('.video__controls');
 const btnBuyNow = document.querySelector('.amount__buy');
 const btnClose = document.querySelector('.booking__button-close');
 const form = document.querySelector('.booking');
@@ -7,6 +8,7 @@ const btnBook = document.querySelector('.booking__book');
 const openForm = () => {
   background.style.display = 'block';
   form.style.left = 0;
+  videoControls.classList.add('data-hotkeys-blocked');
 }
 
 btnBuyNow.addEventListener('click', () => {openForm()});
@@ -17,8 +19,8 @@ const closeForm = () => {
   setTimeout(() => {
     background.style.display = 'none';
     form.style.animation = 'leftRight 0.3s';
+    videoControls.classList.remove('data-hotkeys-blocked');
   }, 300);
-  
 }
 
 btnClose.addEventListener('click', () => {closeForm()});
