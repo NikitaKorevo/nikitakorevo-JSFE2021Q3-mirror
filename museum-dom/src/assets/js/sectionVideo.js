@@ -296,7 +296,9 @@ const swiper = new Swiper('.video__swiper', {
   loopedSlides: 5,
 });
 
+let timeout = false;
 const videoPagination = document.querySelector('.video__pagination');
+
 const clickVideoPagination = (e) => {
   if (e.target.classList.contains('pagination__button-prev')) {
     swiper.slidePrev();
@@ -309,7 +311,13 @@ const clickVideoPagination = (e) => {
   if (e.target.classList.contains('pagination__num4')) swiper.slideTo(5); */
   if (e.target.classList.contains('pagination__button-next')) {
     swiper.slideNext();
-    nextOrPrevVideoContent(1);
+    if (!timeout) {
+      timeout = true;
+      nextOrPrevVideoContent(1);
+      setTimeout(() => {
+        timeout = false;
+      }, 400);
+    }
   }
 };
 videoPagination.addEventListener('click', (e) => clickVideoPagination(e));
