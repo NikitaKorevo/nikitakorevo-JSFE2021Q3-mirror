@@ -312,11 +312,19 @@
                 <input class="booking__date" type="date">
                 <input class="booking__time" type="time" name="time" id="time">
               </div>
-              <input class="booking__name" type="text" name="name" id="name" placeholder="Name">
-              <input class="booking__email" type="email" name="email" id="email" placeholder="E-mail">
-              <input class="booking__tel" type="tel" name="tel" id="tel" placeholder="Phone">
+              <div class="booking__name-container">
+                <input class="booking__name" type="text" name="name" id="name" placeholder="Name">
+                <span class="booking__name-validation booking__bad-validation">name must be between 3 and 15 characters</span>
+              </div>
+              <div class="booking__email-container">
+                <input class="booking__email" type="email" name="email" id="email" placeholder="E-mail">
+                <span class="booking__email-validation booking__bad-validation">incorrect e-mail</span>
+              </div>
+              <div class="booking__tel-container">
+                <input class="booking__tel" type="tel" name="tel" id="tel" placeholder="Phone">
+                <span class="booking__tel-validation booking__bad-validation">need numbers up to 10 digits</span>
+              </div>
               <select class="booking__ticket-type" name="select" id="ticket-type">
-                <!-- <option class="booking__option" value="">Ticket Type</option> -->
                 <option class="booking__option" value="">Permanent exhibition</option>
                 <option class="booking__option" value="">Temporary exhibition</option>
                 <option class="booking__option" value="">Combined Admission</option>

@@ -1339,7 +1339,26 @@ body {
       opacity: 0;
     }
 
+    &__bad-validation {
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      font-size: 12px;
+      font-weight: 400;
+      color: red;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    &--border {
+      border: 2px solid red !important;
+    }
+
+    &__name-container {
+      position: relative;
+    }
+
     &__name {
+      position: relative;
       width: 100%;
       height: 45px;
       background: url("../svg/booking__name.svg") no-repeat left 15px top 50%;
@@ -1350,6 +1369,14 @@ body {
       border: 1px solid #030303;
       padding: 0 0 0 44px;
       margin: 0 0 20px;
+    }
+
+    &__name-validation {
+      display: none;
+    }
+
+    &__email-container {
+      position: relative;
     }
 
     &__email {
@@ -1365,6 +1392,14 @@ body {
       margin: 0 0 20px;
     }
 
+    &__email-validation {
+      display: none;
+    }
+
+    &__tel-container {
+      position: relative;
+    }
+
     &__tel {
       width: 100%;
       height: 45px;
@@ -1376,6 +1411,10 @@ body {
       border: 1px solid #030303;
       padding: 0 0 0 44px;
       margin: 0 0 20px;
+    }
+
+    &__tel-validation {
+      display: none;
     }
 
     &__ticket-type {

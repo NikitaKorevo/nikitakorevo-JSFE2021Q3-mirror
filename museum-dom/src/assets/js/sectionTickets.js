@@ -107,7 +107,6 @@ const changeTicketTypeInBooking = () => {
   for (const option of formBookingPersonalData.select) {
     if (!option.selected) continue;
     if (option.textContent !== dataTickets.ticketType) {
-      console.log('пошло в local')
       dataTickets.ticketType = option.textContent;
       updateLocalStorage();
       break;
@@ -151,3 +150,76 @@ bookingEntryPlusSenior.addEventListener('click', () => plusTicketForSenior());
 let date = new Date;
 const dateForInput = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 bookingDate.setAttribute('min', dateForInput);
+
+/* Validation */
+
+const bookingName = document.querySelector('.booking__name');
+const bookingNameValidation = document.querySelector('.booking__name-validation');
+
+const checkValidationForName = (e) => {
+  let value = e.target.value;
+  if (value.length < 3 || value.length > 15) {
+    bookingNameValidation.style.display = 'inline-block';
+    bookingName.classList.add('booking--border');
+  } else {
+    bookingNameValidation.style.display = 'none';
+    bookingName.classList.remove('booking--border');
+  }
+};
+bookingName.addEventListener('input', (e) => checkValidationForName(e));
+
+const bookingEmail = document.querySelector('.booking__email');
+const bookingEmailValidation = document.querySelector('.booking__email-validation');
+
+const checkValidationEmail = (e) => {
+  let value = e.target.value;
+
+  let name = value.slice(0, value.indexOf('@'));
+  if (name.length < 3 || name.length > 15) {
+    name = false;
+  } else {
+    name = true;
+  }
+
+  let hasDog = value.includes('@');
+  let hastSpace = !value.includes(' ');
+
+  let service;
+  if (value.indexOf('.') === -1) {
+    service = false;
+  } else {
+    service = value.slice(value.indexOf('@') + 1, value.indexOf('.'));
+    service.length >= 4 ? service = true : service = false;
+  }
+
+  let country = value.slice(value.indexOf('.') + 1);
+  if (country.length >= 2) {
+    country = true;
+  } else {
+    country = false;
+  }
+
+  if (name && hasDog && hastSpace && service && country) {
+    bookingEmailValidation.style.display = 'none';
+    bookingEmail.classList.remove('booking--border');
+  } else {
+    bookingEmailValidation.style.display = 'inline-block';
+    bookingEmail.classList.add('booking--border');
+  }
+}
+bookingEmail.addEventListener('input', (e) => checkValidationEmail(e));
+
+const bookingTel = document.querySelector('.booking__tel');
+const bookingTelValidation = document.querySelector('.booking__tel-validation');
+
+const checkValidationTel = (e) => {
+  let value = e.target.value;
+  if (isNaN(+value) || value.length > 10) {
+    bookingTelValidation.style.display = 'inline-block';
+    bookingTel.classList.add('booking--border');
+  } else {
+    bookingTelValidation.style.display = 'none';
+    bookingTel.classList.remove('booking--border');
+  }
+};
+bookingTel.addEventListener('input', (e) => checkValidationTel(e));
