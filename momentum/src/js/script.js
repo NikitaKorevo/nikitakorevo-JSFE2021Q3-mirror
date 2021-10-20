@@ -92,7 +92,10 @@ const setBg = (index = 0) => {
   if (randomNum > 20) randomNum = 1;
   if (randomNum < 10) randomNum = '0' + randomNum;
 
-  body.style.backgroundImage = `url('https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${getTimeOfDay(hours)}/${randomNum}.jpg')`;
+  img.src = `https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${getTimeOfDay(hours)}/${randomNum}.jpg`;
+  img.onload = () => {
+    body.style.backgroundImage = `url('https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${getTimeOfDay(hours)}/${randomNum}.jpg')`;
+  };
 };
 setBg();
 
