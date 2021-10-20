@@ -2,12 +2,22 @@ let dataMomentum = undefined;
 const elTime = document.querySelector('.time');
 const elDate = document.querySelector('.date');
 const optionsDate = {weekday: 'long', day: 'numeric', month: 'long'};
+
 const greeting = document.querySelector('.greeting');
 const userName = document.querySelector('.name');
+
 const body = document.querySelector('body');
 const btnPrev = document.querySelector('.slide-prev');
 const btnNext = document.querySelector('.slide-next');
 let randomNum = undefined;
+
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const elCity = document.querySelector('.city');
+const weatherError = document.querySelector('.weather-error');
+const wind = document.querySelector('.wind');
+const humidity = document.querySelector('.humidity');
 
 const loadingDataFromLocalStorage = (() => {
   if (localStorage.getItem('dataMomentum') === null) {
@@ -54,7 +64,7 @@ const getTimeOfDay = (hours) => {
   if (timeOfDay === 0) return 'night';
   if (timeOfDay === 1) return 'morning';
   if (timeOfDay === 2) return 'afternoon';
-  if (timeOfDay === 3) return 'night';
+  if (timeOfDay === 3) return 'evening';
 };
 
 showTime();
@@ -81,7 +91,7 @@ const setBg = (index = 0) => {
   if (randomNum < 1) randomNum = 20;
   if (randomNum > 20) randomNum = 1;
   if (randomNum < 10) randomNum = '0' + randomNum;
-  
+
   body.style.backgroundImage = `url('https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${getTimeOfDay(hours)}/${randomNum}.jpg')`;
 };
 setBg();
@@ -95,3 +105,37 @@ const getSlideNext = () => {
   setBg(1);
 };
 btnNext.addEventListener('click', () => getSlideNext());
+
+const getWeather = async () => {
+  try {
+    weatherError.textContent = '';
+    let city = dataMomentum.city;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${'en'}&appid=f2f4c08d30fe7eb6591c04a264ebd32a&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+  
+    elCity.value = city;
+    weatherIcon.classList = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${Math.round(data.main.temp)}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+    humidity.textContent = `Humidity: ${data.main.humidity}%`;
+    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+  } catch (error) {
+    weatherError.textContent = 'city not found';
+    temperature.textContent = '';
+    weatherDescription.textContent = '';
+    humidity.textContent = '';
+    wind.textContent = '';
+  }
+
+}
+getWeather();
+
+const updateCity = (e) => {
+  let introducedCity = e.target.value;
+  dataMomentum.city = introducedCity;
+  updateLocalStorage();
+  getWeather();
+};
+elCity.addEventListener('change', (e) => updateCity(e));
