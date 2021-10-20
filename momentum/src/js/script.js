@@ -19,6 +19,10 @@ const weatherError = document.querySelector('.weather-error');
 const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
 
+const quote = document.querySelector('.quote');
+const author = document.querySelector('.author');
+const btnChangeQuote = document.querySelector('.change-quote');
+
 const loadingDataFromLocalStorage = (() => {
   if (localStorage.getItem('dataMomentum') === null) {
     let dataMomentum = {
@@ -74,8 +78,6 @@ const saveUserName = (e) => {
   updateLocalStorage();
 };
 userName.addEventListener('input', (e) => saveUserName(e));
-
-body.style.backgroundImage = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg')";
 
 const getRandomNum = (min, max) => {
   return Math.round(Math.random() * (max - min) + min);
@@ -133,7 +135,7 @@ const getWeather = async () => {
   }
 
 }
-getWeather();
+/* getWeather(); */
 
 const updateCity = (e) => {
   let introducedCity = e.target.value;
@@ -142,3 +144,17 @@ const updateCity = (e) => {
   getWeather();
 };
 elCity.addEventListener('change', (e) => updateCity(e));
+
+const getQuotes = async () => {
+  const quotes = './json/quotesRU.json';
+  const res = await fetch(quotes);
+  const data = await res.json();
+  const randomNum = getRandomNum(0, 60);
+  console.log(data);
+  console.log(randomNum);
+  quote.textContent = data[randomNum].text;
+  author.textContent = data[randomNum].author;
+};
+getQuotes();
+
+btnChangeQuote.addEventListener('click', getQuotes);
