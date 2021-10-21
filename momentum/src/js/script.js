@@ -150,8 +150,6 @@ const getQuotes = async () => {
   const res = await fetch(quotes);
   const data = await res.json();
   const randomNum = getRandomNum(0, 60);
-  console.log(data);
-  console.log(randomNum);
   quote.textContent = data[randomNum].text;
   author.textContent = data[randomNum].author;
 };
