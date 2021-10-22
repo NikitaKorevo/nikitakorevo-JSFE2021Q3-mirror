@@ -9,10 +9,17 @@
 <body>
   <header class="header">
     <div class="player">
+      <p class="name-track"></p>
       <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
+        <div class="play-container">
+          <button class="play-prev player-icon"></button>
+          <button class="play player-icon"></button>
+          <button class="play-next player-icon"></button>
+        </div>
+        <input class="progressbar-duration" type="range" value="0" step="1" min="0" max="100">
+        <span class="timer"></span>
+        <button class="volume-level"></button>
+        <input class="progressbar-volume-level" type="range" value="1" step="0.1" min="0" max="1">
       </div>
       <ul class="play-list"></ul>
     </div>
