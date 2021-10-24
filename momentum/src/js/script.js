@@ -27,8 +27,24 @@ const loadingDataFromLocalStorage = (() => {
   if (localStorage.getItem('dataMomentum') === null) {
     let dataMomentum = {
       'userName': '',
-      'city': 'Minsk'
-      };
+      'city': 'Minsk',
+      'settings': {
+        'show': [
+          {'Time': 'true'},
+          {'Date': 'true'},
+          {'Greetings': 'true'},
+          {'Quotes': 'true'},
+          {'Weather': 'true'},
+          {'Player': 'true'}
+        ],
+        'appearance': [
+          {'Language': ['en', 'ru']},
+          {'WhatLanguage': 'en'},
+          {'Source for image': ['github', 'unsplash API', 'flickr API']},
+          {'WhatSource for image': 'github'}
+        ]
+      }
+    };
     localStorage.setItem('dataMomentum', JSON.stringify(dataMomentum));
   }
   dataMomentum = JSON.parse(localStorage.getItem('dataMomentum')); 

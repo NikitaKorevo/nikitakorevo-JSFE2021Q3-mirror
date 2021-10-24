@@ -69,11 +69,15 @@ body {
 }
 
 .play-list {
+  display: flex;
+  flex-direction: column;
   text-align: left;
 }
 
 .play-item {
   position: relative;
+  display: inline-block;
+  max-width: max-content;
   padding: 5px;
   padding-left: 30px;
   list-style: none;
@@ -85,14 +89,6 @@ body {
 .play-item:hover {
   opacity: 1;
 }
-
-/* .play-item::before {
-  content: "\2713";  
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-weight: 900;
-} */
 
 .play-item::before {
   position: absolute;
@@ -139,6 +135,7 @@ body {
   cursor: pointer;
   transition: .3s;  
 }
+
 .volume-level:hover,
 .player-icon:hover,
 .slider-icon:hover,
@@ -317,6 +314,100 @@ body {
 
 .author {
   min-height: 20px;
+}
+
+.btn-settings {
+  position: absolute;
+  left: 50px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+  background-color: transparent;
+  border: none;
+  background-image: url("../assets/svg/settings.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.settings {
+  /* display: none; */ /*  */
+  box-sizing: border-box;
+  position: absolute;
+  width: 500px;
+  padding: 35px 25px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.settings__title {
+  padding-bottom: 20px;
+}
+
+.settings__show {
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 0 20px;
+}
+
+.show__title {
+  padding-bottom: 10px;
+}
+
+.show__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 5px 0;
+}
+
+.show__subtitle {
+
+}
+
+.show__toggle {
+  user-select: none;
+  cursor: pointer;
+}
+
+.show__span-active {
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+/*  */
+
+.settings__appearance {
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.settings__title {
+  padding-bottom: 10px;
+}
+
+.appearance__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 5px 0;
+}
+
+.appearance__subtitle {
+
+}
+
+.appearance__toggle {
+  user-select: none;
+  cursor: pointer;
+}
+
+.appearance__span-active {
+  border: 2px solid #fff;
+  border-radius: 5px;
 }
 
 @media (max-width: 768px) {

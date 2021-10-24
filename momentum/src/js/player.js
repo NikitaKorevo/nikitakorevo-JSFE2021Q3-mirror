@@ -104,7 +104,6 @@ const changeProgressbarDuration = (e) => {
   if (audio.networkState === 3) return progressbarDuration.value = 0;
   if (e) {
     audio.currentTime = audio.duration * (e.target.value / 100);
-    console.log(e.target.value);
   }
   let currentSeconds = Math.round(audio.currentTime % 60);
   let totalSeconds = Math.round(audio.duration % 60);
@@ -138,7 +137,6 @@ const changeProgressbarVolumeLevel = (e) => {
     btnVolume.style.backgroundImage = '';
   }
   volumeLevel = e.target.value;
-  /* console.log(typeof(e.target.value)) */
   audio.volume = volumeLevel;
 };
 progressbarVolumeLevel.addEventListener('input', (e) => changeProgressbarVolumeLevel(e));
