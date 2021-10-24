@@ -31,6 +31,10 @@ body {
   padding: 20px;
 }
 
+.player {
+  transition: 0.4s ease-in-out;
+}
+
 .player-controls {
   display: flex;
   justify-content: space-between;
@@ -179,6 +183,7 @@ body {
   width: 180px;
   min-height: 180px;  
   text-align: left;
+  transition: 0.4s ease-in-out;
 }
 
 .weather-error {
@@ -250,13 +255,15 @@ body {
   margin-bottom: 10px;
   font-family: 'Arial-MT';
   font-size: 100px;
-  letter-spacing: -4px;  
+  letter-spacing: -4px;
+  transition: 0.4s ease-in-out;
 }
 
 .date {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  transition: 0.4s ease-in-out;
 }
 
 .greeting-container {
@@ -267,6 +274,7 @@ body {
   min-height: 48px;
   width: 100%;
   font-size: 40px;
+  transition: 0.4s ease-in-out;
 }
 
 .greeting {
@@ -308,6 +316,10 @@ body {
   background-image: url("../assets/svg/reload.svg");  
 }
 
+.quotes {
+  transition: 0.4s ease-in-out;
+}
+
 .quote {
   min-height: 32px;
 }
@@ -327,17 +339,38 @@ body {
   background-image: url("../assets/svg/settings.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  transition: 0.3s;
+}
+
+.btn-settings:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .settings {
-  /* display: none; */ /*  */
-  box-sizing: border-box;
   position: absolute;
+  display: none;
+  opacity: 0;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 500px;
   padding: 35px 25px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   border-radius: 10px;
   text-align: left;
+  animation: smoothOpen 0.4s ease-in-out;
+}
+
+.settings-opening {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes smoothOpen {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 .settings__title {

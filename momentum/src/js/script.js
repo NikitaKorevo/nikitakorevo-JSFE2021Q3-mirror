@@ -42,7 +42,8 @@ const loadingDataFromLocalStorage = (() => {
           {'WhatLanguage': 'en'},
           {'Source for image': ['github', 'unsplash API', 'flickr API']},
           {'WhatSource for image': 'github'}
-        ]
+        ],
+        'inputTags': ''
       }
     };
     localStorage.setItem('dataMomentum', JSON.stringify(dataMomentum));

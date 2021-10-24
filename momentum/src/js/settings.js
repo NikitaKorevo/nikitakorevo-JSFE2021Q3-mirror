@@ -1,3 +1,4 @@
+const btnSettings = document.querySelector('.btn-settings');
 const elSettings = document.querySelector('.settings');
 const elShow = document.querySelector('.settings__show');
 const elAppearance = document.querySelector('.settings__appearance');
@@ -9,10 +10,21 @@ const elGreeting = document.querySelector('.greeting-container');
 const elQuotes = document.querySelector('.quotes');
 const elWeather = document.querySelector('.weather');
 const elPlayer = document.querySelector('.player');
+const inputTags = document.querySelector('.appearance__tags');
 
 const updateLocalStorage = () => {
   localStorage.setItem('dataMomentum', JSON.stringify(dataMomentum));
 };
+
+btnSettings.addEventListener('click', () => {
+  elSettings.classList.toggle('settings-opening');
+});
+
+document.addEventListener('click', (e) => {
+  if (elSettings.classList.contains('settings-opening') && !e.target.closest('.settings') && e.target !== btnSettings) {
+    elSettings.classList.remove('settings-opening');
+  }
+});
 
 const renderShow = () => {
   dataSettings.show.forEach(el => {
@@ -76,25 +88,35 @@ const clickShowSpan = (e) => {
 };
 elShow.addEventListener('click', (e) => clickShowSpan(e));
 
+const hiddenBlock = (el) => {
+  el.style.opacity = '0';
+  el.style.visibility = 'hidden';
+}
+
+const ShowBlock = (el) => {
+  el.style.opacity = '1';
+  el.style.visibility = 'visible';
+}
+
 const HiddenOrShowBlock = () => {
   dataSettings.show.forEach(block => {
     if ('Time' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elTime.style.visibility = 'visible' : elTime.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true'? ShowBlock(elTime) : hiddenBlock(elTime);
     }
     if ('Date' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elDate.style.visibility = 'visible' : elDate.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true' ? ShowBlock(elDate) : hiddenBlock(elDate);
     }
     if ('Greetings' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elGreeting.style.visibility = 'visible' : elGreeting.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true' ? ShowBlock(elGreeting) : hiddenBlock(elGreeting);
     }
     if ('Quotes' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elQuotes.style.visibility = 'visible' : elQuotes.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true' ? ShowBlock(elQuotes) : hiddenBlock(elQuotes);
     }
     if ('Weather' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elWeather.style.visibility = 'visible' : elWeather.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true' ? ShowBlock(elWeather) : hiddenBlock(elWeather);
     }
     if ('Player' === Object.keys(block)[0]) {
-      block[Object.keys(block)[0]] === 'true' ? elPlayer.style.visibility = 'visible' : elPlayer.style.visibility = 'hidden';
+      block[Object.keys(block)[0]] === 'true' ? ShowBlock(elPlayer) : hiddenBlock(elPlayer);
     }
   });
 };
@@ -144,6 +166,17 @@ const clickSpanAppearance = (e) => {
   console.log(el);
 };
 elAppearance.addEventListener('click', (e) => clickSpanAppearance(e));
+
+inputTags.addEventListener('input', (e) => {
+  console.log(e.target.value);
+  dataSettings.inputTags = e.target.value;
+  updateLocalStorage();
+})
+
+loadingInputTagsValue = () => {
+  inputTags.value = dataSettings.inputTags;
+}
+loadingInputTagsValue();
 
 loadingStyleAppearance = () => {
   if (dataSettings.appearance[1]['WhatLanguage'] === document.querySelector('.data-eng').textContent) {
