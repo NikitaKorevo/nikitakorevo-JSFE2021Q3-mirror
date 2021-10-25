@@ -125,14 +125,14 @@ const clickBtnVolume = () => {
   } else {
     audio.volume = 0;
     progressbarVolumeLevel.value = 0;
-    btnVolume.style.backgroundImage = 'url("../assets/svg/mute.svg")';
+    btnVolume.style.backgroundImage = 'url("./assets/svg/mute.svg")';
   }
 };
 btnVolume.addEventListener('click', () => clickBtnVolume());
 
 const changeProgressbarVolumeLevel = (e) => {
   if (e.target.value === '0') {
-    btnVolume.style.backgroundImage = 'url("../assets/svg/mute.svg")';
+    btnVolume.style.backgroundImage = 'url("./assets/svg/mute.svg")';
   } else {
     btnVolume.style.backgroundImage = '';
   }

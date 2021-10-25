@@ -83,8 +83,6 @@ const clickShowSpan = (e) => {
   }
   console.log(e.target);
   HiddenOrShowBlock();
-  /* console.log(dataSettings.show[0]['Time']); */
-  /* dataSettings.show[0]['Time'] = true; */
 };
 elShow.addEventListener('click', (e) => clickShowSpan(e));
 
