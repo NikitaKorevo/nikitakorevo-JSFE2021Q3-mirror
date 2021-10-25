@@ -126,27 +126,66 @@ const saveUserName = (e) => {
 };
 userName.addEventListener('input', (e) => saveUserName(e));
 
+const getUnsplashAPI = async() => {
+  const arrTimeOfDay = ['night', 'morning', 'afternoon', 'evening'];
+  const date = new Date();
+  const hours = date.getHours();
+  const whatTimeOfDay = arrTimeOfDay[Math.floor(hours / 6)];
+  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature,${whatTimeOfDay}&client_id=ki5fGm6hKzQdY0k5zoWARxWTz1qedJ6eHeHRK9o2JvY`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const img = new Image();
+  img.src = data.urls.regular;
+  img.onload = () => {
+    body.style.backgroundImage = `url(${data.urls.regular})`;
+  };
+};
+
+const getFlickrAPI = async() => {
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=a4f700468ac91700849cf21bb102fdc9&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const randomNum = getRandomNum(0, data.photos.photo.length)
+
+  const img = new Image();
+  img.src = data.photos.photo[randomNum].url_l;
+  img.onload = () => {
+    body.style.backgroundImage = `url(${data.photos.photo[randomNum].url_l})`;
+  };
+};
+
 const getRandomNum = (min, max) => {
   return Math.round(Math.random() * (max - min) + min);
 };
 
 const setBg = (index = 0) => {
+  const selectedSource = dataMomentum.settings.appearance[3][Object.keys(dataMomentum.settings.appearance[3])];
   const arrTimeOfDay = ['night', 'morning', 'afternoon', 'evening'];
   const date = new Date();
   const hours = date.getHours();
   const whatTimeOfDay = arrTimeOfDay[Math.floor(hours / 6)];
   const img = new Image();
 
-  if (!randomNum) randomNum = getRandomNum(1, 20);
-  randomNum = +randomNum + index;
-  if (randomNum < 1) randomNum = 20;
-  if (randomNum > 20) randomNum = 1;
-  if (randomNum < 10) randomNum = '0' + randomNum;
+  if (selectedSource === 'github') {
+    if (!randomNum) randomNum = getRandomNum(1, 20);
+    randomNum = +randomNum + index;
+    if (randomNum < 1) randomNum = 20;
+    if (randomNum > 20) randomNum = 1;
+    if (randomNum < 10) randomNum = '0' + randomNum;
+  
+    img.src = `https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${whatTimeOfDay}/${randomNum}.jpg`;
+    img.onload = () => {
+      body.style.backgroundImage = `url('https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${whatTimeOfDay}/${randomNum}.jpg')`;
+    };
+  }
 
-  img.src = `https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${whatTimeOfDay}/${randomNum}.jpg`;
-  img.onload = () => {
-    body.style.backgroundImage = `url('https://raw.githubusercontent.com/NikitaKorevo/stage1-tasks/assets/images/${whatTimeOfDay}/${randomNum}.jpg')`;
-  };
+  if (selectedSource === 'unsplash API') {
+    getUnsplashAPI();
+  }
+
+  if (selectedSource === 'flickr API') {
+    getFlickrAPI();
+  }
 };
 setBg();
 
@@ -205,7 +244,6 @@ const updateCity = (e) => {
 elCity.addEventListener('change', (e) => updateCity(e));
 
 const getQuotes = async () => {
-  console.log(languageSelected)
   if (languageSelected === 'en') {
     const quotes = 'https://favqs.com/api/qotd';
     const res = await fetch(quotes);

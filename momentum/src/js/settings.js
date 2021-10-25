@@ -82,9 +82,7 @@ const clickShowSpan = (e) => {
     el.parentNode.children[0].classList.remove('show__span-active');
     dataSettings.show[index][key] = 'false';
     updateLocalStorage();
-    console.log(dataSettings.show)
   }
-  console.log(e.target);
   HiddenOrShowBlock();
 };
 elShow.addEventListener('click', (e) => clickShowSpan(e));
@@ -128,7 +126,6 @@ const clickSpanAppearance = (e) => {
   const el = e.target;
   const index = ([...elAppearance.children].indexOf(el.parentNode.parentNode) - 1) * 2 + 1;
   const key ='What' + el.parentNode.parentNode.children[0].textContent;
-  console.log(key);
 
   if (el.classList.contains('data-eng')) {
     el.classList.add('appearance__span-active');
@@ -165,12 +162,10 @@ const clickSpanAppearance = (e) => {
     updateLocalStorage();
   }
   pullLocalStorage();
-  /* console.log(el); */
 };
 elAppearance.addEventListener('click', (e) => clickSpanAppearance(e));
 
 inputTags.addEventListener('input', (e) => {
-  console.log(e.target.value);
   dataSettings.inputTags = e.target.value;
   updateLocalStorage();
 })
