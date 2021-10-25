@@ -71,6 +71,8 @@ const endedAudio = () => {
 audio.addEventListener('ended', () => endedAudio());
 
 const clickElPlayList = (e) => {
+  if (!e.target.classList.contains('play-item')) return;
+  
   const numPickedAudio = [...elPlayList.children].indexOf(e.target);
   if (playNum === numPickedAudio) {
     playNum = numPickedAudio;
