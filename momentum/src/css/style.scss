@@ -330,7 +330,7 @@ body {
 
 .btn-settings {
   position: absolute;
-  left: 50px;
+  right: 50px;
   width: 30px;
   height: 30px;
   opacity: 0.8;
@@ -357,7 +357,8 @@ body {
   transform: translate(-50%, -50%);
   width: 500px;
   padding: 35px 25px;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(7px);
   border-radius: 10px;
   text-align: left;
   animation: smoothOpen 0.4s ease-in-out;
@@ -417,7 +418,7 @@ body {
   padding: 10px;
 }
 
-.settings__title {
+.appearance__title {
   padding-bottom: 10px;
 }
 

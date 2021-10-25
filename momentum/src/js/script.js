@@ -131,7 +131,12 @@ const getUnsplashAPI = async() => {
   const date = new Date();
   const hours = date.getHours();
   const whatTimeOfDay = arrTimeOfDay[Math.floor(hours / 6)];
-  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=nature,${whatTimeOfDay}&client_id=ki5fGm6hKzQdY0k5zoWARxWTz1qedJ6eHeHRK9o2JvY`;
+  const defaultTags = `nature,${whatTimeOfDay}`;
+  
+  let tags = dataMomentum.settings.inputTags;
+  if (tags === '') tags = defaultTags;
+
+  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${tags}&client_id=ki5fGm6hKzQdY0k5zoWARxWTz1qedJ6eHeHRK9o2JvY`;
   const res = await fetch(url);
   const data = await res.json();
   const img = new Image();
@@ -142,10 +147,19 @@ const getUnsplashAPI = async() => {
 };
 
 const getFlickrAPI = async() => {
-  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=a4f700468ac91700849cf21bb102fdc9&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+  const arrTimeOfDay = ['night', 'morning', 'afternoon', 'evening'];
+  const date = new Date();
+  const hours = date.getHours();
+  const whatTimeOfDay = arrTimeOfDay[Math.floor(hours / 6)];
+  const defaultTags = `nature,${whatTimeOfDay}`;
+
+  let tags = dataMomentum.settings.inputTags;
+  if (tags === '') tags = defaultTags;
+
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=a4f700468ac91700849cf21bb102fdc9&tags=${tags}&extras=url_l&format=json&nojsoncallback=1`;
   const res = await fetch(url);
   const data = await res.json();
-  const randomNum = getRandomNum(0, data.photos.photo.length)
+  const randomNum = getRandomNum(0, data.photos.photo.length);
 
   const img = new Image();
   img.src = data.photos.photo[randomNum].url_l;

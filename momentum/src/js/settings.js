@@ -168,6 +168,7 @@ elAppearance.addEventListener('click', (e) => clickSpanAppearance(e));
 inputTags.addEventListener('input', (e) => {
   dataSettings.inputTags = e.target.value;
   updateLocalStorage();
+  pullLocalStorage();
 })
 
 const loadingInputTagsValue = () => {
