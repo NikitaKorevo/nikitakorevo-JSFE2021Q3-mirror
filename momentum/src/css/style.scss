@@ -307,7 +307,7 @@ body {
   align-items: center;
   width: 100%;
   height: 30vh;
-  min-height: 160px;  
+  min-height: 160px;
   padding: 20px;
 }
 
@@ -330,7 +330,7 @@ body {
 
 .btn-settings {
   position: absolute;
-  right: 50px;
+  left: 50px;
   width: 30px;
   height: 30px;
   opacity: 0.8;
@@ -345,6 +345,24 @@ body {
 .btn-settings:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.contacts {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  right: 50px;
+}
+
+.contacts__rsschool, .contacts__year, .contacts__gihub {
+  opacity: 0.3;
+  transition: 0.3s ease-in-out;
+}
+
+.contacts__rsschool:hover, .contacts__year:hover, .contacts__gihub:hover {
+  opacity: 1;
 }
 
 .settings {
