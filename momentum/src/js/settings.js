@@ -1,3 +1,4 @@
+import { pullLocalStorage } from "./script";
 const btnSettings = document.querySelector('.btn-settings');
 const elSettings = document.querySelector('.settings');
 const elShow = document.querySelector('.settings__show');
@@ -13,6 +14,7 @@ const elPlayer = document.querySelector('.player');
 const inputTags = document.querySelector('.appearance__tags');
 
 const updateLocalStorage = () => {
+  dataMomentum.settings = dataSettings;
   localStorage.setItem('dataMomentum', JSON.stringify(dataMomentum));
 };
 
@@ -64,6 +66,7 @@ const renderShow = () => {
 renderShow();
 
 const clickShowSpan = (e) => {
+  dataMomentum = JSON.parse(localStorage.getItem('dataMomentum'));
   const el = e.target;
   const index = [...elShow.children].indexOf(el.parentNode.parentNode) - 1;
   const key = el.parentNode.parentNode.children[0].textContent;
@@ -121,6 +124,7 @@ const HiddenOrShowBlock = () => {
 HiddenOrShowBlock();
 
 const clickSpanAppearance = (e) => {
+  dataMomentum = JSON.parse(localStorage.getItem('dataMomentum'));
   const el = e.target;
   const index = ([...elAppearance.children].indexOf(el.parentNode.parentNode) - 1) * 2 + 1;
   const key ='What' + el.parentNode.parentNode.children[0].textContent;
@@ -160,8 +164,8 @@ const clickSpanAppearance = (e) => {
     dataSettings.appearance[index][key] = 'flickr API';
     updateLocalStorage();
   }
-
-  console.log(el);
+  pullLocalStorage();
+  /* console.log(el); */
 };
 elAppearance.addEventListener('click', (e) => clickSpanAppearance(e));
 
@@ -171,12 +175,12 @@ inputTags.addEventListener('input', (e) => {
   updateLocalStorage();
 })
 
-loadingInputTagsValue = () => {
+const loadingInputTagsValue = () => {
   inputTags.value = dataSettings.inputTags;
 }
 loadingInputTagsValue();
 
-loadingStyleAppearance = () => {
+const loadingStyleAppearance = () => {
   if (dataSettings.appearance[1]['WhatLanguage'] === document.querySelector('.data-eng').textContent) {
     document.querySelector('.data-eng').classList.add('appearance__span-active');
   }
