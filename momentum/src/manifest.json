@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Momentum",
+  "version": "1.0.0",
+  "description": "Momentum Extension",
+  "icons": {
+    "32": "./assets/favicon.ico"
+  },
+  "browser_action": {
+    "default_icon": "./assets/favicon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
