@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 15px;
+
+  .rsschool {
+    height: 22px;
+  }
+
+  .year {
+    font-size: 16px;
+    font-weight: 400px;
+    color: #fff;
+    margin: 0 36px 0 0;
+  }
+
+  .github {
+    height: 22px;
+  }
+}

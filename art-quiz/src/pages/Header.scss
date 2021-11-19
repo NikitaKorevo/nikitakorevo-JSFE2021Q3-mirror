@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  /* box-sizing: border-box; */
+  justify-content: space-between;
+  padding: 15px 15px 30px;
+  height: 60px;
+
+  .titleH1 {
+    margin-left: 15px;
+  }
+
+  .settings {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 0 0 auto;
+  }
+}

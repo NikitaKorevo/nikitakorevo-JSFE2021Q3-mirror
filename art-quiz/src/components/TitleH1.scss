@@ -1,0 +1,28 @@
+.titleH1 {
+  position: relative;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -1px;
+  margin: 0;
+  padding: 0;
+}
+
+.titleH1::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.titleH1::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
