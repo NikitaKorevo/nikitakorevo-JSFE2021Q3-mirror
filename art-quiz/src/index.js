@@ -14,6 +14,7 @@ class App {
   render() {
     /* root.innerText = ''; */
     const div = document.createElement('div');
+    div.classList.add('wrapper');
     const header = new Header();
     const routing = new Routing('asdf');
     div.append(header.render(), routing.render(), Footer.render());

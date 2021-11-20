@@ -36,6 +36,7 @@ class Header {
 }
 
 window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#ArtistsQuiz/categories/questions/') return;
   new Header().render();
 });
 

@@ -32,8 +32,7 @@ class Routing {
         break;
 
       default:
-        /*         window.location.hash = '';
-        main.append(general); */
+        window.location.hash = '';
         break;
     }
     return main;
@@ -41,6 +40,8 @@ class Routing {
 }
 
 window.addEventListener('hashchange', () => {
+  console.log(window.location.hash);
+  if (window.location.hash === '#ArtistsQuiz/categories/questions/') return;
   new Routing().render();
   console.log('Hash change!');
 });
