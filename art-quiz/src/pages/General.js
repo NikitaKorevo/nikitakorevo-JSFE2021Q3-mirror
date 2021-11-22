@@ -20,6 +20,10 @@ class General {
       window.location.hash = 'ArtistsQuiz/categories/';
       localStorage.setItem('hash', 'ArtistsQuiz/categories/');
     });
+    buttonPictures.addEventListener('click', () => {
+      window.location.hash = 'PicturesQuiz/categories/';
+      localStorage.setItem('hash', 'PicturesQuiz/categories/');
+    });
     return general;
   }
 }

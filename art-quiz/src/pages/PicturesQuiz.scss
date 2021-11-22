@@ -1,0 +1,11 @@
+.pictures-quiz {
+  padding: 0 15px;
+  margin: 0 auto;
+  /* max-width: 1000px; */
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+  }
+}

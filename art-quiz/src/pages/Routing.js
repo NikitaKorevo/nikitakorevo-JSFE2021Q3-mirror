@@ -2,6 +2,7 @@ import './Routing.scss';
 import General from './General';
 import ArtistsQuiz from './ArtistsQuiz';
 import Score from './Score';
+import PicturesQuiz from './PicturesQuiz';
 
 const main = document.createElement('main');
 main.classList.add('main');
@@ -14,6 +15,7 @@ class Routing {
     const general = new General();
     const artistsQuiz = new ArtistsQuiz();
     const score = new Score();
+    const picturesQuiz = new PicturesQuiz();
 
     switch (window.location.hash) {
       case '':
@@ -37,6 +39,7 @@ class Routing {
 
       case '#PicturesQuiz/categories/':
         console.log('3');
+        main.append(picturesQuiz.render());
         break;
 
       default:
@@ -50,6 +53,7 @@ class Routing {
 window.addEventListener('hashchange', () => {
   console.log(window.location.hash);
   if (window.location.hash === '#ArtistsQuiz/categories/questions/') return;
+  if (window.location.hash === '#PicturesQuiz/categories/questions/') return;
   new Routing().render();
   console.log('Hash change!');
 });
