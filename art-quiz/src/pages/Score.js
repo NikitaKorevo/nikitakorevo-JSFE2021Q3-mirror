@@ -4,7 +4,7 @@ import Card from '../components/Card';
 let data = null;
 
 const getData = async () => {
-  const res = await fetch('../assets/json/data.json');
+  const res = await fetch('./assets/json/data.json');
   const result = await res.json();
   data = result;
 };
