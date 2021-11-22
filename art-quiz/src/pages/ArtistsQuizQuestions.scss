@@ -30,6 +30,7 @@
   .modal__content {
     box-sizing: border-box;
     width: calc(100% - 30px);
+    max-width: 500px;
     padding: 30px;
     margin: 50px auto;
     background-color: rgba($color: #fff, $alpha: 1);

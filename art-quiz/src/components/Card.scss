@@ -7,4 +7,17 @@
     width: 100%;
     border-radius: 20px;
   }
+
+  .card__text-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card__subTitle {
+    margin: 0;
+  }
+
+  .card__num-completed {
+
+  }
 }

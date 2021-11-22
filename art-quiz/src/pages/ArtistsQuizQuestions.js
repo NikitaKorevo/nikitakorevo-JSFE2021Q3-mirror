@@ -141,8 +141,8 @@ class ArtistsQuizQuestions {
       if (correctAuthors.length !== 0) {
         this.nextImg(e);
       } else {
-        console.log(`correctAuthors.length ${correctAuthors}`);
-        console.log(correctAuthors);
+        /* console.log(`correctAuthors.length ${correctAuthors}`);
+        console.log(correctAuthors); */
         this.openCongratulation();
       }
     });
@@ -150,9 +150,12 @@ class ArtistsQuizQuestions {
     content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);
     modal.append(content);
     wrapper.append(modal);
+    return content;
   }
 
   openCongratulation() {
+    this.saveAnswersInLocalStorage();
+
     const content = document.querySelector('.modal__content');
     while (content.firstChild) {
       content.removeChild(content.firstChild);
@@ -247,6 +250,13 @@ class ArtistsQuizQuestions {
       }
     });
     console.log(rightButtons);
+  }
+
+  saveAnswersInLocalStorage() {
+    let answers = {};
+    if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
+    answers[this.numRound] = responsesUser;
+    localStorage.setItem('answers', JSON.stringify(answers));
   }
 }
 

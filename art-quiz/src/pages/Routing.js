@@ -1,6 +1,7 @@
 import './Routing.scss';
 import General from './General';
 import ArtistsQuiz from './ArtistsQuiz';
+import Score from './Score';
 
 const main = document.createElement('main');
 main.classList.add('main');
@@ -10,21 +11,28 @@ class Routing {
     while (main.firstChild) {
       main.removeChild(main.firstChild);
     }
-    const general = new General().render();
-    const artistsQuiz = new ArtistsQuiz().render();
+    const general = new General();
+    const artistsQuiz = new ArtistsQuiz();
+    const score = new Score();
 
     switch (window.location.hash) {
       case '':
         console.log('1');
-        main.append(general);
+        main.append(general.render());
         break;
       case '#ArtistsQuiz/categories/':
         console.log('2');
-        main.append(artistsQuiz);
+        main.append(artistsQuiz.render());
         break;
 
-      case '#ArtistsQuiz/categories/questions':
+      case '#ArtistsQuiz/categories/questions/':
         console.log('2/2');
+        break;
+
+      case '#ArtistsQuiz/score/':
+        setTimeout(() => {
+          main.append(score.render());
+        }, 0);
         break;
 
       case '#PicturesQuiz/categories/':

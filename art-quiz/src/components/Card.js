@@ -11,6 +11,7 @@ class Card {
     const div = document.createElement('div');
     div.classList.add('card');
     div.dataset.numRound = this.numRound;
+    div.dataset.indexImg = this.indexImg;
 
     const subTitle = document.createElement('h3');
     subTitle.classList.add('card__subTitle');
@@ -18,6 +19,11 @@ class Card {
 
     const numCompleted = document.createElement('span');
     numCompleted.classList.add('card__num-completed');
+    let answers = {};
+    if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
+    if (answers[this.numRound]) {
+      numCompleted.textContent = `${answers[this.numRound].filter((el) => el).length} / 10`;
+    }
 
     const textContainer = document.createElement('div');
     textContainer.classList.add('card__text-container');

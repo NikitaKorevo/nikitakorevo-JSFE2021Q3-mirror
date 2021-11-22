@@ -28,6 +28,7 @@ class Header {
         break;
 
       default:
+        header.append(titleH1, settings);
         break;
     }
 
