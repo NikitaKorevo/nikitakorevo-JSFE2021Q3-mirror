@@ -48,7 +48,7 @@ class PicturesQuiz {
       if (e.target.closest('.card__num-completed')) {
         const { numRound } = e.target.closest('.card').dataset;
         localStorage.setItem('numRoundForScore', numRound);
-        window.location.hash = 'ArtistsQuiz/score/';
+        window.location.hash = 'PicturesQuiz/score/';
       }
       if (e.target.closest('.card__img')) {
         this.generatingQuestions(e.target.closest('.card').dataset.numRound);

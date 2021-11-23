@@ -1,11 +1,22 @@
 .pictures-quiz {
   padding: 0 15px;
   margin: 0 auto;
-  /* max-width: 1000px; */
+
+  .titleH2 {
+    margin-bottom: 30px;
+  }
   .cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-evenly;
+  }
+
+  .card__text-container {
+    margin-bottom: 10px;
+  }
+
+  .card__num-completed {
+    cursor: pointer;
   }
 }

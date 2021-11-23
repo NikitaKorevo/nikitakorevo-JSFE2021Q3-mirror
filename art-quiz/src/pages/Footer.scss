@@ -7,6 +7,11 @@
 
   .rsschool {
     height: 22px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .rsschool:hover {
+    opacity: 1;
   }
 
   .year {
@@ -14,9 +19,16 @@
     font-weight: 400px;
     color: #fff;
     margin: 0 36px 0 0;
+    opacity: 0.6;
   }
 
   .github {
     height: 22px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .github:hover {
+    opacity: 1;
   }
 }

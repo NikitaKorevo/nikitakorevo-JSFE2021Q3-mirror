@@ -115,10 +115,13 @@ class PicturesQuizQuestions {
 
     div.append(questionTitle, navigation);
 
-    this.renderModal();
+    /* this.renderModal(); */
 
     navigation.addEventListener('click', (e) => {
-      if (e.target.classList.contains('pictures-quiz-questions__button')) this.openModal(e);
+      if (e.target.classList.contains('pictures-quiz-questions__button')) {
+        this.renderModal(e); /* добавил */
+        /* this.openModal(e); */
+      }
     });
     return div;
   }
@@ -151,6 +154,7 @@ class PicturesQuizQuestions {
     buttonNext.addEventListener('click', () => {
       modal.style.display = 'none';
       if (responsesUser.length < 10) {
+        modal.remove(); /* add */
         this.nextImg(e);
       } else {
         /* console.log(`correctAuthors.length ${correctAuthors}`);
@@ -162,6 +166,7 @@ class PicturesQuizQuestions {
     content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);
     modal.append(content);
     wrapper.append(modal);
+    this.openModal(e); /*  */
     return content;
   }
 

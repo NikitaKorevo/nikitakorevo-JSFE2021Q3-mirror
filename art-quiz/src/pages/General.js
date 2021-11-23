@@ -7,7 +7,7 @@ class General {
     const general = document.createElement('div');
     general.classList.add('general');
 
-    const buttonArtist = new Button('Artist quiz').render();
+    const buttonArtist = new Button('Artists quiz').render();
     buttonArtist.classList.add('button-artist');
 
     const buttonPictures = new Button('Pictures quiz').render();

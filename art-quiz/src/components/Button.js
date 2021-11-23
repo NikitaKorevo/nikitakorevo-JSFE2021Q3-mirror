@@ -1,3 +1,5 @@
+import './Button.scss';
+
 class Button {
   constructor(text = '') {
     this.text = text;

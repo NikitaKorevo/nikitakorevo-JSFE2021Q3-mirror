@@ -27,10 +27,6 @@ class Routing {
         main.append(artistsQuiz.render());
         break;
 
-      case '#ArtistsQuiz/categories/questions/':
-        console.log('2/2');
-        break;
-
       case '#ArtistsQuiz/score/':
         setTimeout(() => {
           main.append(score.render());
@@ -40,6 +36,12 @@ class Routing {
       case '#PicturesQuiz/categories/':
         console.log('3');
         main.append(picturesQuiz.render());
+        break;
+
+      case '#PicturesQuiz/score/':
+        setTimeout(() => {
+          main.append(score.render());
+        }, 0);
         break;
 
       default:

@@ -1,7 +1,20 @@
 .general {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: calc(100vh - 105px - 50px);
+
+  /*   .titleH1 {
+    margin-bottom: 75px;
+  } */
+
+  .button-artist {
+    margin: 75px 0 20px;
+    cursor: pointer;
+  }
+
+  .button-pictures {
+    cursor: pointer;
+  }
 }

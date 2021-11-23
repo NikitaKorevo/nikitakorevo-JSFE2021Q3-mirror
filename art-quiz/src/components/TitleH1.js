@@ -6,10 +6,14 @@ class Titleh1 {
   }
 
   render() {
+    const link = document.createElement('a');
+    link.href = '';
+    link.classList.add('titleH1-link');
     const title = document.createElement('h1');
     title.classList.add('titleH1');
     title.textContent = this.title;
-    return title;
+    link.append(title);
+    return link;
   }
 }
 
