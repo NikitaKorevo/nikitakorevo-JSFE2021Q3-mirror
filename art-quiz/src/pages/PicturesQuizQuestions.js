@@ -175,7 +175,7 @@ class PicturesQuizQuestions {
 
     const imgCongratulation = document.createElement('img');
     imgCongratulation.classList.add('modal__img-congratulation');
-    imgCongratulation.src = '../assets/svg/grandresult.svg';
+    imgCongratulation.src = './assets/svg/grandresult.svg';
 
     const textCongratulation = document.createElement('h6');
     textCongratulation.classList.add('modal__text-congratulation');
@@ -226,9 +226,9 @@ class PicturesQuizQuestions {
 
     const rightOrWrong = document.querySelector('.modal__right-or-wrong');
     if (responsesUser[responsesUser.length - 1]) {
-      rightOrWrong.src = '../assets/svg/right.svg';
+      rightOrWrong.src = './assets/svg/right.svg';
     } else {
-      rightOrWrong.src = '../assets/svg/wrong.svg';
+      rightOrWrong.src = './assets/svg/wrong.svg';
     }
 
     const picture = document.querySelector('.modal__picture');
