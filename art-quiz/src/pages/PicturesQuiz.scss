@@ -12,11 +12,31 @@
     justify-content: space-evenly;
   }
 
+  .card__img--black {
+    filter: grayscale(1);
+  }
+
   .card__text-container {
     margin-bottom: 10px;
   }
 
   .card__num-completed {
+    font-size: 16px;
+    color: #fff;
     cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .card__num-completed:hover {
+    color: #ffbca2;
+  }
+
+  .card__img-container {
+    transition: transform 0.4s;
+  }
+
+  .card__img-container:hover {
+    cursor: pointer;
+    transform: scale(0.96);
   }
 }

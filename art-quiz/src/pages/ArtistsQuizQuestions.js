@@ -1,3 +1,4 @@
+import Button from '../components/Button';
 import './ArtistsQuizQuestions.scss';
 
 let data = null;
@@ -82,7 +83,9 @@ class ArtistsQuizQuestions {
     const randomNumButton = this.randomNum(0, 3);
     console.log(`randomNumButton ${randomNumButton}`);
     for (let i = 0; i < 4; i += 1) {
-      const button = document.createElement('button');
+      /* const button = document.createElement('button');
+      button.classList.add('artists-quiz-questions__button'); */
+      const button = new Button('').render();
       button.classList.add('artists-quiz-questions__button');
       button.dataset.numButton = i;
       if (i === randomNumButton) {
@@ -106,6 +109,13 @@ class ArtistsQuizQuestions {
 
     navigation.addEventListener('click', (e) => {
       if (e.target.classList.contains('artists-quiz-questions__button')) {
+        if (+e.target.dataset.numButton === rightButtons[rightButtons.length - 1]) {
+          responsesUser.push(true);
+          e.target.classList.add('artists-quiz-questions__button--right');
+        } else {
+          responsesUser.push(false);
+          e.target.classList.add('artists-quiz-questions__button--wrong');
+        }
         this.renderModal(e); /* добавил */
         /* this.openModal(e); */
       }
@@ -134,20 +144,18 @@ class ArtistsQuizQuestions {
     const authorPicture = document.createElement('h4');
     authorPicture.classList.add('modal__author-picture');
 
-    const buttonNext = document.createElement('button');
+    const buttonNext = new Button('Next').render();
     buttonNext.classList.add('modal__next');
-    buttonNext.textContent = 'Next';
 
     buttonNext.addEventListener('click', () => {
       modal.style.display = 'none';
       if (correctAuthors.length !== 0) {
-        modal.remove(); /* add */
+        modal.remove();
         this.nextImg(e);
       } else {
-        /* console.log(`correctAuthors.length ${correctAuthors}`);
-        console.log(correctAuthors); */
         this.openCongratulation();
       }
+      e.target.classList = 'button artists-quiz-questions__button';
     });
 
     content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);
@@ -179,16 +187,16 @@ class ArtistsQuizQuestions {
     ${responsesUser.filter((boolean) => boolean).length}/${responsesUser.length}
     `;
 
-    const buttonHome = document.createElement('button');
-    buttonHome.classList.add('.modal__button-home');
-    buttonHome.textContent = 'Home';
+    const buttonHome = new Button('Home').render();
+    buttonHome.classList.add('modal__button-home');
+    /* buttonHome.textContent = 'Home'; */
 
-    const buttonNextQuiz = document.createElement('button');
-    buttonNextQuiz.classList.add('.modal__button-next-quiz');
-    buttonNextQuiz.textContent = 'Next Quiz';
+    const buttonNextQuiz = new Button('Next Quiz').render();
+    buttonNextQuiz.classList.add('modal__button-next-quiz');
+    /* buttonNextQuiz.textContent = 'Next Quiz'; */
 
     const buttonsContainer = document.createElement('div');
-    buttonsContainer.classList.add('.modal__buttons-container');
+    buttonsContainer.classList.add('modal__buttons-container');
     buttonsContainer.append(buttonHome, buttonNextQuiz);
 
     content.append(imgCongratulation, textCongratulation, numbers, buttonsContainer);
@@ -208,12 +216,7 @@ class ArtistsQuizQuestions {
     });
   }
 
-  openModal(e) {
-    if (+e.target.dataset.numButton === rightButtons[rightButtons.length - 1]) {
-      responsesUser.push(true);
-    } else {
-      responsesUser.push(false);
-    }
+  openModal() {
     console.log(responsesUser);
 
     const rightOrWrong = document.querySelector('.modal__right-or-wrong');

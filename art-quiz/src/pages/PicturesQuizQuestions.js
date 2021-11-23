@@ -1,4 +1,5 @@
 import './PicturesQuizQuestions.scss';
+import Button from '../components/Button';
 
 let data = null;
 let imageNum = [];
@@ -130,7 +131,7 @@ class PicturesQuizQuestions {
     const wrapper = document.querySelector('.wrapper');
 
     const modal = document.createElement('div');
-    modal.classList.add('pictures-quiz-questions__modal');
+    modal.classList.add('artists-quiz-questions__modal');
 
     const content = document.createElement('div');
     content.classList.add('modal__content');
@@ -147,7 +148,7 @@ class PicturesQuizQuestions {
     const authorPicture = document.createElement('h4');
     authorPicture.classList.add('modal__author-picture');
 
-    const buttonNext = document.createElement('button');
+    const buttonNext = new Button('Next').render();
     buttonNext.classList.add('modal__next');
     buttonNext.textContent = 'Next';
 
@@ -192,20 +193,18 @@ class PicturesQuizQuestions {
     ${responsesUser.filter((boolean) => boolean).length}/${responsesUser.length}
     `;
 
-    const buttonHome = document.createElement('button');
-    buttonHome.classList.add('.modal__button-home');
-    buttonHome.textContent = 'Home';
+    const buttonHome = new Button('Home').render();
+    buttonHome.classList.add('modal__button-home');
 
-    const buttonNextQuiz = document.createElement('button');
-    buttonNextQuiz.classList.add('.modal__button-next-quiz');
-    buttonNextQuiz.textContent = 'Next Quiz';
+    const buttonNextQuiz = new Button('Next Quiz').render();
+    buttonNextQuiz.classList.add('modal__button-next-quiz');
 
     const buttonsContainer = document.createElement('div');
-    buttonsContainer.classList.add('.modal__buttons-container');
+    buttonsContainer.classList.add('modal__buttons-container');
     buttonsContainer.append(buttonHome, buttonNextQuiz);
 
     content.append(imgCongratulation, textCongratulation, numbers, buttonsContainer);
-    const modal = document.querySelector('.pictures-quiz-questions__modal');
+    const modal = document.querySelector('.artists-quiz-questions__modal');
     modal.style.display = 'block';
 
     buttonHome.addEventListener('click', () => {
@@ -245,7 +244,7 @@ class PicturesQuizQuestions {
     const authorPicture = document.querySelector('.modal__author-picture');
     authorPicture.textContent = `${data[currentPicture].author}, ${data[currentPicture].year}`;
 
-    const modal = document.querySelector('.pictures-quiz-questions__modal');
+    const modal = document.querySelector('.artists-quiz-questions__modal');
     modal.style.display = 'block';
   }
 

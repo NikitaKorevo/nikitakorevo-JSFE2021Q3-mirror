@@ -1,7 +1,3 @@
-.titleH1-link {
-  text-decoration: none;
-}
-
 .titleH1 {
   position: relative;
   font-size: 42px;
@@ -11,6 +7,10 @@
   letter-spacing: -1px;
   text-decoration: none;
   margin: 0 0 0 15px;
+}
+
+.titleH1:hover {
+  cursor: pointer;
 }
 
 .titleH1::before {

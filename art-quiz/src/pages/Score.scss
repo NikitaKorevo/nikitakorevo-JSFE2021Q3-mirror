@@ -8,6 +8,12 @@
 
   .card__img-container {
     max-width: 100%;
+    transition: transform 0.3s;
+  }
+
+  .card__img-container:hover {
+    cursor: pointer;
+    transform: scale(0.96);
   }
 
   .card__img {
