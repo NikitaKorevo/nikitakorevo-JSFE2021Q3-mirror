@@ -43,7 +43,11 @@ class ArtistsQuiz {
     for (let i = 0; i < 120; i += 10) {
       const card = new Card(this.nameSections[Math.ceil(i / 10)], i, Math.ceil(i / 10)).render();
       const numCard = i / 10;
-      if (!answers[numCard]) card.classList.add('card__img--black');
+      if (answers) {
+        if (!answers[numCard]) card.classList.add('card__img--black');
+      } else {
+        card.classList.add('card__img--black');
+      }
       cards.append(card);
     }
     div.append(titleH2, cards);

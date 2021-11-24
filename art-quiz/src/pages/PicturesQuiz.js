@@ -43,7 +43,11 @@ class PicturesQuiz {
     for (let i = 120, j = 0; i < 240; i += 10, j += 1) {
       const card = new Card(this.nameSections[j], i, Math.ceil(i / 10)).render();
       const numCard = i / 10;
-      if (!answers[numCard]) card.classList.add('card__img--black');
+      if (answers) {
+        if (!answers[numCard]) card.classList.add('card__img--black');
+      } else {
+        card.classList.add('card__img--black');
+      }
       cards.append(card);
     }
     div.append(titleH2, cards);
