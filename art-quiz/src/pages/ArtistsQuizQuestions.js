@@ -9,6 +9,7 @@ const copyCorrectAuthors = [];
 let incorrectAuthors = [];
 let rightButtons = [];
 let responsesUser = [];
+let numRoundCopy = null;
 
 const getData = async () => {
   const res = await fetch('./assets/json/data.json');
@@ -20,7 +21,6 @@ getData();
 class ArtistsQuizQuestions {
   constructor(numRound) {
     this.numRound = +numRound;
-    /* console.log(numRound); */
   }
 
   randomNum(max, min) {
@@ -33,6 +33,7 @@ class ArtistsQuizQuestions {
     incorrectAuthors = [];
     rightButtons = [];
     responsesUser = [];
+    numRoundCopy = this.numRound;
 
     for (let index = this.numRound * 10; correctAuthors.length < 10; index += 1) {
       imageNum.push(data[index].imageNum);
@@ -118,6 +119,7 @@ class ArtistsQuizQuestions {
         }
         this.renderModal(e);
       }
+      console.log(responsesUser);
     });
 
     document.addEventListener('keydown', (e) => {
@@ -131,10 +133,10 @@ class ArtistsQuizQuestions {
         }
         if (!document.querySelector('.modal__img-congratulation') && !buttonNext) {
           const buttons = navigation.querySelectorAll('.artists-quiz-questions__button');
-          if (e.code === 'KeyE') buttons[0].click();
-          if (e.code === 'KeyR') buttons[1].click();
-          if (e.code === 'KeyD') buttons[2].click();
-          if (e.code === 'KeyF') buttons[3].click();
+          if (e.code === 'KeyE') buttons[0].click(e);
+          if (e.code === 'KeyR') buttons[1].click(e);
+          if (e.code === 'KeyD') buttons[2].click(e);
+          if (e.code === 'KeyF') buttons[3].click(e);
         }
       }
     });
@@ -285,7 +287,7 @@ class ArtistsQuizQuestions {
   saveAnswersInLocalStorage() {
     let answers = {};
     if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
-    answers[this.numRound] = responsesUser;
+    answers[numRoundCopy] = responsesUser;
     localStorage.setItem('answers', JSON.stringify(answers));
   }
 }

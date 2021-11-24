@@ -10,6 +10,7 @@ let incorrectAuthors = [];
 const incorrectPictures = [];
 let rightButtons = [];
 let responsesUser = [];
+let numRoundCopy = null;
 
 const getData = async () => {
   const res = await fetch('./assets/json/data.json');
@@ -34,6 +35,7 @@ class PicturesQuizQuestions {
     incorrectAuthors = [];
     rightButtons = [];
     responsesUser = [];
+    numRoundCopy = this.numRound;
 
     for (let index = this.numRound * 10; correctAuthors.length < 10; index += 1) {
       /* console.log(`index ${index}`); */
@@ -309,7 +311,7 @@ class PicturesQuizQuestions {
   saveAnswersInLocalStorage() {
     let answers = {};
     if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
-    answers[this.numRound] = responsesUser;
+    answers[numRoundCopy] = responsesUser;
     localStorage.setItem('answers', JSON.stringify(answers));
   }
 }
