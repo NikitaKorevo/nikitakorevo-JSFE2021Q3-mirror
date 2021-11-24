@@ -20,7 +20,7 @@ getData();
 class ArtistsQuizQuestions {
   constructor(numRound) {
     this.numRound = +numRound;
-    console.log(numRound);
+    /* console.log(numRound); */
   }
 
   randomNum(max, min) {
@@ -35,7 +35,6 @@ class ArtistsQuizQuestions {
     responsesUser = [];
 
     for (let index = this.numRound * 10; correctAuthors.length < 10; index += 1) {
-      /* console.log(`index ${index}`); */
       imageNum.push(data[index].imageNum);
       correctAuthors.push(data[index].author);
       copyCorrectAuthors.push(data[index].author);
@@ -83,8 +82,6 @@ class ArtistsQuizQuestions {
     const randomNumButton = this.randomNum(0, 3);
     console.log(`randomNumButton ${randomNumButton}`);
     for (let i = 0; i < 4; i += 1) {
-      /* const button = document.createElement('button');
-      button.classList.add('artists-quiz-questions__button'); */
       const button = new Button('').render();
       button.classList.add('artists-quiz-questions__button');
       button.dataset.numButton = i;
@@ -109,17 +106,39 @@ class ArtistsQuizQuestions {
 
     navigation.addEventListener('click', (e) => {
       if (e.target.classList.contains('artists-quiz-questions__button')) {
-        if (+e.target.dataset.numButton === rightButtons[rightButtons.length - 1]) {
+        const buttons = document.querySelectorAll('.artists-quiz-questions__button');
+        const pressedNumButton = +e.target.dataset.numButton;
+
+        if (pressedNumButton === rightButtons[rightButtons.length - 1]) {
           responsesUser.push(true);
-          e.target.classList.add('artists-quiz-questions__button--right');
+          buttons[pressedNumButton].classList.add('artists-quiz-questions__button--right');
         } else {
           responsesUser.push(false);
-          e.target.classList.add('artists-quiz-questions__button--wrong');
+          buttons[pressedNumButton].classList.add('artists-quiz-questions__button--wrong');
         }
-        this.renderModal(e); /* добавил */
-        /* this.openModal(e); */
+        this.renderModal(e);
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (window.location.hash === '#ArtistsQuiz/categories/questions/') {
+        e.preventDefault();
+        const buttonNext = document.querySelector('.modal__next');
+        if (buttonNext) {
+          if (e.code === 'Space') {
+            buttonNext.click();
+          }
+        }
+        if (!document.querySelector('.modal__img-congratulation') && !buttonNext) {
+          const buttons = navigation.querySelectorAll('.artists-quiz-questions__button');
+          if (e.code === 'KeyE') buttons[0].click();
+          if (e.code === 'KeyR') buttons[1].click();
+          if (e.code === 'KeyD') buttons[2].click();
+          if (e.code === 'KeyF') buttons[3].click();
+        }
+      }
+    });
+
     return div;
   }
 
@@ -155,7 +174,11 @@ class ArtistsQuizQuestions {
       } else {
         this.openCongratulation();
       }
-      e.target.classList = 'button artists-quiz-questions__button';
+
+      const buttons = document.querySelectorAll('.artists-quiz-questions__button');
+      buttons.forEach((button, index) => {
+        buttons[index].classList = 'button artists-quiz-questions__button';
+      });
     });
 
     content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);

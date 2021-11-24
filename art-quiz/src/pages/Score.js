@@ -1,5 +1,6 @@
 import './Score.scss';
 import Card from '../components/Card';
+import Button from '../components/Button';
 
 let data = null;
 
@@ -59,16 +60,29 @@ class Score {
     authorPicture.classList.add('modal__author-picture');
     authorPicture.textContent = `${data[currentPicture].author}, ${data[currentPicture].year}`;
 
-    const buttonNext = document.createElement('button');
-    buttonNext.classList.add('modal__next');
-    buttonNext.textContent = 'Закрыть';
+    const download = new Button('Download').render();
+    download.classList.add('modal__download');
 
-    buttonNext.addEventListener('click', () => {
+    const close = new Button('Close').render();
+    close.classList.add('modal__close');
+
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('modal__buttons-container');
+    buttonsContainer.append(download, close);
+
+    download.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.target = '_blank';
+      link.href = `https://github.com/NikitaKorevo/image-data/blob/master/full/${currentPicture}full.jpg`;
+      link.click();
+    });
+
+    close.addEventListener('click', () => {
       modal.style.display = 'none';
       modal.remove();
     });
 
-    content.append(picture, namePicture, authorPicture, buttonNext);
+    content.append(picture, namePicture, authorPicture, buttonsContainer);
     modal.append(content);
     wrapper.append(modal);
     return content;

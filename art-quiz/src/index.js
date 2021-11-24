@@ -1,4 +1,5 @@
 import './scss/index.scss';
+import './selfRating';
 import Header from './pages/Header';
 import Routing from './pages/Routing';
 import Footer from './pages/Footer';

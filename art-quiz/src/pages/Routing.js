@@ -19,11 +19,9 @@ class Routing {
 
     switch (window.location.hash) {
       case '':
-        console.log('1');
         main.append(general.render());
         break;
       case '#ArtistsQuiz/categories/':
-        console.log('2');
         main.append(artistsQuiz.render());
         break;
 
@@ -34,7 +32,6 @@ class Routing {
         break;
 
       case '#PicturesQuiz/categories/':
-        console.log('3');
         main.append(picturesQuiz.render());
         break;
 
@@ -53,11 +50,9 @@ class Routing {
 }
 
 window.addEventListener('hashchange', () => {
-  console.log(window.location.hash);
   if (window.location.hash === '#ArtistsQuiz/categories/questions/') return;
   if (window.location.hash === '#PicturesQuiz/categories/questions/') return;
   new Routing().render();
-  console.log('Hash change!');
 });
 
 export default Routing;

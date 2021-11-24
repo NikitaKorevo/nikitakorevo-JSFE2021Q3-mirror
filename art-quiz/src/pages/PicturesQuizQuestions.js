@@ -15,7 +15,6 @@ const getData = async () => {
   const res = await fetch('./assets/json/data.json');
   const result = await res.json();
   data = result;
-  console.log(data);
 };
 getData();
 
@@ -120,10 +119,38 @@ class PicturesQuizQuestions {
 
     navigation.addEventListener('click', (e) => {
       if (e.target.classList.contains('pictures-quiz-questions__button')) {
-        this.renderModal(e); /* добавил */
-        /* this.openModal(e); */
+        const buttons = document.querySelectorAll('.pictures-quiz-questions__button');
+        const pressedNumButton = +e.target.dataset.numButton;
+
+        if (pressedNumButton === rightButtons[rightButtons.length - 1]) {
+          buttons[pressedNumButton].classList.add('pictures-quiz-questions__button--right');
+        } else {
+          buttons[pressedNumButton].classList.add('pictures-quiz-questions__button--wrong');
+        }
+        this.renderModal(e);
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (window.location.hash === '#PicturesQuiz/categories/questions/') {
+        e.preventDefault();
+        console.log(e.code);
+        const buttonNext = document.querySelector('.modal__next');
+        if (buttonNext) {
+          if (e.code === 'Space') {
+            buttonNext.click();
+          }
+        }
+        if (!document.querySelector('.modal__img-congratulation') && !buttonNext) {
+          const buttons = navigation.querySelectorAll('.pictures-quiz-questions__button');
+          if (e.code === 'KeyE') buttons[0].click(e);
+          if (e.code === 'KeyR') buttons[1].click(e);
+          if (e.code === 'KeyD') buttons[2].click(e);
+          if (e.code === 'KeyF') buttons[3].click(e);
+        }
+      }
+    });
+
     return div;
   }
 
@@ -162,6 +189,11 @@ class PicturesQuizQuestions {
         console.log(correctAuthors); */
         this.openCongratulation();
       }
+
+      const buttons = document.querySelectorAll('.pictures-quiz-questions__button');
+      buttons.forEach((button, index) => {
+        buttons[index].classList = 'pictures-quiz-questions__button';
+      });
     });
 
     content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);

@@ -4,6 +4,10 @@
   max-width: 800px;
   margin: 0 auto;
 
+  .artists-quiz-questions__title {
+    font-size: 20px;
+  }
+
   .artists-quiz-questions__img-container {
     max-width: 100%;
   }
@@ -100,7 +104,9 @@
 
   .modal__next,
   .modal__button-home,
-  .modal__button-next-quiz {
+  .modal__button-next-quiz,
+  .modal__download,
+  .modal__close {
     font-size: 22px;
     height: 46px;
     color: #000;
@@ -108,15 +114,19 @@
   }
 
   .modal__next:hover,
-  .modal__button-home,
-  .modal__button-next-quiz {
+  .modal__button-home:hover,
+  .modal__button-next-quiz:hover,
+  .modal__download:hover,
+  .modal__close:hover {
     color: #000;
-    border: 2px solid #000;
+    border: 2px solid #ffbca2;
   }
 
   .modal__next:active,
-  .modal__button-home,
-  .modal__button-next-quiz {
+  .modal__button-home:active,
+  .modal__button-next-quiz:active,
+  .modal__download:active,
+  .modal__close:active {
     border: 2px solid #ffbca2;
   }
 
@@ -147,7 +157,9 @@
   }
 
   .modal__button-home,
-  .modal__button-next-quiz {
+  .modal__button-next-quiz,
+  .modal__download,
+  .modal__close {
     font-size: 18px;
   }
 }
