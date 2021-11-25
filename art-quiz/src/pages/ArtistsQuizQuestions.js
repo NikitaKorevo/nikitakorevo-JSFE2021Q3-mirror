@@ -113,9 +113,19 @@ class ArtistsQuizQuestions {
         if (pressedNumButton === rightButtons[rightButtons.length - 1]) {
           responsesUser.push(true);
           buttons[pressedNumButton].classList.add('artists-quiz-questions__button--right');
+
+          const audio = document.createElement('audio');
+          audio.src = './assets/sound/right-answer.mp3';
+          audio.volume = localStorage.getItem('volume');
+          audio.play();
         } else {
           responsesUser.push(false);
           buttons[pressedNumButton].classList.add('artists-quiz-questions__button--wrong');
+
+          const audio = document.createElement('audio');
+          audio.src = './assets/sound/wrong-answer.mp3';
+          audio.volume = localStorage.getItem('volume');
+          audio.play();
         }
         this.renderModal(e);
       }

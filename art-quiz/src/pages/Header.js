@@ -1,5 +1,6 @@
 import './Header.scss';
 import TitleH1 from '../components/TitleH1';
+import Settings from './Settings';
 
 const header = document.createElement('header');
 header.classList.add('header');
@@ -15,9 +16,20 @@ class Header {
       window.location.hash = '';
     });
 
-    const settings = document.createElement('img');
-    settings.classList.add('settings');
-    settings.src = './assets/svg/settings.svg';
+    const elSettings = document.createElement('img');
+    elSettings.classList.add('settings');
+    elSettings.src = './assets/svg/settings.svg';
+
+    elSettings.addEventListener('click', () => {
+      const settingsModal = document.querySelector('.settings-modal');
+      if (settingsModal) {
+        settingsModal.remove();
+      } else {
+        const main = document.querySelector('.main');
+        const settings = new Settings().render();
+        main.append(settings);
+      }
+    });
 
     const categories = document.createElement('img');
     categories.classList.add('categories');
@@ -30,35 +42,35 @@ class Header {
 
     switch (window.location.hash) {
       case '':
-        header.append(settings);
+        header.append(elSettings);
         break;
 
       case '#ArtistsQuiz/categories/':
-        header.append(titleH1, settings);
+        header.append(titleH1, elSettings);
         break;
 
       case '#ArtistsQuiz/categories/questions/':
-        header.append(titleH1, categories, settings);
+        header.append(titleH1, categories, elSettings);
         break;
 
       case '#ArtistsQuiz/score/':
-        header.append(titleH1, categories, settings);
+        header.append(titleH1, categories, elSettings);
         break;
 
       case '#PicturesQuiz/categories/':
-        header.append(titleH1, settings);
+        header.append(titleH1, elSettings);
         break;
 
       case '#PicturesQuiz/categories/questions/':
-        header.append(titleH1, categories, settings);
+        header.append(titleH1, categories, elSettings);
         break;
 
       case '#PicturesQuiz/score/':
-        header.append(titleH1, categories, settings);
+        header.append(titleH1, categories, elSettings);
         break;
 
       default:
-        header.append(titleH1, settings);
+        header.append(titleH1, elSettings);
         break;
     }
 

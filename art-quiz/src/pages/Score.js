@@ -73,7 +73,7 @@ class Score {
     download.addEventListener('click', () => {
       const link = document.createElement('a');
       link.target = '_blank';
-      link.href = `https://github.com/NikitaKorevo/image-data/blob/master/full/${currentPicture}full.jpg`;
+      link.href = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/full/${currentPicture}full.jpg`;
       link.click();
     });
 

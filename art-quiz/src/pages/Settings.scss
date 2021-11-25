@@ -1,0 +1,57 @@
+.settings-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #010101;
+  .settings-modal__wrapper {
+    padding: 0 15px;
+  }
+
+  .settings-modal__title {
+    font-size: 24px;
+  }
+
+  .settings-modal__minus-time-answer {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    background-image: url('../assets/svg/minus.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .settings-modal__span-time-answer {
+    font-size: 18px;
+  }
+
+  .settings-modal__plus-time-answer {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    background-image: url('../assets/svg/plus.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  .settings-modal__checkbox-time-answer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+    margin: 0 0 50px;
+  }
+
+  .settings-modal__button-save {
+    display: block;
+    height: 46px;
+    margin: 0 auto;
+  }
+}
