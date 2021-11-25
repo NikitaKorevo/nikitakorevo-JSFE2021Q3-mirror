@@ -151,6 +151,17 @@ class ArtistsQuizQuestions {
       }
     });
 
+    /*     if (localStorage.getItem('checkboxTimeGame') === 'true') {
+      const timer = document.createElement('div');
+      timer.classList.add('artists-quiz-questions__timer');
+      timer.textContent = localStorage.getItem('spanTimeAnswer');
+
+      questionTitle.after(timer);
+      setTimeout(() => {
+        this.startTimer(timer);
+      }, 0);
+    }
+ */
     return div;
   }
 
@@ -293,6 +304,19 @@ class ArtistsQuizQuestions {
     });
     console.log(rightButtons);
   }
+
+  /*   startTimer() {
+    const NavigationButton = document.querySelector('.artists-quiz-questions__button');
+    const elTimer = document.querySelector('.artists-quiz-questions__timer');
+    const timer = setInterval(() => {
+      elTimer.textContent = +elTimer.textContent - 1;
+      if (elTimer.textContent === '0') {
+        clearInterval(timer);
+        NavigationButton.dataset.numButton = '5';
+        NavigationButton.click();
+      }
+    }, 1000);
+  } */
 
   saveAnswersInLocalStorage() {
     let answers = {};

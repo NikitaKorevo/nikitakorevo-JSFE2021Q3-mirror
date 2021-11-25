@@ -50,7 +50,7 @@ class Header {
         break;
 
       case '#ArtistsQuiz/categories/questions/':
-        header.append(titleH1, categories, elSettings);
+        header.append(titleH1, categories);
         break;
 
       case '#ArtistsQuiz/score/':
@@ -62,7 +62,7 @@ class Header {
         break;
 
       case '#PicturesQuiz/categories/questions/':
-        header.append(titleH1, categories, elSettings);
+        header.append(titleH1, categories);
         break;
 
       case '#PicturesQuiz/score/':
