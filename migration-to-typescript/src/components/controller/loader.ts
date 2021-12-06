@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/comma-dangle */
 import { DrawNewsData, DrawSourcesData } from '../interface';
 
 interface LoaderOptions {
