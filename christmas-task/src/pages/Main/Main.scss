@@ -1,0 +1,18 @@
+.main__wrapper {
+  width: 100%;
+  background-image: url('../../assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main {
+  /* display: flex; */
+  height: calc(100vh - 70px - 70px);
+  /* flex-direction: column; */
+  /* justify-content: space-between;
+  align-items: center; */
+  max-width: 1600px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}

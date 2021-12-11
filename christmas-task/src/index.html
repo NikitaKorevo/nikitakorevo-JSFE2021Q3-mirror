@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Christmas</title>
+    <title>christmas-task</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="icon" href="./assets/favicon.ico" />
   </head>
   <body>
-    <h1>Christmas</h1>
+    <div id="root"></div>
+
+    <div class="header__wrapper">
+      <header class="header">
+        <nav class="nav">
+          <button class="nav__logo nav__button" data-goto="home"></button>
+          <button class="nav__button" data-goto="toys">игрушки</button>
+          <button class="nav__button" data-goto="tree">ёлка</button>
+        </nav>
+        <div class="control">
+          <input type="search" class="control__search" />
+          <div class="control__amount-toys control__button"></div>
+        </div>
+      </header>
+    </div>
+    <div class="main__wrapper">
+      <main class="main">
+        <div class="home">
+          <div class="home__container">
+            <h1 class="home__title">Новогодняя игра<br />«Наряди ёлку»</h1>
+          </div>
+          <button class="home__button">Начать</button>
+        </div>
+      </main>
+    </div>
+    <div class="footer__wrapper">
+      <footer class="footer"></footer>
+    </div>
   </body>
 </html>

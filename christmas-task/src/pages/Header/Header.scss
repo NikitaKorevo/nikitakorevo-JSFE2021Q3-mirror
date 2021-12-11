@@ -1,0 +1,76 @@
+.header__wrapper {
+  width: 100%;
+  background-color: #121c1e;
+}
+
+.header {
+  display: flex;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+
+  .nav {
+    display: flex;
+    align-items: center;
+
+    .nav__logo {
+      width: 46px;
+      height: 60px;
+      background-image: url('../../assets/svg/tree.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 0 65px 0 0;
+    }
+
+    .nav__button {
+      font: normal 400 26px/70px 'Neucha', cursive;
+      color: #fff;
+      text-transform: uppercase;
+      background-color: transparent;
+      border: none;
+      padding: 0 20px;
+      transition: color 0.3s;
+    }
+
+    .nav__button:hover {
+      color: #278d9f;
+      cursor: pointer;
+    }
+
+    .nav__logo {
+      width: 46px;
+      height: 60px;
+      background-image: url('../../assets/svg/tree.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 0 65px 0 0;
+      transition: filter 0.3s;
+    }
+
+    .nav__logo:hover {
+      filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
+    }
+  }
+
+  .control {
+    display: flex;
+  }
+
+  .control__search {
+  }
+
+  .control__amount-toys {
+    width: 48px;
+    height: 60px;
+    background-image: url('../../assets/svg/ball-2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .control__button {
+  }
+}

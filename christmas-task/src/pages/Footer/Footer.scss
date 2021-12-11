@@ -1,0 +1,15 @@
+.footer__wrapper {
+  width: 100%;
+  background-color: #121c1e;
+}
+
+.footer {
+  display: flex;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+}
