@@ -1,0 +1,17 @@
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+
+  .page-not-found__error-num {
+    font: normal 400 128px/150px 'Neucha', cursive;
+    color: #fff;
+  }
+
+  .page-not-found__error-text {
+    font: normal 400 32px/32px 'Neucha', cursive;
+    color: #fff;
+  }
+}

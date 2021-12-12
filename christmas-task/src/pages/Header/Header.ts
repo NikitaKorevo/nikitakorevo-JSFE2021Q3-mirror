@@ -14,16 +14,19 @@ class Header {
     const buttonLogo = document.createElement('button');
     buttonLogo.classList.add('nav__logo', 'nav__button');
     buttonLogo.dataset.goto = 'home';
+    buttonLogo.addEventListener('click', () => (window.location.hash = ''));
 
     const buttonToys = document.createElement('button');
     buttonToys.classList.add('nav__button');
     buttonToys.textContent = 'игрушки';
     buttonToys.dataset.goto = 'toys';
+    buttonToys.addEventListener('click', () => (window.location.hash = 'toys'));
 
     const buttonTree = document.createElement('button');
     buttonTree.classList.add('nav__button');
     buttonTree.textContent = 'ёлка';
     buttonTree.dataset.goto = 'tree';
+    buttonTree.addEventListener('click', () => (window.location.hash = 'tree'));
 
     const control = document.createElement('nav');
     control.classList.add('control');

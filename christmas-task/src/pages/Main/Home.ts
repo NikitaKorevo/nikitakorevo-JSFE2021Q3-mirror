@@ -15,6 +15,7 @@ class Home {
     const homeButton = document.createElement('button');
     homeButton.classList.add('home__button');
     homeButton.textContent = 'Начать';
+    homeButton.addEventListener('click', () => (window.location.hash = 'toys'));
 
     home.append(homeContainer, homeButton);
     homeContainer.append(homeTitle);
