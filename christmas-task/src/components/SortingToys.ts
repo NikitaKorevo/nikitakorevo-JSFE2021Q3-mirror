@@ -1,21 +1,32 @@
 import './SortingToys.scss';
+import { IData } from '../data/interfaces';
+import data from '../data/data';
 
 class SortingToys {
   getHowSortingToys: (a: string) => string;
+  data: IData[];
 
   constructor(getHowSortingToys: (a: string) => string) {
     this.getHowSortingToys = getHowSortingToys;
+    this.data = data;
   }
 
-  getSortingToys(arrToys: any, HowSortingToys: string): ChildNode[] {
+  getSortingToys(arrToys: ChildNode[], HowSortingToys: string): ChildNode[] {
     console.log('Start getSortingToys');
 
-    arrToys.sort((nodeA: ChildNode, nodeB: ChildNode) => {
-      const titleA = nodeA.firstChild?.textContent as string;
-      const titleB = nodeB.firstChild?.textContent as string;
+    arrToys.sort((nodeA, nodeB) => {
+      const numA = +((<HTMLDivElement>nodeA).dataset.num as string);
+      const numB = +((<HTMLDivElement>nodeB).dataset.num as string);
+      const titleA = this.data[numA - 1].name;
+      const titleB = this.data[numB - 1].name;
+      const countA = +this.data[numA - 1].count;
+      const countB = +this.data[numB - 1].count;
 
       if (HowSortingToys === 'nameUp') return titleA > titleB ? 1 : -1;
       if (HowSortingToys === 'nameDown') return titleA < titleB ? 1 : -1;
+      if (HowSortingToys === 'countUp') return countA > countB ? 1 : -1;
+      if (HowSortingToys === 'countDown') return countA < countB ? 1 : -1;
+      return 1;
     });
 
     return arrToys;
