@@ -1,4 +1,5 @@
 import './Header.scss';
+import Toys from '../Main/Toys';
 
 class Header {
   render() {
@@ -37,6 +38,7 @@ class Header {
 
     const amountToys = document.createElement('div');
     amountToys.classList.add('control__amount-toys', 'control__button');
+    amountToys.textContent = `${Toys.numSelectedToys}`;
 
     headerWrapper.append(header);
     header.append(nav, control);

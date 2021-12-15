@@ -64,11 +64,14 @@
   }
 
   .control__amount-toys {
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
     width: 48px;
     height: 60px;
-    background-image: url('../../assets/svg/ball-2.svg');
+    /*     background-image: url('../../assets/svg/ball-2.svg');
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
 
   .control__button {
