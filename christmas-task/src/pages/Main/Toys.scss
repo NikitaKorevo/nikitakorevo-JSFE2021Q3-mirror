@@ -1,6 +1,11 @@
-.toys {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.toys__container {
+  .settings {
+    /* display: flex; */
+  }
+  .toys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 }

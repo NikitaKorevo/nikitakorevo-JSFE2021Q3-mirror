@@ -2,26 +2,24 @@ import './Toys.scss';
 import data from '../../data/data';
 import { IData } from '../../data/interfaces';
 import Toy from '../../components/Toy';
+import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys';
 
 class Toys {
+  filtersRange: FiltersRange;
   sortingToys: SortingToys;
   data: IData[];
-  /* allToys: HTMLDivElement; */
-  /* processedToys: HTMLDivElement; */
-  limitToys: number;
 
   static numSelectedToys = 0;
   static howSortingToys = 'nameUp';
   static allToys = document.createElement('div');
   static processedToys = document.createElement('div');
+  static limitToys = 20;
 
   constructor() {
+    this.filtersRange = new FiltersRange();
     this.sortingToys = new SortingToys(Toys.getHowSortingToys);
     this.data = data;
-    /* this.allToys = document.createElement('div'); */
-    /* this.processedToys = document.createElement('div'); */
-    this.limitToys = 20;
   }
 
   static getHowSortingToys(checkedOption: string) {
@@ -46,6 +44,7 @@ class Toys {
     arrToys = new SortingToys(Toys.getHowSortingToys).getSortingToys(arrToys, Toys.howSortingToys);
 
     arrToys.forEach((node) => {
+      node.addEventListener('click', (e) => Toys.updateNumSelectedToys(e));
       Toys.processedToys.append(node);
     });
     return Toys.processedToys;
@@ -57,40 +56,42 @@ class Toys {
 
     const settingsContainer = document.createElement('div');
     settingsContainer.classList.add('settings');
-    settingsContainer.append(this.sortingToys.render());
+    settingsContainer.append(this.filtersRange.render(), this.sortingToys.render());
 
     Toys.processedToys.classList.add('toys');
 
-    for (let i = 0; i < this.data.length; i++) {
-      const toy = new Toy(this.data[i]).render();
-      Toys.allToys.append(toy);
-
-      toy.addEventListener('click', (e) => this.updateNumSelectedToys(e));
+    if (Toys.allToys.childNodes.length === 0) {
+      for (let i = 0; i < this.data.length; i++) {
+        const toy = new Toy(this.data[i]).render();
+        Toys.allToys.append(toy);
+        /* toy.addEventListener('click', (e) => this.updateNumSelectedToys(e)); */
+      }
     }
 
     toysContainer.append(settingsContainer, Toys.startFiltersAndSortsToys());
     return toysContainer;
   }
 
-  updateNumSelectedToys(e: Event) {
+  static updateNumSelectedToys(e: Event) {
     const target = e.target as HTMLElement;
     const amountToys = document.querySelector('.control__amount-toys') as HTMLDivElement;
     let count = 0;
 
     target.closest('.toy')?.classList.contains('toy--checked') ? count-- : count++;
 
-    for (const toy of Toys.allToys.children) {
+    for (const toy of Toys.processedToys.children) {
       if (toy.classList.contains('toy--checked')) count++;
     }
-    if (count > this.limitToys) return this.countToysExceeded(e);
+    if (count > Toys.limitToys) return this.countToysExceeded(e);
 
     target.closest('.toy')?.classList.toggle('toy--checked');
 
     Toys.numSelectedToys = count;
+    console.log(Toys.numSelectedToys);
     amountToys.textContent = `${Toys.numSelectedToys}`;
   }
 
-  countToysExceeded(e: Event) {
+  static countToysExceeded(e: Event) {
     const target = e.target as HTMLElement;
     if (target.closest('.toy')?.classList.contains('toy--warning')) return;
 

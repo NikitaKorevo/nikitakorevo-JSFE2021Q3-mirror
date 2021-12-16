@@ -1,0 +1,48 @@
+.filter-range {
+  .filter-range__title {
+  }
+
+  .filter-range__inputs {
+    display: flex;
+
+    .inputs__first-output,
+    .inputs__second-output {
+      width: 45px;
+      text-align: center;
+      outline: none;
+      border: none;
+    }
+
+    .inputs__first-output::-webkit-outer-spin-button,
+    .inputs__first-output::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    .inputs__range-container {
+      position: relative;
+      pointer-events: none;
+
+      .inputs__first-range,
+      .inputs__second-range {
+        width: 150px;
+        height: 30px;
+        display: block;
+        margin: 0;
+      }
+
+      .inputs__second-range {
+        margin-top: -30px;
+      }
+
+      .inputs__first-range::-webkit-slider-thumb,
+      .inputs__second-range::-webkit-slider-thumb {
+        pointer-events: all;
+      }
+    }
+
+    .inputs__second-output::-webkit-outer-spin-button,
+    .inputs__second-output::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+}
