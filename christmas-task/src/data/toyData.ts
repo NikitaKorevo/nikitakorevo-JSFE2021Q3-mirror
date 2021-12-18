@@ -1,4 +1,4 @@
-const data = [
+const toyData = [
   {
     num: '1',
     name: 'Большой шар с рисунком',
@@ -601,4 +601,4 @@ const data = [
   }
 ];
 
-export default data;
+export default toyData;

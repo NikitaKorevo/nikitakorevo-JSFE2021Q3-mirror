@@ -28,6 +28,10 @@
   }
 }
 
+.toy:hover {
+  cursor: pointer;
+}
+
 .toy--checked {
   border: 2px solid #cbb77a;
 }

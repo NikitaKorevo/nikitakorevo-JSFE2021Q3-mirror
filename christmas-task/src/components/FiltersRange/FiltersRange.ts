@@ -1,9 +1,24 @@
 import './FiltersRange.scss';
 import FilterRange from './FilterRange/FilterRange';
+import Toy from '../Toy';
+import Toys from '../../pages/Main/Toys';
 
 class FiltersRange {
   static currentFirstRangeValue: string;
   static currentSecondRangeValue: string;
+
+  getFilterRange(arrToys: Toy[]): Toy[] {
+    return arrToys.filter((node) => {
+      if (
+        +node.count >= +Toys.toysSettings.numInstanceFrom &&
+        +node.count <= +Toys.toysSettings.numInstanceTo &&
+        +node.year >= +Toys.toysSettings.purchaseYearFrom &&
+        +node.year <= +Toys.toysSettings.purchaseYearTo
+      )
+        return true;
+      return false;
+    });
+  }
 
   render() {
     const filtersRangeContainer = document.createElement('div');
@@ -14,6 +29,8 @@ class FiltersRange {
     title.textContent = 'фильтры по диапазону';
 
     const amountContainer = new FilterRange({
+      numToysSettingsFrom: 'numInstanceFrom',
+      numToysSettingsTo: 'numInstanceTo',
       title: 'Количество экземпляров:',
       rangeMin: '1',
       rangeMax: '12',
@@ -23,6 +40,8 @@ class FiltersRange {
     }).render();
 
     const purchaseYearContainer = new FilterRange({
+      numToysSettingsFrom: 'purchaseYearFrom',
+      numToysSettingsTo: 'purchaseYearTo',
       title: 'Год приобретения:',
       rangeMin: '1940',
       rangeMax: '2020',
@@ -37,113 +56,3 @@ class FiltersRange {
 }
 
 export default FiltersRange;
-
-/* import './FiltersRange.scss';
-
-class FiltersRange {
-  AmountRangeMin: string;
-  AmountRangeMax: string;
-  AmountRangeStep: string;
-  firstAmountRangeValue: string;
-  secondAmountRangeValue: string;
-
-  constructor() {
-    this.AmountRangeMin = '1';
-    this.AmountRangeMax = '12';
-    this.AmountRangeStep = '1';
-    this.firstAmountRangeValue = '1';
-    this.secondAmountRangeValue = '12';
-  }
-
-  render() {
-    const filtersRange = document.createElement('div');
-    filtersRange.classList.add('filters-range');
-
-    const title = document.createElement('h3');
-    title.classList.add('filters-range__title');
-    title.textContent = 'фильтры по диапазону';
-
-    const amountContainer = document.createElement('div');
-    amountContainer.classList.add('filters-range__amount');
-
-    const amountTitle = document.createElement('h4');
-    amountTitle.classList.add('amount__title');
-    amountTitle.textContent = 'Количество экземпляров:';
-
-    const amountInputsContainer = document.createElement('div');
-    amountInputsContainer.classList.add('amount__inputs-container');
-
-    const firstAmountOutput = document.createElement('input');
-    firstAmountOutput.classList.add('amount__first-output');
-    firstAmountOutput.type = 'number';
-    firstAmountOutput.readOnly = true;
-    firstAmountOutput.value = this.firstAmountRangeValue;
-
-    const amountRangeContainer = document.createElement('div');
-    amountRangeContainer.classList.add('amount__range-container');
-
-    const firstAmountRange = document.createElement('input');
-    firstAmountRange.classList.add('amount__first-range');
-    firstAmountRange.type = 'range';
-    firstAmountRange.min = this.AmountRangeMin;
-    firstAmountRange.max = this.AmountRangeMax;
-    firstAmountRange.step = this.AmountRangeStep;
-    firstAmountRange.value = this.firstAmountRangeValue;
-
-    const secondAmountRange = document.createElement('input');
-    secondAmountRange.classList.add('amount__second-range');
-    secondAmountRange.type = 'range';
-    secondAmountRange.min = this.AmountRangeMin;
-    secondAmountRange.max = this.AmountRangeMax;
-    secondAmountRange.step = this.AmountRangeStep;
-    secondAmountRange.value = this.secondAmountRangeValue;
-
-    firstAmountRange.addEventListener('input', () => {
-      if (+firstAmountRange.value > +secondAmountRange.value) {
-        this.secondAmountRangeValue = firstAmountRange.value;
-        secondAmountRange.value = firstAmountRange.value;
-      }
-      this.firstAmountRangeValue = firstAmountRange.value;
-      firstAmountOutput.value = this.firstAmountRangeValue;
-      secondAmountOutput.value = this.secondAmountRangeValue;
-
-      console.log('this.firstAmountRangeValue ' + this.firstAmountRangeValue);
-    });
-
-    secondAmountRange.addEventListener('input', () => {
-      if (+firstAmountRange.value > +secondAmountRange.value) {
-        this.firstAmountRangeValue = secondAmountRange.value;
-        firstAmountRange.value = secondAmountRange.value;
-      }
-      this.secondAmountRangeValue = secondAmountRange.value;
-      firstAmountOutput.value = this.firstAmountRangeValue;
-      secondAmountOutput.value = this.secondAmountRangeValue;
-
-      console.log('this.secondAmountRangeValue ' + this.secondAmountRangeValue);
-    });
-
-    const secondAmountOutput = document.createElement('input');
-    secondAmountOutput.classList.add('amount__second-output');
-    secondAmountOutput.type = 'number';
-    secondAmountOutput.readOnly = true;
-    secondAmountOutput.value = this.secondAmountRangeValue;
-
-    const purchaseYearContainer = document.createElement('div');
-    purchaseYearContainer.classList.add('filters-range__purchase-date');
-
-    const purchaseYearTitle = document.createElement('h4');
-    purchaseYearTitle.classList.add('purchase-date__title');
-    purchaseYearTitle.textContent = 'Год приобретения:';
-
-    filtersRange.append(title, amountContainer, purchaseYearContainer);
-    amountContainer.append(amountTitle, amountInputsContainer);
-    amountInputsContainer.append(firstAmountOutput, amountRangeContainer, secondAmountOutput);
-    purchaseYearContainer.append(purchaseYearTitle);
-    amountRangeContainer.append(firstAmountRange, secondAmountRange);
-
-    return filtersRange;
-  }
-}
-
-export default FiltersRange;
- */

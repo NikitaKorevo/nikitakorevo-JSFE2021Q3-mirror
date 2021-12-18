@@ -4,13 +4,18 @@
 
   .filter-range__inputs {
     display: flex;
+    align-items: center;
 
     .inputs__first-output,
     .inputs__second-output {
+      color: #fff;
       width: 45px;
+      height: 30px;
       text-align: center;
       outline: none;
-      border: none;
+      border: 1px solid #278d9f;
+      border-radius: 20px;
+      background-color: transparent;
     }
 
     .inputs__first-output::-webkit-outer-spin-button,
@@ -21,22 +26,60 @@
     .inputs__range-container {
       position: relative;
       pointer-events: none;
+      height: 5px;
+      background: #278d9f;
 
       .inputs__first-range,
       .inputs__second-range {
-        width: 150px;
-        height: 30px;
+        position: relative;
+        width: 150px; /*  */
+        height: 16px;
         display: block;
         margin: 0;
+        appearance: none;
+        background-color: transparent;
+        width: 100%; /*  */
+        /* border: 1px solid orange; */
       }
 
       .inputs__second-range {
-        margin-top: -30px;
+        margin-top: -19px;
       }
 
-      .inputs__first-range::-webkit-slider-thumb,
+      .inputs__first-range,
+      .inputs__second-range:focus {
+        outline: none;
+      }
+
+      .inputs__first-range::-webkit-slider-thumb {
+        pointer-events: all;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        background-color: #278d9f;
+        /* margin-top: -23px; */
+        cursor: pointer;
+      }
+
       .inputs__second-range::-webkit-slider-thumb {
         pointer-events: all;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        background-color: #278d9f;
+        margin-top: -16px;
+        cursor: pointer;
+      }
+
+      .inputs__first-range::-webkit-slider-runnable-track,
+      .inputs__second-range::-webkit-slider-runnable-track {
+        /* width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, #fff 0%, #278d9f 0% 100%, #fff 0%); */
       }
     }
 

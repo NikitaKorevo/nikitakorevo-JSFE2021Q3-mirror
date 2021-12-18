@@ -1,21 +1,35 @@
 import './Toy.scss';
-import { IData } from '../data/interfaces';
+import { IToy } from '../data/interfaces';
 
 class Toy {
-  data: IData;
+  num: string;
+  name: string;
+  count: string;
+  year: string;
+  shape: string;
+  color: string;
+  size: string;
+  favorite: boolean;
 
-  constructor(data: IData) {
-    this.data = data;
+  constructor(data: IToy) {
+    this.num = data.num;
+    this.name = data.name;
+    this.count = data.count;
+    this.year = data.year;
+    this.shape = data.shape;
+    this.color = data.color;
+    this.size = data.size;
+    this.favorite = data.favorite;
   }
 
   render() {
     const toyContainer = document.createElement('div');
     toyContainer.classList.add('toy');
-    toyContainer.dataset.num = this.data.num;
+    toyContainer.dataset.num = this.num;
 
     const name = document.createElement('h2');
     name.classList.add('toy__name');
-    name.textContent = this.data.name;
+    name.textContent = this.name;
 
     const contentContainer = document.createElement('div');
     contentContainer.classList.add('toy__content');
@@ -24,7 +38,7 @@ class Toy {
     imgContainer.classList.add('toy__img-container');
     const img = document.createElement('img');
     img.classList.add('toy__img');
-    img.src = `./assets/toys/${this.data.num}.png`;
+    img.src = `./assets/toys/${this.num}.png`;
     img.alt = 'toy';
     imgContainer.append(img);
 
@@ -33,27 +47,27 @@ class Toy {
 
     const count = document.createElement('p');
     count.classList.add('toy__count');
-    count.textContent = `Количество: ${this.data.count}`;
+    count.textContent = `Количество: ${this.count}`;
 
     const year = document.createElement('p');
     year.classList.add('toy__year');
-    year.textContent = `Год покупки: ${this.data.year}`;
+    year.textContent = `Год покупки: ${this.year}`;
 
     const shape = document.createElement('p');
     shape.classList.add('toy__shape');
-    shape.textContent = `Форма: ${this.data.shape}`;
+    shape.textContent = `Форма: ${this.shape}`;
 
     const color = document.createElement('p');
     color.classList.add('toy__color');
-    color.textContent = `Цвет: ${this.data.color}`;
+    color.textContent = `Цвет: ${this.color}`;
 
     const size = document.createElement('p');
     size.classList.add('toy__size');
-    size.textContent = `Размер: ${this.data.size}`;
+    size.textContent = `Размер: ${this.size}`;
 
     const favorite = document.createElement('p');
     favorite.classList.add('toy__favorite');
-    favorite.textContent = `Любимая: ${this.data.favorite ? 'Да' : 'Нет'}`;
+    favorite.textContent = `Любимая: ${this.favorite ? 'Да' : 'Нет'}`;
 
     toyContainer.append(name, contentContainer);
     contentContainer.append(imgContainer, specificationContainer);
