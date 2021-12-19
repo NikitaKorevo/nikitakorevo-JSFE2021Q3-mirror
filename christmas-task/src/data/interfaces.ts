@@ -14,6 +14,7 @@ export interface IToy {
 } */
 
 interface IForms {
+  [index: string]: boolean;
   ball: boolean;
   bell: boolean;
   cone: boolean;
@@ -22,6 +23,7 @@ interface IForms {
 }
 
 interface IColors {
+  [index: string]: boolean;
   white: boolean;
   yellow: boolean;
   red: boolean;
@@ -30,13 +32,19 @@ interface IColors {
 }
 
 interface IDimensions {
+  [index: string]: boolean;
   big: boolean;
   average: boolean;
   small: boolean;
 }
 
+interface IFavorites {
+  [index: string]: boolean;
+  favorite: boolean;
+}
+
 export interface IToysSettings {
-  [index: string]: string | boolean | IForms | IColors | IDimensions;
+  [index: string]: string | boolean | IForms | IColors | IDimensions | IFavorites;
   howSortingToys: string;
   numInstanceFrom: string;
   numInstanceTo: string;
@@ -45,7 +53,7 @@ export interface IToysSettings {
   forms: IForms;
   colors: IColors;
   dimensions: IDimensions;
-  favorite: boolean;
+  favorites: IFavorites;
 }
 
 // TODO сделать отдельно тип для sorting

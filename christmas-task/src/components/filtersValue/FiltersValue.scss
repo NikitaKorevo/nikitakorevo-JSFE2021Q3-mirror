@@ -1,0 +1,88 @@
+.filters-value {
+  width: 300px;
+  backdrop-filter: blur(3px) brightness(40%);
+  background-color: rgba(26, 101, 114, 0.3);
+  border: 2px solid #278d9f;
+  padding: 15px;
+  border-radius: 15px;
+  color: #fff;
+
+  .filters-value__title {
+    margin: 0;
+  }
+
+  .filters-value__subtitle {
+    display: inline-block;
+  }
+
+  .filters-value__checkbox {
+    display: none;
+  }
+
+  .filters-value__label {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .filters-value__forms {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filters-value__forms .filters-value__checkbox:checked + .filters-value__label {
+    filter: invert(42%) sepia(82%) saturate(355%) hue-rotate(141deg) brightness(95%) contrast(98%);
+  }
+
+  .filters-value__colors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filters-value__colors .filters-value__checkbox:checked + .filters-value__label::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/svg/tick.svg');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center center;
+  }
+
+  .filters-value__colors .filters-value__checkbox:checked + .filters-value__label:first-of-type::before {
+    filter: brightness(0);
+  }
+
+  .filters-value__dimensions {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  .filters-value__dimensions .filters-value__checkbox:checked + .filters-value__label {
+    filter: invert(42%) sepia(82%) saturate(355%) hue-rotate(141deg) brightness(95%) contrast(98%);
+  }
+
+  .filters-value__favorites {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .filters-value__favorites .filters-value__checkbox:checked + .filters-value__label::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/svg/tick.svg');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center center;
+  }
+}

@@ -2,12 +2,12 @@ import './Toys.scss';
 import toyData from '../../data/toyData';
 import { IToy, IToysSettings } from '../../data/interfaces';
 import Toy from '../../components/Toy';
+import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys';
 
 class Toys {
   static numSelectedToys = 0;
-  /* static howSortingToys = 'nameUp'; */ /* delete */
   static allToys: Toy[] = [];
   static processedToys = document.createElement('div');
   static limitToys = 20;
@@ -36,10 +36,13 @@ class Toys {
       average: false,
       small: false
     },
-    favorite: false
+    favorites: {
+      favorite: false
+    }
   };
   static filtersRange = new FiltersRange();
-  static sortingToys = new SortingToys(/* Toys.toysSettings, Toys.getChangedSetting */);
+  static sortingToys = new SortingToys();
+  static filtersValue = new FiltersValue();
   static toyData = toyData;
 
   static settingsChange() {
@@ -52,6 +55,7 @@ class Toys {
     let arrToys = Toys.allToys.slice();
     arrToys = Toys.sortingToys.getSortingToys(arrToys);
     arrToys = Toys.filtersRange.getFilterRange(arrToys);
+    arrToys = Toys.filtersValue.getFiltersValue(arrToys);
 
     while (Toys.processedToys.firstChild) {
       Toys.processedToys.removeChild(Toys.processedToys.firstChild);
@@ -65,16 +69,15 @@ class Toys {
   }
 
   render() {
-    setInterval(() => {
-      /* console.log(Toys.toysSettings.numInstanceTo);
-      console.log(Toys.toysSettings.numInstanceFrom); */
-    }, 1000);
+    /*     setInterval(() => {
+      console.log(Toys.toysSettings);
+    }, 1000); */
     const toysContainer = document.createElement('div');
     toysContainer.classList.add('toys__container');
 
     const settingsContainer = document.createElement('div');
     settingsContainer.classList.add('settings');
-    settingsContainer.append(Toys.filtersRange.render(), Toys.sortingToys.render());
+    settingsContainer.append(Toys.filtersValue.render(), Toys.filtersRange.render(), Toys.sortingToys.render());
 
     Toys.processedToys.classList.add('toys');
 
