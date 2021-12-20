@@ -25,6 +25,7 @@ class Toy {
   renderZeroToys() {
     const toyContainer = document.createElement('div');
     toyContainer.classList.add('toy');
+    toyContainer.style.cursor = 'default';
 
     const name = document.createElement('h2');
     name.classList.add('toy__zero-name');

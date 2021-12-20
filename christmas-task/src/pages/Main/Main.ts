@@ -31,7 +31,7 @@ class Main {
 
   switchContent(main: HTMLElement) {
     const pageNow = window.location.hash;
-    console.log(pageNow);
+
     while (main.firstChild) {
       main.removeChild(main.firstChild);
     }

@@ -11,8 +11,6 @@ class SortingToys {
   }
 
   getSortingToys(arrToys: Toy[]): Toy[] {
-    console.log('Start getSortingToys');
-
     arrToys.sort((nodeA, nodeB) => {
       const titleA = nodeA.name;
       const titleB = nodeB.name;
@@ -69,7 +67,6 @@ class SortingToys {
       Toys.toysSettings.howSortingToys = copyHowSortingToys;
       Toys.settingsChange();
       location.reload();
-      console.log(defaultSettings);
     });
     buttonResetSettings.addEventListener('click', () => {
       localStorage.clear();

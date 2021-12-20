@@ -6,13 +6,12 @@ import Toy from '../../components/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys';
+import Header from '../Header/Header';
 
 class Toys {
-  /* static toyData = toyData; */
   static toysSettings: IToysSettings = Toys.#pullLocalStorage('toysSettings');
   static allToys: Toy[] = [];
   static processedToys = document.createElement('div');
-  /* static pickedToys: Set<number> = new Set(); */
   static pickedToys: Set<number> = Toys.#pullLocalStorage('pickedToys');
   static limitToys = 20;
   static filtersValue = new FiltersValue();
@@ -89,11 +88,11 @@ class Toys {
   }
 
   static #startFiltersAndSortsToys() {
-    console.log('Start filters and sorts');
     let arrToys = Toys.allToys.slice();
     arrToys = Toys.sortingToys.getSortingToys(arrToys);
     arrToys = Toys.filtersRange.getFilterRange(arrToys);
     arrToys = Toys.filtersValue.getFiltersValue(arrToys);
+    arrToys = new Header().getSearchSort(arrToys);
 
     while (Toys.processedToys.firstChild) {
       Toys.processedToys.removeChild(Toys.processedToys.firstChild);
