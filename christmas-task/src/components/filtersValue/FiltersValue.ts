@@ -131,7 +131,7 @@ class FiltersValue {
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
       label.setAttribute('for', subTitle);
-      label.style.backgroundImage = `url('../../assets/svg/${subTitle}.svg')`;
+      label.style.backgroundImage = `url('./assets/svg/${subTitle}.svg')`;
       label.style.backgroundRepeat = 'no-repeat';
       label.style.backgroundSize = 'contain';
       label.style.width = '40px';
@@ -195,7 +195,7 @@ class FiltersValue {
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
       label.setAttribute('for', subTitle);
-      label.style.backgroundImage = 'url("../../assets/svg/ball.svg")';
+      label.style.backgroundImage = 'url("./assets/svg/ball.svg")';
       label.style.backgroundRepeat = 'no-repeat';
       label.style.backgroundSize = 'contain';
       label.style.width = `${30 + index * 5}px`;
