@@ -1,17 +1,25 @@
 import './Toys.scss';
 import toyData from '../../data/toyData';
-import { IToy, IToysSettings } from '../../data/interfaces';
+import { defaultSettings } from '../../constans/constans';
+import { IToysSettings } from '../../data/interfaces';
 import Toy from '../../components/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys';
 
 class Toys {
-  static numSelectedToys = 0;
+  /* static toyData = toyData; */
+  static toysSettings: IToysSettings = Toys.#pullLocalStorage('toysSettings');
   static allToys: Toy[] = [];
   static processedToys = document.createElement('div');
+  /* static pickedToys: Set<number> = new Set(); */
+  static pickedToys: Set<number> = Toys.#pullLocalStorage('pickedToys');
   static limitToys = 20;
-  static toysSettings: IToysSettings = {
+  static filtersValue = new FiltersValue();
+  static filtersRange = new FiltersRange(Toys.toysSettings);
+  static sortingToys = new SortingToys(Toys.toysSettings.howSortingToys);
+  /* static toysSettings: IToysSettings = Object.assign(defaultSettings); */
+  /* static toysSettings: IToysSettings = {
     howSortingToys: 'nameUp',
     numInstanceFrom: '1',
     numInstanceTo: '12',
@@ -39,18 +47,48 @@ class Toys {
     favorites: {
       favorite: false
     }
-  };
-  static filtersRange = new FiltersRange();
-  static sortingToys = new SortingToys();
-  static filtersValue = new FiltersValue();
-  static toyData = toyData;
+  }; */
 
-  static settingsChange() {
-    console.log(Toys.toysSettings);
-    Toys.startFiltersAndSortsToys();
+  static #pullLocalStorage(key: string) {
+    const korevo_toysSettings = localStorage.getItem('korevo_toysSettings');
+    const korevo_pickedToys = localStorage.getItem('korevo_pickedToys');
+
+    switch (key) {
+      case 'toysSettings':
+        if (korevo_toysSettings) {
+          return JSON.parse(korevo_toysSettings);
+        } else {
+          localStorage.setItem('korevo_toysSettings', JSON.stringify(defaultSettings));
+          return JSON.parse(JSON.stringify(defaultSettings));
+        }
+
+      case 'pickedToys':
+        if (korevo_pickedToys) {
+          return new Set(JSON.parse(korevo_pickedToys));
+        } else {
+          return new Set();
+        }
+
+      default:
+        break;
+    }
   }
 
-  static startFiltersAndSortsToys() {
+  static #pushLocalStorage() {
+    console.log(Toys.pickedToys);
+    localStorage.setItem('korevo_toysSettings', JSON.stringify(Toys.toysSettings));
+
+    const objPickedToys: number[] = [];
+    Toys.pickedToys.forEach((num) => objPickedToys.push(num));
+    localStorage.setItem('korevo_pickedToys', JSON.stringify(objPickedToys));
+  }
+
+  static settingsChange() {
+    Toys.#pushLocalStorage();
+    Toys.#startFiltersAndSortsToys();
+  }
+
+  static #startFiltersAndSortsToys() {
     console.log('Start filters and sorts');
     let arrToys = Toys.allToys.slice();
     arrToys = Toys.sortingToys.getSortingToys(arrToys);
@@ -63,15 +101,26 @@ class Toys {
 
     arrToys.forEach((node) => {
       const renderNode = node.render();
-      renderNode.addEventListener('click', (e) => Toys.#updateNumSelectedToys(e));
+
+      renderNode.addEventListener('click', (e) => {
+        Toys.#updateCountSelectedToys(e);
+        Toys.#pushLocalStorage();
+      });
+      if (Toys.pickedToys.has(+node.num)) renderNode.classList.add('toy--checked');
       Toys.processedToys.append(renderNode);
     });
+
+    if (Toys.processedToys.children.length === 0) {
+      const zeroToys = new Toy(toyData[0]).renderZeroToys();
+      Toys.processedToys.append(zeroToys);
+    }
   }
 
-  render() {
-    /*     setInterval(() => {
-      console.log(Toys.toysSettings);
-    }, 1000); */
+  static render(): HTMLDivElement {
+    /* setInterval(() => {
+      console.log(Toys.pickedToys);
+    }, 2000); */
+
     const toysContainer = document.createElement('div');
     toysContainer.classList.add('toys__container');
 
@@ -87,38 +136,37 @@ class Toys {
         Toys.allToys.push(toy);
       }
     }
-    Toys.startFiltersAndSortsToys();
+    Toys.#startFiltersAndSortsToys();
 
     toysContainer.append(settingsContainer, Toys.processedToys);
     return toysContainer;
   }
 
-  static #updateNumSelectedToys(e: Event) {
-    const target = e.target as HTMLElement;
+  static #updateCountSelectedToys(e: Event) {
     const amountToys = document.querySelector('.control__amount-toys') as HTMLDivElement;
-    let count = 0;
+    const target = e.target as HTMLElement;
+    const toy = target.closest('.toy') as HTMLDivElement;
+    const numToy = toy.dataset.num;
+    let countPickedToys = Toys.pickedToys.size;
 
-    target.closest('.toy')?.classList.contains('toy--checked') ? count-- : count++;
+    toy.classList.contains('toy--checked') ? countPickedToys-- : countPickedToys++;
 
-    for (const toy of Toys.processedToys.children) {
-      if (toy.classList.contains('toy--checked')) count++;
+    if (countPickedToys > Toys.limitToys) return Toys.#countToysExceeded(toy);
+
+    toy.classList.toggle('toy--checked');
+    if (numToy) {
+      toy.classList.contains('toy--checked') ? Toys.pickedToys.add(+numToy) : Toys.pickedToys.delete(+numToy);
     }
-    if (count > Toys.limitToys) return Toys.#countToysExceeded(e);
 
-    target.closest('.toy')?.classList.toggle('toy--checked');
-
-    Toys.numSelectedToys = count;
-    console.log(Toys.numSelectedToys);
-    amountToys.textContent = `${Toys.numSelectedToys}`;
+    amountToys.textContent = `${Toys.pickedToys.size}`;
   }
 
-  static #countToysExceeded(e: Event) {
-    const target = e.target as HTMLElement;
-    if (target.closest('.toy')?.classList.contains('toy--warning')) return;
+  static #countToysExceeded(toy: HTMLDivElement) {
+    if (toy.classList.contains('toy--warning')) return;
 
-    target.closest('.toy')?.classList.add('toy--warning');
+    toy.classList.add('toy--warning');
     setTimeout(() => {
-      target.closest('.toy')?.classList.remove('toy--warning');
+      toy.classList.remove('toy--warning');
     }, 2000);
   }
 }

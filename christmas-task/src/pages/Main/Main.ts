@@ -42,7 +42,7 @@ class Main {
         break;
 
       case '#toys':
-        main.append(this.toys.render());
+        main.append(Toys.render());
         break;
 
       default:

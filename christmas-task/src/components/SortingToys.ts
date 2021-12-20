@@ -5,8 +5,8 @@ import Toys from '../pages/Main/Toys';
 class SortingToys {
   howSortingToys: string;
 
-  constructor() {
-    this.howSortingToys = 'nameUp';
+  constructor(howSortingToys: string) {
+    this.howSortingToys = howSortingToys;
   }
 
   getSortingToys(arrToys: Toy[]): Toy[] {
@@ -53,6 +53,10 @@ class SortingToys {
     buttonResetFilters.classList.add('sorting-toys__button-reset-filters', 'button');
     buttonResetFilters.textContent = 'Сброс фильтров';
 
+    const buttonResetSettings = document.createElement('button');
+    buttonResetSettings.classList.add('sorting-toys__button-reset-settings', 'button');
+    buttonResetSettings.textContent = 'Сброс настроек';
+
     select.addEventListener('change', () => {
       this.howSortingToys = select.value;
       Toys.toysSettings.howSortingToys = select.value;
@@ -61,8 +65,13 @@ class SortingToys {
     buttonResetFilters.addEventListener('click', () => {
       console.log('сбросить фильтры (dont work)');
     });
+    buttonResetSettings.addEventListener('click', () => {
+      localStorage.clear();
+      location.reload();
+    });
+    select.value = this.howSortingToys;
 
-    sortingToys.append(title, select, buttonResetFilters);
+    sortingToys.append(title, select, buttonResetFilters, buttonResetSettings);
     return sortingToys;
   }
 }

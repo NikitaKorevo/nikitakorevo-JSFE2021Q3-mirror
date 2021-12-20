@@ -71,8 +71,6 @@ class FilterRange {
       Toys.toysSettings[this.numToysSettingsTo] = this.secondRangeValue;
       this.changeRunnableTrack(firstRange, secondRange, rangeContainer);
       Toys.settingsChange();
-      /* console.log('this.firstRangeValue ' + this.firstRangeValue);
-      console.log('this.secondRangeValue ' + this.secondRangeValue); */
     });
 
     secondRange.addEventListener('input', () => {
@@ -88,8 +86,6 @@ class FilterRange {
       Toys.toysSettings[this.numToysSettingsTo] = this.secondRangeValue;
       this.changeRunnableTrack(firstRange, secondRange, rangeContainer);
       Toys.settingsChange();
-      /* console.log('this.secondRangeValue ' + this.secondRangeValue);
-      console.log('this.firstRangeValue ' + this.firstRangeValue); */
     });
 
     const secondOutput = document.createElement('input');
@@ -102,11 +98,14 @@ class FilterRange {
     inputs.append(firstOutput, rangeContainer, secondOutput);
     rangeContainer.append(firstRange, secondRange);
 
+    this.changeRunnableTrack(firstRange, secondRange, rangeContainer);
+
     return filterRangeContainer;
   }
 
   changeRunnableTrack(firstRange: HTMLInputElement, secondRange: HTMLInputElement, rangeContainer: HTMLDivElement) {
-    const rangeWidth = firstRange.clientWidth;
+    // need to specify the width rangeContainer. Wrong value at application start.
+    const rangeWidth = firstRange.clientWidth || 129;
     const countAllStep = (+this.rangeMax - +this.rangeMin) / +this.rangeStep;
     const countFirstRange = (+firstRange.value - +this.rangeMin) / +this.rangeStep;
     const countSecondRange = (+secondRange.value - +this.rangeMin) / +this.rangeStep;
@@ -116,18 +115,6 @@ class FilterRange {
     const rightLine = (rangeWidth / countAllStep) * +countSecondRange;
 
     rangeContainer.style.background = `linear-gradient(to right, #fff ${leftLine}px, #278d9f ${startMiddleLine}px ${endMiddleLine}px, #fff ${rightLine}px)`;
-
-    /* const rangeWidth = firstRange.clientWidth;
-    console.log(rangeWidth);
-    const leftLine = (rangeWidth / +this.rangeMax) * (+firstRange.value - 1);
-    const startMiddleLine = (rangeWidth / +this.rangeMax) * (+firstRange.value - 1);
-    const endMiddleLine = (rangeWidth / +this.rangeMax) * +secondRange.value;
-    const rightLine = (rangeWidth / +this.rangeMax) * +secondRange.value; */
-
-    /*     const leftLine = (+firstRange.value / +this.rangeMax) * rangeWidth;
-    const startMiddleLine = (+firstRange.value / +this.rangeMax) * rangeWidth;
-    const endMiddleLine = (+secondRange.value / +this.rangeMax) * 100;
-    const rightLine = 100 - ((+firstRange.value / +this.rangeMax) * 100 + (+secondRange.value / +this.rangeMax) * 100); */
   }
 }
 

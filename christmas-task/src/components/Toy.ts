@@ -22,6 +22,17 @@ class Toy {
     this.favorite = data.favorite;
   }
 
+  renderZeroToys() {
+    const toyContainer = document.createElement('div');
+    toyContainer.classList.add('toy');
+
+    const name = document.createElement('h2');
+    name.classList.add('toy__zero-name');
+    name.textContent = 'Извините, совпадений не обнаружено';
+    toyContainer.append(name);
+    return toyContainer;
+  }
+
   render() {
     const toyContainer = document.createElement('div');
     toyContainer.classList.add('toy');

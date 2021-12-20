@@ -38,7 +38,7 @@ class Header {
 
     const amountToys = document.createElement('div');
     amountToys.classList.add('control__amount-toys', 'control__button');
-    amountToys.textContent = `${Toys.numSelectedToys}`;
+    amountToys.textContent = `${Toys.pickedToys.size}`;
 
     headerWrapper.append(header);
     header.append(nav, control);

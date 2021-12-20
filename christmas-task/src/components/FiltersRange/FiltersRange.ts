@@ -2,11 +2,21 @@ import './FiltersRange.scss';
 import FilterRange from './FilterRange/FilterRange';
 import Toy from '../Toy';
 import Toys from '../../pages/Main/Toys';
+import { IToysSettings } from '../../data/interfaces';
 
 class FiltersRange {
-  static currentFirstRangeValue: string;
-  static currentSecondRangeValue: string;
+  numInstanceFrom: string;
+  numInstanceTo: string;
+  purchaseYearFrom: string;
+  purchaseYearTo: string;
 
+  constructor(props: IToysSettings) {
+    this.numInstanceFrom = props.numInstanceFrom;
+    this.numInstanceTo = props.numInstanceTo;
+    this.purchaseYearFrom = props.purchaseYearFrom;
+    this.purchaseYearTo = props.purchaseYearTo;
+    console.log(props);
+  }
   getFilterRange(arrToys: Toy[]): Toy[] {
     return arrToys.filter((node) => {
       if (
@@ -35,8 +45,8 @@ class FiltersRange {
       rangeMin: '1',
       rangeMax: '12',
       rangeStep: '1',
-      startFirstRangeValue: '1',
-      endSecondRangeValue: '12'
+      startFirstRangeValue: this.numInstanceFrom,
+      endSecondRangeValue: this.numInstanceTo
     }).render();
 
     const purchaseYearContainer = new FilterRange({
@@ -46,8 +56,8 @@ class FiltersRange {
       rangeMin: '1940',
       rangeMax: '2020',
       rangeStep: '10',
-      startFirstRangeValue: '1940',
-      endSecondRangeValue: '2020'
+      startFirstRangeValue: this.purchaseYearFrom,
+      endSecondRangeValue: this.purchaseYearTo
     }).render();
 
     filtersRangeContainer.append(title, amountContainer, purchaseYearContainer);

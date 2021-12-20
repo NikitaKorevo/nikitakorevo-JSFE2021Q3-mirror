@@ -20,76 +20,6 @@ class FiltersValue {
     arrToys = this.filterColors(arrToys);
     arrToys = this.filterDimensions(arrToys);
     arrToys = this.filterFavorites(arrToys);
-    /*     arrToys = arrToys.filter((node) => {
-      let flag = false;
-      const keys = Object.keys(Toys.toysSettings.forms);
-      const booleans: boolean[] = [];
-      keys.forEach((key) => booleans.push(Toys.toysSettings.forms[key]));
-      if (!booleans.some((el) => el === true)) return (flag = true);
-
-      Object.keys(Toys.toysSettings.forms).forEach((form) => {
-        if (Toys.toysSettings.forms[form]) {
-          if (form === 'ball' && node.shape === 'шар') flag = true;
-          if (form === 'bell' && node.shape === 'колокольчик') flag = true;
-          if (form === 'cone' && node.shape === 'шишка') flag = true;
-          if (form === 'snowflake' && node.shape === 'снежинка') flag = true;
-          if (form === 'figurine' && node.shape === 'фигурка') flag = true;
-        }
-      });
-      return flag;
-    }); */
-
-    /* arrToys = arrToys.filter((node) => {
-      let flag = false;
-      const keys = Object.keys(Toys.toysSettings.colors);
-      const booleans: boolean[] = [];
-      keys.forEach((key) => booleans.push(Toys.toysSettings.colors[key]));
-      if (!booleans.some((el) => el === true)) return (flag = true);
-
-      Object.keys(Toys.toysSettings.colors).forEach((color) => {
-        if (Toys.toysSettings.colors[color]) {
-          if (color === 'white' && node.color === 'белый') flag = true;
-          if (color === 'yellow' && node.color === 'желтый') flag = true;
-          if (color === 'red' && node.color === 'красный') flag = true;
-          if (color === 'blue' && node.color === 'синий') flag = true;
-          if (color === 'green' && node.color === 'зелёный') flag = true;
-        }
-      });
-      return flag;
-    }); */
-
-    /* arrToys = arrToys.filter((node) => {
-      let flag = false;
-      const keys = Object.keys(Toys.toysSettings.dimensions);
-      const booleans: boolean[] = [];
-      keys.forEach((key) => booleans.push(Toys.toysSettings.dimensions[key]));
-      if (!booleans.some((el) => el === true)) return (flag = true);
-
-      Object.keys(Toys.toysSettings.dimensions).forEach((dimension) => {
-        if (Toys.toysSettings.dimensions[dimension]) {
-          if (dimension === 'small' && node.size === 'малый') flag = true;
-          if (dimension === 'average' && node.size === 'средний') flag = true;
-          if (dimension === 'big' && node.size === 'большой') flag = true;
-        }
-      });
-      return flag;
-    }); */
-
-    /* arrToys = arrToys.filter((node) => {
-      let flag = false;
-      const keys = Object.keys(Toys.toysSettings.favorites);
-      const booleans: boolean[] = [];
-      keys.forEach((key) => booleans.push(Toys.toysSettings.favorites[key]));
-      if (!booleans.some((el) => el === true)) return (flag = true);
-
-      Object.keys(Toys.toysSettings.favorites).forEach((key) => {
-        if (Toys.toysSettings.favorites[key]) {
-          if (key === 'favorite' && node.favorite === true) flag = true;
-        }
-      });
-      return flag;
-    }); */
-
     return arrToys;
   }
 
@@ -196,6 +126,7 @@ class FiltersValue {
       input.classList.add('filters-value__checkbox');
       input.type = 'checkbox';
       input.id = subTitle;
+      if (Toys.toysSettings.forms[subTitle]) input.checked = true;
 
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
@@ -228,6 +159,7 @@ class FiltersValue {
       input.classList.add('filters-value__checkbox');
       input.type = 'checkbox';
       input.id = subTitle;
+      if (Toys.toysSettings.colors[subTitle]) input.checked = true;
 
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
@@ -258,6 +190,7 @@ class FiltersValue {
       input.classList.add('filters-value__checkbox');
       input.type = 'checkbox';
       input.id = subTitle;
+      if (Toys.toysSettings.dimensions[subTitle]) input.checked = true;
 
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
@@ -290,6 +223,7 @@ class FiltersValue {
       input.classList.add('filters-value__checkbox');
       input.type = 'checkbox';
       input.id = subTitle;
+      if (Toys.toysSettings.favorites[subTitle]) input.checked = true;
 
       const label = document.createElement('label');
       label.classList.add('filters-value__label', `filters-value__${subTitle}`);
