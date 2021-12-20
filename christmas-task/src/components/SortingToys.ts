@@ -1,6 +1,7 @@
 import './SortingToys.scss';
 import Toy from './Toy';
 import Toys from '../pages/Main/Toys';
+import { defaultSettings } from '../constants/constants';
 
 class SortingToys {
   howSortingToys: string;
@@ -63,7 +64,12 @@ class SortingToys {
       Toys.settingsChange();
     });
     buttonResetFilters.addEventListener('click', () => {
-      console.log('сбросить фильтры (dont work)');
+      const copyHowSortingToys = Toys.toysSettings.howSortingToys;
+      Toys.toysSettings = JSON.parse(JSON.stringify(defaultSettings));
+      Toys.toysSettings.howSortingToys = copyHowSortingToys;
+      Toys.settingsChange();
+      location.reload();
+      console.log(defaultSettings);
     });
     buttonResetSettings.addEventListener('click', () => {
       localStorage.clear();

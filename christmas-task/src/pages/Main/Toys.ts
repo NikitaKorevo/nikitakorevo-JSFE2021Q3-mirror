@@ -1,6 +1,6 @@
 import './Toys.scss';
 import toyData from '../../data/toyData';
-import { defaultSettings } from '../../constans/constans';
+import { defaultSettings } from '../../constants/constants';
 import { IToysSettings } from '../../data/interfaces';
 import Toy from '../../components/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
@@ -50,21 +50,21 @@ class Toys {
   }; */
 
   static #pullLocalStorage(key: string) {
-    const korevo_toysSettings = localStorage.getItem('korevo_toysSettings');
-    const korevo_pickedToys = localStorage.getItem('korevo_pickedToys');
+    const korEvo_toysSettings = localStorage.getItem('korEvo_toysSettings');
+    const korEvo_pickedToys = localStorage.getItem('korEvo_pickedToys');
 
     switch (key) {
       case 'toysSettings':
-        if (korevo_toysSettings) {
-          return JSON.parse(korevo_toysSettings);
+        if (korEvo_toysSettings) {
+          return JSON.parse(korEvo_toysSettings);
         } else {
-          localStorage.setItem('korevo_toysSettings', JSON.stringify(defaultSettings));
+          localStorage.setItem('korEvo_toysSettings', JSON.stringify(defaultSettings));
           return JSON.parse(JSON.stringify(defaultSettings));
         }
 
       case 'pickedToys':
-        if (korevo_pickedToys) {
-          return new Set(JSON.parse(korevo_pickedToys));
+        if (korEvo_pickedToys) {
+          return new Set(JSON.parse(korEvo_pickedToys));
         } else {
           return new Set();
         }
@@ -76,11 +76,11 @@ class Toys {
 
   static #pushLocalStorage() {
     console.log(Toys.pickedToys);
-    localStorage.setItem('korevo_toysSettings', JSON.stringify(Toys.toysSettings));
+    localStorage.setItem('korEvo_toysSettings', JSON.stringify(Toys.toysSettings));
 
     const objPickedToys: number[] = [];
     Toys.pickedToys.forEach((num) => objPickedToys.push(num));
-    localStorage.setItem('korevo_pickedToys', JSON.stringify(objPickedToys));
+    localStorage.setItem('korEvo_pickedToys', JSON.stringify(objPickedToys));
   }
 
   static settingsChange() {
