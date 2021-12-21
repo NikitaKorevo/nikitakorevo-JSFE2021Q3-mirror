@@ -232,6 +232,7 @@ class FiltersValue {
       label.style.height = '35px';
       label.style.border = '1px solid #278d9f';
       label.style.borderRadius = '10px';
+      label.style.backgroundColor = '#123f47';
 
       favorites.append(input, label);
 

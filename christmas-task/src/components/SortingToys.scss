@@ -1,13 +1,44 @@
 .sorting-toys {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
   width: 300px;
   backdrop-filter: blur(3px) brightness(40%);
   background-color: rgba(26, 101, 114, 0.3);
   border: 2px solid #278d9f;
   padding: 15px;
   border-radius: 15px;
-  color: #fff;
 
   .sorting-toys__title {
+    color: #fff;
     margin: 0;
+  }
+
+  .sorting-toys__select {
+    width: min-content;
+    height: 34px;
+    font: normal 400 16px 'Open Sans', sans-serif;
+    color: #fff;
+    border: 1px solid #278d9f;
+    outline: none;
+    border-radius: 10px;
+    background-color: #123f47;
+  }
+
+  .sorting-toys__select:hover {
+    cursor: pointer;
+  }
+
+  .button {
+    width: 150px;
+    font: normal 400 16px/30px 'Open Sans', sans-serif;
+    color: #fff;
+    border: 1px solid #278d9f;
+    background-color: #123f47;
+    border-radius: 10px;
+  }
+
+  .button:hover {
+    cursor: pointer;
   }
 }

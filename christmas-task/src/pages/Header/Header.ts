@@ -16,7 +16,7 @@ class Header {
     });
   }
 
-  render() {
+  render(): HTMLDivElement {
     const headerWrapper = document.createElement('div');
     headerWrapper.classList.add('header__wrapper');
 
@@ -46,9 +46,6 @@ class Header {
     const control = document.createElement('nav');
     control.classList.add('control');
 
-    const searchContainer = document.createElement('div');
-    searchContainer.classList.add('control__search-container');
-
     const search = document.createElement('input');
     search.type = 'search';
     search.classList.add('control__search');
@@ -60,20 +57,21 @@ class Header {
       Toys.settingsChange();
     });
 
-    const amountToys = document.createElement('div');
-    amountToys.classList.add('control__amount-toys', 'control__button');
-    amountToys.textContent = `${Toys.pickedToys.size}`;
+    const amountToys = document.createElement('input');
+    amountToys.classList.add('control__amount-toys');
+    amountToys.type = 'number';
+    amountToys.readOnly = true;
+
+    amountToys.value = `${Toys.pickedToys.size}`;
 
     headerWrapper.append(header);
     nav.append(buttonLogo, buttonToys, buttonTree);
-    control.append(searchContainer, amountToys);
-    searchContainer.append(search);
+    control.append(search, amountToys);
 
     window.addEventListener('hashchange', () => {
       header.append(...this.switchContent(header, nav, control));
     });
     header.append(...this.switchContent(header, nav, control));
-    /* header.append(nav, control); */
 
     return headerWrapper;
   }

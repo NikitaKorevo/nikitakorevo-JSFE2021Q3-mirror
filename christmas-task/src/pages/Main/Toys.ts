@@ -17,36 +17,6 @@ class Toys {
   static filtersValue = new FiltersValue();
   static filtersRange = new FiltersRange(Toys.toysSettings);
   static sortingToys = new SortingToys(Toys.toysSettings.howSortingToys);
-  /* static toysSettings: IToysSettings = Object.assign(defaultSettings); */
-  /* static toysSettings: IToysSettings = {
-    howSortingToys: 'nameUp',
-    numInstanceFrom: '1',
-    numInstanceTo: '12',
-    purchaseYearFrom: '1940',
-    purchaseYearTo: '2020',
-    forms: {
-      ball: false,
-      bell: false,
-      cone: false,
-      snowflake: false,
-      figurine: false
-    },
-    colors: {
-      white: false,
-      yellow: false,
-      red: false,
-      blue: false,
-      green: false
-    },
-    dimensions: {
-      big: false,
-      average: false,
-      small: false
-    },
-    favorites: {
-      favorite: false
-    }
-  }; */
 
   static #pullLocalStorage(key: string) {
     const korEvo_toysSettings = localStorage.getItem('korEvo_toysSettings');
@@ -116,10 +86,6 @@ class Toys {
   }
 
   static render(): HTMLDivElement {
-    /* setInterval(() => {
-      console.log(Toys.pickedToys);
-    }, 2000); */
-
     const toysContainer = document.createElement('div');
     toysContainer.classList.add('toys__container');
 
@@ -142,7 +108,7 @@ class Toys {
   }
 
   static #updateCountSelectedToys(e: Event) {
-    const amountToys = document.querySelector('.control__amount-toys') as HTMLDivElement;
+    const amountToys = document.querySelector('.control__amount-toys') as HTMLInputElement;
     const target = e.target as HTMLElement;
     const toy = target.closest('.toy') as HTMLDivElement;
     const numToy = toy.dataset.num;
@@ -157,7 +123,7 @@ class Toys {
       toy.classList.contains('toy--checked') ? Toys.pickedToys.add(+numToy) : Toys.pickedToys.delete(+numToy);
     }
 
-    amountToys.textContent = `${Toys.pickedToys.size}`;
+    amountToys.value = `${Toys.pickedToys.size}`;
   }
 
   static #countToysExceeded(toy: HTMLDivElement) {
