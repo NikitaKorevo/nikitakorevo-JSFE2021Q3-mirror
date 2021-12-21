@@ -43,8 +43,7 @@ class Toys {
     }
   }
 
-  static #pushLocalStorage() {
-    console.log(Toys.pickedToys);
+  static #pushLocalStorage(): void {
     localStorage.setItem('korEvo_toysSettings', JSON.stringify(Toys.toysSettings));
 
     const objPickedToys: number[] = [];
@@ -52,12 +51,12 @@ class Toys {
     localStorage.setItem('korEvo_pickedToys', JSON.stringify(objPickedToys));
   }
 
-  static settingsChange() {
+  static settingsChange(): void {
     Toys.#pushLocalStorage();
     Toys.#startFiltersAndSortsToys();
   }
 
-  static #startFiltersAndSortsToys() {
+  static #startFiltersAndSortsToys(): void {
     let arrToys = Toys.allToys.slice();
     arrToys = Toys.sortingToys.getSortingToys(arrToys);
     arrToys = Toys.filtersRange.getFilterRange(arrToys);
@@ -107,7 +106,7 @@ class Toys {
     return toysContainer;
   }
 
-  static #updateCountSelectedToys(e: Event) {
+  static #updateCountSelectedToys(e: Event): void {
     const amountToys = document.querySelector('.control__amount-toys') as HTMLInputElement;
     const target = e.target as HTMLElement;
     const toy = target.closest('.toy') as HTMLDivElement;
@@ -126,7 +125,7 @@ class Toys {
     amountToys.value = `${Toys.pickedToys.size}`;
   }
 
-  static #countToysExceeded(toy: HTMLDivElement) {
+  static #countToysExceeded(toy: HTMLDivElement): void {
     if (toy.classList.contains('toy--warning')) return;
 
     toy.classList.add('toy--warning');

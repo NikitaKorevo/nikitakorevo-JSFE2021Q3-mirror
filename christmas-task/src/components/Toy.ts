@@ -22,7 +22,7 @@ class Toy {
     this.favorite = data.favorite;
   }
 
-  renderZeroToys() {
+  renderZeroToys(): HTMLDivElement {
     const toyContainer = document.createElement('div');
     toyContainer.classList.add('toy');
     toyContainer.style.cursor = 'default';
@@ -34,7 +34,7 @@ class Toy {
     return toyContainer;
   }
 
-  render() {
+  render(): HTMLDivElement {
     const toyContainer = document.createElement('div');
     toyContainer.classList.add('toy');
     toyContainer.dataset.num = this.num;

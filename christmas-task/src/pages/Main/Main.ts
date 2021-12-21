@@ -14,11 +14,11 @@ class Main {
     this.toys = new Toys();
   }
 
-  render() {
+  render(): HTMLDivElement {
     const mainWrapper = document.createElement('div');
     mainWrapper.classList.add('main__wrapper');
 
-    const main = document.createElement('div');
+    const main = document.createElement('main');
     main.classList.add('main');
 
     mainWrapper.append(main);
@@ -29,7 +29,7 @@ class Main {
     return mainWrapper;
   }
 
-  switchContent(main: HTMLElement) {
+  switchContent(main: HTMLElement): void {
     const pageNow = window.location.hash;
 
     while (main.firstChild) {

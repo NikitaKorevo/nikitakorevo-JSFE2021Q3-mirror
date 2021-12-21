@@ -1,7 +1,7 @@
 import './Footer.scss';
 
 class Footer {
-  render() {
+  render(): HTMLDivElement {
     const footerWrapper = document.createElement('div');
     footerWrapper.classList.add('footer__wrapper');
 

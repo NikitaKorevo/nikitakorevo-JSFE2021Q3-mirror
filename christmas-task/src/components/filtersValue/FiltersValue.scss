@@ -1,11 +1,11 @@
 .filters-value {
   width: 300px;
+  padding: 15px;
+  color: #fff;
+  border: 2px solid #278d9f;
+  border-radius: 15px;
   backdrop-filter: blur(3px) brightness(40%);
   background-color: rgba(26, 101, 114, 0.3);
-  border: 2px solid #278d9f;
-  padding: 15px;
-  border-radius: 15px;
-  color: #fff;
 
   .filters-value__title {
     margin: 0;

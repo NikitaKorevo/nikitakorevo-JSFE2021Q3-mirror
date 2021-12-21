@@ -1,7 +1,7 @@
 import './Home.scss';
 
 class Home {
-  render() {
+  render(): HTMLDivElement {
     const home = document.createElement('div');
     home.classList.add('home');
 

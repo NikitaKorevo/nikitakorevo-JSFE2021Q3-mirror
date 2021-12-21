@@ -1,7 +1,7 @@
 import './PageNotFound.scss';
 
 class PageNotFound {
-  render() {
+  render(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('page-not-found');
 

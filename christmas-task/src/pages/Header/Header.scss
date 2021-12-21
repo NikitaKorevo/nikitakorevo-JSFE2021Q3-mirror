@@ -5,12 +5,11 @@
 
 .header {
   display: flex;
-  height: 70px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1600px;
   width: calc(100% - 30px);
+  max-width: 1600px;
+  height: 70px;
   margin: 0 auto;
 
   .nav {
@@ -29,10 +28,10 @@
     .nav__button {
       font: normal 400 26px/70px 'Neucha', cursive;
       color: #fff;
-      text-transform: uppercase;
       background-color: transparent;
       border: none;
       padding: 0 20px;
+      text-transform: uppercase;
       transition: color 0.3s;
     }
 
@@ -68,9 +67,9 @@
     height: 40px;
     font: normal 400 16px/40px 'Open Sans', sans-serif;
     color: #fff;
-    border-radius: 15px;
     border: 1px solid #278d9f;
     background-color: #123f47;
+    border-radius: 15px;
     outline: none;
     padding: 0 10px 0 40px;
     background-image: url('../../assets/svg/search.svg');
@@ -85,14 +84,14 @@
   }
 
   .control__amount-toys {
+    width: 40px;
+    height: 40px;
     font-size: 24px;
     color: #fff;
     text-align: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
     border: 1px solid #278d9f;
     background-color: #123f47;
+    border-radius: 50%;
     outline: none;
   }
 

@@ -8,8 +8,8 @@
 }
 
 .main {
-  height: calc(100vh - 70px - 70px);
-  max-width: 1600px;
   width: calc(100% - 30px);
+  max-width: 1600px;
+  height: calc(100vh - 70px - 70px);
   margin: 0 auto;
 }

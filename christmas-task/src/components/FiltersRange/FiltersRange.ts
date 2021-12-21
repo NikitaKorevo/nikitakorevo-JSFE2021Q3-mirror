@@ -15,8 +15,8 @@ class FiltersRange {
     this.numInstanceTo = props.numInstanceTo;
     this.purchaseYearFrom = props.purchaseYearFrom;
     this.purchaseYearTo = props.purchaseYearTo;
-    console.log(props);
   }
+
   getFilterRange(arrToys: Toy[]): Toy[] {
     return arrToys.filter((node) => {
       if (
@@ -30,7 +30,7 @@ class FiltersRange {
     });
   }
 
-  render() {
+  render(): HTMLDivElement {
     const filtersRangeContainer = document.createElement('div');
     filtersRangeContainer.classList.add('filters-range');
 

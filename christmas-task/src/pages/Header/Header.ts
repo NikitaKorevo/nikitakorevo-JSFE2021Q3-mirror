@@ -20,7 +20,7 @@ class Header {
     const headerWrapper = document.createElement('div');
     headerWrapper.classList.add('header__wrapper');
 
-    const header = document.createElement('div');
+    const header = document.createElement('header');
     header.classList.add('header');
 
     const nav = document.createElement('nav');

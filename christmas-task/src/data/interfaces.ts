@@ -9,10 +9,6 @@ export interface IToy {
   favorite: boolean;
 }
 
-/* interface ISortings {
-  TODO сделать отдельно тип для sorting
-} */
-
 interface IForms {
   [index: string]: boolean;
   ball: boolean;
@@ -55,35 +51,3 @@ export interface IToysSettings {
   dimensions: IDimensions;
   favorites: IFavorites;
 }
-
-// TODO сделать отдельно тип для sorting
-
-/* export interface IToysSettings {
-  [key: string]: string | boolean;
-  howSortingToys: string;
-  numInstanceFrom: string;
-  numInstanceTo: string;
-  purchaseYearFrom: string;
-  purchaseYearTo: string;
-  forms: {
-    ball: boolean;
-    bell: boolean;
-    cone: boolean;
-    snowflake: boolean;
-    figurine: boolean;
-  };
-  colors: {
-    white: boolean;
-    yellow: boolean;
-    red: boolean;
-    blue: boolean;
-    green: boolean;
-  };
-  dimensions: {
-    big: boolean;
-    average: boolean;
-    small: boolean;
-  };
-  favorite: boolean;
-}
- */

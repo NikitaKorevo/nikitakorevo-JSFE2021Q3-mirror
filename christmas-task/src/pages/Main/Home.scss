@@ -1,39 +1,39 @@
 .home {
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: space-evenly;
+  height: 100%;
   margin: 0 auto;
 
   .home__container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    backdrop-filter: blur(3px) brightness(90%);
-    background-color: rgba(26, 101, 114, 0.3);
     border: 2px solid #278d9f;
+    background-color: rgba(26, 101, 114, 0.3);
     border-radius: 15px;
+    backdrop-filter: blur(3px) brightness(90%);
 
     .home__title {
       font: normal 400 53px 'Neucha', cursive;
       color: #fff;
-      margin: 0;
-      padding: 66px 15px;
       text-align: center;
+      padding: 66px 15px;
+      margin: 0;
     }
   }
 
   .home__button {
-    font: normal 400 24px/70px 'Open Sans', sans-serif;
     width: 100%;
     max-width: 320px;
-    margin: 0 auto;
+    font: normal 400 24px/70px 'Open Sans', sans-serif;
     color: #fff;
-    background-color: transparent;
-    backdrop-filter: blur(3px) brightness(90%);
-    background-color: rgba(26, 101, 114, 0.3);
+    margin: 0 auto;
     border: 2px solid #278d9f;
+    background-color: transparent;
     border-radius: 15px;
+    background-color: rgba(26, 101, 114, 0.3);
+    backdrop-filter: blur(3px) brightness(90%);
   }
 
   .home__button:hover {

@@ -22,7 +22,7 @@ class FilterRange {
     this.secondRangeValue = props.endSecondRangeValue;
   }
 
-  render() {
+  render(): HTMLDivElement {
     const filterRangeContainer = document.createElement('div');
     filterRangeContainer.classList.add('filter-range');
 
@@ -103,7 +103,11 @@ class FilterRange {
     return filterRangeContainer;
   }
 
-  changeRunnableTrack(firstRange: HTMLInputElement, secondRange: HTMLInputElement, rangeContainer: HTMLDivElement) {
+  changeRunnableTrack(
+    firstRange: HTMLInputElement,
+    secondRange: HTMLInputElement,
+    rangeContainer: HTMLDivElement
+  ): void {
     // need to specify the width rangeContainer. Wrong value at application start.
     const rangeWidth = firstRange.clientWidth || 129;
     const countAllStep = (+this.rangeMax - +this.rangeMin) / +this.rangeStep;

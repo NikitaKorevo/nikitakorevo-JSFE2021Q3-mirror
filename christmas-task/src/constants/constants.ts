@@ -1,4 +1,6 @@
-export const defaultSettings = {
+import { IToysSettings } from '../data/interfaces';
+
+export const defaultSettings: IToysSettings = {
   howSortingToys: 'nameUp',
   numInstanceFrom: '1',
   numInstanceTo: '12',

@@ -1,10 +1,10 @@
 .toy {
   width: 250px;
-  backdrop-filter: blur(3px) brightness(40%);
-  background-color: rgba(26, 101, 114, 0.3);
+  color: #fff;
   border: 2px solid #278d9f;
   border-radius: 15px;
-  color: #fff;
+  backdrop-filter: blur(3px) brightness(40%);
+  background-color: rgba(26, 101, 114, 0.3);
 
   .toy__name {
     font-size: 16px;
@@ -46,24 +46,24 @@
 }
 
 .toy--warning::before {
-  position: absolute;
   content: '';
-  width: 100%;
-  height: 100%;
-  backdrop-filter: grayscale(100%) brightness(0%);
-  border-radius: 15px;
+  position: absolute;
   top: 50%;
   left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backdrop-filter: grayscale(100%) brightness(0%);
   transform: translate(-50%, -50%);
 }
 
 .toy--warning::after {
-  font: normal 400 20px/35px 'Open Sans', sans-serif;
-  position: absolute;
   content: 'Извините, все слоты заполнены';
+  position: absolute;
   top: 50%;
   left: 15px;
   right: 15px;
+  font: normal 400 20px/35px 'Open Sans', sans-serif;
   text-align: center;
   transform: translateY(-50%);
 }

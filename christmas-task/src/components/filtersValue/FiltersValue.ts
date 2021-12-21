@@ -105,7 +105,7 @@ class FiltersValue {
     return arrToys;
   }
 
-  render() {
+  render(): HTMLDivElement {
     const filterValueContainer = document.createElement('div');
     filterValueContainer.classList.add('filters-value');
 

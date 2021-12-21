@@ -3,11 +3,11 @@
   flex-direction: column;
   row-gap: 18px;
   width: 300px;
+  padding: 15px;
+  border: 2px solid #278d9f;
+  border-radius: 15px;
   backdrop-filter: blur(3px) brightness(40%);
   background-color: rgba(26, 101, 114, 0.3);
-  border: 2px solid #278d9f;
-  padding: 15px;
-  border-radius: 15px;
 
   .sorting-toys__title {
     color: #fff;
@@ -20,9 +20,9 @@
     font: normal 400 16px 'Open Sans', sans-serif;
     color: #fff;
     border: 1px solid #278d9f;
-    outline: none;
-    border-radius: 10px;
     background-color: #123f47;
+    border-radius: 10px;
+    outline: none;
   }
 
   .sorting-toys__select:hover {

@@ -15,7 +15,7 @@ class App {
     this.footer = new Footer();
   }
 
-  start() {
+  start(): void {
     const root = document.getElementById('root');
     root?.append(this.header.render(), this.main.render(), this.footer.render());
   }

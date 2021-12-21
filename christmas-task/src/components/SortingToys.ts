@@ -27,7 +27,7 @@ class SortingToys {
     return arrToys;
   }
 
-  render() {
+  render(): HTMLDivElement {
     const sortingToys = document.createElement('div');
     sortingToys.classList.add('sorting-toys');
 
