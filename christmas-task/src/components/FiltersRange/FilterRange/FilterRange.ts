@@ -109,7 +109,7 @@ class FilterRange {
     rangeContainer: HTMLDivElement
   ): void {
     // need to specify the width rangeContainer. Wrong value at application start.
-    const rangeWidth = firstRange.clientWidth || 129;
+    const rangeWidth = firstRange.clientWidth || 198;
     const countAllStep = (+this.rangeMax - +this.rangeMin) / +this.rangeStep;
     const countFirstRange = (+firstRange.value - +this.rangeMin) / +this.rangeStep;
     const countSecondRange = (+secondRange.value - +this.rangeMin) / +this.rangeStep;

@@ -24,6 +24,7 @@
     }
 
     .inputs__range-container {
+      width: 100%;
       position: relative;
       pointer-events: none;
       height: 5px;
@@ -50,7 +51,7 @@
       }
 
       .inputs__first-range::-webkit-slider-thumb {
-        width: 18px;
+        width: 20px;
         height: 16px;
         border-bottom-left-radius: 50%;
         border-bottom-right-radius: 50%;
@@ -61,7 +62,7 @@
       }
 
       .inputs__second-range::-webkit-slider-thumb {
-        width: 18px;
+        width: 20px;
         height: 16px;
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
