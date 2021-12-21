@@ -76,6 +76,11 @@
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: 5% 50%;
+    transition: 0.3s border;
+  }
+
+  .control__search:hover {
+    border: 1px solid #fff;
   }
 
   .control__search::placeholder {

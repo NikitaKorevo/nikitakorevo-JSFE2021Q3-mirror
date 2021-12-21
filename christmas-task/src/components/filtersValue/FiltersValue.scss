@@ -24,6 +24,11 @@
     position: relative;
     display: inline-block;
     cursor: pointer;
+    transition: 0.3s transform;
+  }
+
+  .filters-value__label:hover {
+    transform: scale(1.1);
   }
 
   .filters-value__forms {
@@ -84,5 +89,14 @@
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center center;
+  }
+
+  .filters-value__favorite {
+    transition: 0.3s border;
+  }
+
+  .filters-value__favorite:hover {
+    transform: scale(1);
+    border: 1px solid #fff !important;
   }
 }

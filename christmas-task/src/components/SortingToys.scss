@@ -23,10 +23,12 @@
     background-color: #123f47;
     border-radius: 10px;
     outline: none;
+    transition: 0.3s border;
   }
 
   .sorting-toys__select:hover {
     cursor: pointer;
+    border: 1px solid #fff;
   }
 
   .button {
@@ -36,9 +38,11 @@
     border: 1px solid #278d9f;
     background-color: #123f47;
     border-radius: 10px;
+    transition: 0.3s border;
   }
 
   .button:hover {
+    border: 1px solid #fff;
     cursor: pointer;
   }
 }
