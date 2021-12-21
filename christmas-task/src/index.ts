@@ -3,6 +3,7 @@ import './index.scss';
 import Header from './pages/Header/Header';
 import Main from './pages/Main/Main';
 import Footer from './pages/Footer/Footer';
+import './score';
 
 class App {
   header: Header;
