@@ -1,6 +1,6 @@
 import './Header.scss';
 import Toys from '../Main/Toys';
-import Toy from '../../components/Toy';
+import Toy from '../../components/Toy/Toy';
 
 class Header {
   static searchValue = '';

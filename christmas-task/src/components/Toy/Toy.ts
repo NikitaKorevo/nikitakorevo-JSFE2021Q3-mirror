@@ -1,5 +1,5 @@
 import './Toy.scss';
-import { IToy } from '../data/interfaces';
+import { IToy } from '../../data/interfaces';
 
 class Toy {
   num: string;

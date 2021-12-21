@@ -1,6 +1,6 @@
 import './FiltersValue.scss';
 import Toys from '../../pages/Main/Toys';
-import Toy from '../Toy';
+import Toy from '../Toy/Toy';
 
 class FiltersValue {
   forms: string[];

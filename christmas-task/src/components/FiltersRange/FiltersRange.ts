@@ -1,6 +1,6 @@
 import './FiltersRange.scss';
 import FilterRange from './FilterRange/FilterRange';
-import Toy from '../Toy';
+import Toy from '../Toy/Toy';
 import Toys from '../../pages/Main/Toys';
 import { IToysSettings } from '../../data/interfaces';
 

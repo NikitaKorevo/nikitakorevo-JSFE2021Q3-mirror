@@ -1,7 +1,7 @@
 import './SortingToys.scss';
-import Toy from './Toy';
-import Toys from '../pages/Main/Toys';
-import { defaultSettings } from '../constants/constants';
+import Toy from '../Toy/Toy';
+import Toys from '../../pages/Main/Toys';
+import { defaultSettings } from '../../constants/constants';
 
 class SortingToys {
   howSortingToys: string;

@@ -2,10 +2,10 @@ import './Toys.scss';
 import toyData from '../../data/toyData';
 import { defaultSettings } from '../../constants/constants';
 import { IToysSettings } from '../../data/interfaces';
-import Toy from '../../components/Toy';
+import Toy from '../../components/Toy/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
-import SortingToys from '../../components/SortingToys';
+import SortingToys from '../../components/SortingToys/SortingToys';
 import Header from '../Header/Header';
 
 class Toys {
