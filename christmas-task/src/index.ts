@@ -17,8 +17,8 @@ class App {
   }
 
   start(): void {
-    const root = document.getElementById('root');
-    root?.append(this.header.render(), this.main.render(), this.footer.render());
+    const root = document.getElementById('root') as HTMLElement;
+    root.append(this.header.render(), this.main.render(), this.footer.render());
   }
 }
 
