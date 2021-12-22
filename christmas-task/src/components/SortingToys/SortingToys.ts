@@ -1,7 +1,7 @@
 import './SortingToys.scss';
 import Toy from '../Toy/Toy';
 import Toys from '../../pages/Main/Toys';
-import { defaultSettings } from '../../constants/constants';
+import { DEFAULT_SETTINGS } from '../../constants/constants';
 
 class SortingToys {
   howSortingToys: string;
@@ -63,7 +63,7 @@ class SortingToys {
     });
     buttonResetFilters.addEventListener('click', () => {
       const copyHowSortingToys = Toys.toysSettings.howSortingToys;
-      Toys.toysSettings = JSON.parse(JSON.stringify(defaultSettings));
+      Toys.toysSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
       Toys.toysSettings.howSortingToys = copyHowSortingToys;
       Toys.settingsChange();
       location.reload();

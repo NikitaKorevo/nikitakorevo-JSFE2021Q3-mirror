@@ -1,6 +1,6 @@
 import { IToysSettings } from '../data/interfaces';
 
-export const defaultSettings: IToysSettings = {
+export const DEFAULT_SETTINGS: IToysSettings = {
   howSortingToys: 'nameUp',
   numInstanceFrom: '1',
   numInstanceTo: '12',
@@ -28,4 +28,10 @@ export const defaultSettings: IToysSettings = {
   favorites: {
     favorite: false
   }
+};
+
+export const ROUTES = {
+  PAGE_NOT_FOUND: 'page-not-found',
+  HOME: '',
+  TOYS: 'toys'
 };

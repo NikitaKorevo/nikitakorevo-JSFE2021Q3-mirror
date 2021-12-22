@@ -1,12 +1,12 @@
 import './Toys.scss';
 import toyData from '../../data/toyData';
-import { defaultSettings } from '../../constants/constants';
+import { DEFAULT_SETTINGS } from '../../constants/constants';
 import { IToysSettings } from '../../data/interfaces';
+import Header from '../Header/Header';
 import Toy from '../../components/Toy/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys/SortingToys';
-import Header from '../Header/Header';
 
 class Toys {
   static toysSettings: IToysSettings = Toys.#pullLocalStorage('toysSettings');
@@ -27,8 +27,8 @@ class Toys {
         if (korEvo_toysSettings) {
           return JSON.parse(korEvo_toysSettings);
         } else {
-          localStorage.setItem('korEvo_toysSettings', JSON.stringify(defaultSettings));
-          return JSON.parse(JSON.stringify(defaultSettings));
+          localStorage.setItem('korEvo_toysSettings', JSON.stringify(DEFAULT_SETTINGS));
+          return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
         }
 
       case 'pickedToys':
@@ -107,7 +107,6 @@ class Toys {
   }
 
   static #updateCountSelectedToys(e: Event): void {
-    const amountToys = document.querySelector('.control__amount-toys') as HTMLInputElement;
     const target = e.target as HTMLElement;
     const toy = target.closest('.toy') as HTMLDivElement;
     const numToy = toy.dataset.num;
@@ -122,7 +121,7 @@ class Toys {
       toy.classList.contains('toy--checked') ? Toys.pickedToys.add(+numToy) : Toys.pickedToys.delete(+numToy);
     }
 
-    amountToys.value = `${Toys.pickedToys.size}`;
+    Header.amountToys.value = `${Toys.pickedToys.size}`;
   }
 
   static #countToysExceeded(toy: HTMLDivElement): void {

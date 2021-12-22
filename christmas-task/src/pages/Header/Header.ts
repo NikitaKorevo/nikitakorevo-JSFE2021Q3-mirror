@@ -1,8 +1,10 @@
 import './Header.scss';
 import Toys from '../Main/Toys';
 import Toy from '../../components/Toy/Toy';
+import { ROUTES } from '../../constants/constants';
 
 class Header {
+  static amountToys = document.createElement('input');
   static searchValue = '';
 
   getSearchSort(arrToys: Toy[]): Toy[] {
@@ -57,16 +59,15 @@ class Header {
       Toys.settingsChange();
     });
 
-    const amountToys = document.createElement('input');
-    amountToys.classList.add('control__amount-toys');
-    amountToys.type = 'number';
-    amountToys.readOnly = true;
+    Header.amountToys.classList.add('control__amount-toys');
+    Header.amountToys.type = 'number';
+    Header.amountToys.readOnly = true;
 
-    amountToys.value = `${Toys.pickedToys.size}`;
+    Header.amountToys.value = `${Toys.pickedToys.size}`;
 
     headerWrapper.append(header);
     nav.append(buttonLogo, buttonToys, buttonTree);
-    control.append(search, amountToys);
+    control.append(search, Header.amountToys);
 
     window.addEventListener('hashchange', () => {
       header.append(...this.switchContent(header, nav, control));
@@ -77,17 +78,17 @@ class Header {
   }
 
   switchContent(header: HTMLElement, nav: HTMLElement, control: HTMLElement): HTMLElement[] | [HTMLElement] {
-    const pageNow = window.location.hash;
+    const currentPage = window.location.hash;
 
     while (header.firstChild) {
       header.removeChild(header.firstChild);
     }
 
-    switch (pageNow) {
-      case '':
+    switch (currentPage) {
+      case ROUTES.HOME:
         return [nav];
 
-      case '#toys':
+      case '#' + ROUTES.TOYS:
         return [nav, control];
 
       default:
