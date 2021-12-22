@@ -1,16 +1,19 @@
 import './news.css';
 import { DataNews } from '../../interface';
+import { NUM_NEWS_ON_PAGE } from '../../../constants/constants';
 
 class News {
-  draw(data: DataNews[]) {
-    const news = data.length >= 10 ? data.filter((_item, idx: number) => idx < 10) : data;
+  drawNews(data: DataNews[]): void {
+    const news = data.length >= NUM_NEWS_ON_PAGE ? data.filter((_item, idx: number) => idx < NUM_NEWS_ON_PAGE) : data;
     const fragment = document.createDocumentFragment();
     const newsItemTemp = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
 
-    news.forEach((item, idx: number) => {
+    news.forEach((item: DataNews, idx: number) => {
       const newsClone = <HTMLElement>newsItemTemp.content.cloneNode(true);
 
-      if (idx % 2) (newsClone as HTMLElement).querySelector('.news__item')?.classList.add('alt');
+      if (idx % 2) {
+        (newsClone as HTMLElement).querySelector('.news__item')?.classList.add('alt');
+      }
 
       ((newsClone as HTMLElement).querySelector(
         '.news__meta-photo'

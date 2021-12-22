@@ -2,11 +2,11 @@ import AppLoader from './appLoader';
 import { DrawNewsData, DrawSourcesData } from '../interface';
 
 class AppController extends AppLoader {
-  getSources(callback: (data?: DrawSourcesData) => void) {
-    super.getResp({ endpoint: 'sources' }, callback);
+  getSources(callback: (data?: DrawSourcesData) => void): void {
+    super.getResponse({ endpoint: 'sources' }, callback);
   }
 
-  getNews(e: Event, callback: (data?: DrawNewsData) => void) {
+  getNews(e: Event, callback: (data?: DrawNewsData) => void): void {
     let target = <HTMLElement>e.target;
     const newsContainer = <HTMLElement>e.currentTarget;
 
@@ -15,7 +15,7 @@ class AppController extends AppLoader {
         const sourceId = target.getAttribute('data-source-id');
         if (newsContainer.getAttribute('data-source') !== sourceId) {
           newsContainer.setAttribute('data-source', sourceId as string);
-          super.getResp({ endpoint: 'everything', options: { sources: sourceId } }, callback);
+          super.getResponse({ endpoint: 'everything', options: { sources: sourceId } }, callback);
         }
         return;
       }

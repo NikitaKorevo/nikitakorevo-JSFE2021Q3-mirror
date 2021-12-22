@@ -4,7 +4,6 @@ import { DataNews, DataSources, DrawNewsData, DrawSourcesData } from '../interfa
 
 export class AppView {
   news: News;
-
   sources: Sources;
 
   constructor() {
@@ -12,12 +11,12 @@ export class AppView {
     this.sources = new Sources();
   }
 
-  drawNews(data: DrawNewsData) {
+  drawNews(data: DrawNewsData): void {
     const values: DataNews[] = data?.articles ? data?.articles : [];
-    this.news.draw(values);
+    this.news.drawNews(values);
   }
 
-  drawSources(data: DrawSourcesData) {
+  drawSources(data: DrawSourcesData): void {
     const values: DataSources[] = data?.sources ? data?.sources : [];
     this.sources.draw(values);
   }
