@@ -25,7 +25,7 @@ class Footer {
 
     const rssImg = document.createElement('img');
     rssImg.src = './assets/svg/rss.svg';
-    rssImg.height = 40;
+    rssImg.height = 35;
 
     footerWrapper.append(footer);
     footer.append(year, github, rssLogo);
