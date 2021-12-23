@@ -3,6 +3,15 @@ import General from './General';
 import ArtistsQuiz from './ArtistsQuiz';
 import Score from './Score';
 import PicturesQuiz from './PicturesQuiz';
+import {
+  ARTISTS_QUIZ_CATEGORIES,
+  ARTISTS_QUIZ_CATEGORIES_QUESTIONS,
+  ARTISTS_QUIZ_SCORE,
+  HOME,
+  PICTURES_QUIZ_CATEGORIES,
+  PICTURES_QUIZ_CATEGORIES_QUESTIONS,
+  PICTURES_QUIZ_SCORE,
+} from '../constants/constants';
 
 const main = document.createElement('main');
 main.classList.add('main');
@@ -18,31 +27,31 @@ class Routing {
     const picturesQuiz = new PicturesQuiz();
 
     switch (window.location.hash) {
-      case '':
+      case HOME:
         main.append(general.render());
         break;
-      case '#ArtistsQuiz/categories/':
+      case `#${ARTISTS_QUIZ_CATEGORIES}`:
         main.append(artistsQuiz.render());
         break;
 
-      case '#ArtistsQuiz/score/':
+      case `#${ARTISTS_QUIZ_SCORE}`:
         setTimeout(() => {
           main.append(score.render());
         }, 0);
         break;
 
-      case '#PicturesQuiz/categories/':
+      case `#${PICTURES_QUIZ_CATEGORIES}`:
         main.append(picturesQuiz.render());
         break;
 
-      case '#PicturesQuiz/score/':
+      case `#${PICTURES_QUIZ_SCORE}`:
         setTimeout(() => {
           main.append(score.render());
         }, 0);
         break;
 
       default:
-        window.location.hash = '';
+        window.location.hash = HOME;
         break;
     }
     return main;
@@ -50,8 +59,8 @@ class Routing {
 }
 
 window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#ArtistsQuiz/categories/questions/') return;
-  if (window.location.hash === '#PicturesQuiz/categories/questions/') return;
+  if (window.location.hash === `#${ARTISTS_QUIZ_CATEGORIES_QUESTIONS}`) return;
+  if (window.location.hash === `#${PICTURES_QUIZ_CATEGORIES_QUESTIONS}`) return;
   new Routing().render();
 });
 

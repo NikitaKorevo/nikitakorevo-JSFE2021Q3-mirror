@@ -2,6 +2,7 @@ import './PicturesQuiz.scss';
 import TitleH2 from '../components/TitleH2';
 import Card from '../components/Card';
 import PicturesQuizQuestions from './PicturesQuizQuestions';
+import { ANSWERS, NUMBER_ROUND_FOR_SCORE, PICTURES_QUIZ_SCORE } from '../constants/constants';
 
 class PicturesQuiz {
   constructor() {
@@ -21,17 +22,13 @@ class PicturesQuiz {
     ];
   }
 
-  generatingQuestions(numRound) {
+  generateQuestions(numRound) {
     const main = document.querySelector('.main');
-    /* if (main.firstChild) {
-      main.removeChild(main.firstChild);
-    } */
     main.append(new PicturesQuizQuestions(numRound).render());
-    /* console.log(e.target.closest('.card').dataset.numRound); */
   }
 
   render() {
-    const answers = JSON.parse(localStorage.getItem('answers'));
+    const answers = JSON.parse(localStorage.getItem(ANSWERS));
 
     const div = document.createElement('div');
     div.classList.add('pictures-quiz');
@@ -55,11 +52,11 @@ class PicturesQuiz {
     div.addEventListener('click', (e) => {
       if (e.target.closest('.card__num-completed')) {
         const { numRound } = e.target.closest('.card').dataset;
-        localStorage.setItem('numRoundForScore', numRound);
-        window.location.hash = 'PicturesQuiz/score/';
+        localStorage.setItem(NUMBER_ROUND_FOR_SCORE, numRound);
+        window.location.hash = PICTURES_QUIZ_SCORE;
       }
       if (e.target.closest('.card__img')) {
-        this.generatingQuestions(e.target.closest('.card').dataset.numRound);
+        this.generateQuestions(e.target.closest('.card').dataset.numRound);
       }
     });
 

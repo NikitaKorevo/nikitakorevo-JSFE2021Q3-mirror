@@ -1,7 +1,16 @@
 import './PicturesQuizQuestions.scss';
+import {
+  ANSWERS,
+  HOME,
+  NUMBER_QUESTIONS,
+  PICTURES_QUIZ_CATEGORIES,
+  PICTURES_QUIZ_CATEGORIES_QUESTIONS,
+  URL_PATH_TO_PICTURE,
+  VOLUME,
+} from '../constants/constants';
 import Button from '../components/Button';
 
-let data = null;
+let artPicturesData = null;
 let imageNum = [];
 let currentPicture = null;
 let correctAuthors = [];
@@ -12,17 +21,16 @@ let rightButtons = [];
 let responsesUser = [];
 let numRoundCopy = null;
 
-const getData = async () => {
-  const res = await fetch('./assets/json/data.json');
+const getArtPicturesData = async () => {
+  const res = await fetch('./assets/json/artPicturesData.json');
   const result = await res.json();
-  data = result;
+  artPicturesData = result;
 };
-getData();
+getArtPicturesData();
 
 class PicturesQuizQuestions {
   constructor(numRound) {
     this.numRound = +numRound;
-    console.log(numRound);
   }
 
   randomNum(max, min) {
@@ -38,26 +46,27 @@ class PicturesQuizQuestions {
     numRoundCopy = this.numRound;
 
     for (let index = this.numRound * 10; correctAuthors.length < 10; index += 1) {
-      /* console.log(`index ${index}`); */
-      imageNum.push(data[index].imageNum);
-      correctAuthors.push(data[index].author);
-      copyCorrectAuthors.push(data[index].author);
+      imageNum.push(artPicturesData[index].imageNum);
+      correctAuthors.push(artPicturesData[index].author);
+      copyCorrectAuthors.push(artPicturesData[index].author);
     }
-    console.log(correctAuthors);
+
     while (incorrectAuthors.length < 30) {
-      const randomNum = this.randomNum(0, data.length - 1);
-      const isAuthorInCorrectAuthors = correctAuthors.includes(data[randomNum].author);
-      const isAuthorInIncorrectAuthors = incorrectAuthors.includes(data[randomNum].author);
+      const randomNum = this.randomNum(0, artPicturesData.length - 1);
+      const isAuthorInCorrectAuthors = correctAuthors.includes(artPicturesData[randomNum].author);
+      const isAuthorInIncorrectAuthors = incorrectAuthors.includes(
+        artPicturesData[randomNum].author
+      );
 
       if (!isAuthorInCorrectAuthors && !isAuthorInIncorrectAuthors) {
-        incorrectAuthors.push(data[randomNum].author);
+        incorrectAuthors.push(artPicturesData[randomNum].author);
         incorrectPictures.push(randomNum);
       }
     }
   }
 
   render() {
-    window.location.hash = 'PicturesQuiz/categories/questions/';
+    window.location.hash = PICTURES_QUIZ_CATEGORIES_QUESTIONS;
     const main = document.querySelector('.main');
     if (main.firstChild) {
       main.removeChild(main.firstChild);
@@ -71,14 +80,7 @@ class PicturesQuizQuestions {
     questionTitle.classList.add('pictures-quiz-questions__title');
     questionTitle.textContent = `Какую картину написал ${correctAuthors.shift()}?`;
 
-    /* const ImgContainer = document.createElement('div');
-    ImgContainer.classList.add('artists-quiz-questions__img-container');
-    const img = document.createElement('img');
-    img.classList.add('artists-quiz-questions__img'); */
-    [currentPicture] = imageNum; /*  */
-    /* console.log(`currentPicture ${currentPicture}`); */ /*  */
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`; */
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/full/${imageNum.shift()}full.jpg`; */
+    [currentPicture] = imageNum;
 
     const containerForButtons1 = document.createElement('div');
     containerForButtons1.classList.add('pictures-quiz-questions__buttons-container');
@@ -86,7 +88,7 @@ class PicturesQuizQuestions {
     containerForButtons2.classList.add('pictures-quiz-questions__buttons-container');
 
     const randomNumButton = this.randomNum(0, 3);
-    console.log(`randomNumButton ${randomNumButton}`);
+
     for (let i = 0; i < 4; i += 1) {
       const ImgContainer = document.createElement('div');
       ImgContainer.classList.add('pictures-quiz-questions__img-container');
@@ -99,11 +101,11 @@ class PicturesQuizQuestions {
       if (i === randomNumButton) {
         rightButtons.push(i);
         correctAuthors.shift();
-        buttonImg.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`;
+        buttonImg.src = `${URL_PATH_TO_PICTURE + imageNum.shift()}.jpg`;
       }
       if (i !== randomNumButton) {
         incorrectAuthors.shift();
-        buttonImg.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${incorrectPictures.shift()}.jpg`;
+        buttonImg.src = `${URL_PATH_TO_PICTURE + incorrectPictures.shift()}.jpg`;
       }
       if (i < 2) {
         containerForButtons1.append(ImgContainer);
@@ -117,8 +119,6 @@ class PicturesQuizQuestions {
 
     div.append(questionTitle, navigation);
 
-    /* this.renderModal(); */
-
     navigation.addEventListener('click', (e) => {
       if (e.target.classList.contains('pictures-quiz-questions__button')) {
         const buttons = document.querySelectorAll('.pictures-quiz-questions__button');
@@ -129,14 +129,14 @@ class PicturesQuizQuestions {
 
           const audio = document.createElement('audio');
           audio.src = './assets/sound/right-answer.mp3';
-          audio.volume = localStorage.getItem('volume');
+          audio.volume = localStorage.getItem(VOLUME);
           audio.play();
         } else {
           buttons[pressedNumButton].classList.add('pictures-quiz-questions__button--wrong');
 
           const audio = document.createElement('audio');
           audio.src = './assets/sound/wrong-answer.mp3';
-          audio.volume = localStorage.getItem('volume');
+          audio.volume = localStorage.getItem(VOLUME);
           audio.play();
         }
         this.renderModal(e);
@@ -144,10 +144,10 @@ class PicturesQuizQuestions {
     });
 
     document.addEventListener('keydown', (e) => {
-      if (window.location.hash === '#PicturesQuiz/categories/questions/') {
+      if (window.location.hash === `#${PICTURES_QUIZ_CATEGORIES_QUESTIONS}`) {
         e.preventDefault();
-        console.log(e.code);
         const buttonNext = document.querySelector('.modal__next');
+
         if (buttonNext) {
           if (e.code === 'Space') {
             buttonNext.click();
@@ -155,10 +155,26 @@ class PicturesQuizQuestions {
         }
         if (!document.querySelector('.modal__img-congratulation') && !buttonNext) {
           const buttons = navigation.querySelectorAll('.pictures-quiz-questions__button');
-          if (e.code === 'KeyE') buttons[0].click(e);
-          if (e.code === 'KeyR') buttons[1].click(e);
-          if (e.code === 'KeyD') buttons[2].click(e);
-          if (e.code === 'KeyF') buttons[3].click(e);
+          switch (e.code) {
+            case 'KeyE':
+              buttons[0].click(e);
+              break;
+
+            case 'KeyR':
+              buttons[1].click(e);
+              break;
+
+            case 'KeyD':
+              buttons[2].click(e);
+              break;
+
+            case 'KeyF':
+              buttons[3].click(e);
+              break;
+
+            default:
+              break;
+          }
         }
       }
     });
@@ -178,14 +194,14 @@ class PicturesQuizQuestions {
     const rightOrWrong = document.createElement('img');
     rightOrWrong.classList.add('modal__right-or-wrong');
 
-    const picture = document.createElement('img');
-    picture.classList.add('modal__picture');
+    const artPicture = document.createElement('img');
+    artPicture.classList.add('modal__picture');
 
-    const namePicture = document.createElement('h5');
-    namePicture.classList.add('modal__name-picture');
+    const nameArtPicture = document.createElement('h5');
+    nameArtPicture.classList.add('modal__name-picture');
 
-    const authorPicture = document.createElement('h4');
-    authorPicture.classList.add('modal__author-picture');
+    const authorArtPicture = document.createElement('h4');
+    authorArtPicture.classList.add('modal__author-picture');
 
     const buttonNext = new Button('Next').render();
     buttonNext.classList.add('modal__next');
@@ -193,12 +209,10 @@ class PicturesQuizQuestions {
 
     buttonNext.addEventListener('click', () => {
       modal.style.display = 'none';
-      if (responsesUser.length < 10) {
-        modal.remove(); /* add */
+      if (responsesUser.length < NUMBER_QUESTIONS) {
+        modal.remove();
         this.nextImg(e);
       } else {
-        /* console.log(`correctAuthors.length ${correctAuthors}`);
-        console.log(correctAuthors); */
         this.openCongratulation();
       }
 
@@ -208,10 +222,10 @@ class PicturesQuizQuestions {
       });
     });
 
-    content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);
+    content.append(rightOrWrong, artPicture, nameArtPicture, authorArtPicture, buttonNext);
     modal.append(content);
     wrapper.append(modal);
-    this.openModal(e); /*  */
+    this.openModal(e);
     return content;
   }
 
@@ -231,11 +245,11 @@ class PicturesQuizQuestions {
     textCongratulation.classList.add('modal__text-congratulation');
     textCongratulation.textContent = 'Congratulations!';
 
-    const numbers = document.createElement('span');
-    numbers.classList.add('modal__numbers-congratulation');
-    numbers.textContent = `
-    ${responsesUser.filter((boolean) => boolean).length}/${responsesUser.length}
-    `;
+    const quizResult = document.createElement('span');
+    quizResult.classList.add('modal__numbers-congratulation');
+    const numberCorrectAnswers = responsesUser.filter((boolean) => boolean).length;
+    const numberAnswers = responsesUser.length;
+    quizResult.textContent = `${numberCorrectAnswers}/${numberAnswers}`;
 
     const buttonHome = new Button('Home').render();
     buttonHome.classList.add('modal__button-home');
@@ -247,20 +261,20 @@ class PicturesQuizQuestions {
     buttonsContainer.classList.add('modal__buttons-container');
     buttonsContainer.append(buttonHome, buttonNextQuiz);
 
-    content.append(imgCongratulation, textCongratulation, numbers, buttonsContainer);
-    const modal = document.querySelector('.artists-quiz-questions__modal');
-    modal.style.display = 'block';
+    content.append(imgCongratulation, textCongratulation, quizResult, buttonsContainer);
+    const modalCongratulation = document.querySelector('.artists-quiz-questions__modal');
+    modalCongratulation.style.display = 'block';
 
     buttonHome.addEventListener('click', () => {
-      modal.style.display = 'none';
-      window.location.hash = '';
-      modal.remove();
+      modalCongratulation.style.display = 'none';
+      window.location.hash = HOME;
+      modalCongratulation.remove();
     });
 
     buttonNextQuiz.addEventListener('click', () => {
-      modal.style.display = 'none';
-      window.location.hash = 'PicturesQuiz/categories/';
-      modal.remove();
+      modalCongratulation.style.display = 'none';
+      window.location.hash = PICTURES_QUIZ_CATEGORIES;
+      modalCongratulation.remove();
     });
   }
 
@@ -270,7 +284,6 @@ class PicturesQuizQuestions {
     } else {
       responsesUser.push(false);
     }
-    console.log(responsesUser);
 
     const rightOrWrong = document.querySelector('.modal__right-or-wrong');
     if (responsesUser[responsesUser.length - 1]) {
@@ -280,49 +293,41 @@ class PicturesQuizQuestions {
     }
 
     const picture = document.querySelector('.modal__picture');
-    picture.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${currentPicture}.jpg`;
+    picture.src = `${URL_PATH_TO_PICTURE + currentPicture}.jpg`;
 
     const namePicture = document.querySelector('.modal__name-picture');
-    namePicture.textContent = data[currentPicture].name;
+    namePicture.textContent = artPicturesData[currentPicture].name;
 
     const authorPicture = document.querySelector('.modal__author-picture');
-    authorPicture.textContent = `${data[currentPicture].author}, ${data[currentPicture].year}`;
+    authorPicture.textContent = `${artPicturesData[currentPicture].author}, ${artPicturesData[currentPicture].year}`;
 
     const modal = document.querySelector('.artists-quiz-questions__modal');
     modal.style.display = 'block';
   }
 
   nextImg() {
-    currentPicture = `${imageNum[0]}`; /*  */
-    /* const img = document.querySelector('.artists-quiz-questions__img'); */
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`; */
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/full/${imageNum.shift()}full.jpg`; */
+    currentPicture = `${imageNum[0]}`;
     const questionTitle = document.querySelector('.pictures-quiz-questions__title');
-    questionTitle.textContent = `Какую картину написал ${data[currentPicture].author}?`;
+    questionTitle.textContent = `Какую картину написал ${artPicturesData[currentPicture].author}?`;
     const buttons = document.querySelectorAll('.pictures-quiz-questions__button');
     const randomNumButton = this.randomNum(0, 3);
     buttons.forEach((button, index) => {
       if (index === randomNumButton) {
         correctAuthors.shift();
         rightButtons.push(index);
-        buttons[
-          index
-        ].src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`;
+        buttons[index].src = `${URL_PATH_TO_PICTURE + imageNum.shift()}.jpg`;
       } else {
         incorrectAuthors.shift();
-        buttons[
-          index
-        ].src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${incorrectPictures.shift()}.jpg`;
+        buttons[index].src = `${URL_PATH_TO_PICTURE + incorrectPictures.shift()}.jpg`;
       }
     });
-    console.log(rightButtons);
   }
 
   saveAnswersInLocalStorage() {
     let answers = {};
-    if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
+    if (localStorage.getItem(ANSWERS)) answers = JSON.parse(localStorage.getItem(ANSWERS));
     answers[numRoundCopy] = responsesUser;
-    localStorage.setItem('answers', JSON.stringify(answers));
+    localStorage.setItem(ANSWERS, JSON.stringify(answers));
   }
 }
 

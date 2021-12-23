@@ -2,6 +2,7 @@ import './ArtistsQuiz.scss';
 import TitleH2 from '../components/TitleH2';
 import Card from '../components/Card';
 import ArtistsQuizQuestions from './ArtistsQuizQuestions';
+import { ANSWERS, ARTISTS_QUIZ_SCORE, NUMBER_ROUND_FOR_SCORE } from '../constants/constants';
 
 class ArtistsQuiz {
   constructor() {
@@ -21,17 +22,13 @@ class ArtistsQuiz {
     ];
   }
 
-  generatingQuestions(numRound) {
+  generateQuestions(numRound) {
     const main = document.querySelector('.main');
-    /* if (main.firstChild) {
-      main.removeChild(main.firstChild);
-    } */
     main.append(new ArtistsQuizQuestions(numRound).render());
-    /* console.log(e.target.closest('.card').dataset.numRound); */
   }
 
   render() {
-    const answers = JSON.parse(localStorage.getItem('answers'));
+    const answers = JSON.parse(localStorage.getItem(ANSWERS));
 
     const div = document.createElement('div');
     div.classList.add('artists-quiz');
@@ -55,11 +52,11 @@ class ArtistsQuiz {
     div.addEventListener('click', (e) => {
       if (e.target.closest('.card__num-completed')) {
         const { numRound } = e.target.closest('.card').dataset;
-        localStorage.setItem('numRoundForScore', numRound);
-        window.location.hash = 'ArtistsQuiz/score/';
+        localStorage.setItem(NUMBER_ROUND_FOR_SCORE, numRound);
+        window.location.hash = ARTISTS_QUIZ_SCORE;
       }
       if (e.target.closest('.card__img')) {
-        this.generatingQuestions(e.target.closest('.card').dataset.numRound);
+        this.generateQuestions(e.target.closest('.card').dataset.numRound);
       }
     });
 

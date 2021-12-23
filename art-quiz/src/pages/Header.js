@@ -1,6 +1,15 @@
 import './Header.scss';
 import TitleH1 from '../components/TitleH1';
 import Settings from './Settings';
+import {
+  ARTISTS_QUIZ_CATEGORIES,
+  ARTISTS_QUIZ_CATEGORIES_QUESTIONS,
+  ARTISTS_QUIZ_SCORE,
+  HOME,
+  PICTURES_QUIZ_CATEGORIES,
+  PICTURES_QUIZ_CATEGORIES_QUESTIONS,
+  PICTURES_QUIZ_SCORE,
+} from '../constants/constants';
 
 const header = document.createElement('header');
 header.classList.add('header');
@@ -13,7 +22,7 @@ class Header {
 
     const titleH1 = new TitleH1().render();
     titleH1.addEventListener('click', () => {
-      window.location.hash = '';
+      window.location.hash = HOME;
     });
 
     const elSettings = document.createElement('img');
@@ -36,36 +45,36 @@ class Header {
     categories.src = './assets/svg/categories.svg';
     categories.addEventListener('click', () => {
       const whyCategories = window.location.hash.slice(0, window.location.hash.indexOf('/'));
-      if (whyCategories === '#ArtistsQuiz') window.location.hash = 'ArtistsQuiz/categories/';
-      if (whyCategories === '#PicturesQuiz') window.location.hash = 'PicturesQuiz/categories/';
+      if (whyCategories === '#ArtistsQuiz') window.location.hash = ARTISTS_QUIZ_CATEGORIES;
+      if (whyCategories === '#PicturesQuiz') window.location.hash = PICTURES_QUIZ_CATEGORIES;
     });
 
     switch (window.location.hash) {
-      case '':
+      case HOME:
         header.append(elSettings);
         break;
 
-      case '#ArtistsQuiz/categories/':
+      case `#${ARTISTS_QUIZ_CATEGORIES}`:
         header.append(titleH1, elSettings);
         break;
 
-      case '#ArtistsQuiz/categories/questions/':
+      case `#${ARTISTS_QUIZ_CATEGORIES_QUESTIONS}`:
         header.append(titleH1, categories);
         break;
 
-      case '#ArtistsQuiz/score/':
+      case `#${ARTISTS_QUIZ_SCORE}`:
         header.append(titleH1, categories, elSettings);
         break;
 
-      case '#PicturesQuiz/categories/':
+      case `#${PICTURES_QUIZ_CATEGORIES}`:
         header.append(titleH1, elSettings);
         break;
 
-      case '#PicturesQuiz/categories/questions/':
+      case `#${PICTURES_QUIZ_CATEGORIES_QUESTIONS}`:
         header.append(titleH1, categories);
         break;
 
-      case '#PicturesQuiz/score/':
+      case `#${PICTURES_QUIZ_SCORE}`:
         header.append(titleH1, categories, elSettings);
         break;
 

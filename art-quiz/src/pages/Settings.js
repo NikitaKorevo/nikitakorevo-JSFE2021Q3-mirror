@@ -1,5 +1,6 @@
 import './Settings.scss';
 import Button from '../components/Button';
+import { CHECK_BOX_TIME_GAME, SPAN_TIME_ANSWER, VOLUME } from '../constants/constants';
 
 class Settings {
   render() {
@@ -23,8 +24,8 @@ class Settings {
     volume.min = '0';
     volume.max = '1';
     volume.step = '0.01';
-    if (!localStorage.getItem('volume')) localStorage.setItem('volume', '0.25');
-    volume.value = localStorage.getItem('volume');
+    if (!localStorage.getItem(VOLUME)) localStorage.setItem(VOLUME, '0.25');
+    volume.value = localStorage.getItem(VOLUME);
     volume.addEventListener('input', (e) => this.changeVolume(volume, e.target.value));
     volume.addEventListener('change', this.checkVolume);
 
@@ -43,8 +44,10 @@ class Settings {
     const checkboxTimeGame = document.createElement('input');
     checkboxTimeGame.classList.add('settings-modal__checkbox-time-game');
     checkboxTimeGame.type = 'checkbox';
-    if (!localStorage.getItem('checkboxTimeGame')) localStorage.setItem('checkboxTimeGame', false);
-    checkboxTimeGame.checked = localStorage.getItem('checkboxTimeGame') === 'true';
+    if (!localStorage.getItem(CHECK_BOX_TIME_GAME)) {
+      localStorage.setItem(CHECK_BOX_TIME_GAME, false);
+    }
+    checkboxTimeGame.checked = localStorage.getItem(CHECK_BOX_TIME_GAME) === 'true';
     checkboxTimeGame.addEventListener('click', () => this.toggleCheckboxTimeGame(checkboxTimeGame));
 
     const checkboxTimeGameContainer = document.createElement('div');
@@ -57,8 +60,8 @@ class Settings {
 
     const spanTimeAnswer = document.createElement('span');
     spanTimeAnswer.classList.add('settings-modal__span-time-answer');
-    if (!localStorage.getItem('spanTimeAnswer')) localStorage.setItem('spanTimeAnswer', 5);
-    spanTimeAnswer.textContent = localStorage.getItem('spanTimeAnswer');
+    if (!localStorage.getItem(SPAN_TIME_ANSWER)) localStorage.setItem(SPAN_TIME_ANSWER, 5);
+    spanTimeAnswer.textContent = localStorage.getItem(SPAN_TIME_ANSWER);
 
     const minusTimeAnswer = document.createElement('button');
     minusTimeAnswer.classList.add('settings-modal__minus-time-answer');
@@ -93,13 +96,13 @@ class Settings {
   changeVolume(volume, value) {
     const volumeCopy = volume;
     volumeCopy.value = value;
-    localStorage.setItem('volume', value);
+    localStorage.setItem(VOLUME, value);
   }
 
   checkVolume() {
     const audio = document.createElement('audio');
     audio.src = './assets/sound/right-answer.mp3';
-    audio.volume = localStorage.getItem('volume');
+    audio.volume = localStorage.getItem(VOLUME);
     audio.play();
   }
 
@@ -110,7 +113,7 @@ class Settings {
     } else {
       checkboxTimeGameCopy.checked = false;
     }
-    localStorage.setItem('checkboxTimeGame', checkboxTimeGameCopy.checked);
+    localStorage.setItem(CHECK_BOX_TIME_GAME, checkboxTimeGameCopy.checked);
   }
 
   minusPlus5(span, num) {
@@ -120,7 +123,7 @@ class Settings {
     if (time > 30) time = 30;
     if (time < 5) time = 5;
     spanCopy.innerHTML = time;
-    localStorage.setItem('spanTimeAnswer', time);
+    localStorage.setItem(SPAN_TIME_ANSWER, time);
   }
 }
 

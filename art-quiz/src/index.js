@@ -13,7 +13,6 @@ class App {
   }
 
   render() {
-    /* root.innerText = ''; */
     const div = document.createElement('div');
     div.classList.add('wrapper');
     const header = new Header();

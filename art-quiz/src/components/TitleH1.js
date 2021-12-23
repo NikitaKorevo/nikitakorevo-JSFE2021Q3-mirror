@@ -1,6 +1,7 @@
+import { HOME } from '../constants/constants';
 import './TitleH1.scss';
 
-class Titleh1 {
+class TitleH1 {
   constructor() {
     this.title = 'Art Quiz';
   }
@@ -10,10 +11,10 @@ class Titleh1 {
     title.classList.add('titleH1');
     title.textContent = this.title;
     title.addEventListener('click', () => {
-      window.location.hash = '';
+      window.location.hash = HOME;
     });
     return title;
   }
 }
 
-export default Titleh1;
+export default TitleH1;

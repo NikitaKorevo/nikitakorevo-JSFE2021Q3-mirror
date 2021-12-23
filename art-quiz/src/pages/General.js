@@ -1,6 +1,7 @@
 import './General.scss';
 import Button from '../components/Button';
 import TitleH1 from '../components/TitleH1';
+import { ARTISTS_QUIZ_CATEGORIES, HASH, PICTURES_QUIZ_CATEGORIES } from '../constants/constants';
 
 class General {
   render() {
@@ -17,12 +18,12 @@ class General {
     general.append(title, buttonArtist, buttonPictures);
 
     buttonArtist.addEventListener('click', () => {
-      window.location.hash = 'ArtistsQuiz/categories/';
-      localStorage.setItem('hash', 'ArtistsQuiz/categories/');
+      window.location.hash = ARTISTS_QUIZ_CATEGORIES;
+      localStorage.setItem(HASH, ARTISTS_QUIZ_CATEGORIES);
     });
     buttonPictures.addEventListener('click', () => {
-      window.location.hash = 'PicturesQuiz/categories/';
-      localStorage.setItem('hash', 'PicturesQuiz/categories/');
+      window.location.hash = PICTURES_QUIZ_CATEGORIES;
+      localStorage.setItem(HASH, PICTURES_QUIZ_CATEGORIES);
     });
     return general;
   }

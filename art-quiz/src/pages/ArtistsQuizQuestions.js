@@ -1,7 +1,15 @@
-import Button from '../components/Button';
 import './ArtistsQuizQuestions.scss';
+import Button from '../components/Button';
+import {
+  ANSWERS,
+  ARTISTS_QUIZ_CATEGORIES,
+  ARTISTS_QUIZ_CATEGORIES_QUESTIONS,
+  HOME,
+  URL_PATH_TO_PICTURE,
+  VOLUME,
+} from '../constants/constants';
 
-let data = null;
+let artPicturesData = null;
 let imageNum = [];
 let currentPicture = null;
 let correctAuthors = [];
@@ -11,19 +19,19 @@ let rightButtons = [];
 let responsesUser = [];
 let numRoundCopy = null;
 
-const getData = async () => {
-  const res = await fetch('./assets/json/data.json');
+const getArtPicturesData = async () => {
+  const res = await fetch('./assets/json/artPicturesData.json');
   const result = await res.json();
-  data = result;
+  artPicturesData = result;
 };
-getData();
+getArtPicturesData();
 
 class ArtistsQuizQuestions {
   constructor(numRound) {
     this.numRound = +numRound;
   }
 
-  randomNum(max, min) {
+  getRandomNumber(max, min) {
     return Math.round(Math.random() * (max - min) + min);
   }
 
@@ -36,23 +44,26 @@ class ArtistsQuizQuestions {
     numRoundCopy = this.numRound;
 
     for (let index = this.numRound * 10; correctAuthors.length < 10; index += 1) {
-      imageNum.push(data[index].imageNum);
-      correctAuthors.push(data[index].author);
-      copyCorrectAuthors.push(data[index].author);
+      imageNum.push(artPicturesData[index].imageNum);
+      correctAuthors.push(artPicturesData[index].author);
+      copyCorrectAuthors.push(artPicturesData[index].author);
     }
     while (incorrectAuthors.length < 30) {
-      const randomNum = this.randomNum(0, data.length - 1);
-      const isAuthorInCorrectAuthors = correctAuthors.includes(data[randomNum].author);
-      const isAuthorInIncorrectAuthors = incorrectAuthors.includes(data[randomNum].author);
-
+      const randomNumber = this.getRandomNumber(0, artPicturesData.length - 1);
+      const isAuthorInCorrectAuthors = correctAuthors.includes(
+        artPicturesData[randomNumber].author
+      );
+      const isAuthorInIncorrectAuthors = incorrectAuthors.includes(
+        artPicturesData[randomNumber].author
+      );
       if (!isAuthorInCorrectAuthors && !isAuthorInIncorrectAuthors) {
-        incorrectAuthors.push(data[randomNum].author);
+        incorrectAuthors.push(artPicturesData[randomNumber].author);
       }
     }
   }
 
   render() {
-    window.location.hash = 'ArtistsQuiz/categories/questions/';
+    window.location.hash = ARTISTS_QUIZ_CATEGORIES_QUESTIONS;
     const main = document.querySelector('.main');
     if (main.firstChild) {
       main.removeChild(main.firstChild);
@@ -70,27 +81,25 @@ class ArtistsQuizQuestions {
     ImgContainer.classList.add('artists-quiz-questions__img-container');
     const img = document.createElement('img');
     img.classList.add('artists-quiz-questions__img');
-    [currentPicture] = imageNum; /*  */
-    console.log(`currentPicture ${currentPicture}`); /*  */
-    img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`;
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/full/${imageNum.shift()}full.jpg`; */
+    [currentPicture] = imageNum;
+    img.src = `${URL_PATH_TO_PICTURE + imageNum.shift()}.jpg`;
 
     const containerForButtons1 = document.createElement('div');
     containerForButtons1.classList.add('artists-quiz-questions__buttons-container');
     const containerForButtons2 = document.createElement('div');
     containerForButtons2.classList.add('artists-quiz-questions__buttons-container');
 
-    const randomNumButton = this.randomNum(0, 3);
-    console.log(`randomNumButton ${randomNumButton}`);
+    const randomNumberButton = this.getRandomNumber(0, 3);
+
     for (let i = 0; i < 4; i += 1) {
       const button = new Button('').render();
       button.classList.add('artists-quiz-questions__button');
       button.dataset.numButton = i;
-      if (i === randomNumButton) {
+      if (i === randomNumberButton) {
         rightButtons.push(i);
         button.textContent = correctAuthors.shift();
       }
-      if (i !== randomNumButton) button.textContent = incorrectAuthors.shift();
+      if (i !== randomNumberButton) button.textContent = incorrectAuthors.shift();
       if (i < 2) {
         containerForButtons1.append(button);
       } else {
@@ -103,8 +112,6 @@ class ArtistsQuizQuestions {
 
     div.append(questionTitle, img, navigation);
 
-    /* this.renderModal(); */
-
     navigation.addEventListener('click', (e) => {
       if (e.target.classList.contains('artists-quiz-questions__button')) {
         const buttons = document.querySelectorAll('.artists-quiz-questions__button');
@@ -116,7 +123,7 @@ class ArtistsQuizQuestions {
 
           const audio = document.createElement('audio');
           audio.src = './assets/sound/right-answer.mp3';
-          audio.volume = localStorage.getItem('volume');
+          audio.volume = localStorage.getItem(VOLUME);
           audio.play();
         } else {
           responsesUser.push(false);
@@ -124,16 +131,15 @@ class ArtistsQuizQuestions {
 
           const audio = document.createElement('audio');
           audio.src = './assets/sound/wrong-answer.mp3';
-          audio.volume = localStorage.getItem('volume');
+          audio.volume = localStorage.getItem(VOLUME);
           audio.play();
         }
         this.renderModal(e);
       }
-      console.log(responsesUser);
     });
 
     document.addEventListener('keydown', (e) => {
-      if (window.location.hash === '#ArtistsQuiz/categories/questions/') {
+      if (window.location.hash === `#${ARTISTS_QUIZ_CATEGORIES_QUESTIONS}`) {
         e.preventDefault();
         const buttonNext = document.querySelector('.modal__next');
         if (buttonNext) {
@@ -143,25 +149,29 @@ class ArtistsQuizQuestions {
         }
         if (!document.querySelector('.modal__img-congratulation') && !buttonNext) {
           const buttons = navigation.querySelectorAll('.artists-quiz-questions__button');
-          if (e.code === 'KeyE') buttons[0].click(e);
-          if (e.code === 'KeyR') buttons[1].click(e);
-          if (e.code === 'KeyD') buttons[2].click(e);
-          if (e.code === 'KeyF') buttons[3].click(e);
+          switch (e.code) {
+            case 'KeyE':
+              buttons[0].click(e);
+              break;
+
+            case 'KeyR':
+              buttons[1].click(e);
+              break;
+
+            case 'KeyD':
+              buttons[2].click(e);
+              break;
+
+            case 'KeyF':
+              buttons[3].click(e);
+              break;
+
+            default:
+              break;
+          }
         }
       }
     });
-
-    /*     if (localStorage.getItem('checkboxTimeGame') === 'true') {
-      const timer = document.createElement('div');
-      timer.classList.add('artists-quiz-questions__timer');
-      timer.textContent = localStorage.getItem('spanTimeAnswer');
-
-      questionTitle.after(timer);
-      setTimeout(() => {
-        this.startTimer(timer);
-      }, 0);
-    }
- */
     return div;
   }
 
@@ -177,14 +187,14 @@ class ArtistsQuizQuestions {
     const rightOrWrong = document.createElement('img');
     rightOrWrong.classList.add('modal__right-or-wrong');
 
-    const picture = document.createElement('img');
-    picture.classList.add('modal__picture');
+    const artPicture = document.createElement('img');
+    artPicture.classList.add('modal__picture');
 
-    const namePicture = document.createElement('h5');
-    namePicture.classList.add('modal__name-picture');
+    const nameArtPicture = document.createElement('h5');
+    nameArtPicture.classList.add('modal__name-picture');
 
-    const authorPicture = document.createElement('h4');
-    authorPicture.classList.add('modal__author-picture');
+    const authorArtPicture = document.createElement('h4');
+    authorArtPicture.classList.add('modal__author-picture');
 
     const buttonNext = new Button('Next').render();
     buttonNext.classList.add('modal__next');
@@ -204,10 +214,10 @@ class ArtistsQuizQuestions {
       });
     });
 
-    content.append(rightOrWrong, picture, namePicture, authorPicture, buttonNext);
+    content.append(rightOrWrong, artPicture, nameArtPicture, authorArtPicture, buttonNext);
     modal.append(content);
     wrapper.append(modal);
-    this.openModal(e); /*  */
+    this.openModal(e);
     return content;
   }
 
@@ -227,44 +237,40 @@ class ArtistsQuizQuestions {
     textCongratulation.classList.add('modal__text-congratulation');
     textCongratulation.textContent = 'Congratulations!';
 
-    const numbers = document.createElement('span');
-    numbers.classList.add('modal__numbers-congratulation');
-    numbers.textContent = `
-    ${responsesUser.filter((boolean) => boolean).length}/${responsesUser.length}
-    `;
+    const quizResult = document.createElement('span');
+    quizResult.classList.add('modal__numbers-congratulation');
+    const numberCorrectAnswers = responsesUser.filter((boolean) => boolean).length;
+    const numberAnswers = responsesUser.length;
+    quizResult.textContent = `${numberCorrectAnswers}/${numberAnswers}`;
 
     const buttonHome = new Button('Home').render();
     buttonHome.classList.add('modal__button-home');
-    /* buttonHome.textContent = 'Home'; */
 
     const buttonNextQuiz = new Button('Next Quiz').render();
     buttonNextQuiz.classList.add('modal__button-next-quiz');
-    /* buttonNextQuiz.textContent = 'Next Quiz'; */
 
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList.add('modal__buttons-container');
     buttonsContainer.append(buttonHome, buttonNextQuiz);
 
-    content.append(imgCongratulation, textCongratulation, numbers, buttonsContainer);
-    const modal = document.querySelector('.artists-quiz-questions__modal');
-    modal.style.display = 'block';
+    content.append(imgCongratulation, textCongratulation, quizResult, buttonsContainer);
+    const modalCongratulation = document.querySelector('.artists-quiz-questions__modal');
+    modalCongratulation.style.display = 'block';
 
     buttonHome.addEventListener('click', () => {
-      modal.style.display = 'none';
-      window.location.hash = '';
-      modal.remove();
+      modalCongratulation.style.display = 'none';
+      window.location.hash = HOME;
+      modalCongratulation.remove();
     });
 
     buttonNextQuiz.addEventListener('click', () => {
-      modal.style.display = 'none';
-      window.location.hash = 'ArtistsQuiz/categories/';
-      modal.remove();
+      modalCongratulation.style.display = 'none';
+      window.location.hash = ARTISTS_QUIZ_CATEGORIES;
+      modalCongratulation.remove();
     });
   }
 
   openModal() {
-    console.log(responsesUser);
-
     const rightOrWrong = document.querySelector('.modal__right-or-wrong');
     if (responsesUser[responsesUser.length - 1]) {
       rightOrWrong.src = './assets/svg/right.svg';
@@ -273,27 +279,25 @@ class ArtistsQuizQuestions {
     }
 
     const picture = document.querySelector('.modal__picture');
-    picture.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${currentPicture}.jpg`;
+    picture.src = `${URL_PATH_TO_PICTURE + currentPicture}.jpg`;
 
     const namePicture = document.querySelector('.modal__name-picture');
-    namePicture.textContent = data[currentPicture].name;
+    namePicture.textContent = artPicturesData[currentPicture].name;
 
     const authorPicture = document.querySelector('.modal__author-picture');
-    authorPicture.textContent = `${data[currentPicture].author}, ${data[currentPicture].year}`;
+    authorPicture.textContent = `${artPicturesData[currentPicture].author}, ${artPicturesData[currentPicture].year}`;
 
     const modal = document.querySelector('.artists-quiz-questions__modal');
     modal.style.display = 'block';
   }
 
   nextImg() {
-    [currentPicture] = imageNum; /*  */
-    console.log(`currentPicture ${currentPicture}`); /*  */
-    const img = document.querySelector('.artists-quiz-questions__img');
-    img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${imageNum.shift()}.jpg`;
-    /* img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/full/${imageNum.shift()}full.jpg`; */
+    [currentPicture] = imageNum;
+    const nextArtPicture = document.querySelector('.artists-quiz-questions__img');
+    nextArtPicture.src = `${URL_PATH_TO_PICTURE + imageNum.shift()}.jpg`;
     const buttons = document.querySelectorAll('.artists-quiz-questions__button');
 
-    const randomNumButton = this.randomNum(0, 3);
+    const randomNumButton = this.getRandomNumber(0, 3);
     buttons.forEach((button, index) => {
       if (index === randomNumButton) {
         buttons[index].textContent = correctAuthors.shift();
@@ -302,27 +306,13 @@ class ArtistsQuizQuestions {
         buttons[index].textContent = incorrectAuthors.shift();
       }
     });
-    console.log(rightButtons);
   }
-
-  /*   startTimer() {
-    const NavigationButton = document.querySelector('.artists-quiz-questions__button');
-    const elTimer = document.querySelector('.artists-quiz-questions__timer');
-    const timer = setInterval(() => {
-      elTimer.textContent = +elTimer.textContent - 1;
-      if (elTimer.textContent === '0') {
-        clearInterval(timer);
-        NavigationButton.dataset.numButton = '5';
-        NavigationButton.click();
-      }
-    }, 1000);
-  } */
 
   saveAnswersInLocalStorage() {
     let answers = {};
-    if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
+    if (localStorage.getItem(ANSWERS)) answers = JSON.parse(localStorage.getItem(ANSWERS));
     answers[numRoundCopy] = responsesUser;
-    localStorage.setItem('answers', JSON.stringify(answers));
+    localStorage.setItem(ANSWERS, JSON.stringify(answers));
   }
 }
 

@@ -1,4 +1,5 @@
 import './Card.scss';
+import { ANSWERS, URL_PATH_TO_PICTURE } from '../constants/constants';
 
 class Card {
   constructor(subTitle, indexImg, numRound) {
@@ -19,11 +20,17 @@ class Card {
 
     const numCompleted = document.createElement('span');
     numCompleted.classList.add('card__num-completed');
-    let answers = {};
-    if (localStorage.getItem('answers')) answers = JSON.parse(localStorage.getItem('answers'));
+
+    const answers = JSON.parse(localStorage.getItem(ANSWERS)) || {};
+
+    let numberCorrectAnswers;
     if (answers[this.numRound]) {
-      numCompleted.textContent = `${answers[this.numRound].filter((el) => el).length} / 10`;
+      numberCorrectAnswers = answers[this.numRound].filter((el) => el).length;
+    } else {
+      numberCorrectAnswers = 0;
     }
+
+    if (numberCorrectAnswers) numCompleted.textContent = `${numberCorrectAnswers} / 10`;
 
     const textContainer = document.createElement('div');
     textContainer.classList.add('card__text-container');
@@ -31,7 +38,7 @@ class Card {
 
     const img = document.createElement('img');
     img.classList.add('card__img');
-    img.src = `https://raw.githubusercontent.com/NikitaKorevo/image-data/master/img/${this.indexImg}.jpg`;
+    img.src = `${URL_PATH_TO_PICTURE + this.indexImg}.jpg`;
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('card__img-container');
