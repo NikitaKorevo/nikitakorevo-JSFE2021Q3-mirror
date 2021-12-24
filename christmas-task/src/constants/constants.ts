@@ -1,6 +1,12 @@
-import { IToysSettings } from '../data/interfaces';
+/* ROUTES */
+export const PAGE_NOT_FOUND = 'page-not-found';
+export const HOME = '';
+export const TOYS = 'toys';
+export const TREE = 'tree';
 
-export const DEFAULT_SETTINGS: IToysSettings = {
+export const LIMIT_PICKED_TOYS = 20;
+
+export const DEFAULT_SETTINGS = {
   howSortingToys: 'nameUp',
   numInstanceFrom: '1',
   numInstanceTo: '12',
@@ -28,10 +34,4 @@ export const DEFAULT_SETTINGS: IToysSettings = {
   favorites: {
     favorite: false
   }
-};
-
-export const ROUTES = {
-  PAGE_NOT_FOUND: 'page-not-found',
-  HOME: '',
-  TOYS: 'toys'
 };

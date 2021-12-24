@@ -1,5 +1,5 @@
 import './Main.scss';
-import { ROUTES } from '../../constants/constants';
+import { HOME, PAGE_NOT_FOUND, TOYS } from '../../constants/constants';
 import PageNotFound from './PageNotFound';
 import Home from './Home';
 import Toys from './Toys';
@@ -38,16 +38,16 @@ class Main {
     }
 
     switch (pageNow) {
-      case ROUTES.HOME:
+      case HOME:
         main.append(this.home.render());
         break;
 
-      case '#' + ROUTES.TOYS:
+      case `#${TOYS}`:
         main.append(Toys.render());
         break;
 
       default:
-        location.hash = ROUTES.PAGE_NOT_FOUND;
+        location.hash = PAGE_NOT_FOUND;
         main.append(this.pageNotFound.render());
         break;
     }

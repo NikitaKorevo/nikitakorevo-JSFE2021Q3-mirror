@@ -1,6 +1,6 @@
 import './Toys.scss';
-import toyData from '../../data/toyData';
-import { DEFAULT_SETTINGS } from '../../constants/constants';
+import toysData from '../../data/toysData';
+import { DEFAULT_SETTINGS, LIMIT_PICKED_TOYS } from '../../constants/constants';
 import { IToysSettings } from '../../data/interfaces';
 import Header from '../Header/Header';
 import Toy from '../../components/Toy/Toy';
@@ -13,7 +13,6 @@ class Toys {
   static allToys: Toy[] = [];
   static processedToys = document.createElement('div');
   static pickedToys: Set<number> = Toys.#pullLocalStorage('pickedToys');
-  static limitToys = 20;
   static filtersValue = new FiltersValue();
   static filtersRange = new FiltersRange(Toys.toysSettings);
   static sortingToys = new SortingToys(Toys.toysSettings.howSortingToys);
@@ -79,7 +78,7 @@ class Toys {
     });
 
     if (Toys.processedToys.children.length === 0) {
-      const zeroToys = new Toy(toyData[0]).renderZeroToys();
+      const zeroToys = new Toy(toysData[0]).renderZeroToys();
       Toys.processedToys.append(zeroToys);
     }
   }
@@ -95,8 +94,8 @@ class Toys {
     Toys.processedToys.classList.add('toys');
 
     if (Toys.allToys.length === 0) {
-      for (let i = 0; i < toyData.length; i++) {
-        const toy = new Toy(toyData[i]);
+      for (let i = 0; i < toysData.length; i++) {
+        const toy = new Toy(toysData[i]);
         Toys.allToys.push(toy);
       }
     }
@@ -114,7 +113,7 @@ class Toys {
 
     toy.classList.contains('toy--checked') ? countPickedToys-- : countPickedToys++;
 
-    if (countPickedToys > Toys.limitToys) return Toys.#countToysExceeded(toy);
+    if (countPickedToys > LIMIT_PICKED_TOYS) return Toys.#countToysExceeded(toy);
 
     toy.classList.toggle('toy--checked');
     if (numToy) {

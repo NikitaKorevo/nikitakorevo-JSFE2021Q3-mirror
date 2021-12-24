@@ -1,7 +1,7 @@
 import './Header.scss';
+import { HOME, TOYS, TREE } from '../../constants/constants';
 import Toys from '../Main/Toys';
 import Toy from '../../components/Toy/Toy';
-import { ROUTES } from '../../constants/constants';
 
 class Header {
   static amountToys = document.createElement('input');
@@ -31,19 +31,19 @@ class Header {
     const buttonLogo = document.createElement('button');
     buttonLogo.classList.add('nav__logo', 'nav__button');
     buttonLogo.dataset.goto = 'home';
-    buttonLogo.addEventListener('click', () => (window.location.hash = ''));
+    buttonLogo.addEventListener('click', () => (window.location.hash = HOME));
 
     const buttonToys = document.createElement('button');
     buttonToys.classList.add('nav__button');
     buttonToys.textContent = 'игрушки';
     buttonToys.dataset.goto = 'toys';
-    buttonToys.addEventListener('click', () => (window.location.hash = 'toys'));
+    buttonToys.addEventListener('click', () => (window.location.hash = TOYS));
 
     const buttonTree = document.createElement('button');
     buttonTree.classList.add('nav__button');
     buttonTree.textContent = 'ёлка';
     buttonTree.dataset.goto = 'tree';
-    buttonTree.addEventListener('click', () => (window.location.hash = 'tree'));
+    buttonTree.addEventListener('click', () => (window.location.hash = TREE));
 
     const control = document.createElement('nav');
     control.classList.add('control');
@@ -85,10 +85,10 @@ class Header {
     }
 
     switch (currentPage) {
-      case ROUTES.HOME:
+      case HOME:
         return [nav];
 
-      case '#' + ROUTES.TOYS:
+      case `#${TOYS}`:
         return [nav, control];
 
       default:

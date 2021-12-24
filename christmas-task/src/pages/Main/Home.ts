@@ -1,4 +1,5 @@
 import './Home.scss';
+import { TOYS } from '../../constants/constants';
 
 class Home {
   render(): HTMLDivElement {
@@ -15,7 +16,7 @@ class Home {
     const homeButton = document.createElement('button');
     homeButton.classList.add('home__button');
     homeButton.textContent = 'Начать';
-    homeButton.addEventListener('click', () => (window.location.hash = 'toys'));
+    homeButton.addEventListener('click', () => (window.location.hash = TOYS));
 
     home.append(homeContainer, homeButton);
     homeContainer.append(homeTitle);
