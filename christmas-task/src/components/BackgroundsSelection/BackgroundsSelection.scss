@@ -1,0 +1,11 @@
+.backgrounds-selection {
+  .backgrounds-selection__title {
+  }
+
+  .backgrounds-selection__backgrounds {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

@@ -1,0 +1,17 @@
+.tree {
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+  border: 1px solid #278d9f;
+  border-radius: 10px;
+  backdrop-filter: blur(3px) brightness(40%);
+  background-color: rgba(26, 101, 114, 0.3);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.tree--checked {
+  border: 1px solid #ffff00;
+}

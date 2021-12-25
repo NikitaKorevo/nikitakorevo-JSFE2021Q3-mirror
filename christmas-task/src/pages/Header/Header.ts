@@ -1,5 +1,5 @@
 import './Header.scss';
-import { HOME, TOYS, TREE } from '../../constants/constants';
+import { HOME, TOYS, CHRISTMAS_TREE } from '../../constants/constants';
 import Toys from '../Main/Toys';
 import Toy from '../../components/Toy/Toy';
 
@@ -39,11 +39,11 @@ class Header {
     buttonToys.dataset.goto = 'toys';
     buttonToys.addEventListener('click', () => (window.location.hash = TOYS));
 
-    const buttonTree = document.createElement('button');
-    buttonTree.classList.add('nav__button');
-    buttonTree.textContent = 'ёлка';
-    buttonTree.dataset.goto = 'tree';
-    buttonTree.addEventListener('click', () => (window.location.hash = TREE));
+    const buttonChristmasTree = document.createElement('button');
+    buttonChristmasTree.classList.add('nav__button');
+    buttonChristmasTree.textContent = 'ёлка';
+    buttonChristmasTree.dataset.goto = 'ChristmasTree';
+    buttonChristmasTree.addEventListener('click', () => (window.location.hash = CHRISTMAS_TREE));
 
     const control = document.createElement('nav');
     control.classList.add('control');
@@ -66,7 +66,7 @@ class Header {
     Header.amountToys.value = `${Toys.pickedToys.size}`;
 
     headerWrapper.append(header);
-    nav.append(buttonLogo, buttonToys, buttonTree);
+    nav.append(buttonLogo, buttonToys, buttonChristmasTree);
     control.append(search, Header.amountToys);
 
     window.addEventListener('hashchange', () => {

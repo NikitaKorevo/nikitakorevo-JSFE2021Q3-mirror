@@ -1,5 +1,5 @@
-import './Home.scss';
 import { TOYS } from '../../constants/constants';
+import './Home.scss';
 
 class Home {
   render(): HTMLDivElement {

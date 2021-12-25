@@ -1,0 +1,11 @@
+.trees-selection {
+  .trees-selection__title {
+  }
+
+  .trees-selection__trees {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

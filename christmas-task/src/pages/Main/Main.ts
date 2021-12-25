@@ -1,18 +1,21 @@
 import './Main.scss';
-import { HOME, PAGE_NOT_FOUND, TOYS } from '../../constants/constants';
+import { HOME, PAGE_NOT_FOUND, TOYS, CHRISTMAS_TREE } from '../../constants/constants';
 import PageNotFound from './PageNotFound';
 import Home from './Home';
 import Toys from './Toys';
+import ChristmasTree from './ChristmasTree';
 
 class Main {
   pageNotFound: PageNotFound;
   home: Home;
   toys: Toys;
+  christmasTree: ChristmasTree;
 
   constructor() {
     this.pageNotFound = new PageNotFound();
     this.home = new Home();
     this.toys = new Toys();
+    this.christmasTree = new ChristmasTree();
   }
 
   render(): HTMLDivElement {
@@ -44,6 +47,10 @@ class Main {
 
       case `#${TOYS}`:
         main.append(Toys.render());
+        break;
+
+      case `#${CHRISTMAS_TREE}`:
+        main.append(this.christmasTree.render());
         break;
 
       default:

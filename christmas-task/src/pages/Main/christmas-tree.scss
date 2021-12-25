@@ -1,0 +1,44 @@
+.christmas-tree {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 70px - 50px);
+  width: 100%;
+  gap: 10px;
+
+  .christmas-tree__left-container {
+    /* background-color: rgba(255, 127, 80, 0.5); */
+    width: 25%;
+    width: 50%; /* TODO: удалить */
+  }
+
+  .christmas-tree__middle-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    width: 50%;
+
+    .christmas-tree__tree {
+      width: 70%;
+      margin: 0 auto;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    @media screen and (max-width: 1250px) {
+      .tree-container {
+        width: 100%;
+      }
+    }
+  }
+
+  .christmas-tree__right-container {
+    /* background-color: rgba(104, 47, 27, 0.5); */
+    /* width: 25%; */ /*  */
+  }
+}
