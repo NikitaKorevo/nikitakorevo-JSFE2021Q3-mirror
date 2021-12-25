@@ -14,20 +14,3 @@ class Background {
 }
 
 export default Background;
-
-/* class Background {
-  numberBackground: number;
-
-  constructor(numberBackground: number) {
-    this.numberBackground = numberBackground;
-  }
-
-  render() {
-    const background = document.createElement('div');
-    background.classList.add('background');
-    background.style.backgroundImage = `url('./assets/bg/${this.numberBackground}.jpg')`;
-    return background;
-  }
-}
-
-export default Background; */

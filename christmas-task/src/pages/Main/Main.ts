@@ -50,7 +50,7 @@ class Main {
         break;
 
       case `#${CHRISTMAS_TREE}`:
-        main.append(this.christmasTree.render());
+        main.append(this.christmasTree.christmasTree);
         break;
 
       default:

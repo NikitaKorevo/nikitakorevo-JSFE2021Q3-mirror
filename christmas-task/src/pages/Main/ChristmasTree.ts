@@ -3,6 +3,7 @@ import { DEFAULT_SETTINGS_CHRISTMAS_TREE } from '../../constants/constants';
 import TreesSelection from '../../components/TreesSelection/TreesSelection';
 import BackgroundsSelection from '../../components/BackgroundsSelection/BackgroundsSelection';
 import MusicButton from '../../components/MusicButton/MusicButton';
+import Snowflake from '../../components/Snowflake/Snowflake';
 
 class ChristmasTree {
   static settings_christmas_tree = JSON.parse(JSON.stringify(DEFAULT_SETTINGS_CHRISTMAS_TREE));
@@ -12,23 +13,17 @@ class ChristmasTree {
   musicButton: MusicButton;
   treesSelection: TreesSelection;
   backgroundsSelection: BackgroundsSelection;
+  christmasTree: HTMLDivElement;
+  snowflake: Snowflake;
 
   constructor() {
     this.musicButton = new MusicButton();
     this.treesSelection = new TreesSelection();
     this.backgroundsSelection = new BackgroundsSelection();
-  }
+    this.snowflake = new Snowflake();
 
-  static settingsChange(): void {
-    console.log('settingsChange');
-    console.log(ChristmasTree.settings_christmas_tree);
-    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settings_christmas_tree.numberPickedTree}.png')`;
-    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settings_christmas_tree.numberPickedBackground}.jpg')`;
-  }
-
-  render(): HTMLDivElement {
-    const christmasTree = document.createElement('div');
-    christmasTree.classList.add('christmas-tree');
+    this.christmasTree = document.createElement('div');
+    this.christmasTree.classList.add('christmas-tree');
 
     const leftContainer = document.createElement('div');
     leftContainer.classList.add('christmas-tree__left-container');
@@ -36,7 +31,7 @@ class ChristmasTree {
     const playButtons = document.createElement('div');
     playButtons.classList.add('christmas-tree__play-buttons');
 
-    playButtons.append(this.musicButton.musicButton);
+    playButtons.append(this.musicButton.musicButton /*  this.snowflake */);
 
     ChristmasTree.middleContainer.classList.add('christmas-tree__middle-container');
     ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settings_christmas_tree.numberPickedBackground}.jpg')`;
@@ -47,7 +42,7 @@ class ChristmasTree {
     const rightContainer = document.createElement('div');
     rightContainer.classList.add('christmas-tree__right-container');
 
-    christmasTree.append(leftContainer, ChristmasTree.middleContainer, rightContainer);
+    this.christmasTree.append(leftContainer, ChristmasTree.middleContainer, rightContainer);
     leftContainer.append(
       playButtons,
       this.treesSelection.treesSelection,
@@ -55,7 +50,13 @@ class ChristmasTree {
     );
     ChristmasTree.middleContainer.append(ChristmasTree.tree);
     rightContainer.append();
-    return christmasTree;
+  }
+
+  static settingsChange(): void {
+    console.log('settingsChange');
+    console.log(ChristmasTree.settings_christmas_tree);
+    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settings_christmas_tree.numberPickedTree}.png')`;
+    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settings_christmas_tree.numberPickedBackground}.jpg')`;
   }
 }
 
