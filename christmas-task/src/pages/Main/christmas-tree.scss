@@ -8,10 +8,33 @@
   .christmas-tree__left-container {
     /* background-color: rgba(255, 127, 80, 0.5); */
     width: 25%;
-    width: 50%; /* TODO: удалить */
+    /* width: 50%; */ /* TODO: удалить */
+
+    .christmas-tree__play-buttons {
+      display: flex;
+      column-gap: 20px;
+      margin-top: 19px;
+      align-items: center;
+
+      .christmas-tree__reset-button {
+        font: normal 400 16px/30px 'Open Sans', sans-serif;
+        color: #fff;
+        border: 1px solid #278d9f;
+        background-color: #123f47;
+        border-radius: 10px;
+        margin-left: auto;
+        transition: 0.3s border;
+        cursor: pointer;
+      }
+
+      .christmas-tree__reset-button:hover {
+        border: 1px solid #fff;
+      }
+    }
   }
 
   .christmas-tree__middle-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -20,6 +43,7 @@
     background-size: cover;
     background-position: bottom center;
     width: 50%;
+    overflow: hidden;
 
     .christmas-tree__tree {
       width: 70%;
@@ -39,6 +63,6 @@
 
   .christmas-tree__right-container {
     /* background-color: rgba(104, 47, 27, 0.5); */
-    /* width: 25%; */ /*  */
+    width: 25%;
   }
 }

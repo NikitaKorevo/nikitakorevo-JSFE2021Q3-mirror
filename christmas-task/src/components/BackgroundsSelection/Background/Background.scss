@@ -7,8 +7,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
+  transition: 0.3s border;
+}
+
+.background:hover {
+  border: 1px solid #fff;
 }
 
 .background--checked {
-  border: 1px solid #ffff00;
+  border: 1px solid #ffff00 !important;
 }

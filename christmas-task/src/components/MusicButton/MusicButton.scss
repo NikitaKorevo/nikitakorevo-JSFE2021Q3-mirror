@@ -8,7 +8,10 @@
   background-size: contain;
   background-position: center center;
   cursor: pointer;
-  transition: 0.3s filter;
+  transition: 0.3s filter, 0.3s transform;
+}
+.music-button:hover {
+  transform: scale(1.1);
 }
 
 .music-button--active {

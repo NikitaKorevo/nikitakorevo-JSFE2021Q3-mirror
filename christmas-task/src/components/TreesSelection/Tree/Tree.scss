@@ -10,8 +10,13 @@
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  transition: 0.3s border;
+}
+
+.tree:hover {
+  border: 1px solid #fff;
 }
 
 .tree--checked {
-  border: 1px solid #ffff00;
+  border: 1px solid #ffff00 !important;
 }

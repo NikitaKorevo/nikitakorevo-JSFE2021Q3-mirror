@@ -1,3 +1,4 @@
+import ChristmasTree from '../../pages/Main/ChristmasTree';
 import './MusicButton.scss';
 
 class MusicButton {
@@ -10,8 +11,7 @@ class MusicButton {
 
     this.#audio = document.createElement('audio');
     this.#audio.src = './assets/audio/audio.mp3';
-    this.#audio.volume = 0.5;
-
+    this.#audio.volume = 0.4;
     this.#audio.addEventListener('ended', () => this.audioEnded());
     this.musicButton.addEventListener('click', () => this.playOrPauseAudio());
   }
@@ -20,9 +20,13 @@ class MusicButton {
     if (this.#audio.paused) {
       this.#audio.play();
       this.musicButton.classList.add('music-button--active');
+      ChristmasTree.settingsChristmasTree.isMusicPlaying = true;
+      ChristmasTree.settingsChange();
     } else {
       this.#audio.pause();
       this.musicButton.classList.remove('music-button--active');
+      ChristmasTree.settingsChristmasTree.isMusicPlaying = false;
+      ChristmasTree.settingsChange();
     }
   }
 

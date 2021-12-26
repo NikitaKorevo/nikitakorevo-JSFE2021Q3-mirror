@@ -40,5 +40,7 @@ export const DEFAULT_SETTINGS = {
 
 export const DEFAULT_SETTINGS_CHRISTMAS_TREE = {
   numberPickedTree: 1,
-  numberPickedBackground: 1
+  numberPickedBackground: 1,
+  isMusicPlaying: false,
+  areSnowflakesFalling: false
 };

@@ -1,0 +1,37 @@
+.snowflake-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../../assets/svg/snowflake.svg');
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.3s filter, 0.3s transform;
+}
+
+.snowflake-button:hover {
+  transform: scale(1.1);
+}
+
+.snowflake-button--active {
+  filter: invert(42%) sepia(82%) saturate(355%) hue-rotate(141deg) brightness(95%) contrast(98%);
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  background-image: url('../../assets/svg/snowflake.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  animation: fall linear forwards;
+}

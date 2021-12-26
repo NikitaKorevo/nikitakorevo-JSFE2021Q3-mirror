@@ -24,6 +24,7 @@ class TreesSelection {
       const treeInstance = new Tree(i);
       const treeNode = treeInstance.tree;
 
+      if (ChristmasTree.settingsChristmasTree.numberPickedTree === i) treeNode.classList.add('tree--checked');
       this.arrTreesNode.push(treeNode);
       trees.append(treeNode);
 
@@ -33,7 +34,7 @@ class TreesSelection {
   }
 
   #selectTree(treeInstance: Tree, treeNode: HTMLDivElement): void {
-    ChristmasTree.settings_christmas_tree.numberPickedTree = treeInstance.numberTree;
+    ChristmasTree.settingsChristmasTree.numberPickedTree = treeInstance.numberTree;
     this.arrTreesNode.forEach((tree) => tree.classList.remove('tree--checked'));
     treeNode.classList.add('tree--checked');
     ChristmasTree.settingsChange();

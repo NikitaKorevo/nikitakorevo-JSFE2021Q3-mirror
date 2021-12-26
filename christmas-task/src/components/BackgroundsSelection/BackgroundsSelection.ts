@@ -23,8 +23,13 @@ class BackgroundsSelection {
     for (let i = 1; i <= ALL_BACKGROUND_NUMBER; i++) {
       const backgroundInstance = new Background(i);
       const backgroundNode = backgroundInstance.background;
+
+      if (ChristmasTree.settingsChristmasTree.numberPickedBackground === i) {
+        backgroundNode.classList.add('background--checked');
+      }
       this.arrBackgroundsNode.push(backgroundNode);
       backgrounds.append(backgroundNode);
+
       this.#selectBackground(backgroundInstance, backgroundNode);
     }
     this.backgroundsSelection.append(title, backgrounds);
@@ -32,7 +37,7 @@ class BackgroundsSelection {
 
   #selectBackground(backgroundInstance: Background, backgroundNode: HTMLDivElement): void {
     backgroundNode.addEventListener('click', () => {
-      ChristmasTree.settings_christmas_tree.numberPickedBackground = backgroundInstance.numberBackground;
+      ChristmasTree.settingsChristmasTree.numberPickedBackground = backgroundInstance.numberBackground;
       this.arrBackgroundsNode.forEach((background) => background.classList.remove('background--checked'));
       backgroundNode.classList.add('background--checked');
       ChristmasTree.settingsChange();

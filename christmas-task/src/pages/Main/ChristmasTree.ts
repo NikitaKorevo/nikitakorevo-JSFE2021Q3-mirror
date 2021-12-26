@@ -3,17 +3,17 @@ import { DEFAULT_SETTINGS_CHRISTMAS_TREE } from '../../constants/constants';
 import TreesSelection from '../../components/TreesSelection/TreesSelection';
 import BackgroundsSelection from '../../components/BackgroundsSelection/BackgroundsSelection';
 import MusicButton from '../../components/MusicButton/MusicButton';
-import Snowflake from '../../components/Snowflake/Snowflake';
+import Snowflake from '../../components/SnowflakeButton/SnowflakeButton';
 
 class ChristmasTree {
-  static settings_christmas_tree = JSON.parse(JSON.stringify(DEFAULT_SETTINGS_CHRISTMAS_TREE));
+  static settingsChristmasTree = this.#pullLocalStorage('korEvo_settingsChristmasTree');
   static tree = document.createElement('div');
   static middleContainer = document.createElement('div');
 
+  christmasTree: HTMLDivElement;
   musicButton: MusicButton;
   treesSelection: TreesSelection;
   backgroundsSelection: BackgroundsSelection;
-  christmasTree: HTMLDivElement;
   snowflake: Snowflake;
 
   constructor() {
@@ -24,6 +24,7 @@ class ChristmasTree {
 
     this.christmasTree = document.createElement('div');
     this.christmasTree.classList.add('christmas-tree');
+    if (ChristmasTree.settingsChristmasTree.isMusicPlaying) this.playMusicImmediately(this.musicButton);
 
     const leftContainer = document.createElement('div');
     leftContainer.classList.add('christmas-tree__left-container');
@@ -31,13 +32,18 @@ class ChristmasTree {
     const playButtons = document.createElement('div');
     playButtons.classList.add('christmas-tree__play-buttons');
 
-    playButtons.append(this.musicButton.musicButton /*  this.snowflake */);
+    const resetButton = document.createElement('button');
+    resetButton.classList.add('christmas-tree__reset-button');
+    resetButton.textContent = 'Сброс настроек';
+    resetButton.addEventListener('click', () => this.pressResetButton());
+
+    playButtons.append(this.musicButton.musicButton, this.snowflake.buttonSnowFlake, resetButton);
 
     ChristmasTree.middleContainer.classList.add('christmas-tree__middle-container');
-    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settings_christmas_tree.numberPickedBackground}.jpg')`;
+    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settingsChristmasTree.numberPickedBackground}.jpg')`;
 
     ChristmasTree.tree.classList.add('christmas-tree__tree');
-    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settings_christmas_tree.numberPickedTree}.png')`;
+    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png')`;
 
     const rightContainer = document.createElement('div');
     rightContainer.classList.add('christmas-tree__right-container');
@@ -52,11 +58,45 @@ class ChristmasTree {
     rightContainer.append();
   }
 
+  pressResetButton() {
+    ChristmasTree.settingsChristmasTree = JSON.parse(JSON.stringify(DEFAULT_SETTINGS_CHRISTMAS_TREE));
+    ChristmasTree.#pushLocalStorage();
+    location.reload();
+  }
+
+  playMusicImmediately(musicButton: MusicButton): void {
+    this.christmasTree.addEventListener('click', function immediatelyPlayMusic() {
+      musicButton.playOrPauseAudio();
+      this.removeEventListener('click', immediatelyPlayMusic);
+    });
+  }
+
+  static #pullLocalStorage(key: string) {
+    const korEvo_settingsChristmasTree = localStorage.getItem('korEvo_settingsChristmasTree');
+
+    switch (key) {
+      case 'korEvo_settingsChristmasTree':
+        if (korEvo_settingsChristmasTree) {
+          return JSON.parse(korEvo_settingsChristmasTree);
+        } else {
+          localStorage.setItem('korEvo_settingsChristmasTree', JSON.stringify(DEFAULT_SETTINGS_CHRISTMAS_TREE));
+          return JSON.parse(JSON.stringify(DEFAULT_SETTINGS_CHRISTMAS_TREE));
+        }
+
+      default:
+        break;
+    }
+  }
+
+  static #pushLocalStorage(): void {
+    localStorage.setItem('korEvo_settingsChristmasTree', JSON.stringify(ChristmasTree.settingsChristmasTree));
+  }
+
   static settingsChange(): void {
-    console.log('settingsChange');
-    console.log(ChristmasTree.settings_christmas_tree);
-    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settings_christmas_tree.numberPickedTree}.png')`;
-    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settings_christmas_tree.numberPickedBackground}.jpg')`;
+    ChristmasTree.#pushLocalStorage();
+    console.log(ChristmasTree.settingsChristmasTree);
+    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png')`;
+    ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settingsChristmasTree.numberPickedBackground}.jpg')`;
   }
 }
 
