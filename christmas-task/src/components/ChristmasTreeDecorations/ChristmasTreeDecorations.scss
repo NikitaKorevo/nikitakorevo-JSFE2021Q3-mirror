@@ -1,0 +1,39 @@
+.christmas-tree-decorations {
+  .christmas-tree-decorations__title {
+  }
+  .christmas-tree-decorations__list-toys {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style-type: none;
+    gap: 5px;
+  }
+
+  .christmas-tree-decorations__toy-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #278d9f;
+    border-radius: 10px;
+    backdrop-filter: blur(3px) brightness(40%);
+    background-color: rgba(26, 101, 114, 0.3);
+  }
+
+  .christmas-tree-decorations__count {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+  }
+
+  .christmas-tree-decorations__toy {
+    position: absolute;
+    display: block;
+    width: 50px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+}

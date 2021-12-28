@@ -45,19 +45,27 @@
     width: 50%;
     overflow: hidden;
 
-    .christmas-tree__tree {
+    /* .christmas-tree__tree {
       width: 70%;
       margin: 0 auto;
       height: 100%;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
-    }
+    } */
 
-    @media screen and (max-width: 1250px) {
+    /* @media screen and (max-width: 1250px) {
       .tree-container {
         width: 100%;
       }
+    } */
+
+    .christmas-tree__map {
+    }
+
+    .christmas-tree__christmas-tree-picture {
+      height: 100%;
+      object-fit: contain;
     }
   }
 

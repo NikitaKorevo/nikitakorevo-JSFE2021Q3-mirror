@@ -7,6 +7,7 @@ import Toy from '../../components/Toy/Toy';
 import FiltersValue from '../../components/filtersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys/SortingToys';
+import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/ChristmasTreeDecorations';
 
 class Toys {
   static toysSettings: IToysSettings = Toys.#pullLocalStorage('toysSettings');
@@ -117,7 +118,13 @@ class Toys {
 
     toy.classList.toggle('toy--checked');
     if (numToy) {
-      toy.classList.contains('toy--checked') ? Toys.pickedToys.add(+numToy) : Toys.pickedToys.delete(+numToy);
+      if (toy.classList.contains('toy--checked')) {
+        Toys.pickedToys.add(+numToy);
+        ChristmasTreeDecorations.addToysNearChristmasTree(+numToy);
+      } else {
+        Toys.pickedToys.delete(+numToy);
+        ChristmasTreeDecorations.deleteToysNearChristmasTree(+numToy);
+      }
     }
 
     Header.amountToys.value = `${Toys.pickedToys.size}`;
