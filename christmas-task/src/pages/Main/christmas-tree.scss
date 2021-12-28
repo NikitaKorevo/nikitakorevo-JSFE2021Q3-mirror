@@ -32,29 +32,62 @@
   }
 
   .christmas-tree__middle-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
+    width: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
-    width: 50%;
     overflow: hidden;
 
     .christmas-tree__map {
     }
 
+    .christmas-tree__christmas-tree-picture-container {
+      position: relative;
+      display: block;
+      width: max-content;
+      height: 100%;
+      margin: 0 auto;
+    }
+
     .christmas-tree__christmas-tree-picture {
+      display: block;
       height: 100%;
       max-height: 100%;
       object-fit: contain;
-      max-width: 100%;
+      max-width: max-content;
     }
   }
 
   .christmas-tree__right-container {
     width: 25%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .christmas-tree {
+    flex-direction: column;
+
+    .christmas-tree__left-container {
+      order: 3;
+      width: 100%;
+    }
+
+    .christmas-tree__middle-container {
+      order: 1;
+      width: 100%;
+      min-height: 300px;
+
+      .christmas-tree__christmas-tree-picture-container {
+        margin: 0 auto;
+      }
+
+      .christmas-tree__christmas-tree-picture {
+      }
+    }
+
+    .christmas-tree__right-container {
+      order: 2;
+      width: 100%;
+    }
   }
 }

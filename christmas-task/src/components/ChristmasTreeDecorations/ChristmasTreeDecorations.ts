@@ -79,16 +79,32 @@ class ChristmasTreeDecorations {
         document.addEventListener('mouseup', function mouseUp(e) {
           toyPicture.hidden = true;
           const elementBehind = document.elementFromPoint(e.clientX, e.clientY);
+          toyPicture.hidden = false;
+
           if (elementBehind?.classList.contains('christmas-tree__area')) {
-            console.log('true');
+            ChristmasTree.christmasTreePictureContainer.append(toyPicture);
+
+            const centerChristmasTree = ChristmasTree.christmasTreePicture.width / 2;
+            const mouseUpInChristmasTreeContainer = e.pageX - document.body.getBoundingClientRect().width / 2;
+            toyPicture.style.left = `${
+              ((centerChristmasTree + mouseUpInChristmasTreeContainer - translationX) /
+                ChristmasTree.christmasTreePicture.width) *
+              100
+            }% `;
+
+            toyPicture.style.top = `${
+              ((e.pageY -
+                +(document.querySelector('header') as HTMLElement).getBoundingClientRect().height -
+                translationY) /
+                ChristmasTree.christmasTreePicture.height) *
+              100
+            }%`;
           } else {
-            console.log('false');
             li.append(toyPicture);
             elCount.textContent = String(li.children.length - 1);
             toyPicture.style.left = '';
             toyPicture.style.top = '';
           }
-          toyPicture.hidden = false;
 
           if (!elementBehind) return false;
           document.removeEventListener('mousemove', currentCursorPosition);
@@ -107,6 +123,7 @@ class ChristmasTreeDecorations {
       const dataNumToy = (<HTMLLIElement>toy).dataset.num;
       if (String(toyNumber) === dataNumToy) toy.remove();
     }
+
     if (ChristmasTreeDecorations.listToys.children.length === 0) ChristmasTreeDecorations.addTwentyToys();
   }
 

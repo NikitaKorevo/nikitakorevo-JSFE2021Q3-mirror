@@ -9,6 +9,7 @@ import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/
 class ChristmasTree {
   static settingsChristmasTree = this.#pullLocalStorage('korEvo_settingsChristmasTree');
   static middleContainer = document.createElement('div');
+  static christmasTreePictureContainer = document.createElement('div');
   static christmasTreePicture = document.createElement('img');
   static map = document.createElement('map');
 
@@ -47,6 +48,8 @@ class ChristmasTree {
     ChristmasTree.middleContainer.classList.add('christmas-tree__middle-container');
     ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settingsChristmasTree.numberPickedBackground}.jpg')`;
 
+    ChristmasTree.christmasTreePictureContainer.classList.add('christmas-tree__christmas-tree-picture-container');
+
     ChristmasTree.christmasTreePicture.classList.add('christmas-tree__christmas-tree-picture');
     ChristmasTree.christmasTreePicture.src = `./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png`;
     ChristmasTree.christmasTreePicture.useMap = '#christmas-tree__map';
@@ -73,7 +76,8 @@ class ChristmasTree {
       this.treesSelection.treesSelection,
       this.backgroundsSelection.backgroundsSelection
     );
-    ChristmasTree.middleContainer.append(ChristmasTree.map, ChristmasTree.christmasTreePicture);
+    ChristmasTree.middleContainer.append(ChristmasTree.map, ChristmasTree.christmasTreePictureContainer);
+    ChristmasTree.christmasTreePictureContainer.append(ChristmasTree.christmasTreePicture);
     rightContainer.append(this.christmasTreeDecorations.christmasTreeDecorations);
   }
 
@@ -81,6 +85,7 @@ class ChristmasTree {
     const ChristmasTreeWidth = ChristmasTree.christmasTreePicture.getBoundingClientRect().width;
     const ChristmasTreeHeight = ChristmasTree.christmasTreePicture.getBoundingClientRect().height;
 
+    // header christmas tree => left bottom => center bottom => right bottom
     this.area.coords = `${ChristmasTreeWidth / 2}, 0, 
     0, ${ChristmasTreeHeight * 0.9},
     ${ChristmasTreeWidth / 2}, ${ChristmasTreeHeight},
