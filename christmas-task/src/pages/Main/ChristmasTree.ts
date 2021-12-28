@@ -8,9 +8,9 @@ import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/
 
 class ChristmasTree {
   static settingsChristmasTree = this.#pullLocalStorage('korEvo_settingsChristmasTree');
-  /* static tree = document.createElement('div'); */
   static middleContainer = document.createElement('div');
   static christmasTreePicture = document.createElement('img');
+  static map = document.createElement('map');
 
   christmasTree: HTMLDivElement;
   musicButton: MusicButton;
@@ -18,6 +18,7 @@ class ChristmasTree {
   backgroundsSelection: BackgroundsSelection;
   snowflake: Snowflake;
   christmasTreeDecorations: ChristmasTreeDecorations;
+  area: HTMLAreaElement;
 
   constructor() {
     this.musicButton = new MusicButton();
@@ -46,28 +47,22 @@ class ChristmasTree {
     ChristmasTree.middleContainer.classList.add('christmas-tree__middle-container');
     ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settingsChristmasTree.numberPickedBackground}.jpg')`;
 
-    /* ChristmasTree.tree.classList.add('christmas-tree__tree');
-    ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png')`; */
-
     ChristmasTree.christmasTreePicture.classList.add('christmas-tree__christmas-tree-picture');
     ChristmasTree.christmasTreePicture.src = `./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png`;
     ChristmasTree.christmasTreePicture.useMap = '#christmas-tree__map';
 
-    const map = document.createElement('map');
-    map.name = 'christmas-tree__map';
-    const area = document.createElement('area');
-    area.shape = 'poly';
-    area.classList.add('christmas-tree__area');
-    map.append(area);
+    ChristmasTree.map.name = 'christmas-tree__map';
+    this.area = document.createElement('area');
+    this.area.shape = 'poly';
+    this.area.classList.add('christmas-tree__area');
+    this.area.href = '';
+    ChristmasTree.map.append(this.area);
 
     window.addEventListener('load', () => {
-      const ChristmasTreeWidth = ChristmasTree.christmasTreePicture.getBoundingClientRect().width;
-      const ChristmasTreeHeight = ChristmasTree.christmasTreePicture.getBoundingClientRect().height;
-
-      area.coords = `${ChristmasTreeWidth / 2}, 0, 
-      0, ${ChristmasTreeHeight}, 
-      ${ChristmasTreeWidth}, ${ChristmasTreeHeight}`;
+      this.changeSizeArea();
+      window.addEventListener('hashchange', () => this.changeSizeArea());
     });
+    window.addEventListener('resize', () => this.changeSizeArea());
 
     const rightContainer = document.createElement('div');
     rightContainer.classList.add('christmas-tree__right-container');
@@ -78,9 +73,18 @@ class ChristmasTree {
       this.treesSelection.treesSelection,
       this.backgroundsSelection.backgroundsSelection
     );
-    /*  ChristmasTree.middleContainer.append(ChristmasTree.tree); */
-    ChristmasTree.middleContainer.append(map, ChristmasTree.christmasTreePicture);
+    ChristmasTree.middleContainer.append(ChristmasTree.map, ChristmasTree.christmasTreePicture);
     rightContainer.append(this.christmasTreeDecorations.christmasTreeDecorations);
+  }
+
+  changeSizeArea() {
+    const ChristmasTreeWidth = ChristmasTree.christmasTreePicture.getBoundingClientRect().width;
+    const ChristmasTreeHeight = ChristmasTree.christmasTreePicture.getBoundingClientRect().height;
+
+    this.area.coords = `${ChristmasTreeWidth / 2}, 0, 
+    0, ${ChristmasTreeHeight * 0.9},
+    ${ChristmasTreeWidth / 2}, ${ChristmasTreeHeight},
+    ${ChristmasTreeWidth}, ${ChristmasTreeHeight * 0.9}`;
   }
 
   pressResetButton() {
@@ -120,7 +124,6 @@ class ChristmasTree {
   static settingsChange(): void {
     ChristmasTree.#pushLocalStorage();
     console.log(ChristmasTree.settingsChristmasTree);
-    /* ChristmasTree.tree.style.backgroundImage = `url('./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png')`; */
     ChristmasTree.christmasTreePicture.src = `./assets/tree/${ChristmasTree.settingsChristmasTree.numberPickedTree}.png`;
     ChristmasTree.middleContainer.style.backgroundImage = `url('./assets/bg/${ChristmasTree.settingsChristmasTree.numberPickedBackground}.jpg')`;
   }
