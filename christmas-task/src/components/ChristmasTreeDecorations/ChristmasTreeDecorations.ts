@@ -2,6 +2,7 @@ import './ChristmasTreeDecorations.scss';
 import Toys from '../../pages/Main/Toys';
 import Toy from '../Toy/Toy';
 import toysData from '../../data/toysData';
+import ChristmasTree from '../../pages/Main/ChristmasTree';
 
 class ChristmasTreeDecorations {
   static listToys = document.createElement('ul');
@@ -61,6 +62,7 @@ class ChristmasTreeDecorations {
         toyPicture.style.zIndex = '5';
 
         document.body.append(toyPicture);
+        elCount.textContent = String(li.children.length - 1);
 
         relocateToyPicture(e.pageX, e.pageY);
 
@@ -74,9 +76,23 @@ class ChristmasTreeDecorations {
         }
         document.addEventListener('mousemove', currentCursorPosition);
 
-        document.addEventListener('mouseup', () => {
+        document.addEventListener('mouseup', function mouseUp(e) {
+          toyPicture.hidden = true;
+          const elementBehind = document.elementFromPoint(e.clientX, e.clientY);
+          if (elementBehind?.classList.contains('christmas-tree__area')) {
+            console.log('true');
+          } else {
+            console.log('false');
+            li.append(toyPicture);
+            elCount.textContent = String(li.children.length - 1);
+            toyPicture.style.left = '';
+            toyPicture.style.top = '';
+          }
+          toyPicture.hidden = false;
+
+          if (!elementBehind) return false;
           document.removeEventListener('mousemove', currentCursorPosition);
-          document.onmouseup = null;
+          document.removeEventListener('mouseup', mouseUp);
         });
 
         toyPicture.ondragstart = () => false;

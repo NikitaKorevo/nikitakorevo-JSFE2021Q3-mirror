@@ -9,7 +9,6 @@ import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/
 class ChristmasTree {
   static settingsChristmasTree = this.#pullLocalStorage('korEvo_settingsChristmasTree');
   /* static tree = document.createElement('div'); */
-  /* static  */
   static middleContainer = document.createElement('div');
   static christmasTreePicture = document.createElement('img');
 
@@ -58,9 +57,7 @@ class ChristmasTree {
     map.name = 'christmas-tree__map';
     const area = document.createElement('area');
     area.shape = 'poly';
-    /* area.href = 'https://developer.mozilla.org/'; */
-    area.target = '_blank';
-    area.coords = '0, 0, 0, 160, 160, 160';
+    area.classList.add('christmas-tree__area');
     map.append(area);
 
     window.addEventListener('load', () => {
