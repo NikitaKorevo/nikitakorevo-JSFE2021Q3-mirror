@@ -55,7 +55,7 @@ class ChristmasTree {
     this.area = document.createElement('area');
     this.area.shape = 'poly';
     this.area.classList.add('christmas-tree__area');
-    this.area.href = '';
+    /*  this.area.href = ''; */
     ChristmasTree.map.append(this.area);
 
     window.addEventListener('load', () => {
