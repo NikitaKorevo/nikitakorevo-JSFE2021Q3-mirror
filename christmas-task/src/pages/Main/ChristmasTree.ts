@@ -1,10 +1,11 @@
-import './christmas-tree.scss';
+import './ChristmasTree.scss';
 import { DEFAULT_SETTINGS_CHRISTMAS_TREE } from '../../constants/constants';
 import TreesSelection from '../../components/TreesSelection/TreesSelection';
 import BackgroundsSelection from '../../components/BackgroundsSelection/BackgroundsSelection';
 import MusicButton from '../../components/MusicButton/MusicButton';
 import Snowflake from '../../components/SnowflakeButton/SnowflakeButton';
 import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/ChristmasTreeDecorations';
+import GarlandsSelection from '../../components/GarlandsSelection/GarlandsSelection';
 
 class ChristmasTree {
   static settingsChristmasTree = this.#pullLocalStorage('korEvo_settingsChristmasTree');
@@ -20,6 +21,7 @@ class ChristmasTree {
   snowflake: Snowflake;
   christmasTreeDecorations: ChristmasTreeDecorations;
   area: HTMLAreaElement;
+  garlandsSelection: GarlandsSelection;
 
   constructor() {
     this.musicButton = new MusicButton();
@@ -27,6 +29,7 @@ class ChristmasTree {
     this.backgroundsSelection = new BackgroundsSelection();
     this.snowflake = new Snowflake();
     this.christmasTreeDecorations = new ChristmasTreeDecorations();
+    this.garlandsSelection = new GarlandsSelection();
 
     this.christmasTree = document.createElement('div');
     this.christmasTree.classList.add('christmas-tree');
@@ -74,7 +77,8 @@ class ChristmasTree {
     leftContainer.append(
       playButtons,
       this.treesSelection.treesSelection,
-      this.backgroundsSelection.backgroundsSelection
+      this.backgroundsSelection.backgroundsSelection,
+      this.garlandsSelection.garlandsSelection
     );
     ChristmasTree.middleContainer.append(ChristmasTree.map, ChristmasTree.christmasTreePictureContainer);
     ChristmasTree.christmasTreePictureContainer.append(ChristmasTree.christmasTreePicture);

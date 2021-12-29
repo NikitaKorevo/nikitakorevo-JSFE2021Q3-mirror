@@ -1,0 +1,92 @@
+.garlands-selection {
+  .garlands-selection__title {
+  }
+  .garlands-selection__garlands {
+  }
+}
+
+.light-bulbs-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+
+  .light-bulbs {
+    min-width: 5px;
+    min-height: 5px;
+    border-radius: 50%;
+    filter: brightness(40%);
+  }
+
+  @keyframes blinking-red {
+    0% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(red, 0.4);
+    }
+
+    50% {
+      filter: brightness(20%);
+      box-shadow: 0px 0px 3px 0px rgba(red, 0.4);
+    }
+
+    100% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(red, 0.4);
+    }
+  }
+
+  @keyframes blinking-blue {
+    0% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(blue, 0.4);
+    }
+
+    50% {
+      filter: brightness(20%);
+      box-shadow: 0px 0px 3px 0px rgba(blue, 0.4);
+    }
+
+    100% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(blue, 0.4);
+    }
+  }
+
+  @keyframes blinking-yellow {
+    0% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(yellow, 0.4);
+    }
+
+    50% {
+      filter: brightness(20%);
+      box-shadow: 0px 0px 3px 0px rgba(yellow, 0.4);
+    }
+
+    100% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(yellow, 0.4);
+    }
+  }
+
+  @keyframes blinking-green {
+    0% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(rgb(0, 255, 0), 0.4);
+      filter: contrast(200%);
+    }
+
+    50% {
+      filter: brightness(20%);
+      box-shadow: 0px 0px 3px 0px rgba(rgb(0, 255, 0), 0.4);
+      filter: contrast(200%);
+    }
+
+    100% {
+      filter: brightness(100%);
+      box-shadow: 0px 0px 5px 3px rgba(rgb(0, 255, 0), 0.4);
+      filter: contrast(200%);
+    }
+  }
+}

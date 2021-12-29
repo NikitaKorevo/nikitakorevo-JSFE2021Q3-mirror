@@ -4,7 +4,7 @@ import { DEFAULT_SETTINGS, LIMIT_PICKED_TOYS } from '../../constants/constants';
 import { IToysSettings } from '../../data/interfaces';
 import Header from '../Header/Header';
 import Toy from '../../components/Toy/Toy';
-import FiltersValue from '../../components/filtersValue/FiltersValue';
+import FiltersValue from '../../components/FiltersValue/FiltersValue';
 import FiltersRange from '../../components/FiltersRange/FiltersRange';
 import SortingToys from '../../components/SortingToys/SortingToys';
 import ChristmasTreeDecorations from '../../components/ChristmasTreeDecorations/ChristmasTreeDecorations';
