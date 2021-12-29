@@ -2,9 +2,15 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  border: none;
+  transition: 0.3s transform, 0.3s box-shadow, 0.3s border;
+  cursor: pointer;
+}
+
+.garland-button:hover {
+  transform: scale(1.1);
 }
 
 .garland-button--active {
-  width: 40px;
-  height: 40px;
+  box-shadow: 0px 0px 10px 5px rgba(39, 142, 160, 0.8);
 }

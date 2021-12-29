@@ -74,9 +74,10 @@ class GarlandsSelection {
       const middleLightBulb = Math.ceil(amountLightBulbs / 2);
 
       lightBulbsContainer.classList.add('light-bulbs-container');
-      lightBulbsContainer.style.top = heightChristmasTree * i + 'px';
-      lightBulbsContainer.style.left = (widthChristmasTree - widthChristmasTree * i * 0.9) / 2 + 'px';
-      lightBulbsContainer.style.width = widthChristmasTree * i * 0.9 + 'px';
+      lightBulbsContainer.style.top = ((heightChristmasTree * i) / heightChristmasTree) * 100 + '%';
+      lightBulbsContainer.style.left =
+        ((widthChristmasTree - widthChristmasTree * i * 0.9) / 2 / widthChristmasTree) * 100 + '%';
+      lightBulbsContainer.style.width = ((widthChristmasTree * i * 0.9) / widthChristmasTree) * 100 + '%';
 
       for (let j = 1; j <= amountLightBulbs; j++) {
         const lightBulbs = document.createElement('div');

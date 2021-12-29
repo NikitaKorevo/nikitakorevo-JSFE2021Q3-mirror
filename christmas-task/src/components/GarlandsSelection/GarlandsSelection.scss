@@ -2,6 +2,10 @@
   .garlands-selection__title {
   }
   .garlands-selection__garlands {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 10px;
   }
 }
 
