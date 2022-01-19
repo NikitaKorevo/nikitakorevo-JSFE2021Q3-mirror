@@ -1,0 +1,10 @@
+body {
+  font: 400 16px/20px 'Roboto', sans-serif;
+  color: #fff;
+  background-color: #22272e;
+  min-height: 100vh;
+}
+
+.main {
+  min-height: calc(100vh - 50px - 50px);
+}

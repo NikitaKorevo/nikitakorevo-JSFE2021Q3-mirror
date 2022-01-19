@@ -1,0 +1,32 @@
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .title {
+    display: inline-block;
+    font: 700 46px/66px 'Roboto', sans-serif;
+    color: #fff;
+    margin: 0 0 50px;
+  }
+
+  .link {
+    display: inline-block;
+    width: 100%;
+    max-width: 150px;
+    font: 400 16px/24px 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #fff;
+    margin: 10px 0;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .link:hover {
+    border-color: #ec775c;
+  }
+}
