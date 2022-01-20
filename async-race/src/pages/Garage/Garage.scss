@@ -1,5 +1,21 @@
 .Garage {
-  .title {
-    margin: 0;
+  .heading {
+    .heading__title {
+      display: inline-block;
+      margin: 0;
+    }
+    .heading__count-cars {
+    }
+  }
+
+  .pagination {
+    .pagination__button-prev {
+    }
+
+    .pagination__current-page {
+    }
+
+    .pagination__button-next {
+    }
   }
 }
