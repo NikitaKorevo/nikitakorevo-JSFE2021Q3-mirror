@@ -8,7 +8,7 @@ import App from './App';
 /* basename="./nikitakorevo-JSFE2021Q3/async-race" */
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="./nikitakorevo-JSFE2021Q3/async-race">
+    <BrowserRouter basename="/nikitakorevo-JSFE2021Q3/async-race">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
