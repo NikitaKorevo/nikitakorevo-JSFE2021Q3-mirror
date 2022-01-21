@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "./static/css/main.7a68e378.css",
-    "main.js": "./static/js/main.17321a96.js",
-    "static/media/rssLogo.svg": "./static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
-    "index.html": "./index.html",
-    "main.7a68e378.css.map": "./static/css/main.7a68e378.css.map",
-    "main.17321a96.js.map": "./static/js/main.17321a96.js.map"
+    "main.css": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.7a68e378.css",
+    "main.js": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.cd7443e6.js",
+    "static/media/rssLogo.svg": "/nikitakorevo-JSFE2021Q3/async-race/static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
+    "index.html": "/nikitakorevo-JSFE2021Q3/async-race/index.html",
+    "main.7a68e378.css.map": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.7a68e378.css.map",
+    "main.cd7443e6.js.map": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.cd7443e6.js.map"
   },
   "entrypoints": [
     "static/css/main.7a68e378.css",
-    "static/js/main.17321a96.js"
+    "static/js/main.cd7443e6.js"
   ]
 }
