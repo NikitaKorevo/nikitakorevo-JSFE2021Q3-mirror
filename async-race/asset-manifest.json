@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.7a68e378.css",
-    "main.js": "/static/js/main.bf500c30.js",
-    "static/media/rssLogo.svg": "/static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
-    "index.html": "/index.html",
-    "main.7a68e378.css.map": "/static/css/main.7a68e378.css.map",
-    "main.bf500c30.js.map": "/static/js/main.bf500c30.js.map"
+    "main.css": "./static/css/main.7a68e378.css",
+    "main.js": "./static/js/main.74e3df1c.js",
+    "static/media/rssLogo.svg": "./static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
+    "index.html": "./index.html",
+    "main.7a68e378.css.map": "./static/css/main.7a68e378.css.map",
+    "main.74e3df1c.js.map": "./static/js/main.74e3df1c.js.map"
   },
   "entrypoints": [
     "static/css/main.7a68e378.css",
-    "static/js/main.bf500c30.js"
+    "static/js/main.74e3df1c.js"
   ]
 }
