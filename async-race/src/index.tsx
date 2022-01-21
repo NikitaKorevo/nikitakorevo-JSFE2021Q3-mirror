@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './scss/normalize.scss';
 import './index.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import App from './App';
 
-/* basename="./nikitakorevo-JSFE2021Q3/async-race" */
+/* basename="/nikitakorevo-JSFE2021Q3/async-race" */
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/nikitakorevo-JSFE2021Q3/async-race">
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
