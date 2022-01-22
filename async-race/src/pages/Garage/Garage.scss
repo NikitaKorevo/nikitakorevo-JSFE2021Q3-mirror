@@ -1,4 +1,8 @@
 .Garage {
+  width: calc(100% - 30px);
+  max-width: 1200px;
+  margin: 0 auto;
+
   .heading {
     .heading__title {
       display: inline-block;

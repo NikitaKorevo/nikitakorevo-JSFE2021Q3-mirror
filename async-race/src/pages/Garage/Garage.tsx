@@ -1,42 +1,75 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import './Garage.scss';
+import { LIMIT_CARS_ON_PAGE } from '../../constants/constants';
 import CarsAPI from '../../API/CarsAPI';
 import CarLane from '../../components/CarLane/CarLane';
+import GarageSettings from '../../components/GarageSettings/GarageSettings';
 
 interface Iprops {
-  currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  currentPageInGarage: number;
+  setCurrentPageInGarage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function Garage(props: Iprops): JSX.Element {
-  const { currentPage, setCurrentPage } = props;
+  const { currentPageInGarage, setCurrentPageInGarage } = props;
 
+  const [ignored, forceUpdateGarage] = useReducer((x: number) => x + 1, 0);
   const [countCars, setCountCars] = useState('');
   const [carsData, setCarsData] = useState([]);
+  const [selectedCarIdForEdited, setSelectedCarIdForEdited] = useState(null);
 
   useEffect(() => {
     async function getCarsData() {
-      setCarsData(await CarsAPI.getCars(currentPage));
+      setCarsData(await CarsAPI.getCars(currentPageInGarage));
       setCountCars((await CarsAPI.getCarsCount()) || '');
     }
     getCarsData();
-  }, [currentPage, countCars]);
+  }, [ignored, currentPageInGarage, countCars]);
+
+  const carLanes = carsData.map((car) => {
+    const { name, color, id } = car;
+    return (
+      <CarLane
+        carName={name}
+        carColor={color}
+        id={id}
+        countCars={countCars}
+        setCountCars={setCountCars}
+        setSelectedCarIdForEdited={setSelectedCarIdForEdited}
+        key={id}
+      />
+    );
+  });
+
+  function previousPage() {
+    if (currentPageInGarage <= 1) return;
+    setCurrentPageInGarage(currentPageInGarage - 1);
+  }
+
+  function nextPage() {
+    const amountPages = Math.ceil(+countCars / LIMIT_CARS_ON_PAGE);
+    if (currentPageInGarage >= amountPages) return;
+    setCurrentPageInGarage(currentPageInGarage + 1);
+  }
 
   return (
     <main className="main Garage">
+      <GarageSettings
+        selectedCarIdForEdited={selectedCarIdForEdited}
+        forceUpdateGarage={forceUpdateGarage}
+      />
       <div className="heading">
         <h2 className="heading__title">Garage</h2>
         <span className="heading__count-cars">({countCars})</span>
       </div>
-
-      <CarLane />
+      {carLanes}
       <div className="pagination">
-        <button className="pagination__button-prev" onClick={() => setCurrentPage(currentPage - 1)} type="button">
+        <button className="pagination__button-prev" onClick={previousPage} type="button">
           prev page
         </button>
-        <span className="pagination__current-page">{currentPage}</span>
-        <button className="pagination__button-next" onClick={() => setCurrentPage(currentPage + 1)} type="button">
+        <span className="pagination__current-page">{currentPageInGarage}</span>
+        <button className="pagination__button-next" onClick={nextPage} type="button">
           next page
         </button>
       </div>

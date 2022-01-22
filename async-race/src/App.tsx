@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useState } from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
@@ -9,14 +10,22 @@ import Winners from './pages/Winners/Winners';
 import Footer from './components/Footer/Footer';
 
 function App(): JSX.Element {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageInGarage, setCurrentPageInGarage] = useState(1);
 
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/garage" element={<Garage currentPage={currentPage} setCurrentPage={setCurrentPage} />} />
+        <Route
+          path="/garage"
+          element={
+            <Garage
+              currentPageInGarage={currentPageInGarage}
+              setCurrentPageInGarage={setCurrentPageInGarage}
+            />
+          }
+        />
         <Route path="/winners" element={<Winners />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

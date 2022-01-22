@@ -1,5 +1,5 @@
 import React from 'react';
-import LIMIT_CARS_ON_PAGE from '../constants/constants';
+import { LIMIT_CARS_ON_PAGE } from '../constants/constants';
 
 class CarsAPI {
   static async getCarsCount() {
@@ -9,7 +9,9 @@ class CarsAPI {
   }
 
   static async getCars(page: number) {
-    const response = await fetch(`http://127.0.0.1:3000/garage?_page=${page}&_limit=${LIMIT_CARS_ON_PAGE}`);
+    const response = await fetch(
+      `http://127.0.0.1:3000/garage?_page=${page}&_limit=${LIMIT_CARS_ON_PAGE}`
+    );
     const data = await response.json();
     return data;
   }
