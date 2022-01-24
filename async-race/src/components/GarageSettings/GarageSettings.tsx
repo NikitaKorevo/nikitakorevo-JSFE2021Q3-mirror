@@ -1,7 +1,7 @@
 import './GarageSettings.scss';
 import React, { useEffect, useState } from 'react';
 import CarsAPI from '../../API/CarsAPI';
-import getRandomNumber from '../../tools/getRandomNumber';
+import { getRandomNumber, getRandomHexColor } from '../../utils/utils';
 import { AMOUNT_RANDOMLY_GENERATED_CARS } from '../../constants/constants';
 import carBrands from '../../data/carBrands';
 import carModels from '../../data/carModels';
@@ -46,9 +46,10 @@ function GarageSettings(props: any): JSX.Element {
     for (let i = 0; i < AMOUNT_RANDOMLY_GENERATED_CARS; i += 1) {
       const randomCarBrand = carBrands[getRandomNumber(0, carBrands.length - 1)];
       const randomCarModel = carModels[getRandomNumber(0, carModels.length - 1)];
+      const randomHexColor = getRandomHexColor();
 
       arrayPromises.push(
-        CarsAPI.CreateCar({ name: `${randomCarBrand} ${randomCarModel}`, color: '#000000' })
+        CarsAPI.CreateCar({ name: `${randomCarBrand} ${randomCarModel}`, color: randomHexColor })
       );
     }
     await Promise.all(arrayPromises);

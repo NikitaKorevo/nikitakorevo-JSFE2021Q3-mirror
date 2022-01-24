@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useReducer, useState } from 'react';
 import './Garage.scss';
-import { LIMIT_CARS_ON_PAGE } from '../../constants/constants';
+import { LIMIT_CARS_ON_GARAGE_PAGE } from '../../constants/constants';
 import CarsAPI from '../../API/CarsAPI';
 import CarLane from '../../components/CarLane/CarLane';
 import GarageSettings from '../../components/GarageSettings/GarageSettings';
@@ -20,11 +20,11 @@ function Garage(props: Iprops): JSX.Element {
   const [selectedCarIdForEdited, setSelectedCarIdForEdited] = useState(null);
 
   useEffect(() => {
-    async function getCarsData() {
+    async function fn() {
       setCarsData(await CarsAPI.getCars(currentPageInGarage));
-      setCountCars((await CarsAPI.getCarsCount()) || '');
+      setCountCars((await CarsAPI.getCarsCount(currentPageInGarage)) || '');
     }
-    getCarsData();
+    fn();
   }, [ignored, currentPageInGarage, countCars]);
 
   const carLanes = carsData.map((car) => {
@@ -48,7 +48,7 @@ function Garage(props: Iprops): JSX.Element {
   }
 
   function nextPage() {
-    const amountPages = Math.ceil(+countCars / LIMIT_CARS_ON_PAGE);
+    const amountPages = Math.ceil(+countCars / LIMIT_CARS_ON_GARAGE_PAGE);
     if (currentPageInGarage >= amountPages) return;
     setCurrentPageInGarage(currentPageInGarage + 1);
   }

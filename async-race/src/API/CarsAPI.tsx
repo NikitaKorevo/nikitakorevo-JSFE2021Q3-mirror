@@ -1,16 +1,18 @@
 import React from 'react';
-import { LIMIT_CARS_ON_PAGE } from '../constants/constants';
+import { LIMIT_CARS_ON_GARAGE_PAGE, LIMIT_CARS_ON_WINNERS_PAGE } from '../constants/constants';
 
 class CarsAPI {
-  static async getCarsCount() {
-    const response = await fetch(`http://127.0.0.1:3000/garage?_page=_limit=${LIMIT_CARS_ON_PAGE}`);
+  static async getCarsCount(page: number) {
+    const response = await fetch(
+      `http://127.0.0.1:3000/garage?_page=${page}_limit=${LIMIT_CARS_ON_GARAGE_PAGE}`
+    );
     const countCars = response.headers.get('X-Total-Count');
     return countCars;
   }
 
   static async getCars(page: number) {
     const response = await fetch(
-      `http://127.0.0.1:3000/garage?_page=${page}&_limit=${LIMIT_CARS_ON_PAGE}`
+      `http://127.0.0.1:3000/garage?_page=${page}&_limit=${LIMIT_CARS_ON_GARAGE_PAGE}`
     );
     const data = await response.json();
     return data;
@@ -53,17 +55,39 @@ class CarsAPI {
     return data;
   }
 
-  static async startStopCarEngine() {
-    console.log('a');
+  static async startStopCarEngine(carId: number, status: string) {
+    const response = await fetch(`http://127.0.0.1:3000/engine?id=${carId}&status=${status}`, {
+      method: 'PATCH'
+    });
+    const data = await response.json();
+    return data;
   }
 
-  static async switchCarEngineDriveMode() {
-    console.log('a');
+  static async switchCarEngineDriveMode(carId: number, status: string) {
+    try {
+      const response = await fetch(`http://127.0.0.1:3000/engine?id=${carId}&status=${status}`, {
+        method: 'PATCH'
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return { success: false };
+    }
+  }
+
+  static async getWinnersCount(page: number) {
+    const response = await fetch(
+      `http://127.0.0.1:3000/winners?_page=${page}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
+    );
+    const countCars = response.headers.get('X-Total-Count');
+    return countCars;
   }
 
   /* TODO: добавить сортировки */
-  static async getWinners() {
-    const response = await fetch('http://127.0.0.1:3000/winners');
+  static async getWinners(page: number) {
+    const response = await fetch(
+      `http://127.0.0.1:3000/winners?_page=${page}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
+    );
     const data = await response.json();
     return data;
   }

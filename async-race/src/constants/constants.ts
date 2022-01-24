@@ -1,2 +1,3 @@
-export const LIMIT_CARS_ON_PAGE = 7;
+export const LIMIT_CARS_ON_GARAGE_PAGE = 7;
+export const LIMIT_CARS_ON_WINNERS_PAGE = 10;
 export const AMOUNT_RANDOMLY_GENERATED_CARS = 100;

@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 
 function App(): JSX.Element {
   const [currentPageInGarage, setCurrentPageInGarage] = useState(1);
+  const [currentPageInWinners, setCurrentPageInWinners] = useState(1);
 
   return (
     <div className="App">
@@ -26,7 +27,15 @@ function App(): JSX.Element {
             />
           }
         />
-        <Route path="/winners" element={<Winners />} />
+        <Route
+          path="/winners"
+          element={
+            <Winners
+              currentPageInWinners={currentPageInWinners}
+              setCurrentPageInWinners={setCurrentPageInWinners}
+            />
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

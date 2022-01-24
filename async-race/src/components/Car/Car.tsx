@@ -1,12 +1,52 @@
-import React from 'react';
+/* eslint-disable object-curly-newline */
+import React, { useEffect, useRef, useState } from 'react';
 import './Car.scss';
 
-function Car({ carColor }: any): JSX.Element {
+function Car(props: any): JSX.Element {
+  const {
+    carWidth,
+    carHeight,
+    carColor = '#000000',
+    travelTime,
+    carEngineStatus,
+    carLaneEl
+  } = props;
+
+  const svgEl = useRef(null);
+  const [carMargin, setCarMargin] = useState('');
+  const [carTransition, setCarTransition] = useState('');
+
+  useEffect(() => {
+    if (carEngineStatus === 'started') {
+      setCarMargin(`calc(100% - ${carWidth}px`);
+      setCarTransition(`margin-left ${travelTime}s ease-in-out`);
+    }
+
+    if (carEngineStatus === 'stopped') {
+      const leftMarginCarLaneEl = carLaneEl.current.getBoundingClientRect().left;
+      const widthCarLaneEl = carLaneEl.current.getBoundingClientRect().width;
+      const leftMarginSvgEl = (svgEl.current as unknown as HTMLElement).getBoundingClientRect()
+        .left;
+      const leftMarginAfterStopped = `${
+        ((leftMarginSvgEl - leftMarginCarLaneEl) / widthCarLaneEl) * 100
+      }%`;
+      setCarTransition('none');
+      setCarMargin(leftMarginAfterStopped);
+    }
+
+    if (carEngineStatus === 'reverse') {
+      setCarMargin('0');
+      setCarTransition('none');
+    }
+  }, [carWidth, travelTime, carEngineStatus, carLaneEl]);
+
   return (
     <svg
+      ref={svgEl}
+      style={{ marginLeft: carMargin, transition: carTransition }}
       className="Car"
-      width="112"
-      height="47"
+      width={carWidth}
+      height={carHeight}
       viewBox="0 0 112 47"
       fill={carColor}
       xmlns="http://www.w3.org/2000/svg"

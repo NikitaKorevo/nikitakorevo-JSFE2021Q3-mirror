@@ -3,7 +3,12 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  .title {
-    margin: 0;
+  .heading {
+    .heading__title {
+      display: inline-block;
+      margin: 0;
+    }
+    .heading__count-winners {
+    }
   }
 }
