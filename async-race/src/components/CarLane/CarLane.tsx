@@ -1,11 +1,11 @@
 /* eslint-disable object-curly-newline */
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CarsAPI from '../../API/CarsAPI';
 import Car from '../Car/Car';
 import './CarLane.scss';
 
 function CarLane(props: any) {
-  const { carName, carColor, countCars, id } = props;
+  const { carName, carColor, countCars, isRace, id } = props;
   const { setCountCars, setSelectedCarIdForEdited } = props;
 
   const carLaneEl = useRef(null);
@@ -25,19 +25,20 @@ function CarLane(props: any) {
     CarsAPI.deleteCar(id);
     setCountCars(countCars - 1);
   }
-  async function translateCarOnStart() {
+
+  const translateCarOnStart = useCallback(async () => {
     setIsButtonBDisabled(true);
 
     await CarsAPI.startStopCarEngine(id, 'stopped');
     setCarEngineStatus('reverse');
     setIsButtonADisabled(false);
-  }
+  }, [id]);
 
   async function stopCarEngine() {
     setCarEngineStatus('stopped');
   }
 
-  async function startCarEngine() {
+  const startCarEngine = useCallback(async () => {
     setIsButtonADisabled(true);
 
     const { velocity, distance } = await CarsAPI.startStopCarEngine(id, 'started');
@@ -47,7 +48,12 @@ function CarLane(props: any) {
 
     const { success } = await CarsAPI.switchCarEngineDriveMode(id, 'drive');
     if (!success) stopCarEngine();
-  }
+  }, [id]);
+
+  useEffect(() => {
+    if (isRace) startCarEngine();
+    if (!isRace) translateCarOnStart();
+  }, [isRace, startCarEngine, translateCarOnStart]);
 
   return (
     <div ref={carLaneEl} className="CarLane">

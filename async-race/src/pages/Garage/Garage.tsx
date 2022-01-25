@@ -18,6 +18,7 @@ function Garage(props: Iprops): JSX.Element {
   const [countCars, setCountCars] = useState('');
   const [carsData, setCarsData] = useState([]);
   const [selectedCarIdForEdited, setSelectedCarIdForEdited] = useState(null);
+  const [isRace, setIsRace] = useState(false);
 
   useEffect(() => {
     async function fn() {
@@ -37,6 +38,7 @@ function Garage(props: Iprops): JSX.Element {
         countCars={countCars}
         setCountCars={setCountCars}
         setSelectedCarIdForEdited={setSelectedCarIdForEdited}
+        isRace={isRace}
         key={id}
       />
     );
@@ -59,6 +61,8 @@ function Garage(props: Iprops): JSX.Element {
         selectedCarIdForEdited={selectedCarIdForEdited}
         setSelectedCarIdForEdited={setSelectedCarIdForEdited}
         forceUpdateGarage={forceUpdateGarage}
+        isRace={isRace}
+        setIsRace={setIsRace}
       />
       <div className="heading">
         <h2 className="heading__title">Garage</h2>

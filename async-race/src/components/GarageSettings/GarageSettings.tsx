@@ -7,7 +7,8 @@ import carBrands from '../../data/carBrands';
 import carModels from '../../data/carModels';
 
 function GarageSettings(props: any): JSX.Element {
-  const { selectedCarIdForEdited, forceUpdateGarage, setSelectedCarIdForEdited } = props;
+  const { selectedCarIdForEdited, isRace } = props;
+  const { forceUpdateGarage, setSelectedCarIdForEdited, setIsRace } = props;
 
   const [newCarName, setNewCarName] = useState('');
   const [newCarColor, setNewCarColor] = useState('#000000');
@@ -108,10 +109,20 @@ function GarageSettings(props: any): JSX.Element {
       </div>
 
       <div className="GarageSettings__race-control">
-        <button className="button race-control__button-race" type="button">
+        <button
+          className="button race-control__button-race"
+          type="button"
+          onClick={() => setIsRace(true)}
+          disabled={isRace}
+        >
           race
         </button>
-        <button className="button race-control__reset" type="button">
+        <button
+          className="button race-control__reset"
+          type="button"
+          onClick={() => setIsRace(false)}
+          disabled={!isRace}
+        >
           reset
         </button>
         <button
