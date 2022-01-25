@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.10ddbb79.css",
-    "main.js": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.0d6b0d12.js",
+    "main.css": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.c3563870.css",
+    "main.js": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.9f712556.js",
     "static/media/rssLogo.svg": "/nikitakorevo-JSFE2021Q3/async-race/static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
     "index.html": "/nikitakorevo-JSFE2021Q3/async-race/index.html",
-    "main.10ddbb79.css.map": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.10ddbb79.css.map",
-    "main.0d6b0d12.js.map": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.0d6b0d12.js.map"
+    "static/media/finishFlag.svg": "/nikitakorevo-JSFE2021Q3/async-race/static/media/finishFlag.93a6ac6a1e9daf7e0bf6.svg",
+    "main.c3563870.css.map": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.c3563870.css.map",
+    "main.9f712556.js.map": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.9f712556.js.map"
   },
   "entrypoints": [
-    "static/css/main.10ddbb79.css",
-    "static/js/main.0d6b0d12.js"
+    "static/css/main.c3563870.css",
+    "static/js/main.9f712556.js"
   ]
 }
