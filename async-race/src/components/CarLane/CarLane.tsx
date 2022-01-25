@@ -9,6 +9,9 @@ function CarLane(props: any) {
   const { setCountCars, setSelectedCarIdForEdited } = props;
 
   const carLaneEl = useRef(null);
+
+  const [isButtonADisabled, setIsButtonADisabled] = useState(false);
+  const [isButtonBDisabled, setIsButtonBDisabled] = useState(true);
   const [carWidth, setCarWidth] = useState('80');
   const [carHeight, setCarHeight] = useState('100%');
   const [carEngineStatus, setCarEngineStatus] = useState('stopped');
@@ -23,8 +26,11 @@ function CarLane(props: any) {
     setCountCars(countCars - 1);
   }
   async function translateCarOnStart() {
+    setIsButtonBDisabled(true);
+
     await CarsAPI.startStopCarEngine(id, 'stopped');
     setCarEngineStatus('reverse');
+    setIsButtonADisabled(false);
   }
 
   async function stopCarEngine() {
@@ -32,9 +38,12 @@ function CarLane(props: any) {
   }
 
   async function startCarEngine() {
+    setIsButtonADisabled(true);
+
     const { velocity, distance } = await CarsAPI.startStopCarEngine(id, 'started');
     setTravelTime((distance / velocity / 1000).toFixed(2));
     setCarEngineStatus('started');
+    setIsButtonBDisabled(false);
 
     const { success } = await CarsAPI.switchCarEngineDriveMode(id, 'drive');
     if (!success) stopCarEngine();
@@ -52,10 +61,10 @@ function CarLane(props: any) {
         <span>{carName}</span>
       </div>
       <div>
-        <button type="button" onClick={startCarEngine}>
+        <button type="button" onClick={startCarEngine} disabled={isButtonADisabled}>
           A
         </button>
-        <button type="button" onClick={translateCarOnStart}>
+        <button type="button" onClick={translateCarOnStart} disabled={isButtonBDisabled}>
           B
         </button>
       </div>

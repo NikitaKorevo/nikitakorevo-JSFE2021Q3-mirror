@@ -57,6 +57,7 @@ function Garage(props: Iprops): JSX.Element {
     <main className="main Garage">
       <GarageSettings
         selectedCarIdForEdited={selectedCarIdForEdited}
+        setSelectedCarIdForEdited={setSelectedCarIdForEdited}
         forceUpdateGarage={forceUpdateGarage}
       />
       <div className="heading">

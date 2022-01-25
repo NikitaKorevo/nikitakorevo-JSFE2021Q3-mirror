@@ -1,4 +1,8 @@
 .CarLane {
   margin-bottom: 20px;
   border-bottom: 2px dashed #fff;
+  background-image: url('../../svg/finishFlag.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: calc(100% - 100px) 100%;
 }

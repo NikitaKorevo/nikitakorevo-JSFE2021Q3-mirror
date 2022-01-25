@@ -7,11 +7,12 @@ import carBrands from '../../data/carBrands';
 import carModels from '../../data/carModels';
 
 function GarageSettings(props: any): JSX.Element {
-  const { selectedCarIdForEdited, forceUpdateGarage } = props;
+  const { selectedCarIdForEdited, forceUpdateGarage, setSelectedCarIdForEdited } = props;
 
   const [newCarName, setNewCarName] = useState('');
   const [newCarColor, setNewCarColor] = useState('#000000');
 
+  const [isCarEditingDisabled, setIsCarEditingDisabled] = useState(true);
   const [carEditingName, setCarEditingName] = useState('');
   const [carEditingColor, setCarEditingColor] = useState('#000000');
 
@@ -19,6 +20,7 @@ function GarageSettings(props: any): JSX.Element {
     if (!selectedCarIdForEdited) return;
 
     async function getDataCar() {
+      setIsCarEditingDisabled(false);
       const { name, color } = await CarsAPI.getCar(+selectedCarIdForEdited);
       setCarEditingName(name);
       setCarEditingColor(color);
@@ -38,6 +40,10 @@ function GarageSettings(props: any): JSX.Element {
       name: carEditingName,
       color: carEditingColor
     });
+    setIsCarEditingDisabled(true);
+    setCarEditingName('');
+    setCarEditingColor('#000000');
+    setSelectedCarIdForEdited(null);
     forceUpdateGarage();
   }
 
@@ -82,14 +88,21 @@ function GarageSettings(props: any): JSX.Element {
           type="text"
           value={carEditingName}
           onChange={(e) => setCarEditingName(e.target.value)}
+          disabled={isCarEditingDisabled}
         />
         <input
           className="car-editing__color"
           type="color"
           value={carEditingColor}
           onChange={(e) => setCarEditingColor(e.target.value)}
+          disabled={isCarEditingDisabled}
         />
-        <button className="button car-editing__button-update" type="button" onClick={updateCar}>
+        <button
+          className="button car-editing__button-update"
+          type="button"
+          onClick={updateCar}
+          disabled={isCarEditingDisabled}
+        >
           update
         </button>
       </div>
