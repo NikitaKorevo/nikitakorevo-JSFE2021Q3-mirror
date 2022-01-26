@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.d3e8af75.css",
-    "main.js": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.239f9f95.js",
+    "main.js": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.47a0efd5.js",
     "static/media/rssLogo.svg": "/nikitakorevo-JSFE2021Q3/async-race/static/media/rssLogo.2418248d4ccd4e7738a4dad33034960b.svg",
     "index.html": "/nikitakorevo-JSFE2021Q3/async-race/index.html",
     "static/media/finishFlag.svg": "/nikitakorevo-JSFE2021Q3/async-race/static/media/finishFlag.93a6ac6a1e9daf7e0bf6.svg",
     "main.d3e8af75.css.map": "/nikitakorevo-JSFE2021Q3/async-race/static/css/main.d3e8af75.css.map",
-    "main.239f9f95.js.map": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.239f9f95.js.map"
+    "main.47a0efd5.js.map": "/nikitakorevo-JSFE2021Q3/async-race/static/js/main.47a0efd5.js.map"
   },
   "entrypoints": [
     "static/css/main.d3e8af75.css",
-    "static/js/main.239f9f95.js"
+    "static/js/main.47a0efd5.js"
   ]
 }
