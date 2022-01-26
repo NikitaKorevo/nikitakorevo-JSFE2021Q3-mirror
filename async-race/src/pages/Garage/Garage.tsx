@@ -5,6 +5,7 @@ import { LIMIT_CARS_ON_GARAGE_PAGE } from '../../constants/constants';
 import CarsAPI from '../../API/CarsAPI';
 import CarLane from '../../components/CarLane/CarLane';
 import GarageSettings from '../../components/GarageSettings/GarageSettings';
+import WinnerAnnouncement from '../../components/WinnerAnnouncement/WinnerAnnouncement';
 
 interface Iprops {
   currentPageInGarage: number;
@@ -19,6 +20,34 @@ function Garage(props: Iprops): JSX.Element {
   const [carsData, setCarsData] = useState([]);
   const [selectedCarIdForEdited, setSelectedCarIdForEdited] = useState(null);
   const [isRace, setIsRace] = useState(false);
+  const [winnersInRace, setWinnersInRace] = useState(null);
+  const [firstWinnerInRace, setFirstWinnerInRace] = useState({
+    id: null,
+    carName: null,
+    time: null
+  });
+  const [isWinnerAnnouncementHidden, setIsWinnerAnnouncementHidden] = useState(false);
+
+  useEffect(() => {
+    if (isRace && winnersInRace && !firstWinnerInRace.id) {
+      setFirstWinnerInRace(winnersInRace);
+      setIsWinnerAnnouncementHidden(true);
+    }
+  }, [isRace, winnersInRace, firstWinnerInRace]);
+
+  useEffect(() => {
+    if (isRace) return;
+    function racePreparation() {
+      setIsWinnerAnnouncementHidden(false);
+      setWinnersInRace(null);
+      setFirstWinnerInRace({
+        id: null,
+        carName: null,
+        time: null
+      });
+    }
+    racePreparation();
+  }, [isRace]);
 
   useEffect(() => {
     async function fn() {
@@ -39,6 +68,7 @@ function Garage(props: Iprops): JSX.Element {
         setCountCars={setCountCars}
         setSelectedCarIdForEdited={setSelectedCarIdForEdited}
         isRace={isRace}
+        setWinnersInRace={setWinnersInRace}
         key={id}
       />
     );
@@ -57,12 +87,17 @@ function Garage(props: Iprops): JSX.Element {
 
   return (
     <main className="main Garage">
+      {isWinnerAnnouncementHidden ? (
+        <WinnerAnnouncement firstWinnerInRace={firstWinnerInRace} />
+      ) : null}
+
       <GarageSettings
         selectedCarIdForEdited={selectedCarIdForEdited}
         setSelectedCarIdForEdited={setSelectedCarIdForEdited}
         forceUpdateGarage={forceUpdateGarage}
         isRace={isRace}
         setIsRace={setIsRace}
+        setIsWinnerAnnouncementHidden={setIsWinnerAnnouncementHidden}
       />
       <div className="heading">
         <h2 className="heading__title">Garage</h2>

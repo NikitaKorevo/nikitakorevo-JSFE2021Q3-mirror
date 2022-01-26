@@ -5,8 +5,16 @@ import Car from '../Car/Car';
 import './CarLane.scss';
 
 function CarLane(props: any) {
-  const { carName, carColor, countCars, isRace, id } = props;
-  const { setCountCars, setSelectedCarIdForEdited } = props;
+  const {
+    id,
+    carName,
+    carColor,
+    countCars,
+    setCountCars,
+    isRace,
+    setSelectedCarIdForEdited,
+    setWinnersInRace
+  } = props;
 
   const carLaneEl = useRef(null);
 
@@ -40,15 +48,32 @@ function CarLane(props: any) {
 
   const startCarEngine = useCallback(async () => {
     setIsButtonADisabled(true);
+    let isCarOk = true;
 
+    const date1 = Date.now();
     const { velocity, distance } = await CarsAPI.startStopCarEngine(id, 'started');
-    setTravelTime((distance / velocity / 1000).toFixed(2));
+    const date2 = Date.now();
+    const delayBeforeStart = date2 - date1;
+
+    const travelTimeMs = distance / velocity;
+    setTravelTime((travelTimeMs / 1000).toFixed(2));
+    const time = ((delayBeforeStart + travelTimeMs) / 1000).toFixed(2);
+    /* setTravelTime((distance / velocity / 1000).toFixed(2)); */
+
     setCarEngineStatus('started');
     setIsButtonBDisabled(false);
 
+    setTimeout(() => {
+      if (!isCarOk) return;
+      setWinnersInRace({ id, carName, time });
+    }, travelTimeMs);
+
     const { success } = await CarsAPI.switchCarEngineDriveMode(id, 'drive');
-    if (!success) stopCarEngine();
-  }, [id]);
+    if (!success) {
+      isCarOk = false;
+      stopCarEngine();
+    }
+  }, [id, carName, setWinnersInRace]);
 
   useEffect(() => {
     if (isRace) startCarEngine();

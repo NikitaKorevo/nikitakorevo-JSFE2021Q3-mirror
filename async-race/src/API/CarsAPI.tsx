@@ -99,16 +99,16 @@ class CarsAPI {
   }
 
   /* TODO переделать, получить id и прибавлять победы, лучшая скорость */
-  static async createWinner(specification: any) {
+  static async createWinner(id: number, wins: number, time: number) {
     const response = await fetch('http://127.0.0.1:3000/winners', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(specification)
+      body: JSON.stringify({ id, wins, time })
     });
     const data = await response.json();
-    /* return data; */
+    return data;
   }
 
   static async deleteWinner() {

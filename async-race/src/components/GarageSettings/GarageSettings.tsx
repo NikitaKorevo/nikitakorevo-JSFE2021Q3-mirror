@@ -7,8 +7,14 @@ import carBrands from '../../data/carBrands';
 import carModels from '../../data/carModels';
 
 function GarageSettings(props: any): JSX.Element {
-  const { selectedCarIdForEdited, isRace } = props;
-  const { forceUpdateGarage, setSelectedCarIdForEdited, setIsRace } = props;
+  const {
+    forceUpdateGarage,
+    selectedCarIdForEdited,
+    setSelectedCarIdForEdited,
+    isRace,
+    setIsRace,
+    setIsWinnerAnnouncementHidden
+  } = props;
 
   const [newCarName, setNewCarName] = useState('');
   const [newCarColor, setNewCarColor] = useState('#000000');
