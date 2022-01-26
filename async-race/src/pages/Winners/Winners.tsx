@@ -16,16 +16,15 @@ function Winners(props: Iprops): JSX.Element {
   const [ignored, forceUpdateWinners] = useReducer((x: number) => x + 1, 0);
   const [countWinners, setCountWinners] = useState('');
   const [winnersData, setWinnersData] = useState([]);
-  const columnNames = ['№', 'Car', 'Name', 'Wins', 'Best time(sec)'];
+  const [sortOptions, setSortOptions] = useState('');
 
   useEffect(() => {
     async function fn() {
-      setWinnersData(await CarsAPI.getWinners(currentPageInWinners));
+      setWinnersData(await CarsAPI.getWinners(currentPageInWinners, sortOptions));
       setCountWinners((await CarsAPI.getWinnersCount(currentPageInWinners)) || '');
-      /* console.log(await CarsAPI.getWinners(currentPageInWinners)); */
     }
     fn();
-  }, [currentPageInWinners, countWinners]);
+  }, [currentPageInWinners, countWinners, sortOptions]);
 
   function previousPage() {
     if (currentPageInWinners <= 1) return;
@@ -45,7 +44,7 @@ function Winners(props: Iprops): JSX.Element {
         <span className="heading__count-winners">({countWinners})</span>
       </div>
 
-      <Table columnNames={columnNames} winnersData={winnersData} />
+      <Table winnersData={winnersData} sortOptions={sortOptions} setSortOptions={setSortOptions} />
 
       <div className="pagination">
         <button className="pagination__button-prev" onClick={previousPage} type="button">

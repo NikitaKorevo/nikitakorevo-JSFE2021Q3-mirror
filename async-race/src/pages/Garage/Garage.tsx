@@ -100,15 +100,8 @@ function Garage(props: Iprops): JSX.Element {
     setCurrentPageInGarage(currentPageInGarage + 1);
   }
 
-  async function getWinnerXren() {
-    console.log(await CarsAPI.getWinner(60));
-  }
-
   return (
     <main className="main Garage">
-      <button type="button" onClick={getWinnerXren}>
-        get winner
-      </button>
       {isWinnerAnnouncementHidden ? null : (
         <WinnerAnnouncement firstWinnerInRace={firstWinnerInRace} />
       )}

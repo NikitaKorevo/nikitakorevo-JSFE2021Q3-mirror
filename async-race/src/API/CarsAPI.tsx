@@ -83,10 +83,9 @@ class CarsAPI {
     return countCars;
   }
 
-  /* TODO: добавить сортировки */
-  static async getWinners(page: number) {
+  static async getWinners(page: number, specification: string) {
     const response = await fetch(
-      `http://127.0.0.1:3000/winners?_page=${page}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
+      `http://127.0.0.1:3000/winners?_page=${page}${specification}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
     );
     const data = await response.json();
     return data;
@@ -98,7 +97,6 @@ class CarsAPI {
     return data;
   }
 
-  /* TODO переделать, получить id и прибавлять победы, лучшая скорость */
   static async createWinner(id: number, wins: number, time: number) {
     const response = await fetch('http://127.0.0.1:3000/winners', {
       method: 'POST',

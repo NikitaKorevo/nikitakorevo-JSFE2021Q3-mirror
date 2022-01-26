@@ -5,9 +5,9 @@ import CarsAPI from '../../API/CarsAPI';
 import { ICar, IWinner } from '../../types/types';
 
 function Table(props: any): JSX.Element {
-  const { columnNames, winnersData } = props;
+  const { winnersData, sortOptions, setSortOptions } = props;
 
-  const theadElements = columnNames.map((name: string) => <td key={name}>{name}</td>);
+  const [columnNames, setColumnNames] = useState(['№', 'Car', 'Name', 'Wins', 'Best time(sec)']);
   const [tbodyElements, setTbodyElements] = useState([]);
 
   useEffect(() => {
@@ -37,10 +37,36 @@ function Table(props: any): JSX.Element {
     getCarsData();
   }, [winnersData]);
 
+  function sortByWinners() {
+    return sortOptions === '&_sort=wins&_order=DESC'
+      ? setSortOptions('&_sort=wins&_order=ASC')
+      : setSortOptions('&_sort=wins&_order=DESC');
+  }
+
+  function sortByBestTime() {
+    return sortOptions === '&_sort=time&_order=ASC'
+      ? setSortOptions('&_sort=time&_order=DESC')
+      : setSortOptions('&_sort=time&_order=ASC');
+  }
+
   return (
     <table className="Table-winners">
       <thead>
-        <tr>{theadElements}</tr>
+        <tr>
+          <td>{columnNames[0]}</td>
+          <td>{columnNames[1]}</td>
+          <td>{columnNames[2]}</td>
+          <td>
+            <button style={{ cursor: 'pointer' }} type="button" onClick={sortByWinners}>
+              {columnNames[3]}
+            </button>
+          </td>
+          <td>
+            <button style={{ cursor: 'pointer' }} type="button" onClick={sortByBestTime}>
+              {columnNames[4]}
+            </button>
+          </td>
+        </tr>
       </thead>
       <tbody>{tbodyElements}</tbody>
     </table>
