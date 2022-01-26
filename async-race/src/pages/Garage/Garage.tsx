@@ -19,26 +19,41 @@ function Garage(props: Iprops): JSX.Element {
   const [countCars, setCountCars] = useState('');
   const [carsData, setCarsData] = useState([]);
   const [selectedCarIdForEdited, setSelectedCarIdForEdited] = useState(null);
-  const [isRace, setIsRace] = useState(false);
+  const [isRace, setIsRace] = useState(null);
   const [winnersInRace, setWinnersInRace] = useState(null);
   const [firstWinnerInRace, setFirstWinnerInRace] = useState({
     id: null,
     carName: null,
     time: null
   });
-  const [isWinnerAnnouncementHidden, setIsWinnerAnnouncementHidden] = useState(false);
+  const [isWinnerAnnouncementHidden, setIsWinnerAnnouncementHidden] = useState(true);
 
   useEffect(() => {
-    if (isRace && winnersInRace && !firstWinnerInRace.id) {
-      setFirstWinnerInRace(winnersInRace);
-      setIsWinnerAnnouncementHidden(true);
+    if (!isRace || !winnersInRace || firstWinnerInRace.id) return;
+    setFirstWinnerInRace(winnersInRace);
+    setIsWinnerAnnouncementHidden(false);
+
+    async function setWinner() {
+      if (!winnersInRace) return;
+      const { id, time } = winnersInRace;
+      const winnerData = await CarsAPI.getWinner(id);
+
+      if (!winnerData.id) {
+        const amountWins = 1;
+        CarsAPI.createWinner(id, amountWins, time);
+      } else {
+        const amountWins = winnerData.wins + 1;
+        const newTime = winnerData.time > time ? time : winnerData.time;
+        CarsAPI.updateWinner(id, amountWins, newTime);
+      }
     }
+    setWinner();
   }, [isRace, winnersInRace, firstWinnerInRace]);
 
   useEffect(() => {
     if (isRace) return;
     function racePreparation() {
-      setIsWinnerAnnouncementHidden(false);
+      setIsWinnerAnnouncementHidden(true);
       setWinnersInRace(null);
       setFirstWinnerInRace({
         id: null,
@@ -85,11 +100,18 @@ function Garage(props: Iprops): JSX.Element {
     setCurrentPageInGarage(currentPageInGarage + 1);
   }
 
+  async function getWinnerXren() {
+    console.log(await CarsAPI.getWinner(60));
+  }
+
   return (
     <main className="main Garage">
-      {isWinnerAnnouncementHidden ? (
+      <button type="button" onClick={getWinnerXren}>
+        get winner
+      </button>
+      {isWinnerAnnouncementHidden ? null : (
         <WinnerAnnouncement firstWinnerInRace={firstWinnerInRace} />
-      ) : null}
+      )}
 
       <GarageSettings
         selectedCarIdForEdited={selectedCarIdForEdited}

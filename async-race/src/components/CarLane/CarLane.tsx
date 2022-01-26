@@ -31,6 +31,7 @@ function CarLane(props: any) {
 
   function removeCar() {
     CarsAPI.deleteCar(id);
+    CarsAPI.deleteWinner(id);
     setCountCars(countCars - 1);
   }
 
@@ -58,7 +59,6 @@ function CarLane(props: any) {
     const travelTimeMs = distance / velocity;
     setTravelTime((travelTimeMs / 1000).toFixed(2));
     const time = ((delayBeforeStart + travelTimeMs) / 1000).toFixed(2);
-    /* setTravelTime((distance / velocity / 1000).toFixed(2)); */
 
     setCarEngineStatus('started');
     setIsButtonBDisabled(false);
@@ -76,6 +76,7 @@ function CarLane(props: any) {
   }, [id, carName, setWinnersInRace]);
 
   useEffect(() => {
+    if (isRace === null) return;
     if (isRace) startCarEngine();
     if (!isRace) translateCarOnStart();
   }, [isRace, startCarEngine, translateCarOnStart]);

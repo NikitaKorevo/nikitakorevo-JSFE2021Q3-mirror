@@ -12,8 +12,7 @@ function GarageSettings(props: any): JSX.Element {
     selectedCarIdForEdited,
     setSelectedCarIdForEdited,
     isRace,
-    setIsRace,
-    setIsWinnerAnnouncementHidden
+    setIsRace
   } = props;
 
   const [newCarName, setNewCarName] = useState('');

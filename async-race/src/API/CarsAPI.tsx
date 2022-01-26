@@ -111,12 +111,24 @@ class CarsAPI {
     return data;
   }
 
-  static async deleteWinner() {
-    console.log('a');
+  static async deleteWinner(id: number) {
+    const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+      method: 'DELETE'
+    });
+    const data = await response.json();
+    return data;
   }
 
-  static async updateWinner() {
-    console.log('a');
+  static async updateWinner(id: number, wins: number, time: number) {
+    const response = await fetch(`http://127.0.0.1:3000/winners/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ wins, time })
+    });
+    const data = await response.json();
+    return data;
   }
 }
 export default CarsAPI;
