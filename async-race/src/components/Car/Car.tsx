@@ -1,16 +1,18 @@
-/* eslint-disable object-curly-newline */
-import React, { useEffect, useRef, useState } from 'react';
 import './Car.scss';
+import React, { useEffect, useRef, useState } from 'react';
 
-function Car(props: any): JSX.Element {
-  const {
-    carWidth,
-    carHeight,
-    carColor = '#000000',
-    travelTime,
-    carEngineStatus,
-    carLaneEl
-  } = props;
+interface IPropsCar {
+  carWidth: string;
+  carHeight: string;
+  carColor: string;
+  travelTime?: string;
+  carEngineStatus?: string;
+  carLaneEl?: React.RefObject<HTMLDivElement> | null;
+}
+/* carLaneEl: React.MutableRefObject<null>; */
+
+function Car(props: IPropsCar): JSX.Element {
+  const { carWidth, carHeight, carColor, travelTime, carEngineStatus, carLaneEl } = props;
 
   const svgEl = useRef(null);
   const [carMargin, setCarMargin] = useState('');
@@ -23,6 +25,7 @@ function Car(props: any): JSX.Element {
     }
 
     if (carEngineStatus === 'stopped') {
+      if (!carLaneEl || !carLaneEl.current) return;
       const leftMarginCarLaneEl = carLaneEl.current.getBoundingClientRect().left;
       const widthCarLaneEl = carLaneEl.current.getBoundingClientRect().width;
       const leftMarginSvgEl = (svgEl.current as unknown as HTMLElement).getBoundingClientRect()
@@ -58,5 +61,11 @@ function Car(props: any): JSX.Element {
     </svg>
   );
 }
+
+Car.defaultProps = {
+  travelTime: null,
+  carEngineStatus: null,
+  carLaneEl: null
+};
 
 export default Car;

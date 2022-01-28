@@ -1,7 +1,12 @@
-import React from 'react';
 import './WinnerAnnouncement.scss';
+import React from 'react';
+import { IWinnerInRace } from '../../types/types';
 
-function WinnerAnnouncement(props: any) {
+interface IPropsWinnerAnnouncement {
+  firstWinnerInRace: IWinnerInRace;
+}
+
+function WinnerAnnouncement(props: IPropsWinnerAnnouncement): JSX.Element {
   const { firstWinnerInRace } = props;
   const { carName, time } = firstWinnerInRace;
   const announcement = `${carName} went first (${time}sec)`;

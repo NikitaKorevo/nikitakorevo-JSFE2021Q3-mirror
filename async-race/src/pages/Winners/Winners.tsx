@@ -1,37 +1,36 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useReducer, useState } from 'react';
 import './Winners.scss';
+import React, { useEffect, useState } from 'react';
 import { LIMIT_CARS_ON_WINNERS_PAGE } from '../../constants/constants';
 import CarsAPI from '../../API/CarsAPI';
+import { IWinner } from '../../types/types';
 import Table from '../../components/Table/Table';
 
-interface Iprops {
+interface IPropsWinners {
   currentPageInWinners: number;
   setCurrentPageInWinners: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Winners(props: Iprops): JSX.Element {
+function Winners(props: IPropsWinners): JSX.Element {
   const { currentPageInWinners, setCurrentPageInWinners } = props;
 
-  const [ignored, forceUpdateWinners] = useReducer((x: number) => x + 1, 0);
   const [countWinners, setCountWinners] = useState('');
-  const [winnersData, setWinnersData] = useState([]);
+  const [winnersData, setWinnersData] = useState<Array<IWinner>>([]);
   const [sortOptions, setSortOptions] = useState('');
 
-  useEffect(() => {
-    async function fn() {
+  useEffect((): void => {
+    async function getDataWinners() {
       setWinnersData(await CarsAPI.getWinners(currentPageInWinners, sortOptions));
       setCountWinners((await CarsAPI.getWinnersCount(currentPageInWinners)) || '');
     }
-    fn();
+    getDataWinners();
   }, [currentPageInWinners, countWinners, sortOptions]);
 
-  function previousPage() {
+  function previousPage(): void {
     if (currentPageInWinners <= 1) return;
     setCurrentPageInWinners(currentPageInWinners - 1);
   }
 
-  function nextPage() {
+  function nextPage(): void {
     const amountPages = Math.ceil(+countWinners / LIMIT_CARS_ON_WINNERS_PAGE);
     if (currentPageInWinners >= amountPages) return;
     setCurrentPageInWinners(currentPageInWinners + 1);

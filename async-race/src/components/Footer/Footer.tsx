@@ -1,8 +1,8 @@
-import React from 'react';
 import './Footer.scss';
+import React from 'react';
 import rssLogo from '../../svg/rssLogo.svg';
 
-function Footer() {
+function Footer(): JSX.Element {
   return (
     <footer className="Footer">
       <div className="Footer__content">

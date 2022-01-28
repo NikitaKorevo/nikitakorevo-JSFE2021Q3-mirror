@@ -1,10 +1,21 @@
-/* eslint-disable object-curly-newline */
+import './CarLane.scss';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CarsAPI from '../../API/CarsAPI';
+import { IWinnerInRace } from '../../types/types';
 import Car from '../Car/Car';
-import './CarLane.scss';
 
-function CarLane(props: any) {
+interface IPropsCarLane {
+  id: number;
+  carName: string;
+  carColor: string;
+  countCars: string;
+  setCountCars: React.Dispatch<React.SetStateAction<string>>;
+  isRace: boolean | null;
+  setSelectedCarIdForEdited: React.Dispatch<React.SetStateAction<number | null>>;
+  setWinnersInRace: React.Dispatch<React.SetStateAction<IWinnerInRace>>;
+}
+
+function CarLane(props: IPropsCarLane): JSX.Element {
   const {
     id,
     carName,
@@ -16,7 +27,7 @@ function CarLane(props: any) {
     setWinnersInRace
   } = props;
 
-  const carLaneEl = useRef(null);
+  const carLaneEl = useRef<HTMLDivElement>(null);
 
   const [isButtonADisabled, setIsButtonADisabled] = useState(false);
   const [isButtonBDisabled, setIsButtonBDisabled] = useState(true);
@@ -32,7 +43,7 @@ function CarLane(props: any) {
   function removeCar() {
     CarsAPI.deleteCar(id);
     CarsAPI.deleteWinner(id);
-    setCountCars(countCars - 1);
+    setCountCars(String(+countCars - 1));
   }
 
   const translateCarOnStart = useCallback(async () => {
@@ -58,7 +69,7 @@ function CarLane(props: any) {
 
     const travelTimeMs = distance / velocity;
     setTravelTime((travelTimeMs / 1000).toFixed(2));
-    const time = ((delayBeforeStart + travelTimeMs) / 1000).toFixed(2);
+    const time = Number(((delayBeforeStart + travelTimeMs) / 1000).toFixed(2));
 
     setCarEngineStatus('started');
     setIsButtonBDisabled(false);

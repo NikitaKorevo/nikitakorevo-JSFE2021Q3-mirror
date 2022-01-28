@@ -9,3 +9,9 @@ export interface IWinner {
   wins: number;
   id: number;
 }
+
+export interface IWinnerInRace {
+  id: number | null;
+  carName: string | null;
+  time: number | null;
+}

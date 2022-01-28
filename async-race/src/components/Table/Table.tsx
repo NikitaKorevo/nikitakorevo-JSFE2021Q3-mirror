@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './Table.scss';
 import Car from '../Car/Car';
 import CarsAPI from '../../API/CarsAPI';
-import { ICar, IWinner } from '../../types/types';
+import { IWinner } from '../../types/types';
 
-function Table(props: any): JSX.Element {
+interface IPropsTable {
+  winnersData: Array<IWinner>;
+  sortOptions: string;
+  setSortOptions: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function Table(props: IPropsTable): JSX.Element {
   const { winnersData, sortOptions, setSortOptions } = props;
 
   const [columnNames, setColumnNames] = useState(['№', 'Car', 'Name', 'Wins', 'Best time(sec)']);
-  const [tbodyElements, setTbodyElements] = useState([]);
+  const [tbodyElements, setTbodyElements] = useState<Array<JSX.Element>>([]);
 
   useEffect(() => {
     async function getCarsData(): Promise<void> {
@@ -24,7 +30,7 @@ function Table(props: any): JSX.Element {
             <tr key={winner.id}>
               <td>{i + 1}</td>
               <td>
-                <Car carColor={color} />
+                <Car carWidth="35" carHeight="100%" carColor={color} />
               </td>
               <td>{name}</td>
               <td>{winner.wins}</td>

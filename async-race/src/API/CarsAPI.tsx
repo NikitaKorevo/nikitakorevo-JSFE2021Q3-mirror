@@ -1,4 +1,3 @@
-import React from 'react';
 import { LIMIT_CARS_ON_GARAGE_PAGE, LIMIT_CARS_ON_WINNERS_PAGE } from '../constants/constants';
 
 class CarsAPI {
@@ -24,13 +23,13 @@ class CarsAPI {
     return data;
   }
 
-  static async CreateCar(specification: any) {
+  static async CreateCar(name: string, color: string) {
     const response = await fetch('http://127.0.0.1:3000/garage/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(specification)
+      body: JSON.stringify({ name, color })
     });
     const data = await response.json();
     return data;
@@ -43,13 +42,13 @@ class CarsAPI {
     return response.status;
   }
 
-  static async updateCar(carId: number, specification: any) {
+  static async updateCar(carId: number, name: string, color: string) {
     const response = await fetch(`http://127.0.0.1:3000/garage/${carId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(specification)
+      body: JSON.stringify({ name, color })
     });
     const data = await response.json();
     return data;
@@ -83,9 +82,9 @@ class CarsAPI {
     return countCars;
   }
 
-  static async getWinners(page: number, specification: string) {
+  static async getWinners(page: number, sortOptions: string) {
     const response = await fetch(
-      `http://127.0.0.1:3000/winners?_page=${page}${specification}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
+      `http://127.0.0.1:3000/winners?_page=${page}${sortOptions}&_limit=${LIMIT_CARS_ON_WINNERS_PAGE}`
     );
     const data = await response.json();
     return data;

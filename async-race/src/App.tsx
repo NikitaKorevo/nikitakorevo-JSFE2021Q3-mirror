@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-wrap-multilines */
-import React, { useState } from 'react';
 import './App.scss';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import ROUTES from './constants/routes';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
 import Header from './components/Header/Header';
 import Main from './pages/Main/Main';
@@ -17,9 +17,9 @@ function App(): JSX.Element {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path={ROUTES.MAIN} element={<Main />} />
         <Route
-          path="/garage"
+          path={ROUTES.GARAGE}
           element={
             <Garage
               currentPageInGarage={currentPageInGarage}
@@ -28,7 +28,7 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path="/winners"
+          path={ROUTES.WINNERS}
           element={
             <Winners
               currentPageInWinners={currentPageInWinners}
@@ -36,7 +36,7 @@ function App(): JSX.Element {
             />
           }
         />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path={ROUTES.PAGE_NOT_FOUND} element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>

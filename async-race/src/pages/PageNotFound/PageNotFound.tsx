@@ -1,7 +1,7 @@
-import React from 'react';
 import './PageNotFound.scss';
+import React from 'react';
 
-function PageNotFound() {
+function PageNotFound(): JSX.Element {
   return (
     <main className="main Page-not-found">
       <span className="error-number">404</span>

@@ -6,7 +6,15 @@ import { AMOUNT_RANDOMLY_GENERATED_CARS } from '../../constants/constants';
 import carBrands from '../../data/carBrands';
 import carModels from '../../data/carModels';
 
-function GarageSettings(props: any): JSX.Element {
+interface IPropsGarageSettings {
+  selectedCarIdForEdited: number | null;
+  setSelectedCarIdForEdited: React.Dispatch<React.SetStateAction<number | null>>;
+  forceUpdateGarage: React.DispatchWithoutAction;
+  isRace: boolean | null;
+  setIsRace: React.Dispatch<React.SetStateAction<boolean | null>>;
+}
+
+function GarageSettings(props: IPropsGarageSettings): JSX.Element {
   const {
     forceUpdateGarage,
     selectedCarIdForEdited,
@@ -26,8 +34,10 @@ function GarageSettings(props: any): JSX.Element {
     if (!selectedCarIdForEdited) return;
 
     async function getDataCar() {
+      if (!selectedCarIdForEdited) return;
+
       setIsCarEditingDisabled(false);
-      const { name, color } = await CarsAPI.getCar(+selectedCarIdForEdited);
+      const { name, color } = await CarsAPI.getCar(selectedCarIdForEdited);
       setCarEditingName(name);
       setCarEditingColor(color);
     }
@@ -35,17 +45,16 @@ function GarageSettings(props: any): JSX.Element {
   }, [selectedCarIdForEdited]);
 
   async function createNewCar(): Promise<void> {
-    await CarsAPI.CreateCar({ name: newCarName, color: newCarColor });
+    await CarsAPI.CreateCar(newCarName, newCarColor);
     setNewCarName('');
     setNewCarColor('#000000');
     forceUpdateGarage();
   }
 
   async function updateCar(): Promise<void> {
-    await CarsAPI.updateCar(selectedCarIdForEdited, {
-      name: carEditingName,
-      color: carEditingColor
-    });
+    if (!selectedCarIdForEdited) return;
+
+    await CarsAPI.updateCar(selectedCarIdForEdited, carEditingName, carEditingColor);
     setIsCarEditingDisabled(true);
     setCarEditingName('');
     setCarEditingColor('#000000');
@@ -60,9 +69,7 @@ function GarageSettings(props: any): JSX.Element {
       const randomCarModel = carModels[getRandomNumber(0, carModels.length - 1)];
       const randomHexColor = getRandomHexColor();
 
-      arrayPromises.push(
-        CarsAPI.CreateCar({ name: `${randomCarBrand} ${randomCarModel}`, color: randomHexColor })
-      );
+      arrayPromises.push(CarsAPI.CreateCar(`${randomCarBrand} ${randomCarModel}`, randomHexColor));
     }
     await Promise.all(arrayPromises);
     forceUpdateGarage();
@@ -118,7 +125,7 @@ function GarageSettings(props: any): JSX.Element {
           className="button race-control__button-race"
           type="button"
           onClick={() => setIsRace(true)}
-          disabled={isRace}
+          disabled={isRace || false}
         >
           race
         </button>
