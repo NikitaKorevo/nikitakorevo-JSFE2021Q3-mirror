@@ -9,7 +9,6 @@ interface IPropsCar {
   carEngineStatus?: string;
   carLaneEl?: React.RefObject<HTMLDivElement> | null;
 }
-/* carLaneEl: React.MutableRefObject<null>; */
 
 function Car(props: IPropsCar): JSX.Element {
   const { carWidth, carHeight, carColor, travelTime, carEngineStatus, carLaneEl } = props;
