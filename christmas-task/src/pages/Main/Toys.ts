@@ -90,7 +90,11 @@ class Toys {
 
     const settingsContainer = document.createElement('div');
     settingsContainer.classList.add('settings');
-    settingsContainer.append(Toys.filtersValue.render(), Toys.filtersRange.render(), Toys.sortingToys.render());
+    settingsContainer.append(
+      Toys.filtersValue.render(),
+      new FiltersRange(Toys.toysSettings).render(),
+      Toys.sortingToys.render()
+    );
 
     Toys.processedToys.classList.add('toys');
 
